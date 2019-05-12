@@ -1,0 +1,132 @@
+<template>
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="columns is-centered is-mobile">
+                    <div class="column is-two-fifths-desktop is-three-fifths-tablet is-full-mobile">
+                    	<div class="tabs is-toggle is-fullwidth">
+						  <ul>
+						    <li v-bind:class="{ 'is-active': isLogin }" v-on:click="toggleMode(sLogin)">
+						      <a>
+						        <span class="has-text-white">Login</span>
+						      </a>
+						    </li>
+						    <li v-bind:class="{ 'is-active': isRegister }" v-on:click="toggleMode(sRegister)">
+						      <a>
+						        <span class="has-text-white">Register</span>
+						      </a>
+						    </li>
+						  </ul>
+						</div>
+				        <div class="login-container">
+	                            <figure class="logo">
+	                                <img src="/img/TIP-logo.png">
+	                            </figure>
+	                            <div v-if="isLogin">
+	                            	<div class="field">
+	                            		<div class="control has-icons-left has-icons-right">
+	                            			<input class="input" type="text" placeholder="Username" v-model="aLogin.sUsername">
+			                                <span class="icon is-left">
+										      <i class="mdi mdi-account"></i>
+										    </span>
+	                            		</div>
+		                            </div>
+		                            <div class="field">
+		                                <div class="control has-icons-left has-icons-right">
+	                            			<input class="input" type="password" placeholder="Password" v-model="aLogin.sPassword">
+			                                <span class="icon is-left">
+										      <i class="mdi mdi-lock"></i>
+										    </span>
+	                            		</div>
+		                            </div>
+		                            <a class="button is-secondary is-fullwidth" v-on:click="doLogin">Login</a>
+	                            </div>
+	                            <div v-else>
+	                            	<div class="field">
+		                               <div class="control">
+	                            			<input class="input" type="text" placeholder="First Name" v-model="aRegister.sFirstName">
+	                            		</div>
+		                            </div>
+		                            <div class="field">
+		                                 <div class="control">
+	                            			<input class="input" type="text" placeholder="Last Name" v-model="aRegister.sLastName">
+	                            		</div>
+		                            </div>
+		                            <div class="field">
+		                                <div class="control">
+	                            			<input class="input" type="text" placeholder="Email ID" v-model="aRegister.sEmail">
+	                            		</div>
+		                            </div>
+		                            <div class="field">
+		                                <div class="control">
+	                            			<input class="input" type="text" placeholder="Username" v-model="aRegister.sUsername">
+	                            		</div>
+		                            </div>
+		                            <div class="field">
+		                                <input class="input" type="password" placeholder="Password" v-model="aRegister.sPassword">
+		                            </div>
+		                            <div class="field">
+		                            	<div class="control">
+										<label class="radio">
+										  <input type="radio" name="user" value="student" v-model="picked">
+											<span class="has-text-white">Student</span>
+										</label>
+										<label class="radio">
+										  <input type="radio" name="user" value="teacher" v-model="picked">
+										  	<span class="has-text-white">Teacher</span>
+										</label>
+									</div>
+		                            </div>
+	                            	<a class="button is-secondary is-fullwidth" v-on:click="doRegister">Register</a>
+	                            </div>
+	                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                isLogin: true,
+                isRegister: false,
+                sLogin: 'login',
+                sRegister: 'register',
+                picked: 'student',
+                aRegister: {
+                	sFirstName: '',
+                	sLastName: '',
+                	sEmail: '',
+                	sUsername: '',
+                	sPassword: '',
+                	sType: ''
+                },
+                aLogin: {
+                	sUsername: '',
+                	sPassword: ''
+                }
+            }
+        },
+        methods: {
+           toggleMode(sMode) {
+           		if (sMode === this.sLogin) {
+           			this.isLogin = true;
+           			this.isRegister = false;
+           		} else {
+           			this.isLogin = false;
+           			this.isRegister = true;
+           		}
+           },
+           doLogin() {
+           		console.log(this.aLogin);
+           },
+           doRegister() {
+           		this.aRegister.sType = (this.picked === 'teacher') ? 1 : 0;
+           		console.log(this.aRegister);
+           }
+
+        }
+    }
+</script>
