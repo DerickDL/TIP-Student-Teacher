@@ -8907,7 +8907,7 @@ label.panel-block:hover {
 
 .tabs a:hover {
   border-bottom-color: #363636;
-  color: #1c1e26;
+  color: #363636;
 }
 
 .tabs li {
@@ -8992,7 +8992,7 @@ label.panel-block:hover {
 }
 
 .tabs.is-toggle a:hover {
-  background-color: whitesmoke;
+  background-color: #1c1e26;
   border-color: #b5b5b5;
   z-index: 2;
 }

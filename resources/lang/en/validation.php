@@ -144,6 +144,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'sEmail'    => 'Email',
+        'sFirstName'    => 'First Name',
+        'sLastName' => 'Last Name',
+        'sUsername' => 'Username',
+        'sPassword' => 'Password',
+        'iType' => 'Type'
+    ],
 
 ];

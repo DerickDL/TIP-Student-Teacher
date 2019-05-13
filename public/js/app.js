@@ -1865,7 +1865,7 @@ __webpack_require__.r(__webpack_exports__);
         sEmail: '',
         sUsername: '',
         sPassword: '',
-        sType: ''
+        iType: ''
       },
       aLogin: {
         sUsername: '',
@@ -1884,11 +1884,51 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     doLogin: function doLogin() {
-      console.log(this.aLogin);
+      fetch('/login', {
+        method: 'post',
+        body: JSON.stringify(this.aLogin),
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        if (data.result === false) {
+          alert(data.message);
+        } else {
+          alert('Successfully Login');
+
+          if (data.data['user_type'] === 0) {
+            //redirect to student home page
+            window.location.href = '/student';
+          } else {
+            //redirect to teacher home page
+            window.location.href = '/teacher';
+          }
+        }
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     },
     doRegister: function doRegister() {
-      this.aRegister.sType = this.picked === 'teacher' ? 1 : 0;
-      console.log(this.aRegister);
+      this.aRegister.iType = this.picked === 'teacher' ? 1 : 0;
+      fetch('/register', {
+        method: 'post',
+        body: JSON.stringify(this.aRegister),
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        if (data.result === false) {
+          alert(data.message);
+        } else {
+          alert('Successfully Registered');
+        }
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   }
 });

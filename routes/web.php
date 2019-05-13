@@ -11,6 +11,16 @@
 |
 */
 
+// Get Methods
 Route::get('/', function () {
     return view('pages.login');
 });
+Route::get('/teacher', 'Teacher\frontTeacher@index')->middleware('check.session', 'check.teacher');
+Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
+Route::get('/forbidden', function() {
+	return view('forbidden');
+});
+
+// Post methods
+Route::post('/login', 'App\controllerUsers@loginUser');
+Route::post('/register', 'App\controllerUsers@registerUser');

@@ -101,7 +101,7 @@
                 	sEmail: '',
                 	sUsername: '',
                 	sPassword: '',
-                	sType: ''
+                	iType: ''
                 },
                 aLogin: {
                 	sUsername: '',
@@ -120,12 +120,49 @@
            		}
            },
            doLogin() {
-           		console.log(this.aLogin);
+           		fetch('/login', {
+           			method: 'post',
+           			body: JSON.stringify(this.aLogin),
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+           		})
+           		.then(res => res.json())
+           		.then(data => {
+           			if (data.result === false) {
+                		alert(data.message);
+                	} else {
+                		alert('Successfully Login');
+                		if (data.data['user_type'] === 0) {
+                			//redirect to student home page
+                      window.location.href = '/student';
+                		} else {
+                			//redirect to teacher home page
+                      window.location.href = '/teacher';
+                		}
+                	}
+           		})
+           		.catch(err => console.log(err));
            },
            doRegister() {
-           		this.aRegister.sType = (this.picked === 'teacher') ? 1 : 0;
-           		console.log(this.aRegister);
-           }
+           		this.aRegister.iType = (this.picked === 'teacher') ? 1 : 0;
+           		fetch('/register', {
+                    method: 'post',
+                    body: JSON.stringify(this.aRegister),
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                	if (data.result === false) {
+                		alert(data.message);
+                	} else {
+                		alert('Successfully Registered');
+                	}
+                })
+                .catch(err => console.log(err));
+           },
 
         }
     }
