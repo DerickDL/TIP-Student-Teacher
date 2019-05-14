@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\App;
 
+use App\Logic\logicUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Logic\logicUsers;
 use App\Model\modelUsers;
 
 class controllerUsers extends Controller
 {
 	/**
-	 * Logic/Users
-	 *
+	 * Logic/Users logic
+	 * @var logicUsers
 	 */
 	private $logicUsers;
 
@@ -30,14 +30,32 @@ class controllerUsers extends Controller
     	return response()->json($this->logicUsers->registerUser($oRequest->all()));
     }
 
+    /**
+     * login user
+     * @param Request $oRequest
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function loginUser(Request $oRequest)
     {
     	return response()->json($this->logicUsers->loginUser($oRequest->all()));
     }
 
+    /**
+     * logout, flush session
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logoutUser()
     {
         $this->logicUsers->logoutUser();
         return redirect('/');
+    }
+
+    /**
+     * get session
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getSession()
+    {
+        return response()->json($this->logicUsers->getSession());
     }
 }

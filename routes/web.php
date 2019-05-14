@@ -19,6 +19,7 @@ Route::get('/logout', 'App\controllerUsers@logoutUser');
 Route::get('/teacher', 'Teacher\frontTeacher@index')->middleware('check.session', 'check.teacher');
 Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
 Route::get('/courses', 'controllerCommon@getCourses');
+Route::get('/session', 'App\controllerUsers@getSession');
 Route::get('/forbidden', function() {
 	return view('forbidden');
 });

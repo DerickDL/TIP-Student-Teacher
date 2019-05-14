@@ -80,7 +80,7 @@ class logicUsers
     			'message' => 'Wrong password'
     		);
     	}
-    	Session::put('current_user', $aUser);
+        $this->setSession($aUser);
     	return array(
     		'result' => true,
     		'data' => $aUser
@@ -111,5 +111,23 @@ class logicUsers
     public function logoutUser()
     {
         Session::flush();
+    }
+
+    /**
+     * set session
+     * @param $aUser
+     */
+    public function setSession($aUser)
+    {
+        Session::put('current_user', $aUser);
+    }
+
+    /**
+     * get session
+     * @return mixed
+     */
+    public function getSession()
+    {
+        return Session::get('current_user');
     }
 }
