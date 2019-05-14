@@ -102,6 +102,14 @@ class logicUsers
 		    	'message' => $validator->messages()->first()
 		    );
 		}
-		return $arrayName = array('result' => true);
+		return array('result' => true);
+    }
+
+    /**
+     * logout user, flush session
+     */
+    public function logoutUser()
+    {
+        Session::flush();
     }
 }

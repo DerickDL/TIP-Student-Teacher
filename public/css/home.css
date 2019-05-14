@@ -1,0 +1,15 @@
+#content {
+    width: 100%;
+    padding: 40px;
+    min-height: 100vh;
+}
+
+.card-courses {
+    max-width: 20rem;
+    min-width: 20rem;
+    /*float: left;*/
+}
+
+.card {
+    height: 15rem;
+}

@@ -34,4 +34,10 @@ class controllerUsers extends Controller
     {
     	return response()->json($this->logicUsers->loginUser($oRequest->all()));
     }
+
+    public function logoutUser()
+    {
+        $this->logicUsers->logoutUser();
+        return redirect('/');
+    }
 }
