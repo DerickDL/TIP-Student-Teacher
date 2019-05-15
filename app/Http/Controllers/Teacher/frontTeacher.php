@@ -28,6 +28,6 @@ class frontTeacher extends frontUsers
 	public function coursePage($iCourseId)
     {
         $aData = $this->getPageData(['id' => $iCourseId]);
-        return view('pages.teacher_course')->with('aData', $aData);
+        return view('pages.teacher.teacher_course')->with('aData', $aData);
     }
 }

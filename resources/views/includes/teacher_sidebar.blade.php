@@ -5,7 +5,7 @@
     <ul class="list-unstyled components">
         <p>{{$aData['courses'][0]['course_code']}}</p>
         <li class="active">
-            <a class="nav-link disabled">Home</a>
+            <a class="/teacher/course/{{$aData['courses'][0]['id']}}">Home</a>
         </li>
         <li>
             <a href="#">Quizzes</a>
