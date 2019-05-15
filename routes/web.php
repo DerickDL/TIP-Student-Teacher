@@ -23,6 +23,8 @@ Route::get('/student', 'Student\frontStudent@index')->middleware('check.session'
 
 Route::get('/teacher', 'Teacher\frontTeacher@index')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/course/{course_id}', 'Teacher\frontTeacher@coursePage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/course/{course_id}/quizzes', 'Teacher\frontTeacher@quizPage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/course/{course_id}/quizzes/add', 'Teacher\frontTeacher@addQuizPage')->middleware('check.session', 'check.teacher');
 
 Route::get('/session', 'App\controllerUsers@getSession');
 Route::get('/logout', 'App\controllerUsers@logoutUser');

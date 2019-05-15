@@ -30,4 +30,31 @@ class frontTeacher extends frontUsers
         $aData = $this->getPageData(['id' => $iCourseId]);
         return view('pages.teacher.teacher_course')->with('aData', $aData);
     }
+
+    /**
+     * Teacher quizzes page
+     * @param $iCourseId
+     * @param $iQuizId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function quizPage($iCourseId, $iQuizId = '')
+    {
+        $aData = $this->getPageData(['id' => $iCourseId]);
+        if ($iQuizId === '') {
+            return view('pages.teacher.teacher_quiz')->with('aData', $aData);
+        } else {
+            return view('pages.teacher.teacher_quizzes')->with('aData', $aData);
+        }
+    }
+
+    /**
+     * add quiz
+     * @param $iCourseId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function addQuizPage($iCourseId)
+    {
+        $aData = $this->getPageData(['id' => $iCourseId]);
+        return view('pages.teacher.teacher_add_quiz')->with('aData', $aData);
+    }
 }

@@ -4,13 +4,13 @@
     </div>
     <ul class="list-unstyled components">
         <p>{{$aData['courses'][0]['course_code']}}</p>
-        <li class="active">
-            <a class="/teacher/course/{{$aData['courses'][0]['id']}}">Home</a>
+        <li id="home-tab">
+            <a href="/teacher/course/{{$aData['courses'][0]['id']}}">Home</a>
         </li>
-        <li>
-            <a href="#">Quizzes</a>
+        <li id="quiz-tab">
+            <a href="/teacher/course/{{$aData['courses'][0]['id']}}/quizzes">Quizzes</a>
         </li>
-        <li>
+        <li id="students-tab">
             <a href="#">Students</a>
         </li>
     </ul>
