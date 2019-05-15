@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Courses;
 
+use App\Http\Controllers\Controller;
 use App\Logic\logicCourses;
 use App\Model\modelCourses;
 
-class controllerCommon extends Controller
+class controllerCourses extends Controller
 {
     /**
      * @var logicCourses

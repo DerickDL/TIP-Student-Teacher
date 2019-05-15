@@ -14,11 +14,12 @@ class modelCourses extends Model
     protected $table = 'courses';
 
     /**
-     * Get all courses
+     * Get course/s
+     * @param $aParams
      * @return mixed
      */
-    public function getCourses()
+    public function getCourses($aParams)
     {
-        return static::all();
+        return static::where($aParams)->get();
     }
 }

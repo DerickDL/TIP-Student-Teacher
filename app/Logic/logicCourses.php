@@ -24,8 +24,8 @@ class logicCourses
      * Get all courses
      * @return mixed
      */
-    public function getCourses()
+    public function getCourses($aParams)
     {
-        return $this->modelCourses->getCourses();
+        return $this->modelCourses->getCourses($aParams);
     }
 }

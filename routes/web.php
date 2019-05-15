@@ -15,14 +15,17 @@
 Route::get('/', function () {
     return view('pages.login');
 });
-Route::get('/logout', 'App\controllerUsers@logoutUser');
-Route::get('/teacher', 'Teacher\frontTeacher@index')->middleware('check.session', 'check.teacher');
-Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
-Route::get('/courses', 'controllerCommon@getCourses');
-Route::get('/session', 'App\controllerUsers@getSession');
 Route::get('/forbidden', function() {
-	return view('forbidden');
+    return view('forbidden');
 });
+
+Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
+
+Route::get('/teacher', 'Teacher\frontTeacher@index')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/course/{course_id}', 'Teacher\frontTeacher@coursePage')->middleware('check.session', 'check.teacher');
+
+Route::get('/session', 'App\controllerUsers@getSession');
+Route::get('/logout', 'App\controllerUsers@logoutUser');
 
 // Post methods
 Route::post('/login', 'App\controllerUsers@loginUser');

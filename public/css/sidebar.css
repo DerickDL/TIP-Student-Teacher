@@ -78,12 +78,12 @@ a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul p {
     color: #fff;
     padding: 10px;
+    border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul li a {
@@ -119,18 +119,6 @@ ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #d1a701;
-}
-
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
 }
 
 a.download {

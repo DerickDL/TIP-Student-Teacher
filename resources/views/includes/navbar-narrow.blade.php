@@ -7,10 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Name</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Go to home</a>
+                    <a class="nav-link" href="#">{{$aData['session']->getData()->first_name}} {{$aData['session']->getData()->last_name}}</a>
                 </li>
                 <li class="nav-item" id="logout-link">
                     <a class="nav-link" href="/logout">Logout</a>
