@@ -11,13 +11,13 @@
 @section('course_home_content')
     <div>
         <div class="text-right">
-            <button class="btn btn-info" id="btn-save-quiz" type="button" data-value="{{ $aData['courses'][0]['id'] }}">Save</button>
-            <button class="btn btn-danger" id="btn-cancel-quiz" type="button" data-value="{{ $aData['courses'][0]['id'] }}">Cancel</button>
+            <button class="btn btn-info" type="button" id="btn-save-quiz">Save</button>
+            <button class="btn btn-danger" type="button" id="btn-cancel-quiz">Cancel</button>
         </div>
     </div>
     <div id="add-quiz" class="mb-3 mt-3">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Quiz Title" aria-label="Text input with dropdown button">
+            <input type="text" class="form-control" placeholder="Quiz Title" aria-label="Text input with dropdown button" id="question">
             <div class="input-group-append">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Question</button>
                 <div class="dropdown-menu">
@@ -36,7 +36,7 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-           $('#quiz-tab').addClass('active');
+           $('#quiz-tab').addClass('active'); 
         });
     </script>
     <script type="text/javascript" src="/js/add_quiz.js"></script>

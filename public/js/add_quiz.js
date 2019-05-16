@@ -13,6 +13,7 @@ $(document).ready(function () {
            this.eAreaQuizQuestions = $('#quiz-questions');
            this.eCancelAddQuiz = $('#btn-cancel-quiz');
            this.eSaveAddQuiz = $('#btn-save-quiz');
+           this.eQuestion = $('#question');
        },
        
        addEvents: function () {
@@ -24,30 +25,70 @@ $(document).ready(function () {
        },
 
        saveAddQuiz: function () {
-           if (oAddQuiz.eAreaQuizQuestions.children().length > 0) {
+           if (oAddQuiz.eAreaQuizQuestions.children().length > 0 && oAddQuiz.eQuestion.val().trim().length > 0) {
                if (confirm('Are you sure you want to save this quiz?')) {
                    // do the saving here
                     var aQuestionsResult = oAddQuiz.getQuestionData();
-                    console.log(aQuestionsResult);
-                    // if (aQuestionsResult.result === false) {
-                    //     alert(aQuestionsResult.message);
-                    // }
+                    if (aQuestionsResult.result === false) {
+                        alert(aQuestionsResult.message);
+                    } else {
+                        aQuestionsResult.quiz_title = oAddQuiz.eQuestion.val();
+                        aQuestionsResult.course_id = $(this).data('value');
+                        $.ajax({
+                            url: '/quizzes/insert',
+                            type: 'POST',
+                            data: aQuestionsResult,
+                            success: function (aResponse) {
+                                console.log(aResponse);
+                            }
+                        });
+                    }
                }
            }
        },
 
        getQuestionData: function () {
            var aQuestions = [];
+           var iFlag = true;
+           var sMessage = 'Added successfully';
+           var sMessage = '';
             $('.questions').each(function (iItr, oSelf) {
                 var sQuestion =  $(oSelf).find('textarea').val();
+                var eSelectedRadio = $(oSelf).find('.radio-choice:radio:checked');
+                var iQuestionType = $(oSelf).data('value');
                 if (sQuestion.trim().length < 1) {
-                    var aReturnFalse =  {
-                        'result': false,
-                        'message': 'Question field is required'
-                    }
-                    return aReturnFalse;
+                    iFlag = false;
+                    sMessage = 'Question is required'
+                    return false;
                 }
+
+                if (eSelectedRadio.length === 0 && iQuestionType !== 3) {
+                    iFlag = false;
+                    sMessage = 'Choose correct answer'
+                    return false;
+                }
+
+                var eInputAnswer = eSelectedRadio.parent().parent().siblings('input[type=text]');
+                var mCorrectAnswer = (iQuestionType === 1) ? eSelectedRadio.val() : eInputAnswer.val();
+                var aChoices = [];
+                if (iQuestionType === 0) {
+                  $(oSelf).find('input[type=text]').each(function (i, obj) {
+                      aChoices.push($(obj).val());
+                  });
+                }
+                var aQuestionDetails = {
+                    'question': sQuestion,
+                    'type': iQuestionType,
+                    'answer': mCorrectAnswer,
+                    'choices': aChoices
+                };
+                aQuestions.push(aQuestionDetails);
             })
+            return {
+              'result': iFlag,
+              'message': sMessage,
+              'data': aQuestions
+            }
        },
 
        cancelAddQuiz: function () {
@@ -83,7 +124,7 @@ $(document).ready(function () {
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
-                                                <input type="radio" aria-label="Radio button for following text input" name="question${iQuestionNumber}" value=1>
+                                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question${iQuestionNumber}" value=1>
                                             </div>
                                         </div>
                                         <input type="text" class="form-control" aria-label="Text input with radio button" value="${(iQuestionType === 1) ? 'True' : ''}" ${(iQuestionType === 1) ? 'readonly' : ''}>
@@ -93,7 +134,7 @@ $(document).ready(function () {
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
-                                                <input type="radio" aria-label="Radio button for following text input" name="question${iQuestionNumber}" value=0>
+                                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question${iQuestionNumber}" value=0>
                                             </div>
                                         </div>
                                         <input type="text" class="form-control" aria-label="Text input with radio button" value="${(iQuestionType === 1) ? 'False' : ''}" ${(iQuestionType === 1) ? 'readonly' : ''}>
@@ -123,7 +164,7 @@ $(document).ready(function () {
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <input type="radio" aria-label="Radio button for following text input" name="question${iQuestionNumber}">
+                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question${iQuestionNumber}">
                             </div>
                         </div>
                         <input type="text" class="form-control" aria-label="Text input with radio button">
