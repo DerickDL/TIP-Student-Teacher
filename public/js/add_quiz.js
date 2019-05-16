@@ -27,7 +27,11 @@ $(document).ready(function () {
            if (oAddQuiz.eAreaQuizQuestions.children().length > 0) {
                if (confirm('Are you sure you want to save this quiz?')) {
                    // do the saving here
-                    oAddQuiz.getQuestionData();
+                    var aQuestionsResult = oAddQuiz.getQuestionData();
+                    console.log(aQuestionsResult);
+                    // if (aQuestionsResult.result === false) {
+                    //     alert(aQuestionsResult.message);
+                    // }
                }
            }
        },
@@ -36,7 +40,13 @@ $(document).ready(function () {
            var aQuestions = [];
             $('.questions').each(function (iItr, oSelf) {
                 var sQuestion =  $(oSelf).find('textarea').val();
-                console.log(sQuestion);
+                if (sQuestion.trim().length < 1) {
+                    var aReturnFalse =  {
+                        'result': false,
+                        'message': 'Question field is required'
+                    }
+                    return aReturnFalse;
+                }
             })
        },
 
