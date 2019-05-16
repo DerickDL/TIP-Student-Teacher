@@ -5,7 +5,6 @@
 @endpush
 
 @section('content')
-    @stack('styles')
     <div class="wrapper">
         <!-- Sidebar  -->
     @include('includes.teacher_sidebar')
@@ -18,7 +17,6 @@
             @yield('course_home_content')
         </div>
     </div>
-    @stack('scripts')
 @endsection
 
 @push('scripts')

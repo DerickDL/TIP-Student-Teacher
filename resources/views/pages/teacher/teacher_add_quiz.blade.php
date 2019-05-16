@@ -11,8 +11,8 @@
 @section('course_home_content')
     <div>
         <div class="text-right">
-            <button class="btn btn-info" type="button">Save</button>
-            <button class="btn btn-danger" type="button">Cancel</button>
+            <button class="btn btn-info" id="btn-save-quiz" type="button" data-value="{{ $aData['courses'][0]['id'] }}">Save</button>
+            <button class="btn btn-danger" id="btn-cancel-quiz" type="button" data-value="{{ $aData['courses'][0]['id'] }}">Cancel</button>
         </div>
     </div>
     <div id="add-quiz" class="mb-3 mt-3">
@@ -21,9 +21,9 @@
             <div class="input-group-append">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Question</button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" id="add-question-multiple">Multiple Choice</a>
-                    <a class="dropdown-item" id="add-question-true-false">True or False</a>
-                    <a class="dropdown-item" id="add-question-essay">Essay</a>
+                    <a class="dropdown-item" id="add-question-multiple" data-value=0>Multiple Choice</a>
+                    <a class="dropdown-item" id="add-question-true-false" data-value=1>True or False</a>
+                    <a class="dropdown-item" id="add-question-essay" data-value=2>Essay</a>
                 </div>
            </div>
         </div>
@@ -39,4 +39,5 @@
            $('#quiz-tab').addClass('active');
         });
     </script>
+    <script type="text/javascript" src="/js/add_quiz.js"></script>
 @endpush
