@@ -47,4 +47,13 @@ class modelQuizzes extends Model
     {
         return static::where($aParam)->get();
     }
+
+    /**
+     * @param $aParams
+     * @return mixed
+     */
+    public function getLatestQuizzes($aParams)
+    {
+        return static::where($aParams)->orderBy('created_at')->take(5)->get();
+    }
 }

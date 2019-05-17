@@ -109,4 +109,13 @@ class logicQuizzes
         }
         return $this->modelQuizzes->getQuizzes($aParam);
     }
+
+    /**
+     * @param $aParam
+     * @return mixed
+     */
+    public function getLatestQuizzes($aParam)
+    {
+        return $this->modelQuizzes->getLatestQuizzes($aParam);
+    }
 }

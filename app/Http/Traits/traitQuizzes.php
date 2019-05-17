@@ -32,4 +32,14 @@ trait traitQuizzes
         $this->instantiateQuizzes();
         return $this->logicQuizzes->getQuizzes($iQuizId);
     }
+
+    /**
+     * @param $aParam
+     * @return mixed
+     */
+    public function getLatestQuizzes($aParam)
+    {
+        $this->instantiateQuizzes();
+        return $this->logicQuizzes->getLatestQuizzes($aParam);
+    }
 }
