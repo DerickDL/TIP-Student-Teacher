@@ -14,12 +14,37 @@ class modelQuizzes extends Model
     protected $table = 'quizzes';
 
     /**
-     * Get course/s
-     * @param $aParams
+     * @var array
+     */
+    protected $fillable = ['quiz_title', 'quiz_items'];
+
+    public function questions()
+    {
+        return $this->hasMany('App\Model\modelQuestions', 'quiz_id');
+    }
+
+    public function courses()
+    {
+        return $this->belongsTo('App\Model\modelCourses');
+    }
+
+    /**
+     * Find a quiz
+     * @param $id
      * @return mixed
      */
-    public function getQuizzes($aParams)
+    public function findQuiz($id)
     {
-        return static::where($aParams)->get();
+        return static::find($id);
+    }
+
+    /**
+     * Get quiz/s
+     * @param $aParam
+     * @return mixed
+     */
+    public function getQuizzes($aParam)
+    {
+        return static::where($aParam)->get();
     }
 }

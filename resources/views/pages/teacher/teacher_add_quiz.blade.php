@@ -11,8 +11,8 @@
 @section('course_home_content')
     <div>
         <div class="text-right">
-            <button class="btn btn-info" type="button" id="btn-save-quiz">Save</button>
-            <button class="btn btn-danger" type="button" id="btn-cancel-quiz">Cancel</button>
+            <button class="btn btn-info" type="button" id="btn-save-quiz" data-value="{{$aData['courses'][0]['id']}}">Save</button>
+            <button class="btn btn-danger" type="button" id="btn-cancel-quiz" data-value="{{$aData['courses'][0]['id']}}">Cancel</button>
         </div>
     </div>
     <div id="add-quiz" class="mb-3 mt-3">

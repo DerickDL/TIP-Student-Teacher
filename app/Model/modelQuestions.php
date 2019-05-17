@@ -14,6 +14,31 @@ class modelQuestions extends Model
     protected $table = 'questions';
 
     /**
+     * @var array
+     */
+    protected $fillable = ['question', 'question_type', 'question_answer'];
+
+    public function quizzes()
+    {
+        return $this->belongsTo('App\Model\modelQuizzes');
+    }
+
+    public function choices()
+    {
+        return $this->hasMany('App\Model\modelChoices', 'question_id');
+    }
+
+    /**
+     * Find a question
+     * @param $id
+     * @return mixed
+     */
+    public function findQuestion($id)
+    {
+        return static::find($id);
+    }
+
+    /**
      * Get course/s
      * @param $aParams
      * @return mixed

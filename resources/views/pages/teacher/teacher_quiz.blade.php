@@ -11,10 +11,9 @@
     <div id="container-quizzes">
         <h2>Quizzes</h2>
         <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action">Quiz 1: Introduction to Digital Signal Processing</a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+            @foreach($aQuiz as $aQuizData)
+                <a href="#" class="list-group-item list-group-item-action">{{$aQuizData['quiz_title']}}</a>
+            @endforeach
         </div>
     </div>
     <div class="line"></div>

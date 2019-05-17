@@ -13,6 +13,21 @@ class modelCourses extends Model
      */
     protected $table = 'courses';
 
+    public function quizzes()
+    {
+        return $this->hasMany('App\Model\modelQuizzes', 'course_id');
+    }
+
+    /**
+     * Find a course
+     * @param $id
+     * @return mixed
+     */
+    public function findCourse($id)
+    {
+        return static::find($id);
+    }
+
     /**
      * Get course/s
      * @param $aParams

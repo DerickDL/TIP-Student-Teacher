@@ -34,12 +34,14 @@ $(document).ready(function () {
                     } else {
                         aQuestionsResult.quiz_title = oAddQuiz.eQuestion.val();
                         aQuestionsResult.course_id = $(this).data('value');
+                        console.log(aQuestionsResult);
                         $.ajax({
                             url: '/quizzes/insert',
                             type: 'POST',
                             data: aQuestionsResult,
                             success: function (aResponse) {
-                                console.log(aResponse);
+                                alert(aQuestionsResult.message);
+                                window.location.replace(`/teacher/course/${aQuestionsResult.course_id}/quizzes`);
                             }
                         });
                     }
@@ -51,7 +53,6 @@ $(document).ready(function () {
            var aQuestions = [];
            var iFlag = true;
            var sMessage = 'Added successfully';
-           var sMessage = '';
             $('.questions').each(function (iItr, oSelf) {
                 var sQuestion =  $(oSelf).find('textarea').val();
                 var eSelectedRadio = $(oSelf).find('.radio-choice:radio:checked');
@@ -83,7 +84,7 @@ $(document).ready(function () {
                     'choices': aChoices
                 };
                 aQuestions.push(aQuestionDetails);
-            })
+            });
             return {
               'result': iFlag,
               'message': sMessage,

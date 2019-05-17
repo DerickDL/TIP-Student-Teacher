@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Courses;
 use App\Http\Controllers\Controller;
 use App\Logic\logicCourses;
 use App\Model\modelCourses;
+use Illuminate\Http\Request;
 
 class controllerCourses extends Controller
 {
@@ -22,11 +23,11 @@ class controllerCourses extends Controller
     }
 
     /**
-     * Get all courses
-     * @return logicCourses
+     * @param Request $oRequest
+     * @return mixed
      */
-    public function getCourses()
+    public function getCourses(Request $oRequest)
     {
-        return $this->logicCourses->getCourses();
+        return $this->logicCourses->getCourses($oRequest);
     }
 }

@@ -14,6 +14,26 @@ class modelChoices extends Model
     protected $table = 'choices';
 
     /**
+     * @var array
+     */
+    protected $fillable = ['choice', 'is_correct'];
+
+    public function questions()
+    {
+        return $this->belongsTo('App\Model\modelQuestions');
+    }
+
+    /**
+     * Find a question
+     * @param $id
+     * @return mixed
+     */
+    public function findChoices($id)
+    {
+        return static::find($id);
+    }
+
+    /**
      * Get course/s
      * @param $aParams
      * @return mixed

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Quizzes;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\traitQuizzes;
 use App\Logic\logicQuizzes;
+use App\Model\modelCourses;
 use App\Model\modelQuizzes;
 use App\Model\modelQuestions;
 use App\Model\modelChoices;
@@ -11,8 +13,10 @@ use Illuminate\Http\Request;
 
 class controllerQuizzes extends Controller
 {
+    use traitQuizzes;
+
     /**
-     * @var logicCourses
+     * @var logicQuizzes
      */
     private $logicQuizzes;
 
@@ -21,16 +25,24 @@ class controllerQuizzes extends Controller
      */
     public function __construct()
     {
-        $this->logicQuizzes = new logicQuizzes(new modelQuizzes(), new modelQuestions(), new modelChoices());
+        $this->logicQuizzes = new logicQuizzes(new modelCourses(), new modelQuizzes(), new modelQuestions(), new modelChoices());
     }
 
     /**
      * insert quiz
-     * @return logicCourses
+     * @param Request $oRequest
      */
     public function insertQuiz(Request $oRequest)
     {
-        return response()->json($oRequest);
-        return response()->json($this->insertQuiz->insertQuiz());
+        $this->logicQuizzes->insertQuiz($oRequest->all());
+    }
+
+    /**
+     * @param $iQuizId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getQuiz($iQuizId)
+    {
+        return response()->json($this->getQuizzes($iQuizId));
     }
 }
