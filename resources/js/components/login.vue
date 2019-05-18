@@ -39,7 +39,7 @@
 										    </span>
 	                            		</div>
 		                            </div>
-		                            <a class="button is-secondary is-fullwidth" v-on:click="doLogin">Login</a>
+		                            <a class="button is-secondary is-fullwidth has-text-white" v-on:click="doLogin">Login</a>
 	                            </div>
 	                            <div v-else>
 	                            	<div class="field">
@@ -77,7 +77,7 @@
 										</label>
 									</div>
 		                            </div>
-	                            	<a class="button is-secondary is-fullwidth" v-on:click="doRegister">Register</a>
+	                            	<a class="button is-secondary is-fullwidth has-text-white" v-on:click="doRegister">Register</a>
 	                            </div>
 	                        </div>
                     </div>
