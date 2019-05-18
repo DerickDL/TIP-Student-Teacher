@@ -51535,7 +51535,8 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-secondary is-fullwidth",
+                          staticClass:
+                            "button is-secondary is-fullwidth has-text-white",
                           on: { click: _vm.doLogin }
                         },
                         [_vm._v("Login")]
@@ -51757,7 +51758,8 @@ var render = function() {
                       _c(
                         "a",
                         {
-                          staticClass: "button is-secondary is-fullwidth",
+                          staticClass:
+                            "button is-secondary is-fullwidth has-text-white",
                           on: { click: _vm.doRegister }
                         },
                         [_vm._v("Register")]
