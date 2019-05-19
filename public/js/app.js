@@ -1911,6 +1911,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     doRegister: function doRegister() {
+      var _this = this;
+
       this.aRegister.iType = this.picked === 'teacher' ? 1 : 0;
       fetch('/register', {
         method: 'post',
@@ -1924,6 +1926,14 @@ __webpack_require__.r(__webpack_exports__);
         if (data.result === false) {
           alert(data.message);
         } else {
+          _this.isLogin = true;
+          _this.isRegister = false;
+          _this.aRegister.sFirstName = '';
+          _this.aRegister.sLastName = '';
+          _this.aRegister.sEmail = '';
+          _this.aRegister.sUsername = '';
+          _this.aRegister.sPassword = '';
+          _this.aRegister.iType = '';
           alert('Successfully Registered');
         }
       })["catch"](function (err) {

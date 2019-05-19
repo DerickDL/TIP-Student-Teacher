@@ -25,7 +25,7 @@ class frontTeacher extends frontUsers
      * @param $iCourseId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function coursePage($iCourseId)
+	public function courseHomePage($iCourseId)
     {
         $aData = $this->getPageData(['id' => $iCourseId]);
         $aQuiz = $this->getLatestQuizzes(['course_id' => $iCourseId]);
@@ -41,8 +41,8 @@ class frontTeacher extends frontUsers
     public function quizPage($iCourseId)
     {
         $aData = $this->getPageData(['id' => $iCourseId]);
-        $aQuiz = $this->getQuizzes();
-        return view('pages.teacher.teacher_quiz')->with('aData', $aData)->with('aQuiz', $aQuiz);
+        $aQuiz = $this->getQuizzes(['course_id' => $iCourseId]);
+        return view('pages.teacher.teacher_quizzes')->with('aData', $aData)->with('aQuiz', $aQuiz);
     }
 
     /**

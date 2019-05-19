@@ -19,12 +19,15 @@ Route::get('/forbidden', function() {
     return view('forbidden');
 });
 
-Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
-
 Route::get('/teacher', 'Teacher\frontTeacher@index')->middleware('check.session', 'check.teacher');
-Route::get('/teacher/course/{course_id}', 'Teacher\frontTeacher@coursePage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/course/{course_id}', 'Teacher\frontTeacher@courseHomePage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/course/{course_id}/quizzes', 'Teacher\frontTeacher@quizPage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/course/{course_id}/quizzes/add', 'Teacher\frontTeacher@addQuizPage')->middleware('check.session', 'check.teacher');
+
+Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
+Route::get('/student/course/{course_id}', 'Student\frontStudent@courseHomePage')->middleware('check.session', 'check.student');
+Route::get('/student/course/{course_id}/quizzes', 'Student\frontStudent@quizPage')->middleware('check.session', 'check.student');
+
 
 Route::post('/quizzes/insert', 'Quizzes\controllerQuizzes@insertQuiz');
 Route::get('/quizzes/get/{quiz_id}', 'Quizzes\controllerQuizzes@getQuiz');

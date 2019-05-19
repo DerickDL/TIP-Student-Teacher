@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <h6 class="card-subtitle mb-2 text-muted">{{$aCourses['course_start']}} - {{$aCourses['course_end']}}</h6>
                             <p class="card-text">{{$aCourses['course_title']}}</p>
-                            <a href="/teacher/course/{{$aCourses['id']}}" class="card-link">Launch Course</a>
+                            <a href="/{{($aData['session']->getData()->user_type) === 0 ? 'student' : 'teacher'}}/course/{{$aCourses['id']}}" class="card-link">Launch Course</a>
                         </div>
                     </div>
                 </div>

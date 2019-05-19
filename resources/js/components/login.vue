@@ -158,6 +158,14 @@
                 	if (data.result === false) {
                 		alert(data.message);
                 	} else {
+                    this.isLogin = true;
+                    this.isRegister = false;
+                    this.aRegister.sFirstName = '';
+                    this.aRegister.sLastName = '';
+                    this.aRegister.sEmail = '';
+                    this.aRegister.sUsername = '';
+                    this.aRegister.sPassword = '';
+                    this.aRegister.iType = '';
                 		alert('Successfully Registered');
                 	}
                 })

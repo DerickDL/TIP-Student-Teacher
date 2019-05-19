@@ -100,13 +100,8 @@ class logicQuizzes
      * @param $iQuizId
      * @return mixed
      */
-    public function getQuizzes($iQuizId)
+    public function getQuizzes($aParam)
     {
-        if ($iQuizId === '') {
-            $aParam = [];
-        } else {
-            $aParam = ['id' => $iQuizId];
-        }
         return $this->modelQuizzes->getQuizzes($aParam);
     }
 

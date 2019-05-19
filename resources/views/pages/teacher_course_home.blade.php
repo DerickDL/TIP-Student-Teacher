@@ -7,9 +7,9 @@
 @section('content')
     <div class="wrapper">
         <!-- Sidebar  -->
-    @include('includes.teacher_sidebar')
+        @include('includes.teacher_sidebar')
 
-    <!-- Page Content  -->
+        <!-- Page Content  -->
         <div id="content">
 
             @include('includes.navbar')

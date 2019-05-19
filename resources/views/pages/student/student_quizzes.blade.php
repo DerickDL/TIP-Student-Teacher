@@ -1,16 +1,13 @@
-@extends('pages.teacher.teacher_course_home')
+@extends('pages.student.student_course_home')
 
 @push('styles')
 
 @endpush
 
 @section('course_home_content') 
-    <div class="float-right">
-        <button class="btn btn-secondary" id="add-quiz">Add Quiz</button>
-    </div>
     <div id="container-quizzes">
         <h2>Quizzes</h2>
-        @if(count($aQuiz) < 1)
+         @if(count($aQuiz) < 1)
             <p>No quizzes yet.</p>
         @else
             <div class="list-group">
@@ -27,9 +24,6 @@
     <script type="text/javascript">
         $(document).ready(function () {
            $('#quiz-tab').addClass('active');
-           $('#add-quiz').on('click', function () {
-               window.location.replace(window.location.href + '/add');
-           });
         });
     </script>
 @endpush

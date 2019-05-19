@@ -27,10 +27,10 @@ trait traitQuizzes
      * @param $iQuizId
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getQuizzes($iQuizId = '')
+    public function getQuizzes($aParam)
     {
         $this->instantiateQuizzes();
-        return $this->logicQuizzes->getQuizzes($iQuizId);
+        return $this->logicQuizzes->getQuizzes($aParam);
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('pages.course_home')
+@extends('pages.teacher.teacher_course_home')
 
 @push('styles')
     <style>
