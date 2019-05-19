@@ -27,6 +27,8 @@ Route::get('/teacher/course/{course_id}/quizzes/add', 'Teacher\frontTeacher@addQ
 Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}', 'Student\frontStudent@courseHomePage')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}/quizzes', 'Student\frontStudent@quizPage')->middleware('check.session', 'check.student');
+Route::get('/student/course/{course_id}/quiz/{quiz_id}', 'Student\frontStudent@visitQuiz')->middleware('check.session', 'check.student');
+
 
 
 Route::post('/quizzes/insert', 'Quizzes\controllerQuizzes@insertQuiz');

@@ -113,4 +113,27 @@ class logicQuizzes
     {
         return $this->modelQuizzes->getLatestQuizzes($aParam);
     }
+
+    /**
+     * @param $aParam
+     * @return mixed
+     */
+    public function getQuestions($aParam)
+    {
+        return $this->modelQuestions->getQuestions($aParam);
+    }
+
+    /**
+     * @param $aParam
+     * @return mixed
+     */
+    public function getChoices($aQuestion)
+    {
+        $aChoices = [];
+        foreach ($aQuestion as $aQuestionData) {
+           $aChoiceData = $this->modelChoices->getChoices(['question_id' => $aQuestionData['id']]);
+           array_push($aChoices, $aChoiceData);
+        }
+        return  $aChoices;
+    }
 }

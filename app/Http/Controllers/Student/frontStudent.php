@@ -43,4 +43,24 @@ class frontStudent extends frontUsers
         $aQuiz = $this->getQuizzes(['course_id' => $iCourseId]);
         return view('pages.student.student_quizzes')->with('aData', $aData)->with('aQuiz', $aQuiz);
     }
+
+    /**
+     * Student quiz page
+     * @param $iCourseId
+     * @param $iQuizId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function visitQuiz($iCourseId, $iQuizId)
+    {
+        $aData = $this->getPageData(['id' => $iCourseId]);
+        $aQuiz = $this->getQuizzes(['id' => $iQuizId]);
+        $aQuestions = $this->getQuestions(['quiz_id' => $iQuizId]);
+        $aChoices = $this->getChoices($aQuestions);
+        $aQuizData = [
+        	'quiz' => $aQuiz,
+        	'questions' => $aQuestions,
+        	'choices' => $aChoices
+        ];
+        return view('pages.student.student_quiz')->with('aData', $aData)->with('aQuizData', $aQuizData);
+    }
 }

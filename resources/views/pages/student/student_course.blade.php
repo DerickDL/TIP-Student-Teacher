@@ -12,7 +12,7 @@
         @else
             <div class="list-group">
                 @foreach($aQuiz as $aQuizData)
-                    <a href="#" class="list-group-item list-group-item-action">{{$aQuizData['quiz_title']}}</a>
+                    <a href="/student/course/{{ $aData['courses'][0]['id'] }}/quiz/{{ $aQuizData['id'] }}" class="list-group-item list-group-item-action">{{$aQuizData['quiz_title']}}</a>
                 @endforeach
             </div>
         @endif

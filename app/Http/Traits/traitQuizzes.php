@@ -42,4 +42,16 @@ trait traitQuizzes
         $this->instantiateQuizzes();
         return $this->logicQuizzes->getLatestQuizzes($aParam);
     }
+
+    public function getQuestions($aParam)
+    {
+        $this->instantiateQuizzes();
+        return $this->logicQuizzes->getQuestions($aParam);
+    }
+
+    public function getChoices($aData)
+    {
+        $this->instantiateQuizzes();
+        return $this->logicQuizzes->getChoices($aData);
+    }
 }
