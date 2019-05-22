@@ -28,7 +28,7 @@ class AddPercentageAndIfPassedKeyOnUserQuizTable extends Migration
     {
         Schema::table('user_quiz', function (Blueprint $table) {
             //
-            $table->integer('percentage');
+            $table->dropColumn('percentage');
         });
     }
 }
