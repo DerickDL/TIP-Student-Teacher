@@ -41,7 +41,7 @@ $(document).ready(function () {
                             data: aQuestionsResult,
                             success: function (aResponse) {
                                 alert(aQuestionsResult.message);
-                                window.location.replace(`/teacher/course/${aQuestionsResult.course_id}/quizzes`);
+                                // window.location.replace(`/teacher/course/${aQuestionsResult.course_id}/quizzes`);
                             }
                         });
                     }

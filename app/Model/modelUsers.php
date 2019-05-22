@@ -19,6 +19,12 @@ class modelUsers extends Model
      */
     protected $fillable = ['first_name', 'last_name', 'email', 'username', 'password', 'user_type'];
 
+    public function quizzes()
+    {
+        return $this->belongsToMany('App\Model\modelQuizzes', 'user_quiz', 'quiz_id', 'user_id')                    ->withPivot('score', 'percentage')
+            ->withTimestamps();
+    }
+
     /**
      * find user by ID
      * @param $iId

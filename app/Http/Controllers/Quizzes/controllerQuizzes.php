@@ -16,33 +16,11 @@ class controllerQuizzes extends Controller
     use traitQuizzes;
 
     /**
-     * @var logicQuizzes
-     */
-    private $logicQuizzes;
-
-    /**
-     * controllerCommon constructor.
-     */
-    public function __construct()
-    {
-        $this->logicQuizzes = new logicQuizzes(new modelCourses(), new modelQuizzes(), new modelQuestions(), new modelChoices());
-    }
-
-    /**
      * insert quiz
      * @param Request $oRequest
      */
     public function insertQuiz(Request $oRequest)
     {
-        $this->logicQuizzes->insertQuiz($oRequest->all());
-    }
-
-    /**
-     * @param $iQuizId
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getQuiz($iQuizId)
-    {
-        return response()->json($this->getQuizzes($iQuizId));
+        $this->addQuiz($oRequest->all());
     }
 }

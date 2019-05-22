@@ -5,7 +5,14 @@
 @endpush
 
 @section('course_home_content')
-	<h2>{{ $aQuizData['quiz'][0]['quiz_title'] }}</h2>
+	<div class="row">
+		<div class="col-sm-8">
+			<h2  id="quiz-title">{{ $aQuizData['quiz'][0]['quiz_title'] }}</h2>
+		</div>
+		<div class="col-sm-4" id="score-div" style="display: {{$aQuizData['score'] === null ? 'none' : 'block'}}">
+			<h2 class="text-right font-weight-bold">Score: <span id="score-area">3</span><span>/</span><span id="item-area">3</span></h2>
+		</div>
+	</div>
 	@for ($i = 0; $i < count($aQuizData['questions']); $i++)
 		<div class="questions mb-2" data-type="{{ $aQuizData['questions'][$i]['question_type'] }}" data-id="{{ $aQuizData['questions'][$i]['id'] }}">
 	        <div class="card p-2">
@@ -56,9 +63,11 @@
 	        </div>
 	    </div>
 	@endfor
-	<div class="text-right">
-		<button class="btn btn-primary" id="submit-quiz" data-value="{{ $aQuizData['quiz'][0]['id'] }}">Submit</button>
-	</div>
+	@if($aQuizData['score'] === null)
+		<div class="text-right">
+			<button class="btn btn-primary" id="submit-quiz" data-value="{{ $aQuizData['quiz'][0]['id'] }}">Submit</button>
+		</div>
+	@endif
 @endsection
 
 @push('scripts')

@@ -136,4 +136,14 @@ class logicQuizzes
         }
         return  $aChoices;
     }
+
+    /**
+     * @param $iQuizId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getQuizScore($iQuizId, $iUserId)
+    {
+        $oQuiz = $this->modelQuizzes->findQuiz($iQuizId);
+        return $oQuiz->users()->find($iUserId);
+    }
 }
