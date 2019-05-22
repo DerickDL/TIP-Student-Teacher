@@ -10,7 +10,7 @@
 			<h2  id="quiz-title">{{ $aQuizData['quiz'][0]['quiz_title'] }}</h2>
 		</div>
 		<div class="col-sm-4" id="score-div" style="display: {{$aQuizData['score'] === null ? 'none' : 'block'}}">
-			<h2 class="text-right font-weight-bold">Score: <span id="score-area">3</span><span>/</span><span id="item-area">3</span></h2>
+			<h2 class="text-right font-weight-bold">Score: <span id="score-area">{{$aQuizData['score']['pivot']['score']}}</span><span>/</span><span id="item-area">{{count($aQuizData['questions'])}}</span></h2>
 		</div>
 	</div>
 	@for ($i = 0; $i < count($aQuizData['questions']); $i++)

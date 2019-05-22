@@ -2,50 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bb90414-0307-4178-ba3a-807aa08fe107" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0eabe3be0f6333b0e4cb9c384ae256c7e737b6e5" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/1073ed654cfb119d8926c9dadfc7e57aec666142" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14cd31963d148528ce015e18d62233eb98ccc6e6" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f06daf1f552435aa5037e23e7645fed22f0fd5c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f77ed545693b4fc7003f8a76bdf62e6556191ac" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27cc656c4e5516ec06bbec9f55a2b1e9cf43fcf1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/2837ad53e9a8af733c6754412a41e33edba84402" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2bfcc916c6674b0299637a7e25ac36d56dd471d3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/c/2cefbcaabf18cc7e2b65d82871fd27e1bbb31208" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/4/34d4e88bcc6d62c218f1c3eb1075765743194673" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3ff1f5d1bfd56fa5d91c0ffc0ce281bcfef1ac0b" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/4236db2d322648d8bb893e07e16233293665f4bb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/472ed5929e6844365f96ac812e2bb8c4f5aaf16b" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47e4a12002c826f4d8b9d9bd5baf7dd613d4ca17" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/560beaa0e7ba47e028c86698085649b113aea36b" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/7/67606ab75a525cfb7d2ca63c35f7dc9f07c79caf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6b9a783d9b43fee50fd28f56dbd1856d2608f305" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b3c77149cca9732d92e821f3ecb54eb5ed64457" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7bfa2a87c834721981dc2251ebe1a3fe4b452da1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/0/902e9b26f7b1103347211dddbf1179d8556ba0bb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7cf4aa38cd19e74bef96d54307f1ac7fa331dc9" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/1/c15f804b0c73ed865ec4615494dd006ec5218b6e" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/a/ca15a8333aa6f0dc6229dd17aafc695be5845928" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cdeea27fcdabcb5ed2ab11a59f7b51fed5234687" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dc46cb19df7684fbc24d3c04fd48fa5d6029f682" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/5/e59513e3a7e8bc2f1633746da939a1207b77e8e3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7fbcee187c3328a5d72da6569a1c2ef0a45afc7" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ecc7f8e45236069fc581eb072dbf1d4dd0b6d490" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/controllerStudent.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Logic/logicStudents.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2019_05_22_045007_add_percentage_and_if_passed_key_on_user_quiz_table.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Quizzes/controllerQuizzes.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Quizzes/controllerQuizzes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/frontStudent.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/frontStudent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Traits/traitQuizzes.php" afterPath="$PROJECT_DIR$/app/Http/Traits/traitQuizzes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Logic/logicQuizzes.php" afterPath="$PROJECT_DIR$/app/Logic/logicQuizzes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Logic/logicUsers.php" afterPath="$PROJECT_DIR$/app/Logic/logicUsers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/modelQuizzes.php" afterPath="$PROJECT_DIR$/app/Model/modelQuizzes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/modelUsers.php" afterPath="$PROJECT_DIR$/app/Model/modelUsers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/add_quiz.js" afterPath="$PROJECT_DIR$/public/js/add_quiz.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/submit_quiz.js" afterPath="$PROJECT_DIR$/public/js/submit_quiz.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/pages/student/student_quiz.blade.php" afterPath="$PROJECT_DIR$/resources/views/pages/student/student_quiz.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,7 +22,7 @@
               <entry file="file://$PROJECT_DIR$/public/js/submit_quiz.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="338">
-                    <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+                    <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
                     <folding />
                   </state>
                 </provider>
@@ -82,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Student/frontStudent.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="696">
-              <caret line="64" column="10" lean-forward="true" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
+              <caret line="64" column="10" lean-forward="false" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
               <folding>
                 <element signature="e#48#76#0#PHP" expanded="true" />
               </folding>
@@ -106,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/app/Logic/logicStudents.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
-              <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+              <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -126,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/app/Logic/logicQuizzes.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="436">
-              <caret line="136" column="26" lean-forward="true" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
+              <caret line="136" column="26" lean-forward="false" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
               <folding>
                 <element signature="e#30#57#0#PHP" expanded="true" />
               </folding>
@@ -138,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/app/Model/modelUsers.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="35" />
+              <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="35" />
               <folding>
                 <element signature="e#29#68#0#PHP" expanded="true" />
               </folding>
@@ -162,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/app/Model/modelQuizzes.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="520">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+              <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -171,28 +129,30 @@
       <file leaf-file-name="student_quiz.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/student/student_quiz.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="58" column="33" lean-forward="true" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+            <state relative-caret-position="278">
+              <caret line="12" column="196" lean-forward="false" selection-start-line="12" selection-start-column="196" selection-end-line="12" selection-end-column="196" />
               <folding>
                 <element signature="e#269#337#0#HTML" expanded="true" />
-                <marker date="1558506338838" expanded="true" signature="9:44" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="53:61" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="83:104" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="176:213" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="287:334" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="586:632" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="647:682" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="847:855" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="861:902" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="1154:1189" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="1552:1554" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="2184:2186" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="2699:2734" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="3107:3109" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="3126:3147" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="3344:3369" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="3695:3724" ph="..." />
-                <marker date="1558506338838" expanded="true" signature="3780:3789" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="9:44" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="53:61" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="83:104" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="176:213" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="287:334" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="413:450" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="496:526" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="659:705" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="720:755" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="920:928" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="934:975" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="1227:1262" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="1625:1627" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="2257:2259" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="2772:2807" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="3180:3182" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="3199:3220" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="3417:3442" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="3768:3797" ph="..." />
+                <marker date="1558507024903" expanded="true" signature="3853:3862" ph="..." />
               </folding>
             </state>
           </provider>
@@ -935,12 +895,12 @@
       <updated>1557793180712</updated>
       <workItem from="1557793182243" duration="76612000" />
       <workItem from="1558413646937" duration="17885000" />
-      <workItem from="1558493325942" duration="11793000" />
+      <workItem from="1558493325942" duration="12447000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131412000" />
+    <option name="totallyTimeSpent" value="132066000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -1199,28 +1159,28 @@
         <state relative-caret-position="234">
           <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
           <folding>
-            <marker date="1558493454583" expanded="true" signature="4535:7377" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="4584:4777" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="4667:4746" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="4701:4709" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="4824:7350" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="4878:5385" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="5120:5310" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="5554:7283" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="5615:6401" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="5677:6363" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="5751:6107" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="5826:6060" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="6462:7249" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="6524:7211" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="6598:6954" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="6673:6907" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="8010:8737" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="8056:8715" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="8114:8398" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="8173:8367" ph="..." />
-            <marker date="1558493454583" expanded="true" signature="8562:8688" ph="..." />
-            <marker date="1558493454583" expanded="false" signature="8642:8649" ph="—" />
+            <marker date="1558506416541" expanded="true" signature="4535:7377" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="4584:4777" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="4667:4746" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="4701:4709" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="4824:7350" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="4878:5385" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="5120:5310" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="5554:7283" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="5615:6401" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="5677:6363" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="5751:6107" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="5826:6060" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="6462:7249" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="6524:7211" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="6598:6954" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="6673:6907" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="8010:8737" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="8056:8715" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="8114:8398" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="8173:8367" ph="..." />
+            <marker date="1558506416541" expanded="true" signature="8562:8688" ph="..." />
+            <marker date="1558506416541" expanded="false" signature="8642:8649" ph="—" />
           </folding>
         </state>
       </provider>
@@ -1320,7 +1280,7 @@
     <entry file="file://$PROJECT_DIR$/app/Model/modelUsers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="35" />
+          <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="35" />
           <folding>
             <element signature="e#29#68#0#PHP" expanded="true" />
           </folding>
@@ -1338,7 +1298,7 @@
     <entry file="file://$PROJECT_DIR$/app/Logic/logicStudents.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
-          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1354,7 +1314,7 @@
     <entry file="file://$PROJECT_DIR$/public/js/submit_quiz.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
-          <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1362,7 +1322,7 @@
     <entry file="file://$PROJECT_DIR$/app/Model/modelQuizzes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1380,7 +1340,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Student/frontStudent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="696">
-          <caret line="64" column="10" lean-forward="true" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
+          <caret line="64" column="10" lean-forward="false" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
           <folding>
             <element signature="e#48#76#0#PHP" expanded="true" />
           </folding>
@@ -1404,7 +1364,7 @@
     <entry file="file://$PROJECT_DIR$/app/Logic/logicQuizzes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
-          <caret line="136" column="26" lean-forward="true" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
+          <caret line="136" column="26" lean-forward="false" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
           <folding>
             <element signature="e#30#57#0#PHP" expanded="true" />
           </folding>
@@ -1413,28 +1373,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/student/student_quiz.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="58" column="33" lean-forward="true" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+        <state relative-caret-position="278">
+          <caret line="12" column="196" lean-forward="false" selection-start-line="12" selection-start-column="196" selection-end-line="12" selection-end-column="196" />
           <folding>
             <element signature="e#269#337#0#HTML" expanded="true" />
-            <marker date="1558506338838" expanded="true" signature="9:44" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="53:61" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="83:104" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="176:213" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="287:334" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="586:632" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="647:682" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="847:855" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="861:902" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="1154:1189" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="1552:1554" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="2184:2186" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="2699:2734" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="3107:3109" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="3126:3147" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="3344:3369" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="3695:3724" ph="..." />
-            <marker date="1558506338838" expanded="true" signature="3780:3789" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="9:44" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="53:61" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="83:104" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="176:213" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="287:334" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="413:450" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="496:526" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="659:705" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="720:755" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="920:928" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="934:975" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="1227:1262" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="1625:1627" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="2257:2259" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="2772:2807" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="3180:3182" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="3199:3220" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="3417:3442" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="3768:3797" ph="..." />
+            <marker date="1558507024903" expanded="true" signature="3853:3862" ph="..." />
           </folding>
         </state>
       </provider>
