@@ -28,6 +28,13 @@ class modelQuizzes extends Model
         return $this->belongsTo('App\Model\modelCourses');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\Model\modelUsers', 'user_quiz', 'user_id', 'quiz_id')
+            ->withPivot('score', 'percentage')
+            ->withTimestamps();
+    }
+
     /**
      * Find a quiz
      * @param $id
@@ -54,6 +61,6 @@ class modelQuizzes extends Model
      */
     public function getLatestQuizzes($aParams)
     {
-        return static::where($aParams)->orderBy('created_at')->take(5)->get();
+        return static::where($aParams)->orderBy('created_at', 'DESC')->take(5)->get();
     }
 }

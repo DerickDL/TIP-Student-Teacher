@@ -19,13 +19,39 @@ class modelUsers extends Model
      */
     protected $fillable = ['first_name', 'last_name', 'username', 'email', 'student_id', 'password', 'user_type'];
 
-	public function registerUser($aRequest) 
+    public function quizzes()
+    {
+        return $this->belongsToMany('App\Model\modelQuizzes', 'user_quiz', 'quiz_id', 'user_id')                    ->withPivot('score', 'percentage')
+            ->withTimestamps();
+    }
+
+    /**
+     * @param $aRequest
+     * @return mixed
+     */
+    public function registerUser($aRequest)
+    {
+        return self::create($aRequest);
+    }
+
+    /**
+     * find user by ID
+     * @param $iId
+     * @return mixed
+     */
+    public function findUser($iId)
+    {
+        return static::find($iId);
+    }
+
+    /**
+     * Get user by username
+     * @param $aParams
+     * @return mixed
+     */
+	public function getUser($aParams)
 	{
-		return self::create($aRequest);
+		return $this->where($aParams)->get()->first();
 	}
 
-	public function getUser($sUsername)
-	{
-		return $this->get()->where('username', '=', $sUsername)->first();
-	}
 }

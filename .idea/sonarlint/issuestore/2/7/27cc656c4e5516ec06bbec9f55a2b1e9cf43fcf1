@@ -1,0 +1,8 @@
+
+k	php:S1192!"JDefine a constant instead of duplicating this literal "sPassword" 3 times.(Èë¢áûÿÿÿÿ8ş§îÆ­-
+bphp:S101"NRename class "logicUsers" to match the regular expression ^[A-Z][a-zA-Z0-9]*$.(ôÉ¤Í
+k	php:S1192 "JDefine a constant instead of duplicating this literal "sUsername" 3 times.(½û¡–ûÿÿÿÿ8ş§îÆ­-
+Qphp:S105"EReplace all tab characters in this file by sequences of white-spaces.
+d	php:S1192J"HDefine a constant instead of duplicating this literal "message" 3 times.(î×§–8ş§îÆ­-
+c	php:S1192&"GDefine a constant instead of duplicating this literal "result" 7 times.(ØÙÅ8ş§îÆ­-
+g	php:S1192""FDefine a constant instead of duplicating this literal "iType" 3 times.(ÙÛÍµşÿÿÿÿ8ş§îÆ­-

@@ -54,4 +54,24 @@ trait traitQuizzes
         $this->instantiateQuizzes();
         return $this->logicQuizzes->getChoices($aData);
     }
+
+    /**
+     * insert quiz
+     * @param $aRequest
+     */
+    public function addQuiz($aRequest)
+    {
+        $this->instantiateQuizzes();
+        $this->logicQuizzes->insertQuiz($aRequest);
+    }
+
+    /**
+     * @param $iQuizId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getQuizScore($iQuizId, $iUserId)
+    {
+        $this->instantiateQuizzes();
+        return $this->logicQuizzes->getQuizScore($iQuizId, $iUserId);
+    }
 }

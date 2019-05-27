@@ -51516,6 +51516,21 @@ var render = function() {
                                   },
                                   domProps: { value: _vm.aLogin.sStudent },
                                   on: {
+                                    keyup: function($event) {
+                                      if (
+                                        !$event.type.indexOf("key") &&
+                                        _vm._k(
+                                          $event.keyCode,
+                                          "enter",
+                                          13,
+                                          $event.key,
+                                          "Enter"
+                                        )
+                                      ) {
+                                        return null
+                                      }
+                                      return _vm.doLogin($event)
+                                    },
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
@@ -51556,6 +51571,21 @@ var render = function() {
                               attrs: { type: "text", placeholder: "Username" },
                               domProps: { value: _vm.aLogin.sUsername },
                               on: {
+                                keyup: function($event) {
+                                  if (
+                                    !$event.type.indexOf("key") &&
+                                    _vm._k(
+                                      $event.keyCode,
+                                      "enter",
+                                      13,
+                                      $event.key,
+                                      "Enter"
+                                    )
+                                  ) {
+                                    return null
+                                  }
+                                  return _vm.doLogin($event)
+                                },
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -51598,6 +51628,21 @@ var render = function() {
                               },
                               domProps: { value: _vm.aLogin.sPassword },
                               on: {
+                                keyup: function($event) {
+                                  if (
+                                    !$event.type.indexOf("key") &&
+                                    _vm._k(
+                                      $event.keyCode,
+                                      "enter",
+                                      13,
+                                      $event.key,
+                                      "Enter"
+                                    )
+                                  ) {
+                                    return null
+                                  }
+                                  return _vm.doLogin($event)
+                                },
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -51706,6 +51751,21 @@ var render = function() {
                             attrs: { type: "text", placeholder: "First Name" },
                             domProps: { value: _vm.aRegister.sFirstName },
                             on: {
+                              keyup: function($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.doRegister($event)
+                              },
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
@@ -51736,6 +51796,21 @@ var render = function() {
                             attrs: { type: "text", placeholder: "Last Name" },
                             domProps: { value: _vm.aRegister.sLastName },
                             on: {
+                              keyup: function($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.doRegister($event)
+                              },
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
@@ -51766,6 +51841,21 @@ var render = function() {
                             attrs: { type: "text", placeholder: "Email ID" },
                             domProps: { value: _vm.aRegister.sEmail },
                             on: {
+                              keyup: function($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.doRegister($event)
+                              },
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
@@ -51800,6 +51890,21 @@ var render = function() {
                                 },
                                 domProps: { value: _vm.aRegister.sStudent },
                                 on: {
+                                  keyup: function($event) {
+                                    if (
+                                      !$event.type.indexOf("key") &&
+                                      _vm._k(
+                                        $event.keyCode,
+                                        "enter",
+                                        13,
+                                        $event.key,
+                                        "Enter"
+                                      )
+                                    ) {
+                                      return null
+                                    }
+                                    return _vm.doRegister($event)
+                                  },
                                   input: function($event) {
                                     if ($event.target.composing) {
                                       return
@@ -51831,6 +51936,21 @@ var render = function() {
                             attrs: { type: "text", placeholder: "Username" },
                             domProps: { value: _vm.aRegister.sUsername },
                             on: {
+                              keyup: function($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.doRegister($event)
+                              },
                               input: function($event) {
                                 if ($event.target.composing) {
                                   return
@@ -51860,6 +51980,21 @@ var render = function() {
                           attrs: { type: "password", placeholder: "Password" },
                           domProps: { value: _vm.aRegister.sPassword },
                           on: {
+                            keyup: function($event) {
+                              if (
+                                !$event.type.indexOf("key") &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              return _vm.doRegister($event)
+                            },
                             input: function($event) {
                               if ($event.target.composing) {
                                 return

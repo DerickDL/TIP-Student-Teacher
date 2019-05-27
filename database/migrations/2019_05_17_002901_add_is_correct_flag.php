@@ -26,7 +26,7 @@ class AddIsCorrectFlag extends Migration
     public function down()
     {
         Schema::table('choices', function (Blueprint $table) {
-            //
+            $table->dropColumn('is_correct');
         });
     }
 }

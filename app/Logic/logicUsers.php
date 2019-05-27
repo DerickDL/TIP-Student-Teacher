@@ -11,7 +11,7 @@ class logicUsers
 	 * Model/Users modelUsers
 	 *
 	 */
-	private $modelUsers;
+	protected $modelUsers;
 
 	public function __construct($modelUsers)
 	{
@@ -77,11 +77,19 @@ class logicUsers
     		'sUsername' => 'required',
     		'sPassword'	=> 'required',
     	];
+    	$aQueryCondition = array(
+            'username' => $aRequest['sUsername'],
+            'user_type' => (int)$aRequest['iType']
+        );
+    	if ($aRequest['iType'] === 0) {
+    	    $aRules['sStudent'] = 'required|integer';
+            $aQueryCondition['student_id'] = $aRequest['sStudent'];
+        }
     	$aValidation = $this->validateUser($aRules, $aRequest);
     	if ($aValidation['result'] === false) {
     		return $aValidation;
     	}
-    	return $this->validateLogin($this->modelUsers->getUser($aRequest['sUsername']), $aRequest);
+    	return $this->validateLogin($this->modelUsers->getUser($aQueryCondition), $aRequest);
     }
 
 	/**

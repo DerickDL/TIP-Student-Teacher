@@ -25,7 +25,7 @@
 	                            <div v-if="isLogin">
 									<div class="field" v-if="user_type === 'student'">
 										<div class="control has-icons-left">
-											<input class="input" type="text" placeholder="Student ID" v-model="aLogin.sStudent">
+											<input class="input" type="text" placeholder="Student ID" v-model="aLogin.sStudent" v-on:keyup.enter="doLogin">
 											<span class="icon is-left">
 										      <i class="mdi mdi-contact-mail"></i>
 										    </span>
@@ -33,7 +33,7 @@
 									</div>
 	                            	<div class="field">
 	                            		<div class="control has-icons-left has-icons-right">
-	                            			<input class="input" type="text" placeholder="Username" v-model="aLogin.sUsername">
+	                            			<input class="input" type="text" placeholder="Username" v-model="aLogin.sUsername" v-on:keyup.enter="doLogin">
 			                                <span class="icon is-left">
 										      <i class="mdi mdi-account"></i>
 										    </span>
@@ -41,7 +41,7 @@
 		                            </div>
 		                            <div class="field">
 		                                <div class="control has-icons-left has-icons-right">
-	                            			<input class="input" type="password" placeholder="Password" v-model="aLogin.sPassword">
+	                            			<input class="input" type="password" placeholder="Password" v-model="aLogin.sPassword" v-on:keyup.enter="doLogin">
 			                                <span class="icon is-left">
 										      <i class="mdi mdi-lock"></i>
 										    </span>
@@ -64,31 +64,31 @@
 	                            <div v-else>
 	                            	<div class="field">
 		                               <div class="control">
-	                            			<input class="input" type="text" placeholder="First Name" v-model="aRegister.sFirstName">
+	                            			<input class="input" type="text" placeholder="First Name" v-model="aRegister.sFirstName" v-on:keyup.enter="doRegister">
 	                            		</div>
 		                            </div>
 		                            <div class="field">
 		                                 <div class="control">
-	                            			<input class="input" type="text" placeholder="Last Name" v-model="aRegister.sLastName">
+	                            			<input class="input" type="text" placeholder="Last Name" v-model="aRegister.sLastName" v-on:keyup.enter="doRegister">
 	                            		</div>
 		                            </div>
 		                            <div class="field">
 		                                <div class="control">
-	                            			<input class="input" type="text" placeholder="Email ID" v-model="aRegister.sEmail">
+	                            			<input class="input" type="text" placeholder="Email ID" v-model="aRegister.sEmail" v-on:keyup.enter="doRegister">
 	                            		</div>
 		                            </div>
 									<div class="field" v-if="register_user_type === 'student'">
 										<div class="control">
-											<input class="input" type="text" placeholder="Student ID" v-model="aRegister.sStudent">
+											<input class="input" type="text" placeholder="Student ID" v-model="aRegister.sStudent" v-on:keyup.enter="doRegister">
 										</div>
 									</div>
 		                            <div class="field">
 		                                <div class="control">
-	                            			<input class="input" type="text" placeholder="Username" v-model="aRegister.sUsername">
+	                            			<input class="input" type="text" placeholder="Username" v-model="aRegister.sUsername" v-on:keyup.enter="doRegister">
 	                            		</div>
 		                            </div>
 		                            <div class="field">
-		                                <input class="input" type="password" placeholder="Password" v-model="aRegister.sPassword">
+		                                <input class="input" type="password" placeholder="Password" v-model="aRegister.sPassword" v-on:keyup.enter="doRegister">
 		                            </div>
 		                            <div class="field">
 		                            	<div class="control">
