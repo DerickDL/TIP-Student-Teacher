@@ -1,0 +1,4 @@
+
+W	php:S1185"6Remove this method "__construct" to simply inherit it.(Ñîå£ÿÿÿÿÿ8ìúé­-
+O	php:S1144".Remove this unused private "checkQuiz" method.(—øÆÓıÿÿÿÿ8üõûé­-
+qphp:S101"QRename class "logicStudents" to match the regular expression ^[A-Z][a-zA-Z0-9]*$.(ğÕœûÿÿÿÿ8Ùşùé­-

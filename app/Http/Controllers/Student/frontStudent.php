@@ -56,10 +56,12 @@ class frontStudent extends frontUsers
         $aQuiz = $this->getQuizzes(['id' => $iQuizId]);
         $aQuestions = $this->getQuestions(['quiz_id' => $iQuizId]);
         $aChoices = $this->getChoices($aQuestions);
+        $aScore = $this->getQuizScore($iQuizId, $aData['session']->getData()->id);
         $aQuizData = [
         	'quiz' => $aQuiz,
         	'questions' => $aQuestions,
-        	'choices' => $aChoices
+        	'choices' => $aChoices,
+            'score' => $aScore
         ];
         return view('pages.student.student_quiz')->with('aData', $aData)->with('aQuizData', $aQuizData);
     }

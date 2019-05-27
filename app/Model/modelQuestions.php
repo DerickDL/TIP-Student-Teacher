@@ -28,6 +28,11 @@ class modelQuestions extends Model
         return $this->hasMany('App\Model\modelChoices', 'question_id');
     }
 
+    public function students()
+    {
+        return $this->belongsTo('App\Model\modelQuizzes');
+    }
+
     /**
      * Find a question
      * @param $id

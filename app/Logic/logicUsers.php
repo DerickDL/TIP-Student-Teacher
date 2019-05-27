@@ -11,7 +11,7 @@ class logicUsers
 	 * Model/Users modelUsers
 	 *
 	 */
-	private $modelUsers;
+	protected $modelUsers;
 
 	public function __construct($modelUsers)
 	{

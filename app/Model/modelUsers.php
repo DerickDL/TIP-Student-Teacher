@@ -14,19 +14,53 @@ class modelUsers extends Model
      */
 	protected $table = 'users';
 
+    /**
+     * @var array
+     */
+    protected $fillable = ['first_name', 'last_name', 'email', 'username', 'password', 'user_type'];
+
+    public function quizzes()
+    {
+        return $this->belongsToMany('App\Model\modelQuizzes', 'user_quiz', 'quiz_id', 'user_id')                    ->withPivot('score', 'percentage')
+            ->withTimestamps();
+    }
+
+    /**
+     * find user by ID
+     * @param $iId
+     * @return mixed
+     */
+    public function findUser($iId)
+    {
+        return static::find($iId);
+    }
+
+    /**
+     * Create a user
+     * @param $aRequest
+     * @return mixed
+     */
 	public function registerUser($aRequest) 
 	{
-		$this->first_name = $aRequest['sFirstName'];
-		$this->last_name = $aRequest['sLastName'];
-		$this->email = $aRequest['sEmail'];
-		$this->username = $aRequest['sUsername'];
-		$this->password = $aRequest['sPassword'];
-		$this->user_type = $aRequest['iType'];
-		return $this->save();
+		$aCreateUser = array(
+		    'first_name' => $aRequest['sFirstName'],
+            'last_name' => $aRequest['sLastName'],
+            'email' => $aRequest['sEmail'],
+            'username' => $aRequest['sUsername'],
+            'password' => $aRequest['sPassword'],
+            'user_type' => $aRequest['iType'],
+        );
+		return $this->create($aCreateUser);
 	}
 
+    /**
+     * Get user by username
+     * @param $sUsername
+     * @return mixed
+     */
 	public function getUser($sUsername)
 	{
 		return $this->get()->where('username', '=', $sUsername)->first();
 	}
+
 }

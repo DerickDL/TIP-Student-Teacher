@@ -29,10 +29,8 @@ Route::get('/student/course/{course_id}', 'Student\frontStudent@courseHomePage')
 Route::get('/student/course/{course_id}/quizzes', 'Student\frontStudent@quizPage')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}/quiz/{quiz_id}', 'Student\frontStudent@visitQuiz')->middleware('check.session', 'check.student');
 
-
-
 Route::post('/quizzes/insert', 'Quizzes\controllerQuizzes@insertQuiz');
-Route::get('/quizzes/get/{quiz_id}', 'Quizzes\controllerQuizzes@getQuiz');
+Route::post('/quizzes/submit', 'Student\controllerStudent@submitQuiz');
 
 Route::get('/session', 'App\controllerUsers@getSession');
 Route::get('/logout', 'App\controllerUsers@logoutUser');
