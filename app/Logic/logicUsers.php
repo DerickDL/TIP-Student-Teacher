@@ -20,7 +20,7 @@ class logicUsers
 
 	/**
 	 * Register user
-	 * @params $aRequest
+	 * @param $aRequest
 	 * @return array
 	 */
     public function registerUser($aRequest)
@@ -34,12 +34,36 @@ class logicUsers
     		'iType'	=> 'required|integer'
     	];
     	$aRequest['iType'] = (int)$aRequest['iType'];
+        if ($aRequest['iType'] === 0) {
+            $aRules['sStudent'] = 'required|integer|min:7|unique:users,student_id';
+        }
     	$aValidation = $this->validateUser($aRules, $aRequest);
     	if ($aValidation['result'] === false) {
     		return $aValidation;
     	}
-    	$aReturn = $this->modelUsers->registerUser($aRequest);
+    	$aParams = $this->createUser($aRequest);
+    	$aReturn = $this->modelUsers->registerUser($aParams);
     	return array('return' => $aReturn);
+    }
+
+    /**
+     * @param $aRequest
+     * @return array
+     */
+    private function createUser($aRequest)
+    {
+        $aUserData = [
+            'first_name' => $aRequest['sFirstName'],
+            'last_name' => $aRequest['sLastName'],
+            'email' => $aRequest['sEmail'],
+            'username' => $aRequest['sUsername'],
+            'password' => $aRequest['sPassword'],
+            'user_type' => $aRequest['iType'],
+        ];
+        if ($aRequest['iType'] === 0) {
+            $aUserData['student_id'] = $aRequest['sStudent'];
+        }
+        return $aUserData;
     }
 
 	/**
@@ -62,8 +86,8 @@ class logicUsers
 
 	/**
 	 * validate login input
-	 * @params $aUser
-	 * @params $aRequest
+	 * @param $aUser
+	 * @param $aRequest
 	 * @return array
 	 */
     private function validateLogin($aUser, $aRequest)

@@ -14,15 +14,14 @@ class modelUsers extends Model
      */
 	protected $table = 'users';
 
+    /**
+     * @var array
+     */
+    protected $fillable = ['first_name', 'last_name', 'username', 'email', 'student_id', 'password', 'user_type'];
+
 	public function registerUser($aRequest) 
 	{
-		$this->first_name = $aRequest['sFirstName'];
-		$this->last_name = $aRequest['sLastName'];
-		$this->email = $aRequest['sEmail'];
-		$this->username = $aRequest['sUsername'];
-		$this->password = $aRequest['sPassword'];
-		$this->user_type = $aRequest['iType'];
-		return $this->save();
+		return self::create($aRequest);
 	}
 
 	public function getUser($sUsername)

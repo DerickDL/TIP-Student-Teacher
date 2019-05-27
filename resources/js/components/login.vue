@@ -23,6 +23,14 @@
 	                                <img src="/img/TIP-logo.png">
 	                            </figure>
 	                            <div v-if="isLogin">
+									<div class="field" v-if="user_type === 'student'">
+										<div class="control has-icons-left">
+											<input class="input" type="text" placeholder="Student ID" v-model="aLogin.sStudent">
+											<span class="icon is-left">
+										      <i class="mdi mdi-contact-mail"></i>
+										    </span>
+										</div>
+									</div>
 	                            	<div class="field">
 	                            		<div class="control has-icons-left has-icons-right">
 	                            			<input class="input" type="text" placeholder="Username" v-model="aLogin.sUsername">
@@ -39,6 +47,18 @@
 										    </span>
 	                            		</div>
 		                            </div>
+									<div class="field">
+										<div class="control">
+											<label class="radio">
+												<input type="radio" name="user" value="student" v-model="user_type">
+												<span class="has-text-white">Student</span>
+											</label>
+											<label class="radio">
+												<input type="radio" name="user" value="teacher" v-model="user_type">
+												<span class="has-text-white">Teacher</span>
+											</label>
+										</div>
+									</div>
 		                            <a class="button is-secondary is-fullwidth has-text-white" v-on:click="doLogin">Login</a>
 	                            </div>
 	                            <div v-else>
@@ -57,6 +77,11 @@
 	                            			<input class="input" type="text" placeholder="Email ID" v-model="aRegister.sEmail">
 	                            		</div>
 		                            </div>
+									<div class="field" v-if="register_user_type === 'student'">
+										<div class="control">
+											<input class="input" type="text" placeholder="Student ID" v-model="aRegister.sStudent">
+										</div>
+									</div>
 		                            <div class="field">
 		                                <div class="control">
 	                            			<input class="input" type="text" placeholder="Username" v-model="aRegister.sUsername">
@@ -67,15 +92,15 @@
 		                            </div>
 		                            <div class="field">
 		                            	<div class="control">
-										<label class="radio">
-										  <input type="radio" name="user" value="student" v-model="picked">
-											<span class="has-text-white">Student</span>
-										</label>
-										<label class="radio">
-										  <input type="radio" name="user" value="teacher" v-model="picked">
-										  	<span class="has-text-white">Teacher</span>
-										</label>
-									</div>
+											<label class="radio">
+											  <input type="radio" name="user" value="student" v-model="register_user_type">
+												<span class="has-text-white">Student</span>
+											</label>
+											<label class="radio">
+											  <input type="radio" name="user" value="teacher" v-model="register_user_type">
+												<span class="has-text-white">Teacher</span>
+											</label>
+										</div>
 		                            </div>
 	                            	<a class="button is-secondary is-fullwidth has-text-white" v-on:click="doRegister">Register</a>
 	                            </div>
@@ -94,18 +119,22 @@
                 isRegister: false,
                 sLogin: 'login',
                 sRegister: 'register',
-                picked: 'student',
+                user_type: 'student',
+                register_user_type: 'student',
                 aRegister: {
                 	sFirstName: '',
                 	sLastName: '',
                 	sEmail: '',
+                	sStudent: '',
                 	sUsername: '',
                 	sPassword: '',
                 	iType: ''
                 },
                 aLogin: {
+                    sStudent: '',
                 	sUsername: '',
-                	sPassword: ''
+                	sPassword: '',
+                    iType: ''
                 }
             }
         },
@@ -120,6 +149,8 @@
            		}
            },
            doLogin() {
+               this.aLogin.iType = (this.user_type === 'teacher') ? 1 : 0;
+               this.aLogin.sStudent = (this.user_type === 'teacher') ? '' : this.aLogin.sStudent;
            		fetch('/login', {
            			method: 'post',
            			body: JSON.stringify(this.aLogin),
@@ -135,17 +166,18 @@
                 		alert('Successfully Login');
                 		if (data.data['user_type'] === 0) {
                 			//redirect to student home page
-                      window.location.href = '/student';
+                      		window.location.href = '/student';
                 		} else {
                 			//redirect to teacher home page
-                      window.location.href = '/teacher';
+                      		window.location.href = '/teacher';
                 		}
                 	}
            		})
            		.catch(err => console.log(err));
            },
            doRegister() {
-           		this.aRegister.iType = (this.picked === 'teacher') ? 1 : 0;
+           		this.aRegister.iType = (this.register_user_type === 'teacher') ? 1 : 0;
+               	this.aRegister.sStudent = (this.register_user_type === 'teacher') ? '' : this.aRegister.sStudent;
            		fetch('/register', {
                     method: 'post',
                     body: JSON.stringify(this.aRegister),
@@ -158,14 +190,15 @@
                 	if (data.result === false) {
                 		alert(data.message);
                 	} else {
-                    this.isLogin = true;
-                    this.isRegister = false;
-                    this.aRegister.sFirstName = '';
-                    this.aRegister.sLastName = '';
-                    this.aRegister.sEmail = '';
-                    this.aRegister.sUsername = '';
-                    this.aRegister.sPassword = '';
-                    this.aRegister.iType = '';
+						this.isLogin = true;
+						this.isRegister = false;
+						this.aRegister.sFirstName = '';
+						this.aRegister.sLastName = '';
+						this.aRegister.sEmail = '';
+						this.aRegister.sUsername = '';
+						this.aRegister.sPassword = '';
+						this.aRegister.iType = '';
+						this.aRegister.sStudent = '';
                 		alert('Successfully Registered');
                 	}
                 })

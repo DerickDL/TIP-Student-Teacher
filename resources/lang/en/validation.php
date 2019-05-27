@@ -150,7 +150,8 @@ return [
         'sLastName' => 'Last Name',
         'sUsername' => 'Username',
         'sPassword' => 'Password',
-        'iType' => 'Type'
+        'iType' => 'Type',
+        'sStudent' => 'Student ID'
     ],
 
 ];

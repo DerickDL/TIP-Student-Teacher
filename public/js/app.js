@@ -1851,6 +1851,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1858,18 +1883,22 @@ __webpack_require__.r(__webpack_exports__);
       isRegister: false,
       sLogin: 'login',
       sRegister: 'register',
-      picked: 'student',
+      user_type: 'student',
+      register_user_type: 'student',
       aRegister: {
         sFirstName: '',
         sLastName: '',
         sEmail: '',
+        sStudent: '',
         sUsername: '',
         sPassword: '',
         iType: ''
       },
       aLogin: {
+        sStudent: '',
         sUsername: '',
-        sPassword: ''
+        sPassword: '',
+        iType: ''
       }
     };
   },
@@ -1884,6 +1913,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     doLogin: function doLogin() {
+      this.aLogin.iType = this.user_type === 'teacher' ? 1 : 0;
+      this.aLogin.sStudent = this.user_type === 'teacher' ? '' : this.aLogin.sStudent;
       fetch('/login', {
         method: 'post',
         body: JSON.stringify(this.aLogin),
@@ -1913,7 +1944,8 @@ __webpack_require__.r(__webpack_exports__);
     doRegister: function doRegister() {
       var _this = this;
 
-      this.aRegister.iType = this.picked === 'teacher' ? 1 : 0;
+      this.aRegister.iType = this.register_user_type === 'teacher' ? 1 : 0;
+      this.aRegister.sStudent = this.register_user_type === 'teacher' ? '' : this.aRegister.sStudent;
       fetch('/register', {
         method: 'post',
         body: JSON.stringify(this.aRegister),
@@ -1934,6 +1966,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.aRegister.sUsername = '';
           _this.aRegister.sPassword = '';
           _this.aRegister.iType = '';
+          _this.aRegister.sStudent = '';
           alert('Successfully Registered');
         }
       })["catch"](function (err) {
@@ -51461,6 +51494,47 @@ var render = function() {
                 _vm._v(" "),
                 _vm.isLogin
                   ? _c("div", [
+                      _vm.user_type === "student"
+                        ? _c("div", { staticClass: "field" }, [
+                            _c(
+                              "div",
+                              { staticClass: "control has-icons-left" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.aLogin.sStudent,
+                                      expression: "aLogin.sStudent"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Student ID"
+                                  },
+                                  domProps: { value: _vm.aLogin.sStudent },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.aLogin,
+                                        "sStudent",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._m(3)
+                              ]
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
                       _c("div", { staticClass: "field" }, [
                         _c(
                           "div",
@@ -51495,7 +51569,7 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _vm._m(3)
+                            _vm._m(4)
                           ]
                         )
                       ]),
@@ -51537,9 +51611,73 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _vm._m(4)
+                            _vm._m(5)
                           ]
                         )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field" }, [
+                        _c("div", { staticClass: "control" }, [
+                          _c("label", { staticClass: "radio" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.user_type,
+                                  expression: "user_type"
+                                }
+                              ],
+                              attrs: {
+                                type: "radio",
+                                name: "user",
+                                value: "student"
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.user_type, "student")
+                              },
+                              on: {
+                                change: function($event) {
+                                  _vm.user_type = "student"
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "has-text-white" }, [
+                              _vm._v("Student")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "radio" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.user_type,
+                                  expression: "user_type"
+                                }
+                              ],
+                              attrs: {
+                                type: "radio",
+                                name: "user",
+                                value: "teacher"
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.user_type, "teacher")
+                              },
+                              on: {
+                                change: function($event) {
+                                  _vm.user_type = "teacher"
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "has-text-white" }, [
+                              _vm._v("Teacher")
+                            ])
+                          ])
+                        ])
                       ]),
                       _vm._v(" "),
                       _c(
@@ -51643,6 +51781,41 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
+                      _vm.register_user_type === "student"
+                        ? _c("div", { staticClass: "field" }, [
+                            _c("div", { staticClass: "control" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.aRegister.sStudent,
+                                    expression: "aRegister.sStudent"
+                                  }
+                                ],
+                                staticClass: "input",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Student ID"
+                                },
+                                domProps: { value: _vm.aRegister.sStudent },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.aRegister,
+                                      "sStudent",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
                       _c("div", { staticClass: "field" }, [
                         _c("div", { staticClass: "control" }, [
                           _c("input", {
@@ -51709,8 +51882,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.picked,
-                                  expression: "picked"
+                                  value: _vm.register_user_type,
+                                  expression: "register_user_type"
                                 }
                               ],
                               attrs: {
@@ -51719,11 +51892,14 @@ var render = function() {
                                 value: "student"
                               },
                               domProps: {
-                                checked: _vm._q(_vm.picked, "student")
+                                checked: _vm._q(
+                                  _vm.register_user_type,
+                                  "student"
+                                )
                               },
                               on: {
                                 change: function($event) {
-                                  _vm.picked = "student"
+                                  _vm.register_user_type = "student"
                                 }
                               }
                             }),
@@ -51739,8 +51915,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.picked,
-                                  expression: "picked"
+                                  value: _vm.register_user_type,
+                                  expression: "register_user_type"
                                 }
                               ],
                               attrs: {
@@ -51749,11 +51925,14 @@ var render = function() {
                                 value: "teacher"
                               },
                               domProps: {
-                                checked: _vm._q(_vm.picked, "teacher")
+                                checked: _vm._q(
+                                  _vm.register_user_type,
+                                  "teacher"
+                                )
                               },
                               on: {
                                 change: function($event) {
-                                  _vm.picked = "teacher"
+                                  _vm.register_user_type = "teacher"
                                 }
                               }
                             }),
@@ -51806,6 +51985,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", { staticClass: "logo" }, [
       _c("img", { attrs: { src: "/img/TIP-logo.png" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-left" }, [
+      _c("i", { staticClass: "mdi mdi-contact-mail" })
     ])
   },
   function() {
@@ -64344,9 +64531,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\TIP-Student-Teacher\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! E:\TIP-Student-Teacher\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! E:\TIP-Student-Teacher\resources\sass\bulma-customization.scss */"./resources/sass/bulma-customization.scss");
+__webpack_require__(/*! D:\TIP-Student-Teacher\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\TIP-Student-Teacher\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\TIP-Student-Teacher\resources\sass\bulma-customization.scss */"./resources/sass/bulma-customization.scss");
 
 
 /***/ })
