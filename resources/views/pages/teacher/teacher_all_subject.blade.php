@@ -18,7 +18,7 @@
                                 <h5 class="card-title">{{$aSubjectData['course_code']}}</h5>
                             </div>
                             <div class="card-body">
-                                <h6 class="card-subtitle mb-2">{{$aSubjectData['course_title']}}</h6>
+                                <h5 class="card-subtitle mb-2 strong">{{$aSubjectData['course_title']}}</h5>
                                 <p class="card-text text-muted">{{$aSubjectData['course_overview']}}</p>
                             </div>
                             <div class="card-footer text-center">
