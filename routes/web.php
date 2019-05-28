@@ -19,8 +19,10 @@ Route::get('/forbidden', function() {
     return view('forbidden');
 });
 
-Route::get('/teacher', 'Teacher\frontTeacher@index')->middleware('check.session', 'check.teacher');
-Route::get('/teacher/course/{course_id}', 'Teacher\frontTeacher@courseHomePage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher', 'Teacher\frontTeacher@homePage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/subjects', 'Teacher\frontTeacher@subjectPage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/subjects/add', 'Teacher\frontTeacher@addSubjectPage')->middleware('check.session', 'check.teacher');
+Route::post('/teacher/subjects/add', 'Teacher\restTeacher@addSubject');
 Route::get('/teacher/course/{course_id}/quizzes', 'Teacher\frontTeacher@quizPage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/course/{course_id}/quizzes/add', 'Teacher\frontTeacher@addQuizPage')->middleware('check.session', 'check.teacher');
 

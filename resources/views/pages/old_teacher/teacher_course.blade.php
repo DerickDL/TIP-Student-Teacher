@@ -1,15 +1,12 @@
-@extends('pages.teacher.teacher_course_home')
+@extends('pages.old_teacher.teacher_course_home')
 
 @push('styles')
 
 @endpush
 
-@section('course_home_content') 
-    <div class="float-right">
-        <button class="btn btn-secondary" id="add-quiz">Add Quiz</button>
-    </div>
+@section('course_home_content')
     <div id="container-quizzes">
-        <h2>Quizzes</h2>
+        <h2>Recently added Quizzes</h2>
         @if(count($aQuiz) < 1)
             <p>No quizzes yet.</p>
         @else
@@ -26,10 +23,7 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-           $('#quiz-tab').addClass('active');
-           $('#add-quiz').on('click', function () {
-               window.location.replace(window.location.href + '/add');
-           });
+            $('#home-tab').addClass('active');
         });
     </script>
 @endpush

@@ -1,0 +1,20 @@
+.card-courses {
+    max-width: 20rem !important;
+    min-width: 20rem !important;
+    /*float: left;*/
+}
+
+.card {
+    height: 15rem;
+}
+
+.card-text {
+    height: 65px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}   
+
+.card-body {
+    overflow: hidden;
+}

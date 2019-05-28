@@ -1,4 +1,4 @@
 
-c	php:S1192"NDefine a constant instead of duplicating this literal "check.student" 5 times.(Î±¨
-c	php:S1192"NDefine a constant instead of duplicating this literal "check.session" 9 times.(¥ÌÍ
-c	php:S1192"NDefine a constant instead of duplicating this literal "check.teacher" 4 times.(¥ÌÍ
+c	php:S1192"NDefine a constant instead of duplicating this literal "check.student" 4 times.(Î±¨
+h	php:S1192"NDefine a constant instead of duplicating this literal "check.teacher" 4 times.(ˆëŞÙûÿÿÿÿ
+h	php:S1192"NDefine a constant instead of duplicating this literal "check.session" 8 times.(ˆëŞÙûÿÿÿÿ

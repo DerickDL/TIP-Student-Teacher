@@ -14,22 +14,31 @@ class frontTeacher extends frontUsers
      * Teacher homepage
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function index()
+	public function homePage()
 	{
-	    $aData = $this->getPageData();
-		return view('pages.home')->with('aData', $aData);
+	    $aSession = $this->getSession();
+		return view('pages.teacher.teacher_home')->with('aSession', $aSession);
 	}
 
     /**
-     * Teacher course page
-     * @param $iCourseId
+     * Teacher subject page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function courseHomePage($iCourseId)
+	public function subjectPage()
     {
-        $aData = $this->getPageData(['id' => $iCourseId]);
-        $aQuiz = $this->getLatestQuizzes(['course_id' => $iCourseId]);
-        return view('pages.teacher.teacher_course')->with('aData', $aData)->with('aQuiz', $aQuiz);
+        $aSession = $this->getSession();
+        $aSubjects = $this->getCourses();
+        return view('pages.teacher.teacher_all_subject')->with('aSession', $aSession)->with('aSubjects', $aSubjects);
+    }
+
+    /**
+     * Teacher add subject page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+	public function addSubjectPage()
+    {
+        $aSession = $this->getSession();
+        return view('pages.teacher.teacher_add_subject')->with('aSession', $aSession);
     }
 
     /**

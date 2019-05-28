@@ -1,4 +1,3 @@
 
-e	php:S1192"IDefine a constant instead of duplicating this literal "username" 3 times.(½ÎÄã8¬ýœÇ­-
 aphp:S101"NRename class "modelUsers" to match the regular expression ^[A-Z][a-zA-Z0-9]*$.(Ù­ð`
 Qphp:S105"EReplace all tab characters in this file by sequences of white-spaces.

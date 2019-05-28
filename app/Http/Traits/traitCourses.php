@@ -30,4 +30,15 @@ trait traitCourses
         $this->instantiateCourses();
         return $this->logicCourses->getCourses($aParams);
     }
+
+    /**
+     * Insert course
+     * @param array $aData
+     * @return mixed
+     */
+    public function insertCourse($aData)
+    {
+        $this->instantiateCourses();
+        return $this->logicCourses->insertCourse($aData);
+    }
 }

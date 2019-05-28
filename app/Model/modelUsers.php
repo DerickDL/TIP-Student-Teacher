@@ -25,6 +25,12 @@ class modelUsers extends Model
             ->withTimestamps();
     }
 
+    public function courses()
+    {
+        return $this->hasMany('App\Model\modelCourses', 'course_id');
+    }
+
+
     /**
      * @param $aRequest
      * @return mixed

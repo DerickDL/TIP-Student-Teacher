@@ -11,13 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">{{$aData['session']->getData()->first_name}} {{$aData['session']->getData()->last_name}}</a>
+                    <a class="nav-link" href="#">{{$aSession->getData()->first_name}} {{$aSession->getData()->last_name}}</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/{{($aData['session']->getData()->user_type === 1) ? 'teacher' : 'student'}}">Go to home</a>
-                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
