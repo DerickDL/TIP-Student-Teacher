@@ -32,6 +32,19 @@ class frontTeacher extends frontUsers
     }
 
     /**
+     * Teacher subject detail page
+     * @param $iCourseId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function subjectDetailPage($iCourseId)
+    {
+        $aSession = $this->getSession();
+        $aSubject = $this->getCourses(['id' => $iCourseId]);
+        $aLessons = $this->getLessons();
+        return view('pages.teacher.teacher_subject')->with('aSession', $aSession)->with('aSubject', $aSubject)->with('aLessons', $aLessons);
+    }
+
+    /**
      * Teacher add subject page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

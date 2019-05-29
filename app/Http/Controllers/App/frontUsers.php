@@ -4,11 +4,12 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Traits\traitCourses;
+use App\Http\Traits\traitLessons;
 use App\Http\Traits\traitQuizzes;
 
 class frontUsers extends controllerUsers
 {
-    use traitCourses, traitQuizzes;
+    use traitCourses, traitQuizzes, traitLessons;
 
     /**
      * Get page data

@@ -21,6 +21,7 @@ Route::get('/forbidden', function() {
 
 Route::get('/teacher', 'Teacher\frontTeacher@homePage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/subjects', 'Teacher\frontTeacher@subjectPage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/subjects/{course_id}', 'Teacher\frontTeacher@subjectDetailPage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/subjects/add', 'Teacher\frontTeacher@addSubjectPage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/subjects/add', 'Teacher\restTeacher@addSubject');
 Route::get('/teacher/course/{course_id}/quizzes', 'Teacher\frontTeacher@quizPage')->middleware('check.session', 'check.teacher');

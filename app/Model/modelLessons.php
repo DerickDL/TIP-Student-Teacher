@@ -4,28 +4,28 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class modelCourses extends Model
+class modelLessons extends Model
 {
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $table = 'courses';
+    protected $table = 'lessons';
 
     /**
      * @var array
      */
-    protected $fillable = ['course_code', 'course_title', 'course_overview', 'user_id'];
+    protected $fillable = ['lesson_title', 'lesson_overview', 'course_id'];
 
-    public function lessons()
+    public function quizzes()
     {
-        return $this->hasMany('App\Model\modelLessons', 'course_id');
+        return $this->hasMany('App\Model\modelQuizzes', 'lesson_id');
     }
 
-    public function users()
+    public function courses()
     {
-        return $this->belongsTo('App\Model\modelUsers');
+        return $this->belongsTo('App\Model\modelCourses');
     }
 
     /**
@@ -33,7 +33,7 @@ class modelCourses extends Model
      * @param $id
      * @return mixed
      */
-    public function findCourse($id)
+    public function findLesson($id)
     {
         return static::find($id);
     }
@@ -43,7 +43,7 @@ class modelCourses extends Model
      * @param $aParams
      * @return mixed
      */
-    public function getCourses($aParams)
+    public function getLessons($aParams)
     {
         return static::where($aParams)->get();
     }
@@ -53,7 +53,7 @@ class modelCourses extends Model
      * @param $aData
      * @return mixed
      */
-    public function insertCourse($aData)
+    public function insertLesson($aData)
     {
         return static::create($aData);
     }
