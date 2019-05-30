@@ -11,13 +11,31 @@ class restTeacher extends Controller
 {
     use traitCourses, traitLessons;
 
+    /**
+     * @param Request $oRequest
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addSubject(Request $oRequest)
     {
         return response()->json($this->insertCourse($oRequest->all()));
     }
 
+    /**
+     * @param Request $oRequest
+     * @param         $iCourseId
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addLesson(Request $oRequest, $iCourseId)
     {
         return response()->json($this->insertLesson($oRequest->all(), $iCourseId));
+    }
+
+    /**
+     * @param $iLessonId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteLesson(Request $aRequest)
+    {
+        $this->removeLesson($aRequest->all()['lesson_id']);
     }
 }

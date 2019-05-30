@@ -54,4 +54,14 @@ trait traitLessons
         $this->instantiateLessons();
         return $this->logicLessons->getParentCourse($iLessonId);
     }
+
+    /**
+     * @param $iLessonId
+     * @return mixed
+     */
+    public function removeLesson($iLessonId)
+    {
+        $this->instantiateLessons();
+        return $this->logicLessons->deleteLesson($iLessonId);
+    }
 }

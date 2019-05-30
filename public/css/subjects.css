@@ -18,3 +18,11 @@
 .card-body {
     overflow: hidden;
 }
+
+.delete-lesson {
+    display: none;
+}
+
+.delete-lesson:hover {
+    cursor: pointer;
+}

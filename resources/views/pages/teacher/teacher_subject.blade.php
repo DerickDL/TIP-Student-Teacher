@@ -30,7 +30,9 @@
                 <div class="col-sm-8">
                     <div class="list-group">
                         @foreach($aLessons as $aLessonData)
-                            <a href="/teacher/subjects/lesson/{{$aLessonData['id']}}" class="list-group-item list-group-item-action">{{$aLessonData['lesson_title']}}</a>
+                            <li class="list-group-item list-group-item-action">
+                                <a class="btn-link" href="/teacher/subjects/lesson/{{$aLessonData['id']}}">{{$aLessonData['lesson_title']}}</a><span class="float-right delete-lesson" data-value="{{$aLessonData['id']}}">&#10005;</span>
+                            </li>
                         @endforeach
                     </div>
                 </div>
@@ -45,5 +47,5 @@
         $('#subject-tab').addClass('active');
     });
 </script>
-<script type="text/javascript" src="/js/add_subject.js"></script>
+<script type="text/javascript" src="/js/subject.js"></script>
 @endpush

@@ -91,4 +91,14 @@ class logicLessons
         }
         return array('result' => true);
     }
+
+    /**
+     * delete lesson
+     * @param $iLessonId
+     * @return mixed
+     */
+    public function deleteLesson($iLessonId)
+    {
+        return $this->modelLessons->deleteLesson($iLessonId);
+    }
 }

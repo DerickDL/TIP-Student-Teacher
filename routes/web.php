@@ -24,6 +24,8 @@ Route::get('/teacher/subjects', 'Teacher\frontTeacher@subjectPage')->middleware(
 Route::get('/teacher/subjects/{course_id}', 'Teacher\frontTeacher@subjectDetailPage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/subject/add', 'Teacher\frontTeacher@addSubjectPage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/subject/add', 'Teacher\restTeacher@addSubject');
+Route::post('teacher/subject/lesson/delete', 'Teacher\restTeacher@deleteLesson');
+
 Route::get('/teacher/subjects/{course_id}/lesson/add', 'Teacher\frontTeacher@addLessonPage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/subjects/{course_id}/lesson/add', 'Teacher\restTeacher@addLesson');
 Route::get('/teacher/subjects/lesson/{lesson_id}', 'Teacher\frontTeacher@lessonPage')->middleware('check.session', 'check.teacher');

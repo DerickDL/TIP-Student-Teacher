@@ -57,4 +57,14 @@ class modelLessons extends Model
     {
         return static::create($aData);
     }
+
+    /**
+     * delete lesson
+     * @param $iLessonId
+     * @return int
+     */
+    public function deleteLesson($iLessonId)
+    {
+        return self::destroy($iLessonId);
+    }
 }
