@@ -6,8 +6,8 @@
 
 @section('teacher_content')
     <div class="container">
-        <div class="float-right">
-            <a class="btn btn-secondary" id="add-subject" href="/teacher/subjects/add">Add Subject</a>
+        <div class="text-right mb-3">
+            <a class="btn btn-secondary" href="/teacher/subject/add">Add Subject</a>
         </div>
         @if(count($aSubjects) > 0)
             <div class="row">

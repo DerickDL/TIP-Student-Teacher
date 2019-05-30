@@ -5,11 +5,17 @@
 @endpush
 
 @section('teacher_content')
-    <h2 class="mb-3">{{$aSubject[0]['course_title']}}</h2>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/teacher/subjects">Subjects</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{$aSubject[0]['course_title']}}</li>
+        </ol>
+    </nav>
+    <h2 class="mb-1">{{$aSubject[0]['course_title']}}</h2>
     <p>{{$aSubject[0]['course_overview']}}</p>
     <div class="line"></div>
     <div class="float-right">
-        <button class="btn btn-secondary">Add Lesson</button>
+        <a class="btn btn-secondary"  href="/teacher/subjects/{{$aSubject[0]['id']}}/lesson/add">Add Lesson</a>
     </div>
     <div class="container">
         <h4 class="mb-3">Lessons</h4>
@@ -20,10 +26,14 @@
                 </div>
             </div>
         @else
-            <div class="list-group">
-                @foreach($aLessons as $aLessonData)
-                    <a href="#" class="list-group-item list-group-item-action">{{$aLessonData['lesson_title']}}</a>
-                @endforeach
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="list-group">
+                        @foreach($aLessons as $aLessonData)
+                            <a href="/teacher/subjects/lesson/{{$aLessonData['id']}}" class="list-group-item list-group-item-action">{{$aLessonData['lesson_title']}}</a>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         @endif
     </div>

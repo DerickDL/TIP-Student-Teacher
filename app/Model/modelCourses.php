@@ -25,7 +25,7 @@ class modelCourses extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\Model\modelUsers');
+        return $this->belongsTo('App\Model\modelUsers', 'user_id');
     }
 
     /**

@@ -35,11 +35,23 @@ trait traitLessons
     /**
      * Insert lesson
      * @param array $aData
+     * @param $iCourseId
      * @return mixed
      */
-    public function insertLesson($aData)
+    public function insertLesson($aData, $iCourseId)
     {
-        $this->instantiateLesson();
-        return $this->logicLesson->insertCourse($aData);
+        $this->instantiateLessons();
+        return $this->logicLessons->insertLesson($aData, $iCourseId);
+    }
+
+    /**
+     * Get lesson/s
+     * @param $iLessonId
+     * @return mixed
+     */
+    public function getParentCourse($iLessonId)
+    {
+        $this->instantiateLessons();
+        return $this->logicLessons->getParentCourse($iLessonId);
     }
 }

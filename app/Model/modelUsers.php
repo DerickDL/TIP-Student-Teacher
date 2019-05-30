@@ -27,9 +27,8 @@ class modelUsers extends Model
 
     public function courses()
     {
-        return $this->hasMany('App\Model\modelCourses', 'course_id');
+        return $this->hasMany('App\Model\modelCourses', 'user_id');
     }
-
 
     /**
      * @param $aRequest

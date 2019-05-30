@@ -3,6 +3,7 @@
 namespace App\Logic;
 
 use App\Model\modelCourses;
+use App\Model\modelUsers;
 use Illuminate\Support\Facades\Validator;
 
 class logicCourses
@@ -13,12 +14,19 @@ class logicCourses
     private $modelCourses;
 
     /**
+     * @var modelUsers
+     */
+    private $modelUsers;
+
+    /**
      * logicCourses constructor.
      * @param $modelCourses
+     * @param $modelUsers
      */
-    public function __construct($modelCourses)
+    public function __construct($modelCourses, $modelUsers)
     {
         $this->modelCourses = $modelCourses;
+        $this->modelUsers = $modelUsers;
     }
 
     /**
@@ -39,20 +47,19 @@ class logicCourses
         $aData = array(
             'course_code' => $aRequest['course_code'],
             'course_title' => $aRequest['course_title'],
-            'course_overview' => $aRequest['course_overview'],
-            'user_id' => $aRequest['course_user_id'],
+            'course_overview' => $aRequest['course_overview']
         );
         $aRules = array(
             'course_code' => 'required|string',
             'course_title' => 'required|string',
-            'course_overview' => 'required|string',
-            'user_id'   => 'required|int'
+            'course_overview' => 'required|string'
         );
         $aValidation = $this->validateCourse($aRules, $aData);
         if ($aValidation['result'] === false) {
             return $aValidation;
         }
-        $this->modelCourses->insertCourse($aData);
+        $oUser = $this->modelUsers->findUser($aRequest['course_user_id']);
+        $oUser->courses()->create($aData);
         return array(
             'result' => true
         );

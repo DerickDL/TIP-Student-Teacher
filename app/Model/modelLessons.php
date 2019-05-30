@@ -25,7 +25,7 @@ class modelLessons extends Model
 
     public function courses()
     {
-        return $this->belongsTo('App\Model\modelCourses');
+        return $this->belongsTo('App\Model\modelCourses', 'course_id');
     }
 
     /**
@@ -35,7 +35,7 @@ class modelLessons extends Model
      */
     public function findLesson($id)
     {
-        return static::find($id);
+        return self::findOrFail($id);
     }
 
     /**

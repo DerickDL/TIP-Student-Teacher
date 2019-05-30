@@ -4,6 +4,7 @@ namespace App\Http\Traits;
 
 use App\Logic\logicCourses;
 use App\Model\modelCourses;
+use App\Model\modelUsers;
 
 trait traitCourses
 {
@@ -17,7 +18,7 @@ trait traitCourses
      */
     private function instantiateCourses()
     {
-        $this->logicCourses = new logicCourses(new modelCourses());
+        $this->logicCourses = new logicCourses(new modelCourses(), new modelUsers());
     }
 
     /**

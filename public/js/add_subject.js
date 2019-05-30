@@ -32,7 +32,7 @@ $(document).ready(function () {
 
         addSubject: function(iUserId) {
             $.ajax({
-                url: '/teacher/subjects/add',
+                url: '/teacher/subject/add',
                 type: 'POST',
                 data: {
                     'course_code': oAddSubject.oInputCode.val(),
