@@ -15,16 +15,8 @@
     <h2 class="mb-1">{{$aLesson[0]['lesson_title']}}</h2>
     <p>{{$aLesson[0]['lesson_overview']}}</p>
     <div class="line"></div>
-    <div class="float-right">
-        <a class="btn btn-secondary"  href="/teacher/subjects/{{$aSubject[0]['id']}}/lesson/add">Add Question</a>
-    </div>
-    <div class="container">
-        <h4 class="mb-3">Questions</h4>
-        <div id="outer" class="container d-flex align-items-center justify-content-center">
-            <div id="inner">
-                <p>No available questions yet.</p>
-            </div>
-        </div>
+    <div class="text-right">
+        <span><a class="btn-link" href="/teacher/subjects/lesson/{{$aSubject['id']}}/questions">Manage Questions</a></span>
     </div>
 @endsection
 

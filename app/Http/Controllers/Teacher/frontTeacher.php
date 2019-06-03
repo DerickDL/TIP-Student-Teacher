@@ -80,6 +80,17 @@ class frontTeacher extends frontUsers
     }
 
     /**
+     * Teacher questions page
+     * @param $iLessonId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function questionsPage($iLessonId)
+    {
+        $aSession = $this->getSession();
+        return view('pages.teacher.teacher_questions')->with('aSession', $aSession);
+    }
+
+    /**
      * Teacher quizzes page
      * @param $iCourseId
      * @param $iQuizId
