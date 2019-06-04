@@ -28,7 +28,7 @@ class UpdateQuizzesTableForeignKey extends Migration
     public function down()
     {
         Schema::table('quizzes', function (Blueprint $table) {
-            $table->dropForeign(['course_if']);
+            $table->dropForeign(['course_id']);
         });
     }
 }

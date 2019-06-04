@@ -14,7 +14,7 @@ class AddQuestionDifficultyAndForeignKeyForLessons extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->integer('quiz_difficulty')->nullable();
+            $table->integer('question_difficulty')->nullable();
             $table->unsignedBigInteger('lesson_id');
             $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
         });
@@ -28,7 +28,7 @@ class AddQuestionDifficultyAndForeignKeyForLessons extends Migration
     public function down()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->dropColumn('quiz_difficulty');
+            $table->dropColumn('question_difficulty');
             $table->dropForeign(['lesson_id']);
         });
     }

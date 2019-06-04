@@ -23,6 +23,11 @@ class modelLessons extends Model
         return $this->hasMany('App\Model\modelQuizzes', 'lesson_id');
     }
 
+    public function questions()
+    {
+        return $this->hasMany('App\Model\modelQuestions', 'lesson_id');
+    }
+
     public function courses()
     {
         return $this->belongsTo('App\Model\modelCourses', 'course_id');

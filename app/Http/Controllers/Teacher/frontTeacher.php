@@ -87,7 +87,9 @@ class frontTeacher extends frontUsers
     public function questionsPage($iLessonId)
     {
         $aSession = $this->getSession();
-        return view('pages.teacher.teacher_questions')->with('aSession', $aSession);
+        $aSubject = $this->getParentCourse($iLessonId);
+        $aLesson = $this->getLessons(['id' => $iLessonId]);
+        return view('pages.teacher.teacher_questions')->with('aSession', $aSession)->with('aSubject', $aSubject)->with('aLesson', $aLesson);
     }
 
     /**

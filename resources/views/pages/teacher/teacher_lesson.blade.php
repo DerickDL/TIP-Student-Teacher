@@ -16,7 +16,7 @@
     <p>{{$aLesson[0]['lesson_overview']}}</p>
     <div class="line"></div>
     <div class="text-right">
-        <span><a class="btn-link" href="/teacher/subjects/lesson/{{$aSubject['id']}}/questions">Manage Questions</a></span>
+        <span><a class="btn-link" href="/teacher/subjects/lesson/{{$aLesson[0]['id']}}/questions">Manage Questions</a></span>
     </div>
 @endsection
 

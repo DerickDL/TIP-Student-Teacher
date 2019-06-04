@@ -16,11 +16,16 @@ class modelQuestions extends Model
     /**
      * @var array
      */
-    protected $fillable = ['question', 'question_type', 'question_answer'];
+    protected $fillable = ['question', 'question_type', 'question_answer', 'question_difficulty'];
 
     public function quizzes()
     {
         return $this->belongsTo('App\Model\modelQuizzes');
+    }
+
+    public function lessons()
+    {
+        return $this->belongsTo('App\Model\modelLessons', 'lesson_id');
     }
 
     public function choices()

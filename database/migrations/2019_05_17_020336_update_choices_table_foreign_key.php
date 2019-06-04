@@ -28,7 +28,7 @@ class UpdateChoicesTableForeignKey extends Migration
     public function down()
     {
         Schema::table('choices', function (Blueprint $table) {
-            //
+            $table->dropForeign(['question_id']);
         });
     }
 }
