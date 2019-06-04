@@ -179,7 +179,8 @@ $(document).ready(function () {
                         type: 'POST',
                         data: aQuestionData,
                         success: function (aResponse) {
-                            // console.log(aResponse);
+                            alert('Successfully added question');
+                            $('.question').remove();
                         }
                     });
                 }
