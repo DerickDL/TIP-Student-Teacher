@@ -5,6 +5,7 @@ $(document).ready(function () {
            this.addEvents();
            this.iCurrentTab = 0;
            this.iNumberQuestion = 0;
+           this.loadQuestion();
        },
        
        cacheDOM: function () {
@@ -19,6 +20,7 @@ $(document).ready(function () {
            this.eTabEasy = $('#easy-questions-tab');
            this.eTabAverage = $('#average-questions-tab');
            this.eTabDifficult = $('#difficult-questions-tab');
+           this.eAreaListQuestions = $('#list-questions');
        },
        
        addEvents: function () {
@@ -34,6 +36,34 @@ $(document).ready(function () {
            $('.nav-link').removeClass('active');
            oAddQuestion.iCurrentTab = $(this).data('value');
            $(this).addClass('active');
+           oAddQuestion.loadQuestion();
+       },
+
+       loadQuestion: function () {
+           $.ajax({
+           url: `/teacher/subjects/lesson/${ iLesson }/questions/load`,
+           type: 'GET',
+           data: {
+            'difficulty': oAddQuestion.iCurrentTab
+           },
+           success: function (aResponse) {
+                oAddQuestion.displayQuestions(aResponse);
+           }
+        });
+       },
+
+       displayQuestions: function (aResponse) {
+            oAddQuestion.eAreaListQuestions.empty();
+            if (aResponse.length < 1) {
+                oAddQuestion.eAreaListQuestions.append('<p>No questions yet on this difficulty.</p>');
+            }
+            $.each(aResponse, function (index, value) {
+                console.log(value);
+                 var sQuestionTemplate = `
+                        <li class="list-group-item">${index + 1}.) ${value['question']}</li>
+                 `;
+               oAddQuestion.eAreaListQuestions.append(sQuestionTemplate);  
+            });
        },
 
        addQuestion: function () {
@@ -175,12 +205,13 @@ $(document).ready(function () {
                     alert(aQuestionData.message);
                 } else {
                     $.ajax({
-                        url: `/teacher/subjects/lesson/${ $('.container').data('lesson') }/questions/add`,
+                        url: `/teacher/subjects/lesson/${ iLesson }/questions/add`,
                         type: 'POST',
                         data: aQuestionData,
                         success: function (aResponse) {
                             alert('Successfully added question');
                             $('.question').remove();
+                            oAddQuestion.loadQuestion();
                         }
                     });
                 }

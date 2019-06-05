@@ -31,7 +31,8 @@ Route::post('/teacher/subjects/{course_id}/lesson/add', 'Teacher\restTeacher@add
 Route::get('/teacher/subjects/lesson/{lesson_id}', 'Teacher\frontTeacher@lessonPage')->middleware('check.session', 'check.teacher');
 
 Route::get('/teacher/subjects/lesson/{lesson_id}/questions', 'Teacher\frontTeacher@questionsPage')->middleware('check.session', 'check.teacher');
-Route::post('/teacher/subjects/lesson/{lesson_id}/questions/add', 'Questions\restQuestions@addQuiz');
+Route::post('/teacher/subjects/lesson/{lesson_id}/questions/add', 'Questions\restQuestions@addQuestion');
+Route::get('/teacher/subjects/lesson/{lesson_id}/questions/load', 'Questions\restQuestions@loadQuestion');
 
 Route::get('/teacher/course/{course_id}/quizzes', 'Teacher\frontTeacher@quizPage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/course/{course_id}/quizzes/add', 'Teacher\frontTeacher@addQuizPage')->middleware('check.session', 'check.teacher');

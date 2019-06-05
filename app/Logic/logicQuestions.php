@@ -31,6 +31,12 @@ class logicQuestions
 		$this->modelChoices = $modelChoices;
 	}
 
+    public function loadQuestions($iLessonId, $aParams)
+    {
+        $oLesson =  $this->modelLessons->findLesson($iLessonId);
+        return $oLesson->questions()->where($aParams)->get();
+    }
+
     /**
      * @param $aRequest
      * @param $iLessonId

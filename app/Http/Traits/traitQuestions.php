@@ -27,4 +27,10 @@ trait traitQuestions
         $this->instantiateQuestions();
         $this->logicQuestions->insertQuestion($aRequest, $iLessonId);
     }
+
+    public function loadQuestions($iLessonId, $aParams = [])
+    {
+        $this->instantiateQuestions();
+        return $this->logicQuestions->loadQuestions($iLessonId, $aParams);
+    }
 }

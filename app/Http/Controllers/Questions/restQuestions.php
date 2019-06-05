@@ -14,8 +14,13 @@ class restQuestions extends Controller
      * @param Request $oRequest
      * @param         $iLessonId
      */
-    public function addQuiz(Request $oRequest, $iLessonId)
+    public function addQuestion(Request $oRequest, $iLessonId)
     {
         $this->insertQuestion($oRequest->all(), $iLessonId);
+    }
+
+    public function loadQuestion(Request $oRequest, $iLessonId)
+    {
+        return response()->json($this->loadQuestions($iLessonId, ['question_difficulty' => $oRequest->all()['difficulty']]));
     }
 }

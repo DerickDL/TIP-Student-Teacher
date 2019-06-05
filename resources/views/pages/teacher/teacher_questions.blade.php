@@ -13,7 +13,7 @@
             <li class="breadcrumb-item active" aria-current="page">Questions</li>
         </ol>
     </nav>
-    <div class="container" data-lesson="{{$aLesson[0]['id']}}">
+    <div class="container">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" id="easy-questions-tab" data-value="0">Easy</a>
@@ -38,12 +38,8 @@
 
             </div>
             <h5>Questions:</h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">1.) What is the safest type of loop?</li>
-                <li class="list-group-item">1.) What is the safest type of loop?</li>
-                <li class="list-group-item">1.) What is the safest type of loop?</li>
-                <li class="list-group-item">1.) What is the safest type of loop?</li>
-                <li class="list-group-item">1.) What is the safest type of loop?</li>
+            <ul class="list-group list-group-flush" id="list-questions">
+                
             </ul>
         </div>
     </div>
@@ -51,6 +47,7 @@
 
 @push('scripts')
 <script type="text/javascript">
+    var iLesson = {{$aLesson[0]['id']}};
     $(document).ready(function () {
         $('#subject-tab').addClass('active');
     });
