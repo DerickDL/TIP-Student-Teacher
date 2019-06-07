@@ -6,6 +6,7 @@
 
 @section('teacher_content')
     <div class="container">
+        <h2>{{$aIntegCourse['integrated_course_name']}}</h2>
         <div class="text-right mb-3">
             <a class="btn btn-secondary" href="/teacher/course/add">Add Course</a>
         </div>
@@ -41,7 +42,8 @@
 @push('scripts')
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#course-tab').addClass('active');
+        $(`#integ-course-${ {{$aIntegCourse['id']}} }`).addClass('active');
+        $('#dropdown-sidebar-integ').attr('aria-expanded', 'true');
     });
 </script>
 @endpush

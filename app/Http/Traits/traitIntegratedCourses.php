@@ -20,13 +20,9 @@ trait traitIntegratedCourses
         $this->logicIntegratedCourses = new logicIntegratedCourses(new modelIntegratedCourses());
     }
 
-    /**
-     * @param $iIntegratedCourseId
-     * @return mixed
-     */
-    public function getSubCourses($iIntegratedCourseId)
+    public function getIntegratedCourseDetail($iIntegCourseId)
     {
         $this->instantiateIntegratedCourses();
-        return $this->logicIntegratedCourses->getSubCourses($iIntegratedCourseId);
+        return $this->logicIntegratedCourses->findIntegratedCourse($iIntegCourseId);
     }
 }

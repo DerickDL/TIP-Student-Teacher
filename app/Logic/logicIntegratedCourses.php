@@ -21,4 +21,8 @@ class logicIntegratedCourses
         $this->modelIntegratedCourses = $modelIntegratedCourses;
     }
 
+    public function findIntegratedCourse($iIntegCourseId)
+    {
+        return $this->modelIntegratedCourses->findIntegratedCourse($iIntegCourseId);
+    }
 }

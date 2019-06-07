@@ -27,8 +27,9 @@ class frontTeacher extends frontUsers
 	public function integCoursePage($iIntegCourseId)
     {
         $aSession = $this->getSession();
+        $aIntegCourse = $this->getIntegratedCourseDetail($iIntegCourseId);
         $aCourses = $this->getCourses(['integrated_course_id' => $iIntegCourseId]);
-        return view('pages.teacher.teacher_all_course')->with('aSession', $aSession)->with('aCourses', $aCourses);
+        return view('pages.teacher.teacher_all_course')->with('aSession', $aSession)->with('aCourses', $aCourses)->with('aIntegCourse', $aIntegCourse);
     }
 
     /**
