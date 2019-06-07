@@ -7,9 +7,9 @@
 @section('teacher_content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/teacher/subjects">Subjects</a></li>
-            <li class="breadcrumb-item"><a href="/teacher/subjects/{{$aSubject['id']}}">{{$aSubject['course_title']}}</a></li>
-            <li class="breadcrumb-item"><a href="/teacher/subjects/lesson/{{$aLesson[0]['id']}}">{{$aLesson[0]['lesson_title']}}</a></li>
+            <li class="breadcrumb-item"><a href="/teacher/courses">Courses</a></li>
+            <li class="breadcrumb-item"><a href="/teacher/courses/{{$aCourse['id']}}">{{$aCourse['course_title']}}</a></li>
+            <li class="breadcrumb-item"><a href="/teacher/courses/lesson/{{$aLesson[0]['id']}}">{{$aLesson[0]['lesson_title']}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">Questions</li>
         </ol>
     </nav>
@@ -49,7 +49,7 @@
 <script type="text/javascript">
     var iLesson = {{$aLesson[0]['id']}};
     $(document).ready(function () {
-        $('#subject-tab').addClass('active');
+        $('#course-tab').addClass('active');
     });
 </script>
 <script type="text/javascript" src="/js/add_question.js"></script>

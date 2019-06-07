@@ -28,6 +28,11 @@ class modelCourses extends Model
         return $this->belongsTo('App\Model\modelUsers', 'user_id');
     }
 
+    public function integrated_courses()
+    {
+        return $this->belongsTo('App\Model\modelIntegratedCourses', 'integrated_course_id');
+    }
+
     /**
      * Find a course
      * @param $id

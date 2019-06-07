@@ -21,37 +21,37 @@ class frontTeacher extends frontUsers
 	}
 
     /**
-     * Teacher subject page
+     * Teacher course page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function subjectPage()
+	public function integCoursePage($iIntegCourseId)
     {
         $aSession = $this->getSession();
-        $aSubjects = $this->getCourses();
-        return view('pages.teacher.teacher_all_subject')->with('aSession', $aSession)->with('aSubjects', $aSubjects);
+        $aCourses = $this->getCourses(['integrated_course_id' => $iIntegCourseId]);
+        return view('pages.teacher.teacher_all_course')->with('aSession', $aSession)->with('aCourses', $aCourses);
     }
 
     /**
-     * Teacher subject detail page
+     * Teacher course detail page
      * @param $iCourseId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function subjectDetailPage($iCourseId)
+    public function subCourseDetailPage($iCourseId)
     {
         $aSession = $this->getSession();
-        $aSubject = $this->getCourses(['id' => $iCourseId]);
+        $aCourse = $this->getCourses(['id' => $iCourseId]);
         $aLessons = $this->getLessons(['course_id' => $iCourseId]);
-        return view('pages.teacher.teacher_subject')->with('aSession', $aSession)->with('aSubject', $aSubject)->with('aLessons', $aLessons);
+        return view('pages.teacher.teacher_course')->with('aSession', $aSession)->with('aCourse', $aCourse)->with('aLessons', $aLessons);
     }
 
     /**
-     * Teacher add subject page
+     * Teacher add course page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function addSubjectPage()
+	public function addCoursePage()
     {
         $aSession = $this->getSession();
-        return view('pages.teacher.teacher_add_subject')->with('aSession', $aSession);
+        return view('pages.teacher.teacher_add_course')->with('aSession', $aSession);
     }
 
     /**
@@ -62,9 +62,9 @@ class frontTeacher extends frontUsers
     public function lessonPage($iLessonId)
     {
         $aSession = $this->getSession();
-        $aSubject = $this->getParentCourse($iLessonId);
+        $aCourse = $this->getParentCourse($iLessonId);
         $aLesson = $this->getLessons(['id' => $iLessonId]);
-        return view('pages.teacher.teacher_lesson')->with('aSession', $aSession)->with('aSubject', $aSubject)->with('aLesson', $aLesson);
+        return view('pages.teacher.teacher_lesson')->with('aSession', $aSession)->with('aCourse', $aCourse)->with('aLesson', $aLesson);
     }
 
     /**
@@ -75,8 +75,8 @@ class frontTeacher extends frontUsers
     public function addLessonPage($iCourseId)
     {
         $aSession = $this->getSession();
-        $aSubject = $this->getCourses(['id' => $iCourseId]);
-        return view('pages.teacher.teacher_add_lesson')->with('aSession', $aSession)->with('aSubject', $aSubject);
+        $aCourse = $this->getCourses(['id' => $iCourseId]);
+        return view('pages.teacher.teacher_add_lesson')->with('aSession', $aSession)->with('aCourse', $aCourse);
     }
 
     /**
@@ -87,9 +87,9 @@ class frontTeacher extends frontUsers
     public function questionsPage($iLessonId)
     {
         $aSession = $this->getSession();
-        $aSubject = $this->getParentCourse($iLessonId);
+        $aCourse = $this->getParentCourse($iLessonId);
         $aLesson = $this->getLessons(['id' => $iLessonId]);
-        return view('pages.teacher.teacher_questions')->with('aSession', $aSession)->with('aSubject', $aSubject)->with('aLesson', $aLesson);
+        return view('pages.teacher.teacher_questions')->with('aSession', $aSession)->with('aCourse', $aCourse)->with('aLesson', $aLesson);
     }
 
     /**

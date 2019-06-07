@@ -23,7 +23,7 @@ $(document).ready(function () {
             var oSelf = this;
             if (confirm('Are you sure you want to delete this lesson?')) {
                 $.ajax({
-                    url: `/teacher/subject/lesson/delete`,
+                    url: `/teacher/course/lesson/delete`,
                     type: 'POST',
                     data: {
                         'lesson_id': $(oSelf).data('value')

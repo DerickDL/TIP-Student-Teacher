@@ -97,8 +97,7 @@ a:focus {
     background: #fff;
 }
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
+#sidebar ul li.active>a {
     color: #fff;
     background: #d1a701;
 }
@@ -107,18 +106,19 @@ a[data-toggle="collapse"] {
     position: relative;
 }
 
-/*.dropdown-toggle::after {*/
-    /*display: block;*/
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*right: 20px;*/
-    /*transform: translateY(-50%);*/
-/*}*/
+.dropdown-toggle-sidebar::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
 
 ul ul a {
     font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #d1a701;
+    margin-left: 30px !important;
+    background: #1c1e26;
+    border-left: 1px solid #47748b;
 }
 
 a.download {

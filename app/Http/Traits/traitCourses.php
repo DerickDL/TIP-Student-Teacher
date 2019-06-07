@@ -33,13 +33,13 @@ trait traitCourses
     }
 
     /**
-     * Insert course
-     * @param array $aData
+     * @param $aData
+     * @param $iIntegCourseId
      * @return mixed
      */
-    public function insertCourse($aData)
+    public function insertCourse($aData, $iIntegCourseId)
     {
         $this->instantiateCourses();
-        return $this->logicCourses->insertCourse($aData);
+        return $this->logicCourses->insertCourse($aData, $iIntegCourseId);
     }
 }

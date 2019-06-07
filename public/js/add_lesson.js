@@ -19,7 +19,7 @@ $(document).ready(function () {
 
         cancelSavingLesson: function() {
             if (confirm("Are you sure you want to cancel?")) {
-                window.location.replace(`/teacher/subjects/${$(this).data('value')}`);
+                window.location.replace(`/teacher/courses/${$(this).data('value')}`);
             }
         },
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
         addLesson: function(iCourseId) {
             $.ajax({
-                url: `/teacher/subjects/${iCourseId}/lesson/add`,
+                url: `/teacher/courses/${iCourseId}/lesson/add`,
                 type: 'POST',
                 data: {
                     'lesson_title': oAddLesson.oInputTitle.val(),
@@ -40,7 +40,7 @@ $(document).ready(function () {
                 success: function (aResponse) {
                     if (aResponse.result === true) {
                         alert("Added successfully");
-                        window.location.replace(`/teacher/subjects/${iCourseId}`);
+                        window.location.replace(`/teacher/courses/${iCourseId}`);
                     } else {
                         alert(aResponse.message);
                     }

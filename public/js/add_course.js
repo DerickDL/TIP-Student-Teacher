@@ -6,8 +6,8 @@ $(document).ready(function () {
         },
 
         cacheDOM: function() {
-            this.oBtnSave = $('#add-subject');
-            this.oBtnCancel = $('#cancel-subject');
+            this.oBtnSave = $('#add-course');
+            this.oBtnCancel = $('#cancel-course');
             this.oInputCode = $('#courseCode');
             this.oInputTitle = $('#courseTitle');
             this.oInputOverview = $('#courseOverview');
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
         cancelSavingSubject: function() {
             if (confirm("Are you sure you want to cancel?")) {
-                window.location.replace('/teacher/subjects');
+                window.location.replace('/teacher/courses');
             }
         },
 
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
         addSubject: function(iUserId) {
             $.ajax({
-                url: '/teacher/subject/add',
+                url: '/teacher/course/add',
                 type: 'POST',
                 data: {
                     'course_code': oAddSubject.oInputCode.val(),
@@ -43,7 +43,7 @@ $(document).ready(function () {
                 success: function (aResponse) {
                     if (aResponse.result === true) {
                         alert("Added successfully");
-                        window.location.replace('/teacher/subjects');
+                        window.location.replace('/teacher/courses');
                     } else {
                         alert(aResponse.message);
                     }

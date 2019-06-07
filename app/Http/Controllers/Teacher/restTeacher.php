@@ -15,7 +15,7 @@ class restTeacher extends Controller
      * @param Request $oRequest
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addSubject(Request $oRequest)
+    public function addCourse(Request $oRequest)
     {
         return response()->json($this->insertCourse($oRequest->all()));
     }

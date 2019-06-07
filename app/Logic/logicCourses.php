@@ -30,7 +30,7 @@ class logicCourses
     }
 
     /**
-     * Get all courses
+     * @param $aParams
      * @return mixed
      */
     public function getCourses($aParams)
@@ -39,10 +39,11 @@ class logicCourses
     }
 
     /**
-     * insert course
-     * @return mixed
+     * @param $aRequest
+     * @param $iIntegratedCourseId
+     * @return array
      */
-    public function insertCourse($aRequest)
+    public function insertCourse($aRequest, $iIntegratedCourseId)
     {
         $aData = array(
             'course_code' => $aRequest['course_code'],
@@ -58,8 +59,9 @@ class logicCourses
         if ($aValidation['result'] === false) {
             return $aValidation;
         }
-        $oUser = $this->modelUsers->findUser($aRequest['course_user_id']);
-        $oUser->courses()->create($aData);
+        $aData['integrated_course_id'] = $iIntegratedCourseId;
+        $aData['user_id'] = $aRequest['course_user_id'];
+        $this->modelCourses->insertCourse($aData);
         return array(
             'result' => true
         );

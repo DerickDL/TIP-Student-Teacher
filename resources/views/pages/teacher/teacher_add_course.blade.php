@@ -5,7 +5,7 @@
 @endpush
 
 @section('teacher_content')
-    <h2 class="mb-3">Add Subject</h2>
+    <h2 class="mb-3">Add Course</h2>
     <div class="container">
         <div class="form-group">
             <label for="courseCode">Course Code</label>
@@ -32,5 +32,5 @@
         $('#subject-tab').addClass('active');
     });
 </script>
-<script type="text/javascript" src="/js/add_subject.js"></script>
+<script type="text/javascript" src="/js/add_course.js"></script>
 @endpush

@@ -41,7 +41,7 @@ $(document).ready(function () {
 
        loadQuestion: function () {
            $.ajax({
-           url: `/teacher/subjects/lesson/${ iLesson }/questions/load`,
+           url: `/teacher/courses/lesson/${ iLesson }/questions/load`,
            type: 'GET',
            data: {
             'difficulty': oAddQuestion.iCurrentTab
@@ -205,7 +205,7 @@ $(document).ready(function () {
                     alert(aQuestionData.message);
                 } else {
                     $.ajax({
-                        url: `/teacher/subjects/lesson/${ iLesson }/questions/add`,
+                        url: `/teacher/courses/lesson/${ iLesson }/questions/add`,
                         type: 'POST',
                         data: aQuestionData,
                         success: function (aResponse) {
