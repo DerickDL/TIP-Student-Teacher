@@ -16,7 +16,7 @@ class modelCourses extends Model
     /**
      * @var array
      */
-    protected $fillable = ['course_code', 'course_title', 'course_overview', 'user_id'];
+    protected $fillable = ['course_code', 'course_title', 'course_overview', 'user_id', 'integrated_course_id'];
 
     public function lessons()
     {
@@ -61,5 +61,10 @@ class modelCourses extends Model
     public function insertCourse($aData)
     {
         return static::create($aData);
+    }
+
+    public function deleteCourse($iCourseId)
+    {
+        return self::destroy($iCourseId);
     }
 }

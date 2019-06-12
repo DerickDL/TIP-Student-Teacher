@@ -1,5 +1,5 @@
 @extends('pages.teacher.teacher_base')
-    <link rel="stylesheet" type="text/css" href="/css/subjects.css">
+    <link rel="stylesheet" type="text/css" href="/css/courses.css">
 @push('styles')
 
 @endpush
@@ -20,14 +20,15 @@
             <textarea class="form-control" id="courseOverview" rows="3" placeholder="Brief overview of this course..."></textarea>
         </div>
         <div class="float-right">
-            <button type="button" class="btn btn-info" id="add-subject" data-value="{{$aSession->getData()->id}}">Submit</button>
-            <button type="button" class="btn btn-danger" id="cancel-subject">Cancel</button>
+            <button type="button" class="btn btn-info" id="add-course" data-value="{{$aSession->getData()->id}}">Submit</button>
+            <button type="button" class="btn btn-danger" id="cancel-course">Cancel</button>
         </div>
     </div>
 @endsection
 
 @push('scripts')
 <script type="text/javascript">
+    var iIntegCourse = {!! json_encode($aIntegCourse['id']) !!};
     $(document).ready(function () {
         $('#subject-tab').addClass('active');
     });

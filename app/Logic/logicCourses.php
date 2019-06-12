@@ -43,7 +43,7 @@ class logicCourses
      * @param $iIntegratedCourseId
      * @return array
      */
-    public function insertCourse($aRequest, $iIntegratedCourseId)
+    public function insertCourse($aRequest)
     {
         $aData = array(
             'course_code' => $aRequest['course_code'],
@@ -59,7 +59,7 @@ class logicCourses
         if ($aValidation['result'] === false) {
             return $aValidation;
         }
-        $aData['integrated_course_id'] = $iIntegratedCourseId;
+        $aData['integrated_course_id'] = $aRequest['course_user_id'];
         $aData['user_id'] = $aRequest['course_user_id'];
         $this->modelCourses->insertCourse($aData);
         return array(
@@ -84,5 +84,10 @@ class logicCourses
 		    );
 		}
 		return array('result' => true);
+    }
+
+    public function deleteCourse($iCourseId)
+    {
+        $this->modelCourses->deleteCourse($iCourseId);
     }
 }

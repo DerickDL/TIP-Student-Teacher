@@ -37,9 +37,15 @@ trait traitCourses
      * @param $iIntegCourseId
      * @return mixed
      */
-    public function insertCourse($aData, $iIntegCourseId)
+    public function insertCourse($aData)
     {
         $this->instantiateCourses();
-        return $this->logicCourses->insertCourse($aData, $iIntegCourseId);
+        return $this->logicCourses->insertCourse($aData);
+    }
+
+    public function deleteCourse($iCourseId)
+    {
+        $this->instantiateCourses();
+        return $this->logicCourses->deleteCourse($iCourseId);
     }
 }

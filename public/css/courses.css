@@ -23,6 +23,6 @@
     display: none;
 }
 
-.delete-lesson:hover {
+.delete-lesson:hover, .delete-course:hover {
     cursor: pointer;
 }

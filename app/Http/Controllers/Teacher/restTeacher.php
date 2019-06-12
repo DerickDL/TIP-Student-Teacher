@@ -38,4 +38,9 @@ class restTeacher extends Controller
     {
         $this->removeLesson($aRequest->all()['lesson_id']);
     }
+
+    public function removeCourse($iCourseId)
+    {
+        $this->deleteCourse($iCourseId);
+    }
 }

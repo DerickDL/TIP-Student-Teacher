@@ -22,12 +22,13 @@ Route::get('/forbidden', function() {
 Route::get('/teacher', 'Teacher\frontTeacher@homePage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/courses/{integ_course_id}', 'Teacher\frontTeacher@integCoursePage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/courses/{integ_course_id}/sub/{course_id}', 'Teacher\frontTeacher@subCourseDetailPage')->middleware('check.session', 'check.teacher');
-Route::get('/teacher/course/add', 'Teacher\frontTeacher@addCoursePage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/courses/{course_id}/add', 'Teacher\frontTeacher@addCoursePage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/course/add', 'Teacher\restTeacher@addCourse');
 Route::post('teacher/course/lesson/delete', 'Teacher\restTeacher@deleteLesson');
 
 Route::get('/teacher/courses/{course_id}/lesson/add', 'Teacher\frontTeacher@addLessonPage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/courses/{course_id}/lesson/add', 'Teacher\restTeacher@addLesson');
+Route::post('/teacher/course/delete/{course_id}', 'Teacher\restTeacher@removeLesson');
 Route::get('/teacher/courses/lesson/{lesson_id}', 'Teacher\frontTeacher@lessonPage')->middleware('check.session', 'check.teacher');
 
 Route::get('/teacher/courses/lesson/{lesson_id}/questions', 'Teacher\frontTeacher@questionsPage')->middleware('check.session', 'check.teacher');

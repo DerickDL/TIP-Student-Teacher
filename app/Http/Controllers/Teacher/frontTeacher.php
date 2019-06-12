@@ -49,10 +49,11 @@ class frontTeacher extends frontUsers
      * Teacher add course page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function addCoursePage()
+	public function addCoursePage($iIntegCourseId)
     {
         $aSession = $this->getSession();
-        return view('pages.teacher.teacher_add_course')->with('aSession', $aSession);
+        $aIntegCourse = $this->getIntegratedCourseDetail($iIntegCourseId);
+        return view('pages.teacher.teacher_add_course')->with('aSession', $aSession)->with('aIntegCourse', $aIntegCourse);
     }
 
     /**
