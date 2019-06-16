@@ -23,7 +23,7 @@
                                 <p class="card-text text-muted">{{$aCourseData['course_overview']}}</p>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="/teacher/courses/{{$aCourseData['id']}}" class="card-link stretched-link">Visit Course</a>
+                                <a href="/teacher/courses/{{$aCourseData['id']}}/sub/{{$aCourseData['id']}}" class="card-link stretched-link">Visit Course</a>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,6 @@
 <script type="text/javascript">
     var iIntegratedCourse = {!! json_encode($aIntegCourse['id']) !!};
     $(document).ready(function () {
-        console.log(iIntegratedCourse);
         $('#integ-course-' + iIntegratedCourse).addClass('active');
         $('#dropdown-sidebar-integ').attr('aria-expanded', 'true');
         $('#coursesSub').show();

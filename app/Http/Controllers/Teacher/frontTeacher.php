@@ -37,12 +37,12 @@ class frontTeacher extends frontUsers
      * @param $iCourseId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function subCourseDetailPage($iCourseId)
+    public function subCourseDetailPage($iIntegCourseId, $iCourseId)
     {
         $aSession = $this->getSession();
+        $aIntegCourse = $this->getIntegratedCourseDetail($iIntegCourseId);
         $aCourse = $this->getCourses(['id' => $iCourseId]);
-        $aLessons = $this->getLessons(['course_id' => $iCourseId]);
-        return view('pages.teacher.teacher_course')->with('aSession', $aSession)->with('aCourse', $aCourse)->with('aLessons', $aLessons);
+        return view('pages.teacher.teacher_course')->with('aSession', $aSession)->with('aCourse', $aCourse)->with('aIntegCourse', $aIntegCourse);
     }
 
     /**

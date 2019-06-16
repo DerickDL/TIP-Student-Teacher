@@ -7,44 +7,36 @@
 @section('teacher_content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/teacher/courses">Courses</a></li>
+            <li class="breadcrumb-item"><a href="/teacher/courses/{{$aIntegCourse['id']}}">{{$aIntegCourse['integrated_course_name']}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{$aCourse[0]['course_title']}}</li>
         </ol>
     </nav>
     <h2 class="mb-1">{{$aCourse[0]['course_title']}}</h2>
     <p>{{$aCourse[0]['course_overview']}}</p>
-    <div class="line"></div>
-    <div class="float-right">
-        <a class="btn btn-secondary"  href="/teacher/courses/{{$aCourse[0]['id']}}/lesson/add">Add Lesson</a>
-    </div>
     <div class="container">
-        <h4 class="mb-3">Lessons</h4>
-        @if(count($aLessons) < 1)
-            <div id="outer" class="container d-flex align-items-center justify-content-center">
-                <div id="inner">
-                    <p>No available lessons yet.</p>
-                </div>
-            </div>
-        @else
-            <div class="row">
-                <div class="col-sm-8">
-                    <div class="list-group">
-                        @foreach($aLessons as $aLessonData)
-                            <li class="list-group-item list-group-item-action">
-                                <a class="btn-link" href="/teacher/courses/lesson/{{$aLessonData['id']}}">{{$aLessonData['lesson_title']}}</a><span class="float-right delete-lesson" data-value="{{$aLessonData['id']}}">&#10005;</span>
-                            </li>
-                        @endforeach
+        <h4 class="mb-3">Resources</h4>
+        <form id="file-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-8">
+                        <input type="file" class="form-control-file" id="input-file" name="attached-file">
+                    </div>
+                    <div class="col-4">
+                        <div class="text-right"><button class="btn btn-sm btn-success" type="submit" id="upload-file">Upload</button></div>
                     </div>
                 </div>
             </div>
-        @endif
+        </form>
     </div>
 @endsection
 
 @push('scripts')
 <script type="text/javascript">
+    var iIntegratedCourse = {!! json_encode($aIntegCourse['id']) !!};
     $(document).ready(function () {
-        $('#course-tab').addClass('active');
+        $('#integ-course-' + iIntegratedCourse).addClass('active');
+        $('#dropdown-sidebar-integ').attr('aria-expanded', 'true');
+        $('#coursesSub').show();
     });
 </script>
 <script type="text/javascript" src="/js/course.js"></script>

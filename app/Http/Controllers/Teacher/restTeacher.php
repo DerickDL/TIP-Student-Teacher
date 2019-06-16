@@ -25,18 +25,13 @@ class restTeacher extends Controller
      * @param         $iCourseId
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addLesson(Request $oRequest, $iCourseId)
+    public function addFile(Request $oRequest)
     {
-        return response()->json($this->insertLesson($oRequest->all(), $iCourseId));
-    }
-
-    /**
-     * @param $iLessonId
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function deleteLesson(Request $aRequest)
-    {
-        $this->removeLesson($aRequest->all()['lesson_id']);
+        var_dump($oRequest->all());
+        $oFile = $oRequest->file('attached-file');
+        $new_name = rand() . '.' . $oFile->getClientOriginalExtension();
+        $oFile->move(public_path('files'), $new_name);
+        return response()->json($oRequest->all());
     }
 
     public function removeCourse($iCourseId)

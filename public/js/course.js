@@ -1,44 +1,37 @@
 $(document).ready(function () {
-    var oSubject = {
+    var oCourse = {
         init: function () {
             this.cacheDOM();
             this.bindEvents();
         },
 
         cacheDOM: function () {
-            this.oBtnDeleteLesson = $('.delete-lesson');
-            this.oListLesson = $('.list-group-item');
+            this.eBtnInputFile = $('#upload-file');
+            this.eFileForm = $('#file-form');
+            this.eInputFile = $('#input-file');
         },
 
         bindEvents: function () {
-            this.oListLesson.mouseover(function () {
-                $(this).children('span').show();
-            }).mouseleave(function () {
-                $(this).children('span').hide();
-            });
-            this.oBtnDeleteLesson.click(this.deleteLesson);
+            oCourse.eFileForm.on('submit', oCourse.uploadFile);
         },
 
-        deleteLesson: function () {
-            var oSelf = this;
-            if (confirm('Are you sure you want to delete this lesson?')) {
-                $.ajax({
-                    url: `/teacher/course/lesson/delete`,
-                    type: 'POST',
-                    data: {
-                        'lesson_id': $(oSelf).data('value')
-                    },
-                    success: function () {
-                        alert('Deleted successfully');
-                        $(oSelf).parent().remove();
-                    },
-                    error: function (err) {
-                        console.log(err);
-                    }
-                })
-            }
+        uploadFile: function (e) {
+            e.preventDefault();
+            var oFormData = new FormData(this);
+            $.ajax({
+                url: '/teacher/courses/file/add',
+                method: 'POST',
+                data: oFormData,
+                dataType: 'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (aResponse) {
+                    console.log(aResponse);
+                }
+            });
         }
     };
 
-    oSubject.init();
+    oCourse.init();
 });
