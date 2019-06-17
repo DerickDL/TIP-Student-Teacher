@@ -23,7 +23,7 @@
                                 <p class="card-text text-muted">{{$aCourseData['course_overview']}}</p>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="/teacher/courses/{{$aCourseData['id']}}/sub/{{$aCourseData['id']}}" class="card-link stretched-link">Visit Course</a>
+                                <a href="/teacher/courses/{{$aIntegCourse['id']}}/sub/{{$aCourseData['id']}}" class="card-link stretched-link">Visit Course</a>
                             </div>
                         </div>
                     </div>

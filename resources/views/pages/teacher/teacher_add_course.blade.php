@@ -28,9 +28,11 @@
 
 @push('scripts')
 <script type="text/javascript">
-    var iIntegCourse = {!! json_encode($aIntegCourse['id']) !!};
+    var iIntegratedCourse = {!! json_encode($aIntegCourse['id']) !!};
     $(document).ready(function () {
-        $('#subject-tab').addClass('active');
+        $('#integ-course-' + iIntegratedCourse).addClass('active');
+        $('#dropdown-sidebar-integ').attr('aria-expanded', 'true');
+        $('#coursesSub').show();
     });
 </script>
 <script type="text/javascript" src="/js/add_course.js"></script>

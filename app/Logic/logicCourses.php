@@ -59,7 +59,7 @@ class logicCourses
         if ($aValidation['result'] === false) {
             return $aValidation;
         }
-        $aData['integrated_course_id'] = $aRequest['course_user_id'];
+        $aData['integrated_course_id'] = $aRequest['integrated_course_id'];
         $aData['user_id'] = $aRequest['course_user_id'];
         $this->modelCourses->insertCourse($aData);
         return array(

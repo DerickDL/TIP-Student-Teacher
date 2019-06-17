@@ -20,7 +20,7 @@ $(document).ready(function () {
 
         cancelSavingCourse: function() {
             if (confirm("Are you sure you want to cancel?")) {
-                window.location.replace(`/teacher/courses/${iIntegCourse}`);
+                window.location.replace(`/teacher/courses/${iIntegratedCourse}`);
             }
         },
 
@@ -39,12 +39,12 @@ $(document).ready(function () {
                     'course_title': oAddCourse.oInputTitle.val(),
                     'course_overview': oAddCourse.oInputOverview.val(),
                     'course_user_id': iUserId,
-                    'integrated_course_id': iIntegCourse
+                    'integrated_course_id': iIntegratedCourse
                 },
                 success: function (aResponse) {
                     if (aResponse.result === true) {
                         alert("Added successfully");
-                        window.location.replace(`/teacher/courses/${iIntegCourse}`);
+                        window.location.replace(`/teacher/courses/${iIntegratedCourse}`);
                     } else {
                         alert(aResponse.message);
                     }
