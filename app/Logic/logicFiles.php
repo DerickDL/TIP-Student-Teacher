@@ -2,75 +2,71 @@
 
 namespace App\Logic;
 
-use App\Model\modelCourses;
-use App\Model\modelLessons;
+use App\Model\modelFiles;
 use Illuminate\Support\Facades\Validator;
 
-class logicLessons
+class logicFiles
 {
     /**
-     * @var modelCourses
+     * @var modelFiles
      */
-    private $modelCourses;
-
-    /**
-     * @var modelLessons
-     */
-    private $modelLessons;
+    private $modelFiles;
 
     /**
      * logicLessons constructor.
-     * @param $modelCourses
-     * @param $modelLessons
+     * @param $modelFiles
      */
-    public function __construct($modelCourses, $modelLessons)
+    public function __construct($modelFiles)
     {
-        $this->modelCourses = $modelCourses;
-        $this->modelLessons = $modelLessons;
+        $this->modelFiles = $modelFiles;
     }
 
     /**
-     * Get all lessons
+     * Get all files
      * @param $aParams
      * @return mixed
      */
-    public function getLessons($aParams)
+    public function getFiles($aParams)
     {
-        return $this->modelLessons->getLessons($aParams);
+        return $this->modelFiles->getFiles($aParams);
     }
 
     /**
-     * Get parent course
-     * @param $iLessonId
-     * @return mixed
-     */
-    public function getParentCourse($iLessonId)
-    {
-        $oLesson = $this->modelLessons->findLesson($iLessonId);
-        return $oLesson->courses;
-    }
-
-    /**
-     * insert lessons
+     * insert files
      * @param $aRequest
      * @param $iCourseId
      * @return mixed
      */
-    public function insertLesson($aRequest, $iCourseId)
+    public function insertFile($aRequest, $iCourseId)
     {
         $aRules = array(
-            'lesson_title' => 'required|string',
-            'lesson_overview' => 'required|string'
+            'attached-file' => 'required|mimes:doc,docx,pdf,zip,txt',
         );
-        $aValidation = $this->validateLesson($aRules, $aRequest);
+        $aValidation = $this->validateFiles($aRules, $aRequest);
         if ($aValidation['result'] === false) {
             return $aValidation;
         }
-        $oCourse = $this->modelCourses->findCourse($iCourseId);
-        $oCourse->lessons()->create($aRequest);
-        return array(
-            'result' => true
+        $sName = $aRequest['attached-file']->getClientOriginalName();
+        $sNewName = $this->moveFile($aRequest);
+        $aData = array(
+            'filename' => $sName,
+            'new_filename' => $sNewName,
+            'course_id' => $iCourseId
         );
+        $aUploadedFile = $this->modelFiles->insertFile($aData);
+        return array(
+            'result' => true,
+            'data' => $aUploadedFile,
+            'message' => 'Uploaded Successfully!'
+        );
+    }
+
+    private function moveFile($aData)
+    {
+        $oFile = $aData['attached-file'];
+        $sNewName = rand() . '.' . $oFile->getClientOriginalExtension();
+        $oFile->move(public_path('files'), $sNewName);
+        return $sNewName;
     }
 
     
@@ -80,7 +76,7 @@ class logicLessons
 	 * @param $aData
 	 * @return array
 	 */
-    private function validateLesson($aRules, $aData)
+    private function validateFiles($aRules, $aData)
     {
         $validator = Validator::make($aData, $aRules);
         if ($validator->fails()) {
@@ -93,12 +89,12 @@ class logicLessons
     }
 
     /**
-     * delete lesson
-     * @param $iLessonId
+     * delete file
+     * @param $iFileId
      * @return mixed
      */
-    public function deleteLesson($iLessonId)
+    public function deleteFiles($iFileId)
     {
-        return $this->modelLessons->deleteLesson($iLessonId);
+        return $this->modelFiles->deleteFiles($iFileId);
     }
 }

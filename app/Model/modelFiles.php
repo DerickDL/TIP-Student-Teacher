@@ -16,7 +16,7 @@ class modelFiles extends Model
     /**
      * @var array
      */
-    protected $fillable = ['filename'];
+    protected $fillable = ['filename', 'new_filename', 'course_id'];
 
     public function courses()
     {

@@ -19,7 +19,7 @@ $(document).ready(function () {
             e.preventDefault();
             var oFormData = new FormData(this);
             $.ajax({
-                url: '/teacher/courses/file/add',
+                url: '/teacher/courses/file/add/' + iIntegratedCourse,
                 method: 'POST',
                 data: oFormData,
                 dataType: 'JSON',
@@ -28,9 +28,13 @@ $(document).ready(function () {
                 processData: false,
                 success: function (aResponse) {
                     console.log(aResponse);
+                    alert(aResponse['message']);
+                    if (aResponse['result'] === true) {
+                        location.reload();
+                    }
                 }
             });
-        }
+        },
     };
 
     oCourse.init();

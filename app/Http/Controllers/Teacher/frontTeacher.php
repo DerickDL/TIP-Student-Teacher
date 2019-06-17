@@ -42,7 +42,8 @@ class frontTeacher extends frontUsers
         $aSession = $this->getSession();
         $aIntegCourse = $this->getIntegratedCourseDetail($iIntegCourseId);
         $aCourse = $this->getCourses(['id' => $iCourseId]);
-        return view('pages.teacher.teacher_course')->with('aSession', $aSession)->with('aCourse', $aCourse)->with('aIntegCourse', $aIntegCourse);
+        $aFiles = $this->getFiles(['course_id' => $iCourseId]);
+        return view('pages.teacher.teacher_course')->with('aSession', $aSession)->with('aCourse', $aCourse)->with('aIntegCourse', $aIntegCourse)->with('aFiles', $aFiles);
     }
 
     /**

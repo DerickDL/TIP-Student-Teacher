@@ -27,6 +27,14 @@
                 </div>
             </div>
         </form>
+        <ul class="list-group list-group-flush" id="list-files">
+            @foreach($aFiles as $aFileData)
+                <li class="list-group-item" data-value="{{$aFileData['id']}}">{{$aFileData['filename']}}</li>
+            @endforeach
+        </ul>
+        <div class="text-right mt-3">
+            <a href="#" class="badge badge-info">Manage Questions</a>
+        </div>
     </div>
 @endsection
 
