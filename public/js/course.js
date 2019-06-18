@@ -34,6 +34,9 @@ $(document).ready(function () {
                     if (aResponse['result'] === true) {
                         location.reload();
                     }
+                },
+                error: function () {
+                    oCourse.doneState();
                 }
             });
         },

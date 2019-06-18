@@ -4,6 +4,7 @@ namespace App\Logic;
 
 use App\Model\modelFiles;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class logicFiles
 {
@@ -65,7 +66,7 @@ class logicFiles
     {
         $oFile = $aData['attached-file'];
         $sNewName = rand() . '.' . $oFile->getClientOriginalExtension();
-        $oFile->move(public_path('files'), $sNewName);
+        $oFile->storeAs('attachments', $sNewName);
         return $sNewName;
     }
 
