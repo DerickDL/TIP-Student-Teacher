@@ -1,5 +1,5 @@
 @extends('pages.teacher.teacher_base')
-    <link rel="stylesheet" type="text/css" href="/css/courses.css">
+
 @push('styles')
 
 @endpush
@@ -41,6 +41,7 @@
 @push('scripts')
 <script type="text/javascript">
     var iIntegratedCourse = {!! json_encode($aIntegCourse['id']) !!};
+    var iSubCourse = {!! json_encode($aCourse[0]['id']) !!};
     $(document).ready(function () {
         $('#integ-course-' + iIntegratedCourse).addClass('active');
         $('#dropdown-sidebar-integ').attr('aria-expanded', 'true');

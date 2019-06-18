@@ -19,7 +19,7 @@ $(document).ready(function () {
             e.preventDefault();
             var oFormData = new FormData(this);
             $.ajax({
-                url: '/teacher/courses/file/add/' + iIntegratedCourse,
+                url: '/teacher/courses/file/add/' + iSubCourse,
                 method: 'POST',
                 data: oFormData,
                 dataType: 'JSON',

@@ -1,7 +1,8 @@
 @extends('index')
 
 @push('styles')
-<link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/css/courses.css">
 @endpush
 
 @section('content')

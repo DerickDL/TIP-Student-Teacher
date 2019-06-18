@@ -1,5 +1,5 @@
 @extends('pages.teacher.teacher_base')
-    <link rel="stylesheet" type="text/css" href="/css/courses.css">
+
 @push('styles')
 
 @endpush
