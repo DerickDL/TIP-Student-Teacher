@@ -19,10 +19,15 @@
     overflow: hidden;
 }
 
-.delete-lesson {
+#upload-spinner {
     display: none;
 }
 
-.delete-lesson:hover, .delete-course:hover {
+#upload-spinner.active {
+    display: inline-block !important;
+}
+
+.delete-course:hover {
     cursor: pointer;
 }
+

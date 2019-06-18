@@ -22,7 +22,12 @@
                         <input type="file" class="form-control-file" id="input-file" name="attached-file">
                     </div>
                     <div class="col-4">
-                        <div class="text-right"><button class="btn btn-sm btn-success" type="submit" id="upload-file">Upload</button></div>
+                        <div class="text-right">
+                            <button class="btn btn-sm btn-success" type="submit" id="upload-file">
+                                <span id="upload-spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Upload
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

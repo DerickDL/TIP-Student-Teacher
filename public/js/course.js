@@ -6,8 +6,9 @@ $(document).ready(function () {
         },
 
         cacheDOM: function () {
-            this.eBtnInputFile = $('#upload-file');
             this.eFileForm = $('#file-form');
+            this.eUploadSpinner = $('#upload-spinner');
+            this.eBtnInputFile = $('#upload-file');
             this.eInputFile = $('#input-file');
         },
 
@@ -18,6 +19,7 @@ $(document).ready(function () {
         uploadFile: function (e) {
             e.preventDefault();
             var oFormData = new FormData(this);
+            oCourse.loadState();
             $.ajax({
                 url: '/teacher/courses/file/add/' + iSubCourse,
                 method: 'POST',
@@ -27,7 +29,7 @@ $(document).ready(function () {
                 cache: false,
                 processData: false,
                 success: function (aResponse) {
-                    console.log(aResponse);
+                    oCourse.doneState();
                     alert(aResponse['message']);
                     if (aResponse['result'] === true) {
                         location.reload();
@@ -35,6 +37,18 @@ $(document).ready(function () {
                 }
             });
         },
+
+        loadState: function () {
+            oCourse.eBtnInputFile.prop('disabled', 'disabled');
+            oCourse.eInputFile.prop('disabled', 'disabled');
+            oCourse.eUploadSpinner.addClass('active');
+        },
+
+        doneState: function () {
+            oCourse.eBtnInputFile.removeAttr('disabled');
+            oCourse.eInputFile.removeAttr('disabled');
+            oCourse.eUploadSpinner.removeClass('active');
+        }
     };
 
     oCourse.init();
