@@ -10,10 +10,21 @@ $(document).ready(function () {
             this.eUploadSpinner = $('#upload-spinner');
             this.eBtnInputFile = $('#upload-file');
             this.eInputFile = $('#input-file');
+            this.eListFile = $('.list-file');
+            this.eDeleteFile = $('.delete-file');
         },
 
         bindEvents: function () {
             oCourse.eFileForm.on('submit', oCourse.uploadFile);
+            oCourse.eListFile.hover(
+                function () {
+                    $(this).find('.delete-file').show();    
+                },
+                function () {
+                    $(this).find('.delete-file').hide();
+                }
+            );
+            oCourse.eDeleteFile.click(oCourse.deleteFile);
         },
 
         uploadFile: function (e) {
@@ -39,6 +50,18 @@ $(document).ready(function () {
                     oCourse.doneState();
                 }
             });
+        },
+
+        deleteFile: function () {
+            if (confirm("Are you sure you want to delete this file?")) {
+                $.ajax({
+                    url: '/teacher/courses/file/delete/' + $(this).data('value'),
+                    type: 'DELETE',
+                    success: function (aResponse) {
+                        alert("Successfully deleted");
+                    }
+                });
+            }
         },
 
         loadState: function () {

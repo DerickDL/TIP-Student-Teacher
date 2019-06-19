@@ -14,13 +14,13 @@ class restQuestions extends Controller
      * @param Request $oRequest
      * @param         $iLessonId
      */
-    public function addQuestion(Request $oRequest, $iLessonId)
+    public function addQuestion(Request $oRequest, $iCourseId)
     {
-        $this->insertQuestion($oRequest->all(), $iLessonId);
+        $this->insertQuestion($oRequest->all(), $iCourseId);
     }
 
-    public function loadQuestion(Request $oRequest, $iLessonId)
+    public function loadQuestion(Request $oRequest, $iCourseId)
     {
-        return response()->json($this->loadQuestions($iLessonId, ['question_difficulty' => $oRequest->all()['difficulty']]));
+        return response()->json($this->loadQuestions($iCourseId, ['question_difficulty' => $oRequest->all()['difficulty']]));
     }
 }

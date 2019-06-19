@@ -27,7 +27,7 @@ class AddIntegratedCoursesForeignKey extends Migration
     public function down()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->dropForeign('integrated_course_id');
+            $table->dropForeign(['integrated_course_id']);
         });
     }
 }

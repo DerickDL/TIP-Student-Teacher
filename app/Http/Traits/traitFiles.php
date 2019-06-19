@@ -58,7 +58,7 @@ trait traitFiles
      * @param $iFileId
      * @return mixed
      */
-    public function removeFile($iFileId)
+    public function deleteFile($iFileId)
     {
         $this->instantiateFiles();
         return $this->logicFiles->deleteFile($iFileId);

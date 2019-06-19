@@ -32,6 +32,15 @@ class restTeacher extends Controller
     }
 
     /**
+     * @param         $iFileId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function removeFile($iFileId)
+    {
+        return response()->json($this->deleteFile($iFileId));
+    }
+
+    /**
      * @param $iFileId
      * @return mixed
      */

@@ -7,9 +7,8 @@
 @section('teacher_content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/teacher/courses">Courses</a></li>
-            <li class="breadcrumb-item"><a href="/teacher/courses/{{$aCourse['id']}}">{{$aCourse['course_title']}}</a></li>
-            <li class="breadcrumb-item"><a href="/teacher/courses/lesson/{{$aLesson[0]['id']}}">{{$aLesson[0]['lesson_title']}}</a></li>
+            <li class="breadcrumb-item"><a href="/teacher/courses/{{$aIntegCourse['id']}}">{{$aIntegCourse['integrated_course_name']}}</a></li>
+            <li class="breadcrumb-item"><a href="/teacher/courses/{{$aIntegCourse['id']}}/sub/{{$aCourse[0]['id']}}">{{$aCourse[0]['course_title']}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">Questions</li>
         </ol>
     </nav>
@@ -47,9 +46,12 @@
 
 @push('scripts')
 <script type="text/javascript">
-    var iLesson = {{$aLesson[0]['id']}};
+    var iIntegratedCourse = {!! json_encode($aIntegCourse['id']) !!};
+    var iSubCourse = {!! json_encode($aCourse[0]['id']) !!};
     $(document).ready(function () {
-        $('#course-tab').addClass('active');
+        $('#integ-course-' + iIntegratedCourse).addClass('active');
+        $('#dropdown-sidebar-integ').attr('aria-expanded', 'true');
+        $('#coursesSub').show();
     });
 </script>
 <script type="text/javascript" src="/js/add_question.js"></script>

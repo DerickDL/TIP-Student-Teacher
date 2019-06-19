@@ -4,15 +4,15 @@ namespace App\Logic;
 
 
 use App\Model\modelChoices;
-use App\Model\modelLessons;
+use App\Model\modelCourses;
 use App\Model\modelQuestions;
 
 class logicQuestions
 {
     /**
-     * @var modelLessons
+     * @var modelCourses
      */
-    private $modelLessons;
+    private $modelCourses;
 
     /**
      * @var modelQuestions
@@ -24,28 +24,28 @@ class logicQuestions
      */
 	private $modelChoices;
 
-	public function __construct($modelLessons, $modelQuestions, $modelChoices)
+	public function __construct($modelCourses, $modelQuestions, $modelChoices)
 	{
-		$this->modelLessons = $modelLessons;
+		$this->modelCourses = $modelCourses;
 		$this->modelQuestions = $modelQuestions;
 		$this->modelChoices = $modelChoices;
 	}
 
-    public function loadQuestions($iLessonId, $aParams)
+    public function loadQuestions($iCourseId, $aParams)
     {
-        $oLesson =  $this->modelLessons->findLesson($iLessonId);
-        return $oLesson->questions()->where($aParams)->get();
+        $oCourse =  $this->modelCourses->findCourse($iCourseId);
+        return $oCourse->questions()->where($aParams)->get();
     }
 
     /**
      * @param $aRequest
-     * @param $iLessonId
+     * @param $iCourseId
      */
-	public function insertQuestion($aRequest, $iLessonId)
+	public function insertQuestion($aRequest, $iCourseId)
     {
-        $oLesson = $this->modelLessons->findLesson($iLessonId);
+        $oCourse = $this->modelCourses->findCourse($iCourseId);
         $aQuestion = $aRequest['data'];
-        $aQuestionReturn = $this->addQuestion($oLesson, $aQuestion);
+        $aQuestionReturn = $this->addQuestion($oCourse, $aQuestion);
         if ((int)$aQuestion['type'] === 0) {
             foreach ($aQuestion['choices'] as $sChoice) {
                 $this->addChoice($aQuestion, $sChoice, $aQuestionReturn);
@@ -54,11 +54,11 @@ class logicQuestions
     }
 
     /**
-     * @param $oLessons
+     * @param $oCourses
      * @param $aQuestion
      * @return mixed
      */
-    private function addQuestion($oLessons, $aQuestion)
+    private function addQuestion($oCourses, $aQuestion)
     {
         $aQuestionData = [
             'question' => $aQuestion['question'],
@@ -68,7 +68,7 @@ class logicQuestions
         if ((int)$aQuestion['type'] === 1) {
             $aQuestionData['question_answer'] = (int)$aQuestion['answer'];
         }
-        return $oLessons->questions()->create($aQuestionData);
+        return $oCourses->questions()->create($aQuestionData);
     }
 
     /**

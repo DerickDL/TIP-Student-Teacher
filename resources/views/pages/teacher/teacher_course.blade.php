@@ -34,11 +34,14 @@
         </form>
         <ul class="list-group list-group-flush" id="list-files">
             @foreach($aFiles as $aFileData)
-                <li class="list-group-item" data-value="{{$aFileData['id']}}"><a href="/api/file/download/attachments/{{$aFileData['id']}}" target="_blank" class="btn-link">{{$aFileData['filename']}}</a></li>
+                <li class="list-group-item list-file">
+                    <a href="/api/file/download/attachments/{{$aFileData['id']}}" target="_blank" class="btn-link">{{$aFileData['filename']}}</a>
+                    <span class="float-right delete-file" data-value="{{$aFileData['id']}}"><i class="fa fa-trash"></i></span>
+                </li>
             @endforeach
         </ul>
         <div class="text-right mt-3">
-            <a href="#" class="badge badge-info">Manage Questions</a>
+            <a href="/teacher/courses/{{$aIntegCourse['id']}}/sub/{{$aCourse[0]['id']}}/questions" class="badge badge-info">Manage Questions</a>
         </div>
     </div>
 @endsection

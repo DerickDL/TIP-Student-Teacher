@@ -18,9 +18,9 @@ class modelCourses extends Model
      */
     protected $fillable = ['course_code', 'course_title', 'course_overview', 'user_id', 'integrated_course_id'];
 
-    public function lessons()
+    public function questions()
     {
-        return $this->hasMany('App\Model\modelLessons', 'course_id');
+        return $this->hasMany('App\Model\modelQuestions', 'course_id');
     }
 
     public function users()

@@ -27,7 +27,11 @@
     display: inline-block !important;
 }
 
-.delete-course:hover {
+.delete-course:hover, .delete-file:hover {
     cursor: pointer;
+}
+
+.delete-file {
+    display: none;
 }
 

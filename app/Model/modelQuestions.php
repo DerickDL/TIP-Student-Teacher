@@ -23,9 +23,9 @@ class modelQuestions extends Model
         return $this->belongsTo('App\Model\modelQuizzes');
     }
 
-    public function lessons()
+    public function courses()
     {
-        return $this->belongsTo('App\Model\modelLessons', 'lesson_id');
+        return $this->belongsTo('App\Model\modelCourses', 'course_id');
     }
 
     public function choices()

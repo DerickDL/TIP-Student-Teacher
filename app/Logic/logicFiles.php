@@ -104,8 +104,18 @@ class logicFiles
      * @param $iFileId
      * @return mixed
      */
-    public function deleteFiles($iFileId)
+    public function deleteFile($iFileId)
     {
-        return $this->modelFiles->deleteFiles($iFileId);
+        $aFileData = $this->modelFiles->findFile($iFileId);
+        $this->removeFile($aFileData);
+        return $this->modelFiles->deleteFile($iFileId);
+    }
+
+    /**
+     * @param $aFileData
+     */
+    private function removeFile($aFileData)
+    {
+        Storage::delete('attachments/' . $aFileData['new_filename']);
     }
 }
