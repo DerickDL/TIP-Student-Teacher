@@ -39,7 +39,7 @@ class logicFiles
     public function retrieveFile($iFileId)
     {
         $aFileData = $this->modelFiles->findFile($iFileId);
-        return Storage::download('attachments/' . $aFileData['new_filename'], 'sample.pdf');
+        return Storage::download('attachments/' . $aFileData['new_filename']);
     }
 
     /**
