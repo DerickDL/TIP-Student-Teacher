@@ -34,7 +34,7 @@
         </form>
         <ul class="list-group list-group-flush" id="list-files">
             @foreach($aFiles as $aFileData)
-                <li class="list-group-item" data-value="{{$aFileData['id']}}"><a href="#" class="btn-link">{{$aFileData['filename']}}</a></li>
+                <li class="list-group-item" data-value="{{$aFileData['id']}}"><a href="/api/file/download/attachments/{{$aFileData['id']}}" target="_blank" class="btn-link">{{$aFileData['filename']}}</a></li>
             @endforeach
         </ul>
         <div class="text-right mt-3">

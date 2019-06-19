@@ -33,6 +33,16 @@ class logicFiles
     }
 
     /**
+     * @param $iFileId
+     * @return mixed
+     */
+    public function retrieveFile($iFileId)
+    {
+        $aFileData = $this->modelFiles->findFile($iFileId);
+        return Storage::download('attachments/' . $aFileData['new_filename'], 'sample.pdf');
+    }
+
+    /**
      * insert files
      * @param $aRequest
      * @param $iCourseId

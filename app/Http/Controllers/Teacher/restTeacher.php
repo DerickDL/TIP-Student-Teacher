@@ -31,6 +31,15 @@ class restTeacher extends Controller
         return response()->json($this->insertFile($oRequest->all(), $iFileId));
     }
 
+    /**
+     * @param $iFileId
+     * @return mixed
+     */
+    public function downloadFile($iFileId)
+    {
+        return $this->retrieveFile($iFileId);
+    }
+
     public function removeCourse($iCourseId)
     {
         $this->deleteCourse($iCourseId);

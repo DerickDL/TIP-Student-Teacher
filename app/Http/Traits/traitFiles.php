@@ -32,6 +32,17 @@ trait traitFiles
     }
 
     /**
+     * @param $iFileId
+     * @return mixed
+     */
+    public function retrieveFile($iFileId)
+    {
+        $this->instantiateFiles();
+        return $this->logicFiles->retrieveFile($iFileId);
+    }
+
+
+    /**
      * Insert lesson
      * @param array $aData
      * @param $iCourseId
