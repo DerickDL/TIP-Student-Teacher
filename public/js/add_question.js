@@ -79,12 +79,12 @@ $(document).ready(function () {
                                 <textarea class="form-control" id="question-content" rows="3" placeholder="Question here..."></textarea>
                                 ${(iQuestionType === 0) ?
                                    `<div class="input-group-append">
-                                        <button class="btn btn-default btn-add-quiz" id="question-add-choice${iQuestionNumber}">Add choice</button>
+                                        <button class="btn btn-secondary btn-add-quiz" id="question-add-choice${iQuestionNumber}">Add choice</button>
                                    </div>` : ''
                                 }
                                 ${(iQuestionType === 3) ?
                `<div class="input-group-append">
-                                        <button class="btn btn-default btn-add-quiz" id="question-add-blank${iQuestionNumber}">Add blank</button>
+                                        <button class="btn btn-secondary btn-add-quiz" id="question-add-blank${iQuestionNumber}">Add blank</button>
                                    </div>` : ''
                }
                             </div>
@@ -153,7 +153,7 @@ $(document).ready(function () {
                     <div class="input-group">
                         <input type="text" class="form-control input-choice" aria-label="Text input with radio button">
                         <div class="input-group-append">
-                            <button class="btn btn-default btn-delete-answer">&mdash;</button>
+                            <button class="btn btn-secondary btn-delete-answer">&mdash;</button>
                         </div>
                     </div>
                 </li>
@@ -177,7 +177,7 @@ $(document).ready(function () {
                         </div>
                         <input type="text" class="form-control input-choice" aria-label="Text input with radio button">
                         <div class="input-group-append">
-                            <button class="btn btn-default btn-delete-choice">&mdash;</button>
+                            <button class="btn btn-secondary btn-delete-choice">&mdash;</button>
                         </div>
                     </div>
                 </li>
