@@ -59,6 +59,7 @@ $(document).ready(function () {
                     type: 'DELETE',
                     success: function (aResponse) {
                         alert("Successfully deleted");
+                        location.reload();
                     }
                 });
             }
