@@ -151,7 +151,9 @@ return [
         'sUsername' => 'Username',
         'sPassword' => 'Password',
         'iType' => 'Type',
-        'sStudent' => 'Student ID'
+        'sStudent' => 'Student ID',
+        'course_id' => 'Course',
+        'quiz_items' => 'No. of Questions'
     ],
 
 ];

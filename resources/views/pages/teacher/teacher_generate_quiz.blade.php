@@ -1,0 +1,62 @@
+@extends('pages.teacher.teacher_base')
+
+@push('styles')
+
+@endpush
+
+@section('teacher_content')
+    <div class="container">
+        <div id="form-generate">
+            <button class="btn btn-primary float-right" id="btn-generate">Generate</button>
+            <form>
+                <div class="row">
+                  <div class="col-8">
+                    <div class="form-group">
+                        <label>Integration Course</label>
+                        <select class="form-control" id="integ-courses">
+                          <option selected hidden id="integ-default">Select Integration Course</option>
+                          <option value="1">Integration Course 1</option>
+                          <option value="2">Integration Course 2</option>
+                          <option value="3">Integration Course 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Course</label>
+                        <select class="form-control" id="sub-courses">
+                            <option selected hidden id="sub-default" value="">Select Course</option>
+                        </select>
+                    </div>
+                    <div class="row">
+						<div class="form-group col-6">
+							<label>No. of Items</label>
+							<input type="text" class="form-control" id="no-items">
+						</div>
+						<div class="form-group col-6">
+							<label>Time Limit (minutes)</label>
+							<input type="text" class="form-control" id="time-limit">
+						</div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+        </div>
+        <div class="mt-3" id="questions-area">
+            <h5>Questions:</h5>
+            <div id="questions-list">
+
+            </div>
+        </div>
+    </div>
+@endsection
+
+@push('scripts')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#generate-quiz').addClass('active');
+        $('#dropdown-sidebar-quiz').attr('aria-expanded', 'true');
+        $('#quizSub').show();
+	});
+	var aSubCourses = {!! json_encode($aSubCourses) !!}
+</script>
+<script type="text/javascript" src="/js/add_quiz.js"></script>
+@endpush

@@ -48,4 +48,18 @@ trait traitCourses
         $this->instantiateCourses();
         return $this->logicCourses->deleteCourse($iCourseId);
     }
+
+    public function getSubCourses()
+    {
+        $aCourses = $this->getCourses();
+        $aSubCourses = [
+            1 => [],
+            2 => [],
+            3 => []
+        ];
+        foreach ($aCourses as $aCourseDetail) {
+            array_push($aSubCourses[$aCourseDetail['integrated_course_id']], $aCourseDetail);
+        }
+        return $aSubCourses;
+    }
 }

@@ -23,4 +23,9 @@ class restQuestions extends Controller
     {
         return response()->json($this->loadQuestions($iCourseId, ['question_difficulty' => $oRequest->all()['difficulty']]));
     }
+
+    public function generateQuestions(Request $oRequest)
+    {
+        return response()->json($this->generateQuizQuestions($oRequest->all()));
+    }
 }

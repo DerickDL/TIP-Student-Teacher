@@ -19,21 +19,28 @@ Route::get('/forbidden', function() {
     return view('forbidden');
 });
 
+/**TEACHER HOME PAGE**/
 Route::get('/teacher', 'Teacher\frontTeacher@homePage')->middleware('check.session', 'check.teacher');
+
+/**MAIN COURSE PAGE**/
 Route::get('/teacher/courses/{integ_course_id}', 'Teacher\frontTeacher@integCoursePage')->middleware('check.session', 'check.teacher');
+
+/**SUB COURSES PAGE**/
 Route::get('/teacher/courses/{integ_course_id}/sub/{course_id}', 'Teacher\frontTeacher@subCourseDetailPage')->middleware('check.session', 'check.teacher');
-Route::get('/teacher/courses/{course_id}/add', 'Teacher\frontTeacher@addCoursePage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/courses/{integ_course_id}/add', 'Teacher\frontTeacher@addCoursePage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/course/add', 'Teacher\restTeacher@addCourse');
-Route::post('teacher/course/lesson/delete', 'Teacher\restTeacher@deleteLesson');
 Route::post('teacher/courses/file/add/{course_id}', 'Teacher\restTeacher@addFile');
 Route::delete('teacher/courses/file/delete/{file_id}', 'Teacher\restTeacher@removeFile');
 
+/**QUESTIONS PAGE**/
 Route::get('/teacher/courses/{integ_course_id}/sub/{course_id}/questions', 'Teacher\frontTeacher@questionsPage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/courses/sub/{course_id}/questions/add', 'Questions\restQuestions@addQuestion');
 Route::get('/teacher/courses/sub/{course_id}/questions/load', 'Questions\restQuestions@loadQuestion');
-
-Route::get('/teacher/course/{course_id}/quizzes', 'Teacher\frontTeacher@quizPage')->middleware('check.session', 'check.teacher');
-Route::get('/teacher/course/{course_id}/quizzes/add', 'Teacher\frontTeacher@addQuizPage')->middleware('check.session', 'check.teacher');
+ 
+/**QUIZZESS PAGE**/
+Route::get('/teacher/quizzes', 'Teacher \frontTeacher@quizPage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/quizzes/generate', 'Teacher\frontTeacher@generateQuizPage')->middleware('check.session', 'check.teacher');
+Route::post('/teacher/quizzes/generate', 'Questions\restQuestions@generateQuestions')->middleware('check.session', 'check.teacher');
 
 Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}', 'Student\frontStudent@courseHomePage')->middleware('check.session', 'check.student');

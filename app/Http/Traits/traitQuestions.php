@@ -33,4 +33,10 @@ trait traitQuestions
         $this->instantiateQuestions();
         return $this->logicQuestions->loadQuestions($iLessonId, $aParams);
     }
+
+    public function generateQuizQuestions($aRequest)
+    {
+        $this->instantiateQuestions();
+        return $this->logicQuestions->generateQuizQuestions($aRequest);
+    }
 }

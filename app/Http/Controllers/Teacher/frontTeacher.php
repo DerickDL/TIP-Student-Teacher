@@ -58,31 +58,6 @@ class frontTeacher extends frontUsers
     }
 
     /**
-     * Teacher  lesson page
-     * @param $iLessonId
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function lessonPage($iLessonId)
-    {
-        $aSession = $this->getSession();
-        $aCourse = $this->getParentCourse($iLessonId);
-        $aLesson = $this->getLessons(['id' => $iLessonId]);
-        return view('pages.teacher.teacher_lesson')->with('aSession', $aSession)->with('aCourse', $aCourse)->with('aLesson', $aLesson);
-    }
-
-    /**
-     * Teacher add lesson page
-     * @param $iCourseId
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function addLessonPage($iCourseId)
-    {
-        $aSession = $this->getSession();
-        $aCourse = $this->getCourses(['id' => $iCourseId]);
-        return view('pages.teacher.teacher_add_lesson')->with('aSession', $aSession)->with('aCourse', $aCourse);
-    }
-
-    /**
      * Teacher questions page
      * @param $iCourseId
      * @param $iIntegCourseId
@@ -98,25 +73,25 @@ class frontTeacher extends frontUsers
 
     /**
      * Teacher quizzes page
-     * @param $iCourseId
      * @param $iQuizId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function quizPage($iCourseId)
+    public function quizPage()
     {
+        $aSession = $this->getSession();
         $aData = $this->getPageData(['id' => $iCourseId]);
         $aQuiz = $this->getQuizzes(['course_id' => $iCourseId]);
         return view('pages.teacher.teacher_quizzes')->with('aData', $aData)->with('aQuiz', $aQuiz);
     }
 
     /**
-     * add quiz
-     * @param $iCourseId
+     * generate quiz
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function addQuizPage($iCourseId)
+    public function generateQuizPage()
     {
-        $aData = $this->getPageData(['id' => $iCourseId]);
-        return view('pages.teacher.teacher_add_quiz')->with('aData', $aData);
+        $aSession = $this->getSession();
+        $aSubCourses = $this->getSubCourses();
+        return view('pages.teacher.teacher_generate_quiz')->with('aSession', $aSession)->with('aSubCourses', $aSubCourses);
     }
 }
