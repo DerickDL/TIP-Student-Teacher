@@ -58,7 +58,6 @@ $(document).ready(function () {
                 oAddQuestion.eAreaListQuestions.append('<p>No questions yet on this difficulty.</p>');
             }
             $.each(aResponse, function (index, value) {
-                console.log(value);
                  var sQuestionTemplate = `
                         <li class="list-group-item">${index + 1}.) ${value['question']}</li>
                  `;
@@ -214,6 +213,7 @@ $(document).ready(function () {
                             oAddQuestion.loadQuestion();
                         }
                     });
+                    console.log(aQuestionData['data']);
                 }
            }
        },

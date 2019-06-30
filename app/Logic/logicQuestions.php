@@ -47,7 +47,7 @@ class logicQuestions
         $oCourse = $this->modelCourses->findCourse($iCourseId);
         $aQuestion = $aRequest['data'];
         $aQuestionReturn = $this->addQuestion($oCourse, $aQuestion);
-        if ((int)$aQuestion['type'] === 0) {
+        if ((int)$aQuestion['type'] === 0 || (int)$aQuestion['type'] === 3) {
             foreach ($aQuestion['choices'] as $sChoice) {
                 $this->addChoice($aQuestion, $sChoice, $aQuestionReturn);
             }
@@ -79,6 +79,7 @@ class logicQuestions
      */
     private function addChoice($aQuestion, $sChoice, $aQuestionReturn)
     {
+        
         $oQuestions = $this->modelQuestions->findQuestion($aQuestionReturn['id']);
         $aChoiceReturn = $oQuestions->choices()->create([
             'choice' => $sChoice,
@@ -141,11 +142,13 @@ class logicQuestions
         if ($aValidationItems['result'] === false) {
             return $aValidationItems;
         }
-        $aGeneratedQuestions = $this->generateListQuestions($aSegragatedQuestions, $aRequest['quiz_items']); 
+        $aGeneratedQuestions = $this->generateListQuestions($aSegragatedQuestions, $aRequest['quiz_items']);
+        $aChoices = $this->getChoices($aGeneratedQuestions); 
         return array(
             'message' => 'Successfully generated questions',
             'result' => true,
-            'questions' => $aGeneratedQuestions
+            'questions' => $aGeneratedQuestions,
+            'choices' => $aChoices
         );
     }
 
@@ -189,17 +192,17 @@ class logicQuestions
         $aRandomDifficult = [];
         $aRandomKeys = [];
         $iDifficultItems = (int)round($iQuizItems * .1);
-        // Generate random key
-        $aRandomDifficult = $iDifficultItems === 1 ? [0] : array_rand($aSegregatedQuestions[2], $iDifficultItems); 
-        $aRandomKeys[2] = $aRandomDifficult;
         $iAverageItems = (int)round($iQuizItems * .3);
-        // Generate random key
-        $aRandomAverage = array_rand($aSegregatedQuestions[1], $iAverageItems);
-        $aRandomKeys[1] = $aRandomAverage;
         $iEasyItems = $iQuizItems - ($iDifficultItems + $iAverageItems);
         // Generate random key
         $aRandomEasy = array_rand($aSegregatedQuestions[0], $iEasyItems);
         $aRandomKeys[0] = $aRandomEasy;
+        // Generate random key
+        $aRandomAverage = array_rand($aSegregatedQuestions[1], $iAverageItems);
+        $aRandomKeys[1] = $aRandomAverage;
+        // Generate random key
+        $aRandomDifficult = $iDifficultItems === 1 ? [0] : array_rand($aSegregatedQuestions[2], $iDifficultItems); 
+        $aRandomKeys[2] = $aRandomDifficult;
         foreach ($aRandomKeys as $aRandomKey => $aRandomValue) {
             foreach ($aRandomValue as $aRandomGeneratedKey) {
                 array_push($aQuestions, $aSegregatedQuestions[$aRandomKey][$aRandomGeneratedKey]);

@@ -41,18 +41,53 @@ $(document).ready(function () {
                    alert(aResponse['message']);
                    if (aResponse['result'] === true) {
                        console.log(aResponse['questions']);
-                       oAddQuiz.renderQuestions(aResponse['questions']);
+                       oAddQuiz.renderQuestions(aResponse);
                    }
                }
            });
        },
 
-       renderQuestions: function ($aQuestions) {
+       renderQuestions: function (aData) {
            oAddQuiz.eQuestionsList.empty();
-           $aQuestions.forEach(function ($aQuestionData) {
-               // Todo, show choices and right answer
-                oAddQuiz.eQuestionsList.append(`<p>${$aQuestionData['question']}</p>`);
-           });
+           var aQuestions = aData['questions'];
+           for (var i = 0; i < aQuestions.length; i++) {
+                var sQuestions = '';
+                sQuestions += `<div class="mb-3"><p>${i + 1}). ${aQuestions[i]['question']}</p>`;
+                var aChoices = aData['choices'][i];
+                if (aQuestions[i]['question_type'] === 0) {
+                    aChoices.forEach(function (aChoicesData) {
+                        sQuestions += `<div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="radio" class="radio-choice" data-value=${aChoicesData['id']} ${(aChoicesData['is_correct'] === 1 ? 'checked' : '')} readonly>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" value="${aChoicesData['choice']}" readonly>
+                    </div>`  
+                    });   
+                } else if (aQuestions[i]['question_type'] === 1) {
+                    sQuestions += `<div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="radio" class="radio-choice" ${(aQuestions[i]['question_answer'] === 1 ? 'checked' : '')} readonly>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" value="True" readonly>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="radio" class="radio-choice" ${(aQuestions[i]['question_answer'] === 0 ? 'checked' : '')} readonly>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" value="False" readonly>
+                                </div>`  
+                } else if (aQuestions[i]['question_type'] === 3) {
+                    sQuestions += `<input type="text" class="form-control" value="${ (aChoices[0]['choice']) }" readonly>`
+                }
+                sQuestions += `</div>`;
+                oAddQuiz.eQuestionsList.append(sQuestions);
+           }
        }
 
     }
