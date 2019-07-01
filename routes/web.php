@@ -41,6 +41,7 @@ Route::get('/teacher/courses/sub/{course_id}/questions/load', 'Questions\restQue
 Route::get('/teacher/quizzes', 'Teacher \frontTeacher@quizPage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/quizzes/generate', 'Teacher\frontTeacher@generateQuizPage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/quizzes/generate', 'Questions\restQuestions@generateQuestions')->middleware('check.session', 'check.teacher');
+Route::post('/teacher/quizzes/save', 'Quizzes\restQuizzes@generateQuestions');
 
 Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}', 'Student\frontStudent@courseHomePage')->middleware('check.session', 'check.student');

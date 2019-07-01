@@ -40,7 +40,12 @@
                 </div>
               </form>
         </div>
-        <div class="mt-3" id="questions-area">
+        <p class="text-center mt-3" id="tooltip-generated">Generated Questions will be shown below</p>
+        <div class="mt-3" id="questions-area" style="display: none">
+            <div class="float-right">
+                <button class="btn btn-primary" id="save-quiz">Save</button>
+                <button class="btn btn-outline-secondary" id="clear-quiz">Clear</button>
+            </div>
             <h5>Questions:</h5>
             <div id="questions-list">
 

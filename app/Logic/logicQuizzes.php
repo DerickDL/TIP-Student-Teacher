@@ -45,19 +45,16 @@ class logicQuizzes
      */
 	public function insertQuiz($aRequest)
     {
-        $oCourses = $this->modelCourses->findCourse($aRequest['course_id']);
-        $aQuizReturn = $oCourses->quizzes()->create([
-            'quiz_title' => $aRequest['quiz_title'],
-            'quiz_items' => count($aRequest['data'])
-        ]);
-        $oQuizzes = $this->modelQuizzes->findQuiz($aQuizReturn['id']);
-        foreach ($aRequest['data'] as $aQuestion) {
-            $aQuestionReturn = $this->addQuestion($oQuizzes, $aQuestion);
-            if ((int)$aQuestion['type'] === 0) {
-                foreach ($aQuestion['choices'] as $sChoice) {
-                    $this->addChoice($aQuestion, $sChoice, $aQuestionReturn);
-                }
-            }
+        $aValidateParams = $this->validateParams(
+            array(
+                'course_id' => 'required',
+                'quiz_items' => 'required|integer',
+                'quiz_timelimit' => 'required|number'
+            ),
+            $aRequest
+        );
+        if ($aValidateParams['result'] === false) {
+            return $aValidateParams;
         }
     }
 
@@ -145,5 +142,23 @@ class logicQuizzes
     {
         $oQuiz = $this->modelQuizzes->findQuiz($iQuizId);
         return $oQuiz->users()->find($iUserId);
+    }
+
+    /**
+     * validate user
+     * @params $aRules
+     * @params $aData
+     * @return array
+     */
+    private function validateParams($aRules, $aData)
+    {
+        $validator = Validator::make($aData, $aRules);
+        if ($validator->fails()) {
+            return array(
+                'result' => false,
+                'message' => $validator->messages()->first()
+            );
+        }
+        return array('result' => true);
     }
 }

@@ -3,6 +3,7 @@ $(document).ready(function () {
        init: function () {
            this.cacheDOM();
            this.addEvents();
+           this.aQuestions = [];
        },
        
        cacheDOM: function () {
@@ -12,17 +13,23 @@ $(document).ready(function () {
            this.eTimeLimit = $('#time-limit');
            this.eBtnGenerate = $('#btn-generate');
            this.eQuestionsList = $('#questions-list');
+           this.eQuestionsListArea = $('#questions-area');
+           this.eToolTipGenerated = $('#tooltip-generated');
+           this.eBtnSaveQuiz = $('#save-quiz');
+           this.eBtnClearQuiz = $('#clear-quiz');
        },
        
        addEvents: function () {
            oAddQuiz.eIntegCourses.change(oAddQuiz.setSubCourses);
            oAddQuiz.eBtnGenerate.click(oAddQuiz.generateQuiz);
+           oAddQuiz.eBtnClearQuiz.click(oAddQuiz.clearQuiz);
+           oAddQuiz.eBtnSaveQuiz.click(oAddQuiz.saveQuiz);
        },
 
        setSubCourses: function () {
             var sOptions = '';
             aSubCourses[$(this).val()].forEach(aCourseDetail => {
-                sOptions += `<option value="${aCourseDetail['id']}">${aCourseDetail['course_title']}</option>`
+                sOptions += `<option value="${aCourseDetail['id']}">${aCourseDetail['course_title']}</option>`;
             });
             oAddQuiz.eSubCourses.find('option').not(':first').remove();
             oAddQuiz.eSubCourses.append(sOptions);
@@ -40,21 +47,47 @@ $(document).ready(function () {
                success: function (aResponse) {
                    alert(aResponse['message']);
                    if (aResponse['result'] === true) {
-                       console.log(aResponse['questions']);
+                       oAddQuiz.clearQuiz(false);
                        oAddQuiz.renderQuestions(aResponse);
                    }
                }
            });
        },
 
+       saveQuiz: function () {
+            if (confirm('Are you sure you want to save this quiz?')) {
+                $.ajax({
+                    url: '/teacher/quizzes/save',
+                    type: 'POST',
+                    data: {
+                        'quiz_timelimit': oAddQuiz.eTimeLimit.val(),
+                        'quiz_items': oAddQuiz.eNumItems.val(),
+                        'questions': oAddQuiz.aQuestions,
+                        'course_id': oAddQuiz.eSubCourses.val()
+                    }
+                })
+            }
+       },
+
+       clearQuiz: function (isClear) {
+           oAddQuiz.eQuestionsList.empty();
+           if (oAddQuiz.eQuestionsListArea.css('display') === 'none') {
+               oAddQuiz.eQuestionsListArea.show();
+               oAddQuiz.eToolTipGenerated.hide();
+           } else if (isClear !== false) {
+               oAddQuiz.eQuestionsListArea.hide();
+               oAddQuiz.eToolTipGenerated.show();
+           }
+       },
+
        renderQuestions: function (aData) {
            oAddQuiz.eQuestionsList.empty();
-           var aQuestions = aData['questions'];
-           for (var i = 0; i < aQuestions.length; i++) {
+           oAddQuiz.aQuestions = aData['questions'];
+           for (var i = 0; i < oAddQuiz.aQuestions.length; i++) {
                 var sQuestions = '';
-                sQuestions += `<div class="mb-3"><p>${i + 1}). ${aQuestions[i]['question']}</p>`;
+                sQuestions += `<div class="mb-3"><p>${i + 1}). ${oAddQuiz.aQuestions[i]['question']}</p>`;
                 var aChoices = aData['choices'][i];
-                if (aQuestions[i]['question_type'] === 0) {
+                if (oAddQuiz.aQuestions[i]['question_type'] === 0) {
                     aChoices.forEach(function (aChoicesData) {
                         sQuestions += `<div class="input-group">
                         <div class="input-group-prepend">
@@ -65,11 +98,11 @@ $(document).ready(function () {
                         <input type="text" class="form-control" value="${aChoicesData['choice']}" readonly>
                     </div>`  
                     });   
-                } else if (aQuestions[i]['question_type'] === 1) {
+                } else if (oAddQuiz.aQuestions[i]['question_type'] === 1) {
                     sQuestions += `<div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="radio" class="radio-choice" ${(aQuestions[i]['question_answer'] === 1 ? 'checked' : '')} readonly>
+                                            <input type="radio" class="radio-choice" ${(oAddQuiz.aQuestions[i]['question_answer'] === 1 ? 'checked' : '')} readonly>
                                         </div>
                                     </div>
                                     <input type="text" class="form-control" value="True" readonly>
@@ -77,12 +110,12 @@ $(document).ready(function () {
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="radio" class="radio-choice" ${(aQuestions[i]['question_answer'] === 0 ? 'checked' : '')} readonly>
+                                            <input type="radio" class="radio-choice" ${(oAddQuiz.aQuestions[i]['question_answer'] === 0 ? 'checked' : '')} readonly>
                                         </div>
                                     </div>
                                     <input type="text" class="form-control" value="False" readonly>
                                 </div>`  
-                } else if (aQuestions[i]['question_type'] === 3) {
+                } else if (oAddQuiz.aQuestions[i]['question_type'] === 3) {
                     sQuestions += `<input type="text" class="form-control" value="${ (aChoices[0]['choice']) }" readonly>`
                 }
                 sQuestions += `</div>`;
