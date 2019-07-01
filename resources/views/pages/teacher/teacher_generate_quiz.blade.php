@@ -14,10 +14,10 @@
                     <div class="form-group">
                         <label>Integration Course</label>
                         <select class="form-control" id="integ-courses">
-                          <option selected hidden id="integ-default">Select Integration Course</option>
-                          <option value="1">Integration Course 1</option>
-                          <option value="2">Integration Course 2</option>
-                          <option value="3">Integration Course 3</option>
+                        <option selected hidden id="integ-default">Select Integration Course</option>
+                        <option value="1">Integration Course 1</option>
+                        <option value="2">Integration Course 2</option>
+                        <option value="3">Integration Course 3</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -27,14 +27,14 @@
                         </select>
                     </div>
                     <div class="row">
-						<div class="form-group col-6">
-							<label>No. of Items</label>
-							<input type="text" class="form-control" id="no-items">
-						</div>
-						<div class="form-group col-6">
-							<label>Time Limit (minutes)</label>
-							<input type="text" class="form-control" id="time-limit">
-						</div>
+                        <div class="form-group col-6">
+                            <label>No. of Items</label>
+                            <input type="text" class="form-control" id="no-items">
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Time Limit (minutes)</label>
+                            <input type="text" class="form-control" id="time-limit">
+                        </div>
                     </div>
                   </div>
                 </div>

@@ -29,7 +29,7 @@
             </ul>
         </li>
         <li id="section-tab">
-            <a href="#">Section</a>
+            <a href="/teacher/section">Section</a>
         </li>
     </ul>
 </nav>

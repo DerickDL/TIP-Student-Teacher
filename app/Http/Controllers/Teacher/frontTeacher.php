@@ -116,4 +116,17 @@ class frontTeacher extends frontUsers
         $aChoices = $this->getChoices($aQuestions);
         return view('pages.teacher.teacher_view_quiz')->with('aSession', $aSession)->with('aQuiz', $aQuiz)->with('aQuestions', $aQuestions)->with('aChoices', $aChoices);
     }
+
+    public function sectionPage()
+    {
+        $aSession = $this->getSession();
+        $aSections = $this->getSections();
+        return view('pages.teacher.teacher_sections')->with('aSession', $aSession)->with('aSections', $aSections);
+    }
+
+    public function createSectionPage()
+    {
+        $aSession = $this->getSession();
+        return view('pages.teacher.teacher_create_section')->with('aSession', $aSession);
+    }
 }

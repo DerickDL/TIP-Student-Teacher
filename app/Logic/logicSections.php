@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Logic;
+
+use App\Model\modelSections;
+use Illuminate\Support\Facades\Validator;
+
+class logicSections
+{
+    /**
+     * @var modelSections
+     */
+	private $modelSections;
+
+	public function __construct($modelSections)
+	{
+		$this->modelSections = $modelSections;
+	}
+
+    /**
+     * @param $aRequest
+     */
+	public function insertSection($aRequest)
+    {
+        $aValidate = $this->validateParams(
+            array(
+                'name' => 'required',
+                'num_stud' => 'required|integer',
+                'date' => 'required'
+            ),
+            $aRequest
+        );
+        if ($aValidate['result'] === false) {
+            return $aValidate;
+        }
+        $this->modelSections->createSection($aRequest);
+        return array(
+            'result' => true,
+            'message' => 'Created section successfully.'
+        );
+    }
+
+    public function getSections($aParam)
+    {
+        return $this->modelSections->getSections($aParam);
+    }
+
+    /**
+	 * validate user
+	 * @params $aRules
+	 * @params $aData
+	 * @return array
+	 */
+    private function validateParams($aRules, $aData)
+    {
+    	$validator = Validator::make($aData, $aRules);
+    	if ($validator->fails()) {
+		    return array(
+		    	'result' => false,
+		    	'message' => $validator->messages()->first()
+		    );
+		}
+		return array('result' => true);
+    }
+}
