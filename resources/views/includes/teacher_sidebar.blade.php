@@ -23,7 +23,7 @@
                 <li id="generate-quiz">
                     <a href="/teacher/quizzes/generate">Generate Quiz</a>
                 </li>
-                <li id="list-quizzes">
+                <li id="list-quiz">
                     <a href="/teacher/quizzes/list">Quizzes List</a>
                 </li>
             </ul>

@@ -16,11 +16,12 @@ class modelQuizzes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['quiz_title', 'quiz_items'];
+    protected $fillable = ['quiz_title', 'quiz_items', 'course_id', 'quiz_timelimit'];
 
     public function questions()
     {
-        return $this->hasMany('App\Model\modelQuestions', 'quiz_id');
+        return $this->belongsToMany('App\Model\modelQuestions', 'quiz_question', 'quiz_id', 'question_id')
+            ->withTimestamps();
     }
 
     public function courses()
@@ -62,5 +63,10 @@ class modelQuizzes extends Model
     public function getLatestQuizzes($aParams)
     {
         return static::where($aParams)->orderBy('created_at', 'DESC')->take(5)->get();
+    }
+
+    public function createQuiz($aData)
+    {
+        return static::create($aData);
     }
 }

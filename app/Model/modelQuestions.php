@@ -18,11 +18,6 @@ class modelQuestions extends Model
      */
     protected $fillable = ['question', 'question_type', 'question_answer', 'question_difficulty'];
 
-    public function quizzes()
-    {
-        return $this->belongsTo('App\Model\modelQuizzes');
-    }
-
     public function courses()
     {
         return $this->belongsTo('App\Model\modelCourses', 'course_id');
@@ -37,6 +32,13 @@ class modelQuestions extends Model
     {
         return $this->belongsTo('App\Model\modelQuizzes');
     }
+
+    public function quizzes()
+    {
+        return $this->belongsToMany('App\Model\modelQuizzes', 'question_quiz', 'quiz_id', 'question_id')                    ->withPivot('score', 'percentage')
+            ->withTimestamps();
+    }
+
 
     /**
      * Find a question

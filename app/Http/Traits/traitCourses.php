@@ -62,4 +62,10 @@ trait traitCourses
         }
         return $aSubCourses;
     }
+
+    public function getParentCourse($iCourseId)
+    {
+        $this->instantiateCourses();
+        return $this->logicCourses->getParentCourse($iCourseId);
+    }
 }

@@ -27,7 +27,7 @@ trait traitQuizzes
      * @param $iQuizId
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getQuizzes($aParam)
+    public function getQuizzes($aParam = [])
     {
         $this->instantiateQuizzes();
         return $this->logicQuizzes->getQuizzes($aParam);
@@ -43,10 +43,10 @@ trait traitQuizzes
         return $this->logicQuizzes->getLatestQuizzes($aParam);
     }
 
-    public function getQuestions($aParam)
+    public function getQuestions($iQuizId)
     {
         $this->instantiateQuizzes();
-        return $this->logicQuizzes->getQuestions($aParam);
+        return $this->logicQuizzes->getQuestions($iQuizId);
     }
 
     public function getChoices($aData)

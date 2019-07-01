@@ -94,4 +94,26 @@ class frontTeacher extends frontUsers
         $aSubCourses = $this->getSubCourses();
         return view('pages.teacher.teacher_generate_quiz')->with('aSession', $aSession)->with('aSubCourses', $aSubCourses);
     }
+
+    public function listQuizPage()
+    {
+        $aSession = $this->getSession();
+        $aQuizzes = $this->getQuizzes();
+        foreach ($aQuizzes as $aQuizData) {
+            $aQuizData['sub_course'] = $this->getCourses(['id' => $aQuizData['course_id']])[0];
+            $aQuizData['parent_course'] = $this->getParentCourse($aQuizData['course_id']);
+        }
+        return view('pages.teacher.teacher_list_quiz')->with('aSession', $aSession)->with('aQuizzes', $aQuizzes);        
+    }
+
+    public function viewQuizPage($iQuizId)
+    {
+        $aSession = $this->getSession();
+        $aQuiz = $this->getQuizzes(['id' => $iQuizId]);
+        $aQuiz['integ_course'] = $this->getParentCourse($aQuiz[0]['course_id']);
+        $aQuiz['course'] = $this->getCourses(['id' => $aQuiz[0]['course_id']]);
+        $aQuestions = $this->getQuestions($iQuizId);
+        $aChoices = $this->getChoices($aQuestions);
+        return view('pages.teacher.teacher_view_quiz')->with('aSession', $aSession)->with('aQuiz', $aQuiz)->with('aQuestions', $aQuestions)->with('aChoices', $aChoices);
+    }
 }

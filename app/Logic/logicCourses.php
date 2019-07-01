@@ -90,4 +90,9 @@ class logicCourses
     {
         $this->modelCourses->deleteCourse($iCourseId);
     }
+
+    public function getParentCourse($iCourseId) {
+        $oQuiz = $this->modelCourses->findCourse($iCourseId);
+        return $oQuiz->integrated_courses;
+    }
 }

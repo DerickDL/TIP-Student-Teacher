@@ -45,17 +45,6 @@ trait traitLessons
     }
 
     /**
-     * Get lesson/s
-     * @param $iLessonId
-     * @return mixed
-     */
-    public function getParentCourse($iLessonId)
-    {
-        $this->instantiateLessons();
-        return $this->logicLessons->getParentCourse($iLessonId);
-    }
-
-    /**
      * @param $iLessonId
      * @return mixed
      */

@@ -64,6 +64,10 @@ $(document).ready(function () {
                         'quiz_items': oAddQuiz.eNumItems.val(),
                         'questions': oAddQuiz.aQuestions,
                         'course_id': oAddQuiz.eSubCourses.val()
+                    },
+                    success: function () {
+                        alert('Successfully created quiz');
+                        oAddQuiz.clearQuiz(false);
                     }
                 })
             }

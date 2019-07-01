@@ -49,12 +49,22 @@ class logicQuizzes
             array(
                 'course_id' => 'required',
                 'quiz_items' => 'required|integer',
-                'quiz_timelimit' => 'required|number'
+                'quiz_timelimit' => 'required|integer'
             ),
             $aRequest
         );
         if ($aValidateParams['result'] === false) {
             return $aValidateParams;
+        }
+        $aData = [
+            'course_id' => $aRequest['course_id'],
+            'quiz_items' => $aRequest['quiz_items'],
+            'quiz_timelimit' => $aRequest['quiz_timelimit']
+        ];
+        $aQuiz = $this->modelQuizzes->createQuiz($aRequest);
+        $oQuiz = $this->modelQuizzes->findQuiz($aQuiz['id']);
+        foreach ($aRequest['questions'] as $aQuestion) {
+            $oQuiz->questions()->attach($aQuestion['id']);
         }
     }
 
@@ -112,12 +122,13 @@ class logicQuizzes
     }
 
     /**
-     * @param $aParam
+     * @param $iQuizId
      * @return mixed
      */
-    public function getQuestions($aParam)
+    public function getQuestions($iQuizId)
     {
-        return $this->modelQuestions->getQuestions($aParam);
+        $oQuiz = $this->modelQuizzes->findQuiz($iQuizId);
+        return $oQuiz->questions;
     }
 
     /**
