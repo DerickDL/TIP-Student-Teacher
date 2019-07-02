@@ -37,8 +37,7 @@ $(document).ready(function () {
        },
 
        redirectToSectionList: function() {
-        //    window.location.redirect('/teacher/section');
-        alert('cancel only');
+           window.location.replace('/teacher/section');
        },
     }
    oAddSection.init();
