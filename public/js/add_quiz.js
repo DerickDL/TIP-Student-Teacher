@@ -67,7 +67,7 @@ $(document).ready(function () {
                     },
                     success: function () {
                         alert('Successfully created quiz');
-                        oAddQuiz.clearQuiz(false);
+                        window.location.replace('/teacher/quizzes/list');
                     }
                 })
             }
