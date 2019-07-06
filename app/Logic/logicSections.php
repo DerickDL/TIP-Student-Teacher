@@ -45,6 +45,12 @@ class logicSections
         return $this->modelSections->getSections($aParam);
     }
 
+    
+    public function deleteSection($iSectionId)
+    {
+        $this->modelSections->deleteSection($iSectionId);
+    }
+
     /**
 	 * validate user
 	 * @params $aRules

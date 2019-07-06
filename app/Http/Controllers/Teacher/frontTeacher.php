@@ -129,4 +129,11 @@ class frontTeacher extends frontUsers
         $aSession = $this->getSession();
         return view('pages.teacher.teacher_create_section')->with('aSession', $aSession);
     }
+
+    public function sectionDetailPage($iSectionId)
+    {
+        $aSession = $this->getSession();
+        $aSection = $this->getSections(['id' => $iSectionId]);
+        return view('pages.teacher.teacher_section_detail')->with('aSession', $aSession)->with('aSection', $aSection);
+    }
 }

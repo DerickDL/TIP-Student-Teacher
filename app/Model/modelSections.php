@@ -42,4 +42,14 @@ class modelSections extends Model
     {
         return static::where($aParams)->get();
     }
+
+    /**
+     * delete section
+     * @param $iSectionId
+     * @return int
+     */
+    public function deleteSection($iSectionId)
+    {
+        return self::destroy($iSectionId);
+    }
 }

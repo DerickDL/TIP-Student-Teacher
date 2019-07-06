@@ -17,4 +17,12 @@ class restSections extends Controller
     {
        return response()->json($this->insertSection($oRequest->all()));
     }
+
+    /**
+     * @param $iSectionId
+     */
+    public function removeSection($iSectionId)
+    {
+       return response()->json($this->deleteSection($iSectionId));
+    }
 }

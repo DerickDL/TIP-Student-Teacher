@@ -31,4 +31,10 @@ trait traitSections
         $this->instantiateSections();
         return $this->logicSections->getSections($aParam);
     }
+
+    public function deleteSection($iSectionId) 
+    {
+        $this->instantiateSections();
+        return $this->logicSections->deleteSection($iSectionId);
+    }
 }

@@ -22,10 +22,16 @@
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label>Select Date</label>
-                        <input type="text" class="form-control" id="date">
+                        <label>Select Start Date</label>
+                        <input type="text" class="form-control" id="start_date">
                     </div>
                 </div>
+                <div class="col-4">
+                        <div class="form-group">
+                            <label>Select End Date</label>
+                            <input type="text" class="form-control" id="end_date">
+                        </div>
+                    </div>
                 <div class="col-4">
                     <div class="form-group">
                         <label>Class Room(Optional)</label>
