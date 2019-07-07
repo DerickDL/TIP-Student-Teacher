@@ -45,9 +45,9 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center">
-                <button class="btn btn-primary mr-2" id="create-section" type="button">Create</button>
+            <div class="text-right">
                 <button class="btn btn-outline-secondary" id="cancel-section" type="button">Cancel</button>
+                <button class="btn btn-dark" id="create-section" type="button">Create</button>
             </div>
         </form>
     </div>
