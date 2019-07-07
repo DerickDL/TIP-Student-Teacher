@@ -18,15 +18,7 @@
             </ul>
         </li>
         <li id="quiz-tab">
-            <a href="#quizSub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dropdown-toggle-sidebar" id="dropdown-sidebar-quiz">Quizzes</a>
-            <ul class="collapse list-unstyled" id="quizSub">
-                <li id="generate-quiz">
-                    <a href="/teacher/quizzes/generate">Generate Quiz</a>
-                </li>
-                <li id="list-quiz">
-                    <a href="/teacher/quizzes/list">Quizzes List</a>
-                </li>
-            </ul>
+            <a href="/teacher/quizzes/list">Quizzes</a>
         </li>
         <li id="section-tab">
             <a href="/teacher/section">Section</a>

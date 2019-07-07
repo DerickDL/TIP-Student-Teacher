@@ -6,6 +6,9 @@
 
 @section('teacher_content')
     <div class="container">
+        <div class="text-right mb-2">
+            <a href="/teacher/quizzes/generate" class="btn btn-dark">Generate Quiz</a>
+        </div>
         <table class="table">
             <thead class="thead-light">
                 <tr>
@@ -34,9 +37,7 @@
 @push('scripts')
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#list-quiz').addClass('active');
-        $('#dropdown-sidebar-quiz').attr('aria-expanded', 'true');
-        $('#quizSub').show();
+        $('#quiz-tab').addClass('active');
 	});
 </script>
 <script type="text/javascript" src="/js/add_quiz.js"></script>
