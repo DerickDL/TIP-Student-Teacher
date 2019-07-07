@@ -7,7 +7,7 @@
 @section('teacher_content')
     <div class="container">
         <div class="float-right mb-2">
-            <a class="btn btn-primary" href="/teacher/section/create">Create Section</a>
+            <a class="btn btn-dark" href="/teacher/section/create">Create Section</a>
         </div>
         @if(count($aSections) > 0)
             <table class="table">
@@ -24,7 +24,7 @@
                 <tbody>
                     @foreach($aSections as $aSection)
                         <tr>
-                            <td class="text-center"><a href="/teacher/section/{{ $aSection['id'] }}" class="btn-link">{{ $aSection['name'] }}</a></td>
+                            <td class="text-center"><a href="/teacher/sections/{{ $aSection['id'] }}" class="btn-link">{{ $aSection['name'] }}</a></td>
                             <td class="text-center">{{ $aSection['num_stud'] }}</td>
                             <td class="text-center">{{ ($aSection['class_room'] === null) ? 'N/A' : $aSection['class_room']}}</td>
                             <td class="text-center">{{ ($aSection['act_room'] === null) ? 'N/A' : $aSection['act_room']}}</td>

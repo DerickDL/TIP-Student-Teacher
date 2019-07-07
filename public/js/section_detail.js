@@ -37,7 +37,7 @@ $(document).ready(function () {
 
        redirectToSectionList: function() {
            if (confirm('Are you sure you want to cancel updating quiz?')) {
-                window.location.replace('/teacher/section');
+                window.location.replace('/teacher/sections');
            }
        },
     }
