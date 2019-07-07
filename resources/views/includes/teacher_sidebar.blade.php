@@ -21,7 +21,7 @@
             <a href="/teacher/quizzes/list">Quizzes</a>
         </li>
         <li id="section-tab">
-            <a href="/teacher/section">Section</a>
+            <a href="/teacher/sections">Section</a>
         </li>
         <li id="exam-tab">
             <a href="/teacher/exams">Exams</a>
