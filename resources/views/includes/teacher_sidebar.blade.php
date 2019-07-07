@@ -31,5 +31,8 @@
         <li id="section-tab">
             <a href="/teacher/section">Section</a>
         </li>
+        <li id="exam-tab">
+            <a href="/teacher/exams">Exams</a>
+        </li>
     </ul>
 </nav>
