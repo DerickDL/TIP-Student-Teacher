@@ -7,7 +7,10 @@
 @section('teacher_content')
     <div class="container">
         <div id="form-generate">
-            <button class="btn btn-primary float-right" id="btn-generate">Generate</button>
+            <div class="float-right">
+                    <a class="btn btn-outline-secondary" id="btn-cancel" href="/teacher/quizzes/list">Cancel</a>
+                    <button class="btn btn-dark" id="btn-generate">Generate</button>
+            </div>
             <form>
                 <div class="row">
                   <div class="col-8">
@@ -43,8 +46,8 @@
         <p class="text-center mt-3" id="tooltip-generated">Generated Questions will be shown below</p>
         <div class="mt-3" id="questions-area" style="display: none">
             <div class="float-right">
-                <button class="btn btn-primary" id="save-quiz">Save</button>
                 <button class="btn btn-outline-secondary" id="clear-quiz">Clear</button>
+                <button class="btn btn-dark" id="save-quiz">Save</button>
             </div>
             <h5>Questions:</h5>
             <div id="questions-list">
@@ -57,9 +60,7 @@
 @push('scripts')
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#generate-quiz').addClass('active');
-        $('#dropdown-sidebar-quiz').attr('aria-expanded', 'true');
-        $('#quizSub').show();
+        $('#quiz-tab').addClass('active');
 	});
 	var aSubCourses = {!! json_encode($aSubCourses) !!}
 </script>
