@@ -58,7 +58,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#section-tab').addClass('active');
-        $('#date').datepicker();
+        $('#start_date').datepicker();
+        $('#end_date').datepicker();
     });
 </script>
 <script type="text/javascript" src="/js/add_section.js"></script>

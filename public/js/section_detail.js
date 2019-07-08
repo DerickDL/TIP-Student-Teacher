@@ -25,7 +25,7 @@ $(document).ready(function () {
                     type: 'DELETE',
                     success: function () {
                         alert('Successfuly deleted.');
-                        window.location.replace('/teacher/section');
+                        window.location.replace('/teacher/sections');
                        
                     },
                     error: function () {

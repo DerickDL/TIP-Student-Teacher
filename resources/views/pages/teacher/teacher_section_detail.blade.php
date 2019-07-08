@@ -1,7 +1,7 @@
 @extends('pages.teacher.teacher_base')
 
 @push('styles')
-
+    <link rel="stylesheet" type="text/css" href="/css/datepicker.css">
 @endpush
 
 @section('teacher_content')
@@ -55,11 +55,14 @@
 @endsection
 
 @push('scripts')
+<script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript">
     var iSectionId = {!! json_encode($aSection[0]['id']) !!}
     $(document).ready(function () {
         $('#section-tab').addClass('active');
     });
+    $('#start_date').datepicker();
+    $('#end_date').datepicker();
 </script>
 <script type="text/javascript" src="/js/section_detail.js"></script>
 @endpush
