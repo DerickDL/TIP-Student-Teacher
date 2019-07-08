@@ -23,7 +23,8 @@ $(document).ready(function () {
                 data: {
                     'name': $('#section-name').val(),
                     'num_stud': $('#no-stud').val(),
-                    'date': $('#date').val(),
+                    'start_date': $('#start_date').val(),
+                    'end_date': $('#end_date').val(),
                     'class_room': $('#class-room').val(),
                     'act_room': $('#act-room').val()
                 },

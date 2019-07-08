@@ -26,7 +26,8 @@ class logicSections
             array(
                 'name' => 'required',
                 'num_stud' => 'required|integer',
-                'date' => 'required'
+                'start_date' => 'required',
+                'end_date' => 'required',
             ),
             $aRequest
         );

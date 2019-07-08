@@ -16,22 +16,22 @@
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label>Number of Students</label>
-                        <input type="text" class="form-control" id="no-stud">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="form-group">
                         <label>Select Start Date</label>
                         <input type="text" class="form-control" id="start_date">
                     </div>
                 </div>
                 <div class="col-4">
-                        <div class="form-group">
-                            <label>Select End Date</label>
-                            <input type="text" class="form-control" id="end_date">
-                        </div>
+                    <div class="form-group">
+                        <label>Select End Date</label>
+                        <input type="text" class="form-control" id="end_date">
                     </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Number of Students</label>
+                        <input type="text" class="form-control" id="no-stud">
+                    </div>
+                </div>
                 <div class="col-4">
                     <div class="form-group">
                         <label>Class Room(Optional)</label>
