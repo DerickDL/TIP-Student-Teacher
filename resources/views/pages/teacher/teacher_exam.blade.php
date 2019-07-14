@@ -7,7 +7,7 @@
 @section('teacher_content')
     <div class="container">
         <div class="text-right mb-2">
-                <button class="btn btn-dark">Generate Exam</button>
+                <a href="/teacher/exams/generate" class="btn btn-dark">Generate Exam</a>
         </div>
         <table class="table">
             <thead class="thead-light">

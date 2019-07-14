@@ -142,4 +142,14 @@ class frontTeacher extends frontUsers
         $aSession = $this->getSession();
         return view('pages.teacher.teacher_exam')->with('aSession', $aSession);
     }
+
+    /**
+     * generate exam page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function generateExamPage()
+    {
+        $aSession = $this->getSession();
+        return view('pages.teacher.teacher_generate_exam')->with('aSession', $aSession);
+    }
 }
