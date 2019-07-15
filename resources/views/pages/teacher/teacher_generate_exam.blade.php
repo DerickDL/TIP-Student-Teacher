@@ -40,8 +40,8 @@
         <p class="text-center mt-3" id="tooltip-generated">Generated Questions will be shown below</p>
         <div class="mt-3" id="questions-area" style="display: none">
             <div class="float-right">
-                <button class="btn btn-outline-secondary" id="clear-quiz">Clear</button>
-                <button class="btn btn-dark" id="save-quiz">Save</button>
+                <button class="btn btn-outline-secondary" id="clear-exam">Clear</button>
+                <button class="btn btn-dark" id="save-exam">Save</button>
             </div>
             <h5>Questions:</h5>
             <div id="questions-list">
@@ -57,5 +57,5 @@
         $('#exam-tab').addClass('active');
 	});
 </script>
-<script type="text/javascript" src="/js/add_quiz.js"></script>
+<script type="text/javascript" src="/js/add_exam.js"></script>
 @endpush
