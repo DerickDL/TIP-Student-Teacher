@@ -40,6 +40,12 @@ trait traitQuestions
         return $this->logicQuestions->generateQuizQuestions($aRequest);
     }
 
+    public function generateExamQuestions($aRequest)
+    {
+        $this->instantiateQuestions();
+        return $this->logicQuestions->generateExamQuestions($aRequest);
+    }
+
     public function getChoices($aQuestions)
     {
         $this->instantiateQuestions();

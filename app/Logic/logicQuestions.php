@@ -152,6 +152,11 @@ class logicQuestions
         );
     }
 
+    public function generateExamQuestions($aRequest)
+    {
+        // @TODO
+    }
+
     private function validateQuestionsNumber($aQuestions, $iQuizItems)
     {
         $iQuestions = count($aQuestions[2]) + count($aQuestions[1]) + count($aQuestions[0]);

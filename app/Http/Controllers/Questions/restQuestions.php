@@ -28,4 +28,9 @@ class restQuestions extends Controller
     {
         return response()->json($this->generateQuizQuestions($oRequest->all()));
     }
+
+    public function generateExams(Request $oRequest)
+    {
+        return response()->json($this->generateExamQuestions($oRequest->all()));
+    }
 }
