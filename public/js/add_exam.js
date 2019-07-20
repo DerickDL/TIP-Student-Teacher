@@ -17,7 +17,7 @@ $(document).ready(function () {
            this.eBtnSaveExam = $('#save-exam');
            this.eBtnClearExam = $('#clear-exam');
        },
-       
+        
        addEvents: function () {
            oAddExam.eBtnGenerate.click(oAddExam.generateExam);
            oAddExam.eBtnClearExam.click(oAddExam.clearExam);
@@ -26,22 +26,26 @@ $(document).ready(function () {
 
        generateExam: function () {
            alert('Generate');
-        //    $.ajax({
-        //        url: '/teacher/exams/generate',
-        //        type: 'POST',
-        //        data: {
-        //            'course_id': oAddExam.eSubCourses.val(),
-        //            'timelimit': oAddExam.eTimeLimit.val(),
-        //            'items': oAddExam.eNumItems.val()
-        //        },
-        //        success: function (aResponse) {
-        //            alert(aResponse['message']);
-        //            if (aResponse['result'] === true) {
-        //                oAddExam.clearExam(false);
-        //                oAddExam.renderQuestions(aResponse);
-        //            }
-        //        }
-        //    });
+           $.ajax({
+               url: '/teacher/exams/generate',
+               type: 'POST',
+               data: {
+                   'course_id': oAddExam.eIntegCourses.val(),
+                   'timelimit': oAddExam.eTimeLimit.val(),
+                   'items': oAddExam.eNumItems.val()
+               },
+               success: function (aResponse) {
+                console.log(aResponse);
+                   if (aResponse['result'] === true) {
+                       alert('Succesfully generated questions');
+                    //    oAddExam.clearExam(false);
+                    //    oAddExam.renderQuestions(aResponse);
+                    console.log(aResponse);
+                   } else {
+                       alert(aResponse['message']);
+                   }
+               }
+           });
        },
 
        saveExam: function () {

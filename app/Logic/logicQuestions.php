@@ -124,6 +124,9 @@ class logicQuestions
         return $oQuiz->users()->find($iUserId);
     }
 
+    /**
+     * Generate Quiz Questions
+     */
     public function generateQuizQuestions($aRequest)
     { 
         $aValidateParams = $this->validateParams(
@@ -136,27 +139,75 @@ class logicQuestions
         if ($aValidateParams['result'] === false) {
             return $aValidateParams;
         }
-        $aQuestions = $this->modelQuestions->getQuestions(['course_id' => $aRequest['course_id']]);
+        return $this->buildQuestions($aRequest['course_id'], $aRequest['quiz_items']);
+    }
+
+    /**
+     * Generate Exam Questions
+     */
+    public function generateExamQuestions($aRequest)
+    {
+        $aValidateParams = $this->validateParams(
+            array(
+                'course_id' => 'required',
+                'items' => 'required|integer'
+            ),
+            $aRequest
+        );
+        if ($aValidateParams['result'] === false) {
+            return $aValidateParams;
+        }
+        $aSubCourses = $this->modelCourses->getCourses(['integrated_course_id' => $aRequest['course_id']]);
+        $aNumberItems = $this->divideItems($aSubCourses, $aRequest['items']);
+        $iCtr = 0;
+        $aExamQuestions = array();
+        for ($i = 0;  $i < count($aSubCourses); $i++) {
+            $aGeneratedQuestion = (array)$this->buildQuestions($aSubCourses[$i]['id'], $aNumberItems[$i]);
+            if ($aGeneratedQuestion['result'] === false) {
+                return $aGeneratedQuestion;
+            }
+            unset($aGeneratedQuestion['result']);
+            $aExamQuestions[] = $aGeneratedQuestion;
+        }
+        $aExamQuestions['result'] = true;
+        return $aExamQuestions;
+    }
+
+    /**
+     * Divide the number of items of questions per course
+     */
+    private function divideItems($aSubCourses, $iItems)
+    {
+        $iNumberCourses = count($aSubCourses);
+        $iNumberQuestions = $iItems / $iNumberCourses;
+        $aNumberItems = array_fill(0, ($iNumberCourses - 1), $iNumberQuestions);
+        $aNumberItems[$iNumberCourses - 1] = $iItems - (($iNumberCourses - 1) * $iNumberQuestions);
+        return $aNumberItems;
+    }
+
+    /**
+     * Build questions
+     */
+    private function buildQuestions($iCourseId, $iItems)
+    {
+        $aQuestions = $this->modelQuestions->getQuestions(['course_id' => $iCourseId]);
         $aSegragatedQuestions = $this->segregateQuestions($aQuestions);
-        $aValidationItems = $this->validateQuestionsNumber($aSegragatedQuestions, $aRequest['quiz_items']);
+        $aValidationItems = $this->validateQuestionsNumber($aSegragatedQuestions, $iItems);
         if ($aValidationItems['result'] === false) {
             return $aValidationItems;
         }
-        $aGeneratedQuestions = $this->generateListQuestions($aSegragatedQuestions, $aRequest['quiz_items']);
+        $aGeneratedQuestions = $this->generateListQuestions($aSegragatedQuestions, $iItems);
         $aChoices = $this->getChoices($aGeneratedQuestions); 
         return array(
-            'message' => 'Successfully generated questions',
-            'result' => true,
+            'result'    => true,
             'questions' => $aGeneratedQuestions,
             'choices' => $aChoices
         );
     }
 
-    public function generateExamQuestions($aRequest)
-    {
-        // @TODO
-    }
-
+    /**
+     * Validate number of questions
+     */
     private function validateQuestionsNumber($aQuestions, $iQuizItems)
     {
         $iQuestions = count($aQuestions[2]) + count($aQuestions[1]) + count($aQuestions[0]);

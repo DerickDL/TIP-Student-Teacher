@@ -45,10 +45,12 @@ $(document).ready(function () {
                    'quiz_items': oAddQuiz.eNumItems.val()
                },
                success: function (aResponse) {
-                   alert(aResponse['message']);
                    if (aResponse['result'] === true) {
+                       alert('Successfully generated questions');
                        oAddQuiz.clearQuiz(false);
                        oAddQuiz.renderQuestions(aResponse);
+                   } else {
+                       alert(aResponse['message']);
                    }
                }
            });
