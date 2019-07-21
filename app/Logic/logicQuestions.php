@@ -169,8 +169,15 @@ class logicQuestions
             unset($aGeneratedQuestion['result']);
             $aExamQuestions[] = $aGeneratedQuestion;
         }
-        $aExamQuestions['result'] = true;
-        return $aExamQuestions;
+        $aMergedQuestions = [];
+        for ($i = 0; $i < count($aExamQuestions); $i++) {
+            if (empty($aMergedQuestions) === true) {
+                $aMergedQuestions = $aExamQuestions[$i];
+            } else {
+                $aMergedQuestions = array_merge_recursive($aMergedQuestions, $aExamQuestions[$i]);
+            }
+        }
+        return $aMergedQuestions;
     }
 
     /**

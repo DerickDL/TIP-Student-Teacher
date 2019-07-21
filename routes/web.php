@@ -56,6 +56,7 @@ Route::delete('/teacher/section/delete/{section_id}', 'Sections\restSections@rem
 Route::get('/teacher/exams', 'Teacher\frontTeacher@examPage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/exams/generate', 'Teacher\frontTeacher@generateExamPage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/exams/generate', 'Questions\restQuestions@generateExam');
+Route::post('/teacher/exams/save', 'Exams\controllerExams@insertExam');
 
 Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}', 'Student\frontStudent@courseHomePage')->middleware('check.session', 'check.student');

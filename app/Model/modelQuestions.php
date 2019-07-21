@@ -39,6 +39,12 @@ class modelQuestions extends Model
             ->withTimestamps();
     }
 
+    public function exams()
+    {
+        return $this->belongsToMany('App\Model\modelExams', 'question_exam', 'exam_id', 'question_id')                    ->withPivot('score', 'percentage')
+            ->withTimestamps();
+    }
+
 
     /**
      * Find a question

@@ -25,39 +25,35 @@ $(document).ready(function () {
        },
 
        generateExam: function () {
-           alert('Generate');
            $.ajax({
                url: '/teacher/exams/generate',
                type: 'POST',
                data: {
                    'course_id': oAddExam.eIntegCourses.val(),
-                   'timelimit': oAddExam.eTimeLimit.val(),
+                   'time_limit': oAddExam.eTimeLimit.val(),
                    'items': oAddExam.eNumItems.val()
                },
-               success: function (aResponse) {
-                console.log(aResponse);
-                   if (aResponse['result'] === true) {
-                       alert('Succesfully generated questions');
-                    //    oAddExam.clearExam(false);
-                    //    oAddExam.renderQuestions(aResponse);
-                    console.log(aResponse);
+               success: function (oResponse) {
+                   if (oResponse['result'] === false) {
+                        alert(oResponse['message']);
                    } else {
-                       alert(aResponse['message']);
+                        alert('Succesfully generated questions');
+                        oAddExam.clearExam(false);
+                        oAddExam.renderQuestions(oResponse);
                    }
                }
            });
        },
-
        saveExam: function () {
             if (confirm('Are you sure you want to save this exam?')) {
                 $.ajax({
                     url: '/teacher/exams/save',
                     type: 'POST',
                     data: {
-                        'timelimit': oAddExam.eTimeLimit.val(),
+                        'time_limit': oAddExam.eTimeLimit.val(),
                         'items': oAddExam.eNumItems.val(),
                         'questions': oAddExam.aQuestions,
-                        'course_id': oAddExam.eSubCourses.val()
+                        'course_id': oAddExam.eIntegCourses.val()
                     },
                     success: function () {
                         alert('Successfully created exam');
@@ -79,7 +75,6 @@ $(document).ready(function () {
        },
 
        renderQuestions: function (aData) {
-           oAddExam.eQuestionsList.empty();
            oAddExam.aQuestions = aData['questions'];
            for (var i = 0; i < oAddExam.aQuestions.length; i++) {
                 var sQuestions = '';
