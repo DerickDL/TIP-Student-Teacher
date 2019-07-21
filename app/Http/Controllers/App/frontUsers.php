@@ -9,10 +9,11 @@ use App\Http\Traits\traitLessons;
 use App\Http\Traits\traitQuizzes;
 use App\Http\Traits\traitFiles;
 use App\Http\Traits\traitSections;
+use App\Http\Traits\traitExams;
 
 class frontUsers extends controllerUsers
 {
-    use traitCourses, traitQuizzes, traitLessons, traitIntegratedCourses, traitFiles, traitSections;
+    use traitCourses, traitQuizzes, traitLessons, traitIntegratedCourses, traitFiles, traitSections, traitExams;
 
     /**
      * Get page data

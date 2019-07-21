@@ -19,7 +19,14 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach($aExams as $aExamData)
+                    <tr>
+                        <td class="text-center">{{ $aExamData['parent_course']['integrated_course_name'] }}</td>
+                        <td class="text-center">{{ $aExamData['items'] }}</td>
+                        <td class="text-center">{{ $aExamData['time_limit'] }}</td>
+                        <td class="text-center"><a href="/teacher/exams/detail/{{ $aExamData['id'] }}">View</a></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

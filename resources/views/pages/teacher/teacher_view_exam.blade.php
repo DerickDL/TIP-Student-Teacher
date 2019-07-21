@@ -6,11 +6,10 @@
 
 @section('teacher_content')
     <div class="container">
-        <a class="btn btn-secondary" href="/teacher/quizzes/list">Go back</a>
-        <p><strong>Integration Course:</strong> {{ $aQuiz['integ_course']['integrated_course_name'] }}</p>
-        <p><strong>Course:</strong> {{ $aQuiz['course'][0]['course_title'] }}</p>
-        <p><strong>Items:</strong> {{ $aQuiz[0]['quiz_items'] }}</p>
-        <p><strong>Time Limit (minutes):</strong> {{ $aQuiz[0]['quiz_timelimit'] }}</p>
+        <a class="btn btn-secondary" href="/teacher/exams">Go back</a>
+        <p><strong>Integration Course:</strong> {{ $aExam['integ_course']['integrated_course_name'] }}</p>
+        <p><strong>Items:</strong> {{ $aExam[0]['items'] }}</p>
+        <p><strong>Time Limit (minutes):</strong> {{ $aExam[0]['time_limit'] }}</p>
         <p><strong>Questions:</strong></p>
         <div class="ml-4">
             @for ($i = 0; $i < count($aQuestions); $i++)
@@ -56,7 +55,7 @@
 @push('scripts')
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#quiz-tab').addClass('active');
+        $('#exam-tab').addClass('active');
 	});
 </script>
 <script type="text/javascript" src="/js/add_quiz.js"></script>

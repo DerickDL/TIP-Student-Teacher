@@ -43,13 +43,13 @@ trait traitExams
         return $this->logicExams->getLatestExams($aParam);
     }
 
-    public function getQuestions($iExamId)
+    public function getExamQuestions($iExamId)
     {
         $this->instantiateExams();
         return $this->logicExams->getQuestions($iExamId);
     }
 
-    public function getChoices($aData)
+    public function getExamChoices($aData)
     {
         $this->instantiateExams();
         return $this->logicExams->getChoices($aData);

@@ -140,7 +140,21 @@ class frontTeacher extends frontUsers
     public function examPage()
     {
         $aSession = $this->getSession();
-        return view('pages.teacher.teacher_exam')->with('aSession', $aSession);
+        $aExams = $this->getExams();
+        foreach ($aExams as $aExamData) {
+            $aExamData['parent_course'] = $this->getIntegratedCourseDetail($aExamData['course_id']);
+        }
+        return view('pages.teacher.teacher_exam')->with('aSession', $aSession)->with('aExams', $aExams);
+    }
+
+    public function viewExamPage($iExamId)
+    {
+        $aSession = $this->getSession();
+        $aExam = $this->getExams(['id' => $iExamId]);
+        $aExam['integ_course'] = $this->getIntegratedCourseDetail($aExam[0]['course_id']);
+        $aQuestions = $this->getExamQuestions($iExamId);
+        $aChoices = $this->getExamChoices($aQuestions);
+        return view('pages.teacher.teacher_view_exam')->with('aSession', $aSession)->with('aExam', $aExam)->with('aQuestions', $aQuestions)->with('aChoices', $aChoices);
     }
 
     /**
