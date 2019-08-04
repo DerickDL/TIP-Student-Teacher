@@ -186,7 +186,7 @@ class logicQuestions
     private function divideItems($aSubCourses, $iItems)
     {
         $iNumberCourses = count($aSubCourses);
-        $iNumberQuestions = $iItems / $iNumberCourses;
+        $iNumberQuestions = (int)round($iItems / $iNumberCourses);
         $aNumberItems = array_fill(0, ($iNumberCourses - 1), $iNumberQuestions);
         $aNumberItems[$iNumberCourses - 1] = $iItems - (($iNumberCourses - 1) * $iNumberQuestions);
         return $aNumberItems;
