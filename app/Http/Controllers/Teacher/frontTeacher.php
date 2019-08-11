@@ -144,7 +144,20 @@ class frontTeacher extends frontUsers
         foreach ($aExams as $aExamData) {
             $aExamData['parent_course'] = $this->getIntegratedCourseDetail($aExamData['course_id']);
         }
+        $aExams = $this->segregateExams($aExams);
         return view('pages.teacher.teacher_exam')->with('aSession', $aSession)->with('aExams', $aExams);
+    }
+
+    /**
+     * Segregate exams by type
+     */
+    private function segregateExams($aExams)
+    {
+        $aSegregatedExams = [];
+        foreach ($aExams as $aExamData) {
+            $aSegregatedExams[$aExamData['type']][] = $aExamData;
+        }
+        return $aSegregatedExams;
     }
 
     public function viewExamPage($iExamId)
