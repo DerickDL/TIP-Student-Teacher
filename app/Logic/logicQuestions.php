@@ -149,7 +149,7 @@ class logicQuestions
     {
         $aValidateParams = $this->validateParams(
             array(
-                'course_id' => 'required',
+                'courses' => 'required|array',
                 'items' => 'required|integer'
             ),
             $aRequest
@@ -157,12 +157,12 @@ class logicQuestions
         if ($aValidateParams['result'] === false) {
             return $aValidateParams;
         }
-        $aSubCourses = $this->modelCourses->getCourses(['integrated_course_id' => $aRequest['course_id']]);
+        $aSubCourses = $aRequest['courses'];
         $aNumberItems = $this->divideItems($aSubCourses, $aRequest['items']);
         $iCtr = 0;
         $aExamQuestions = array();
         for ($i = 0;  $i < count($aSubCourses); $i++) {
-            $aGeneratedQuestion = (array)$this->buildQuestions($aSubCourses[$i]['id'], $aNumberItems[$i]);
+            $aGeneratedQuestion = (array)$this->buildQuestions($aSubCourses[$i], $aNumberItems[$i]);
             if ($aGeneratedQuestion['result'] === false) {
                 return $aGeneratedQuestion;
             }
@@ -224,14 +224,14 @@ class logicQuestions
                 'message' => 'Number of questions is insufficient'
             ];
         }
-        $iDifficultItems = round($iQuizItems * .1);
+        $iDifficultItems = (int)round($iQuizItems * .1);
         if (count($aQuestions[2]) < $iDifficultItems) {
             return [
                 'result' => false,
                 'message' => 'Number of difficult questions is insufficient'
             ];
         }
-        $iAverageItems = round($iQuizItems * .3);
+        $iAverageItems = (int)round($iQuizItems * .3);
         if (count($aQuestions[1]) < $iAverageItems) {
             return [
                 'result' => false,

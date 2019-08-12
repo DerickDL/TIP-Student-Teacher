@@ -16,7 +16,7 @@ class modelExams extends Model
     /**
      * @var array
      */
-    protected $fillable = ['exam_title', 'items', 'course_id', 'time_limit'];
+    protected $fillable = ['exam_title', 'items', 'course_id', 'time_limit', 'type'];
 
     public function questions()
     {
@@ -68,5 +68,10 @@ class modelExams extends Model
     public function createExam($aData)
     {
         return static::create($aData);
+    }
+
+    public function deleteExam($iExamId)
+    {
+        return self::destroy($iExamId);
     }
 }

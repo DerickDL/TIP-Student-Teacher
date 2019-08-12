@@ -1,7 +1,7 @@
 @extends('pages.teacher.teacher_base')
 
 @push('styles')
-
+    <link rel="stylesheet" href="/css/bootstrap-multiselect.css" type="text/css"/>
 @endpush
 
 @section('teacher_content')
@@ -14,13 +14,28 @@
             <form>
                 <div class="row">
                   <div class="col-8">
+                  <div class="form-group">
+                        <label>Exam Type</label>
+                        <select class="form-control" id="exam-type">
+                            <option selected hidden id="type-default">Select Exam Type</option>
+                            <option value="1">Preliminary</option>
+                            <option value="2">Mid Term</option>
+                            <option value="3">Final Term</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label>Integration Course</label>
                         <select class="form-control" id="integ-courses">
-                        <option selected hidden id="integ-default">Select Integration Course</option>
-                        <option value="1">Integration Course 1</option>
-                        <option value="2">Integration Course 2</option>
-                        <option value="3">Integration Course 3</option>
+                            <option selected hidden id="integ-default">Select Integration Course</option>
+                            <option value="1">Integration Course 1</option>
+                            <option value="2">Integration Course 2</option>
+                            <option value="3">Integration Course 3</option>
+                        </select>
+                    </div>
+                    <div>
+                    <label>Courses: </label>
+                        <select class="form-control" id="sub-courses" multiple="multiple">
+
                         </select>
                     </div>
                     <div class="row">
@@ -53,9 +68,11 @@
 
 @push('scripts')
 <script type="text/javascript">
+    aSubCourses = {!! json_encode($aSubCourses) !!}
     $(document).ready(function () {
         $('#exam-tab').addClass('active');
 	});
 </script>
+<script type="text/javascript" src="/js/bootstrap-multiselect.js"></script>
 <script type="text/javascript" src="/js/add_exam.js"></script>
 @endpush

@@ -16,6 +16,11 @@ class controllerExams extends Controller
      */
     public function insertExam(Request $oRequest)
     {
-        $this->addExam($oRequest->all());
+        return $this->addExam($oRequest->all());
+    }
+
+    public function deleteExam($iExamId)
+    {
+        $this->removeExam($iExamId);
     }
 }

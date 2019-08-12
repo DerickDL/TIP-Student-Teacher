@@ -4,6 +4,21 @@ $(document).ready(function () {
            this.cacheDOM();
            this.addEvents();
            this.aQuestions = [];
+           this.initializeMultiSelect();
+           this.aSelectedCourses = [];
+       },
+
+       initializeMultiSelect: function () {
+            $('#sub-courses').multiselect({
+                onChange: function(option, checked, select) {
+                    var index = oAddExam.aSelectedCourses.indexOf(option.val());
+                    if (index > -1) {
+                        oAddExam.aSelectedCourses.splice(index, 1);
+                    } else {
+                        oAddExam.aSelectedCourses.push(option.val());
+                    }
+                }
+            });
        },
        
        cacheDOM: function () {
@@ -16,12 +31,26 @@ $(document).ready(function () {
            this.eToolTipGenerated = $('#tooltip-generated');
            this.eBtnSaveExam = $('#save-exam');
            this.eBtnClearExam = $('#clear-exam');
+           this.eSubCourses = $('#sub-courses');
+           this.eExamType = $('#exam-type');
        },
         
        addEvents: function () {
            oAddExam.eBtnGenerate.click(oAddExam.generateExam);
            oAddExam.eBtnClearExam.click(oAddExam.clearExam);
            oAddExam.eBtnSaveExam.click(oAddExam.saveExam);
+           oAddExam.eIntegCourses.change(oAddExam.appendSubCourses);
+       },
+
+       appendSubCourses: function () {
+            oAddExam.aSelectedCourses = [];
+            var sOptions = '';
+            aSubCourses[$(this).val()].forEach(aCourseDetail => {
+                sOptions += `<option value="${aCourseDetail['id']}">${aCourseDetail['course_title']}</option>`;
+            });
+            oAddExam.eSubCourses.empty();
+            oAddExam.eSubCourses.append(sOptions);
+            oAddExam.eSubCourses.multiselect('rebuild');
        },
 
        generateExam: function () {
@@ -29,7 +58,7 @@ $(document).ready(function () {
                url: '/teacher/exams/generate',
                type: 'POST',
                data: {
-                   'course_id': oAddExam.eIntegCourses.val(),
+                   'courses': oAddExam.aSelectedCourses,
                    'time_limit': oAddExam.eTimeLimit.val(),
                    'items': oAddExam.eNumItems.val()
                },
@@ -39,6 +68,7 @@ $(document).ready(function () {
                    } else {
                         alert('Succesfully generated questions');
                         oAddExam.clearExam(false);
+                        console.log(oResponse);
                         oAddExam.renderQuestions(oResponse);
                    }
                }
@@ -53,11 +83,16 @@ $(document).ready(function () {
                         'time_limit': oAddExam.eTimeLimit.val(),
                         'items': oAddExam.eNumItems.val(),
                         'questions': oAddExam.aQuestions,
-                        'course_id': oAddExam.eIntegCourses.val()
+                        'course_id': oAddExam.eIntegCourses.val(),
+                        'type': oAddExam.eExamType.val()
                     },
-                    success: function () {
-                        alert('Successfully created exam');
-                        window.location.replace('/teacher/exams');
+                    success: function (aResponse) {
+                        if (aResponse['result'] === false) {
+                            alert(aResponse['msg']);
+                        } else {
+                            alert('Successfully created exam');
+                            window.location.replace('/teacher/exams');
+                        }
                     }
                 })
             }

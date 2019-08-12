@@ -62,7 +62,7 @@ trait traitExams
     public function addExam($aRequest)
     {
         $this->instantiateExams();
-        $this->logicExams->insertExam($aRequest);
+        return $this->logicExams->insertExam($aRequest);
     }
 
     /**
@@ -73,5 +73,11 @@ trait traitExams
     {
         $this->instantiateExams();
         return $this->logicExams->getExamScore($iExamId, $iUserId);
+    }
+
+    public function removeExam($iExamId)
+    {
+        $this->instantiateExams();
+        $this->logicExams->deleteExam($iExamId);
     }
 }

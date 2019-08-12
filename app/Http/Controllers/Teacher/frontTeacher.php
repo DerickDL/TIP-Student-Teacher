@@ -177,6 +177,7 @@ class frontTeacher extends frontUsers
     public function generateExamPage()
     {
         $aSession = $this->getSession();
-        return view('pages.teacher.teacher_generate_exam')->with('aSession', $aSession);
+        $aSubCourses = $this->getSubCourses();
+        return view('pages.teacher.teacher_generate_exam')->with('aSession', $aSession)->with('aSubCourses', $aSubCourses);
     }
 }

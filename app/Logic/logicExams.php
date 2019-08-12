@@ -49,7 +49,8 @@ class logicExams
             array(
                 'course_id' => 'required',
                 'items' => 'required|integer',
-                'time_limit' => 'required|integer'
+                'time_limit' => 'required|integer',
+                'type'  => 'required'
             ),
             $aRequest
         );
@@ -61,11 +62,26 @@ class logicExams
             'items' => $aRequest['items'],
             'time_limit' => $aRequest['time_limit']
         ];
+        $aExam = $this->modelExams->getExams(['course_id' => $aRequest['course_id'], 'type' => $aRequest['type']]);
+        if (count($aExam) > 0) {
+            return array(
+                'result'    => false,
+                'msg'       => 'Selected exam type already exists in this course'
+            );
+        }
         $aExam = $this->modelExams->createExam($aRequest);
         $oExam = $this->modelExams->findExam($aExam['id']);
         foreach ($aRequest['questions'] as $aQuestion) {
             $oExam->questions()->attach($aQuestion['id']);
         }
+        return array('result' => true);
+    }
+
+    public function deleteExam($iExamId)
+    {
+        $oExam = $this->modelExams->findExam($iExamId);
+        $oExam->questions()->detach();
+        $this->modelExams->deleteExam($iExamId);
     }
 
     /**

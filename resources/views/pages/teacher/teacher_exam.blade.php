@@ -37,7 +37,7 @@
                         <td class="text-center"><a href="/teacher/exams/detail/{{ $aExamData['id'] }}">{{ $aExamData['parent_course']['integrated_course_name'] }}</a></td>
                         <td class="text-center">{{ $aExamData['items'] }}</td>
                         <td class="text-center">{{ $aExamData['time_limit'] }}</td>
-                        <td class="text-center"><button class='btn btn-secondary btn-sm delete-exam'>Delete</button></td>
+                        <td class="text-center"><button class='btn btn-secondary btn-sm delete-exam' data-value='{{ $aExamData["id"] }}'>Delete</button></td>
                     </tr>
                 @endforeach
             </tbody>
