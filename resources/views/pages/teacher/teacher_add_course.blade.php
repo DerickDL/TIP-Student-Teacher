@@ -28,6 +28,7 @@
 
 @push('scripts')
 <script type="text/javascript">
+    var iSectionId = {!! json_encode($aSection[0]['id']) !!};
     var iIntegratedCourse = {!! json_encode($aIntegCourse['id']) !!};
     $(document).ready(function () {
         $('#integ-course-' + iIntegratedCourse).addClass('active');

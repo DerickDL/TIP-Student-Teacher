@@ -16,7 +16,7 @@ class modelSections extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'num_stud', 'class_room', 'act_room', 'start_date', 'end_date'];
+    protected $fillable = ['name', 'num_stud', 'class_room', 'act_room', 'start_date', 'end_date', 'user_id'];
 
     /**
      * Find a question

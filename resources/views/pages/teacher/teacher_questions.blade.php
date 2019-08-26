@@ -7,8 +7,8 @@
 @section('teacher_content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/teacher/courses/{{$aIntegCourse['id']}}">{{$aIntegCourse['integrated_course_name']}}</a></li>
-            <li class="breadcrumb-item"><a href="/teacher/courses/{{$aIntegCourse['id']}}/sub/{{$aCourse[0]['id']}}">{{$aCourse[0]['course_title']}}</a></li>
+            <li class="breadcrumb-item"><a href="/teacher/section/{{$aSection[0]['id']}}/courses/{{$aIntegCourse['id']}}">{{$aIntegCourse['integrated_course_name']}}</a></li>
+            <li class="breadcrumb-item"><a href="/teacher/section/{{$aSection[0]['id']}}/courses/{{$aIntegCourse['id']}}/sub/{{$aCourse[0]['id']}}">{{$aCourse[0]['course_title']}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">Questions</li>
         </ol>
     </nav>
@@ -46,6 +46,7 @@
 
 @push('scripts')
 <script type="text/javascript">
+    var iSectionId = {!! json_encode($aSection[0]['id']) !!};
     var iIntegratedCourse = {!! json_encode($aIntegCourse['id']) !!};
     var iSubCourse = {!! json_encode($aCourse[0]['id']) !!};
     $(document).ready(function () {

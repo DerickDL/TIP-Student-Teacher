@@ -10,26 +10,41 @@ use Illuminate\Support\Facades\Session;
 
 class frontTeacher extends frontUsers
 {
+    public function sectionPage()
+    {
+        $aSession = $this->getSession();
+        $aSections = $this->getSections(['user_id' => $aSession->getData()->id]);
+        return view('pages.teacher.teacher_sections1')->with('aSession', $aSession)->with('aSections', $aSections);
+    }
+
+    public function createSectionPage()
+    {
+        $aSession = $this->getSession();
+        return view('pages.teacher.teacher_create_section1')->with('aSession', $aSession);
+    }
+
     /**
      * Teacher homepage
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function homePage()
+	public function homePage($iSectionId)
 	{
 	    $aSession = $this->getSession();
-		return view('pages.teacher.teacher_home')->with('aSession', $aSession);
+        $aSection = $this->getSections(['id' => $iSectionId]);
+        return view('pages.teacher.teacher_home')->with('aSession', $aSession)->with('aSection', $aSection);
 	}
 
     /**
      * Teacher course page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function integCoursePage($iIntegCourseId)
+	public function integCoursePage($iSectionId, $iIntegCourseId)
     {
         $aSession = $this->getSession();
+        $aSection = $this->getSections(['id' => $iSectionId]);
         $aIntegCourse = $this->getIntegratedCourseDetail($iIntegCourseId);
-        $aCourses = $this->getCourses(['integrated_course_id' => $iIntegCourseId]);
-        return view('pages.teacher.teacher_all_course')->with('aSession', $aSession)->with('aCourses', $aCourses)->with('aIntegCourse', $aIntegCourse);
+        $aCourses = $this->getCourses(['integrated_course_id' => $iIntegCourseId, 'section_id' => $iSectionId]);
+        return view('pages.teacher.teacher_all_course')->with('aSession', $aSession)->with('aCourses', $aCourses)->with('aIntegCourse', $aIntegCourse)->with('aSection', $aSection);
     }
 
     /**
@@ -37,24 +52,26 @@ class frontTeacher extends frontUsers
      * @param $iCourseId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function subCourseDetailPage($iIntegCourseId, $iCourseId)
+    public function subCourseDetailPage($iSectionId, $iIntegCourseId, $iCourseId)
     {
         $aSession = $this->getSession();
+        $aSection = $this->getSections(['id' => $iSectionId]);
         $aIntegCourse = $this->getIntegratedCourseDetail($iIntegCourseId);
         $aCourse = $this->getCourses(['id' => $iCourseId]);
         $aFiles = $this->getFiles(['course_id' => $iCourseId]);
-        return view('pages.teacher.teacher_course')->with('aSession', $aSession)->with('aCourse', $aCourse)->with('aIntegCourse', $aIntegCourse)->with('aFiles', $aFiles);
+        return view('pages.teacher.teacher_course')->with('aSession', $aSession)->with('aSection', $aSection)->with('aCourse', $aCourse)->with('aIntegCourse', $aIntegCourse)->with('aFiles', $aFiles);
     }
 
     /**
      * Teacher add course page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function addCoursePage($iIntegCourseId)
+	public function addCoursePage($iSectionId, $iIntegCourseId)
     {
         $aSession = $this->getSession();
+        $aSection = $this->getSections(['id' => $iSectionId]);
         $aIntegCourse = $this->getIntegratedCourseDetail($iIntegCourseId);
-        return view('pages.teacher.teacher_add_course')->with('aSession', $aSession)->with('aIntegCourse', $aIntegCourse);
+        return view('pages.teacher.teacher_add_course')->with('aSession', $aSession)->with('aIntegCourse', $aIntegCourse)->with('aSection', $aSection);
     }
 
     /**
@@ -63,12 +80,13 @@ class frontTeacher extends frontUsers
      * @param $iIntegCourseId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function questionsPage($iIntegCourseId, $iCourseId)
+    public function questionsPage($iSectionId, $iIntegCourseId, $iCourseId)
     {
         $aSession = $this->getSession();
+        $aSection = $this->getSections(['id' => $iSectionId]);
         $aIntegCourse = $this->getIntegratedCourseDetail($iIntegCourseId);
         $aCourse = $this->getCourses(['id' => $iCourseId]);
-        return view('pages.teacher.teacher_questions')->with('aSession', $aSession)->with('aIntegCourse', $aIntegCourse)->with('aCourse', $aCourse);
+        return view('pages.teacher.teacher_questions')->with('aSession', $aSession)->with('aIntegCourse', $aIntegCourse)->with('aCourse', $aCourse)->with('aSection', $aSection);
     }
 
     /**
@@ -76,7 +94,7 @@ class frontTeacher extends frontUsers
      * @param $iQuizId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function quizPage()
+    public function quizPage($iSectionId)
     {
         $aSession = $this->getSession();
         $aData = $this->getPageData(['id' => $iCourseId]);
@@ -88,14 +106,14 @@ class frontTeacher extends frontUsers
      * generate quiz
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function generateQuizPage()
+    public function generateQuizPage($iSectionId)
     {
         $aSession = $this->getSession();
         $aSubCourses = $this->getSubCourses();
         return view('pages.teacher.teacher_generate_quiz')->with('aSession', $aSession)->with('aSubCourses', $aSubCourses);
     }
 
-    public function listQuizPage()
+    public function listQuizPage($iSectionId)
     {
         $aSession = $this->getSession();
         $aQuizzes = $this->getQuizzes();
@@ -106,7 +124,7 @@ class frontTeacher extends frontUsers
         return view('pages.teacher.teacher_list_quiz')->with('aSession', $aSession)->with('aQuizzes', $aQuizzes);        
     }
 
-    public function viewQuizPage($iQuizId)
+    public function viewQuizPage($iSectionId, $iQuizId)
     {
         $aSession = $this->getSession();
         $aQuiz = $this->getQuizzes(['id' => $iQuizId]);
@@ -117,19 +135,6 @@ class frontTeacher extends frontUsers
         return view('pages.teacher.teacher_view_quiz')->with('aSession', $aSession)->with('aQuiz', $aQuiz)->with('aQuestions', $aQuestions)->with('aChoices', $aChoices);
     }
 
-    public function sectionPage()
-    {
-        $aSession = $this->getSession();
-        $aSections = $this->getSections();
-        return view('pages.teacher.teacher_sections')->with('aSession', $aSession)->with('aSections', $aSections);
-    }
-
-    public function createSectionPage()
-    {
-        $aSession = $this->getSession();
-        return view('pages.teacher.teacher_create_section')->with('aSession', $aSession);
-    }
-
     public function sectionDetailPage($iSectionId)
     {
         $aSession = $this->getSession();
@@ -137,7 +142,7 @@ class frontTeacher extends frontUsers
         return view('pages.teacher.teacher_section_detail')->with('aSession', $aSession)->with('aSection', $aSection);
     }
 
-    public function examPage()
+    public function examPage($iSectionId)
     {
         $aSession = $this->getSession();
         $aExams = $this->getExams();
@@ -160,7 +165,7 @@ class frontTeacher extends frontUsers
         return $aSegregatedExams;
     }
 
-    public function viewExamPage($iExamId)
+    public function viewExamPage($iSectionId, $iExamId)
     {
         $aSession = $this->getSession();
         $aExam = $this->getExams(['id' => $iExamId]);
@@ -174,7 +179,7 @@ class frontTeacher extends frontUsers
      * generate exam page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function generateExamPage()
+    public function generateExamPage($iSectionId)
     {
         $aSession = $this->getSession();
         $aSubCourses = $this->getSubCourses();

@@ -26,7 +26,8 @@ $(document).ready(function () {
                     'start_date': $('#start_date').val(),
                     'end_date': $('#end_date').val(),
                     'class_room': $('#class-room').val(),
-                    'act_room': $('#act-room').val()
+                    'act_room': $('#act-room').val(),
+                    'user_id': iUserId
                 },
                 success: function (aResponse) {
                     alert(aResponse['message']);

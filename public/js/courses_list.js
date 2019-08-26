@@ -17,7 +17,7 @@ $(document).ready(function () {
             var oSelf = this;
             if (confirm('Are you sure you want to delete this course?')) {
                 $.ajax({
-                    url: `/teacher/course/delete/${$(oSelf).data('value')}`,
+                    url: `/teacher/section/${iSectionId}/course/delete/${$(oSelf).data('value')}`,
                     type: 'POST',
                     success: function () {
                         alert('Deleted successfully');

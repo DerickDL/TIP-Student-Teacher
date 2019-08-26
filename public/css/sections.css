@@ -1,0 +1,36 @@
+.card-courses {
+    max-width: 20rem !important;
+    min-width: 20rem !important;
+    cursor: pointer;
+    /*float: left;*/
+}
+
+.card {
+    height: 15rem;
+}
+
+.card-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 0 !important;
+}   
+
+.card-body {
+    overflow: hidden;
+}
+
+.parent-center {
+    position: relative;
+}
+
+.child-center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 30%;
+    margin: auto;
+}

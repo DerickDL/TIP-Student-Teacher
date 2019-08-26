@@ -20,7 +20,7 @@ $(document).ready(function () {
 
         cancelSavingCourse: function() {
             if (confirm("Are you sure you want to cancel?")) {
-                window.location.replace(`/teacher/courses/${iIntegratedCourse}`);
+                window.location.replace(`/teacher/section/${iSectionId}/courses/${iIntegratedCourse}`);
             }
         },
 
@@ -32,19 +32,20 @@ $(document).ready(function () {
 
         addCourse: function(iUserId) {
             $.ajax({
-                url: '/teacher/course/add',
+                url: `/teacher/section/${iSectionId}/course/add`,
                 type: 'POST',
                 data: {
                     'course_code': oAddCourse.oInputCode.val(),
                     'course_title': oAddCourse.oInputTitle.val(),
                     'course_overview': oAddCourse.oInputOverview.val(),
                     'course_user_id': iUserId,
-                    'integrated_course_id': iIntegratedCourse
+                    'integrated_course_id': iIntegratedCourse,
+                    'section_id': iSectionId
                 },
                 success: function (aResponse) {
                     if (aResponse.result === true) {
                         alert("Added successfully");
-                        window.location.replace(`/teacher/courses/${iIntegratedCourse}`);
+                        window.location.replace(`/teacher/section/${iSectionId}/courses/${iIntegratedCourse}`);
                     } else {
                         alert(aResponse.message);
                     }

@@ -7,7 +7,7 @@
 @section('teacher_content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/teacher/courses/{{$aIntegCourse['id']}}">{{$aIntegCourse['integrated_course_name']}}</a></li>
+            <li class="breadcrumb-item"><a href="/teacher/section/{{$aSection[0]['id']}}/courses/{{$aIntegCourse['id']}}">{{$aIntegCourse['integrated_course_name']}}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{$aCourse[0]['course_title']}}</li>
         </ol>
     </nav>
@@ -41,7 +41,7 @@
             @endforeach
         </ul>
         <div class="text-right mt-3">
-            <a href="/teacher/courses/{{$aIntegCourse['id']}}/sub/{{$aCourse[0]['id']}}/questions" class="badge badge-info">Manage Questions</a>
+            <a href="/teacher/section/{{$aSection[0]['id']}}/courses/{{$aIntegCourse['id']}}/sub/{{$aCourse[0]['id']}}/questions" class="badge badge-info">Manage Questions</a>
         </div>
     </div>
 @endsection
