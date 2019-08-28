@@ -110,7 +110,8 @@ class frontTeacher extends frontUsers
     {
         $aSession = $this->getSession();
         $aSubCourses = $this->getSubCourses();
-        return view('pages.teacher.teacher_generate_quiz')->with('aSession', $aSession)->with('aSubCourses', $aSubCourses);
+        $aSection = $this->getSections(['id' => $iSectionId]);
+        return view('pages.teacher.teacher_generate_quiz')->with('aSession', $aSession)->with('aSubCourses', $aSubCourses)->with('aSection', $aSection);
     }
 
     public function listQuizPage($iSectionId)
@@ -121,7 +122,8 @@ class frontTeacher extends frontUsers
             $aQuizData['sub_course'] = $this->getCourses(['id' => $aQuizData['course_id']])[0];
             $aQuizData['parent_course'] = $this->getParentCourse($aQuizData['course_id']);
         }
-        return view('pages.teacher.teacher_list_quiz')->with('aSession', $aSession)->with('aQuizzes', $aQuizzes);        
+        $aSection = $this->getSections(['id' => $iSectionId]);
+        return view('pages.teacher.teacher_list_quiz')->with('aSession', $aSession)->with('aQuizzes', $aQuizzes)->with('aSection', $aSection);        
     }
 
     public function viewQuizPage($iSectionId, $iQuizId)
@@ -132,7 +134,8 @@ class frontTeacher extends frontUsers
         $aQuiz['course'] = $this->getCourses(['id' => $aQuiz[0]['course_id']]);
         $aQuestions = $this->getQuestions($iQuizId);
         $aChoices = $this->getChoices($aQuestions);
-        return view('pages.teacher.teacher_view_quiz')->with('aSession', $aSession)->with('aQuiz', $aQuiz)->with('aQuestions', $aQuestions)->with('aChoices', $aChoices);
+        $aSection = $this->getSections(['id' => $iSectionId]);
+        return view('pages.teacher.teacher_view_quiz')->with('aSession', $aSession)->with('aQuiz', $aQuiz)->with('aQuestions', $aQuestions)->with('aChoices', $aChoices)->with('aSection', $aSection);
     }
 
     public function sectionDetailPage($iSectionId)
@@ -150,7 +153,15 @@ class frontTeacher extends frontUsers
             $aExamData['parent_course'] = $this->getIntegratedCourseDetail($aExamData['course_id']);
         }
         $aExams = $this->segregateExams($aExams);
-        return view('pages.teacher.teacher_exam')->with('aSession', $aSession)->with('aExams', $aExams);
+        $aSection = $this->getSections(['id' => $iSectionId]);
+        return view('pages.teacher.teacher_exam')->with('aSession', $aSession)->with('aExams', $aExams)->with('aSection', $aSection);
+    }
+
+    public function studentListPage($iSectionId)
+    {
+        $aSession = $this->getSession();
+        $aSection = $this->getSections(['id' => $iSectionId]);
+        return view('pages.teacher.teacher_students')->with('aSession', $aSession)->with('aSection', $aSection);
     }
 
     /**

@@ -77,6 +77,19 @@ a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
+    border-bottom: 1px solid white;
+}
+
+#sidebar ul.back {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1em;
+}
+
+#sidebar ul.back > a {
+    color: white;
+    background-color: #d1a701;
+
 }
 
 #sidebar ul p {

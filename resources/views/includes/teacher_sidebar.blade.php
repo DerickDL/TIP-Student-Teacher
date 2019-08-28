@@ -19,11 +19,17 @@
             </ul>
         </li>
         <li id="quiz-tab">
-            <a href="/teacher/quizzes/list">Quizzes</a>
+            <a href="/teacher/section/{{$aSection[0]['id']}}/quizzes/list">Quizzes</a>
         </li>
         <li id="exam-tab">
-            <a href="/teacher/exams">Exams</a>
+            <a href="/teacher/section/{{$aSection[0]['id']}}/exams">Exams</a>
         </li>
+        <li id="student-tab">
+            <a href="/teacher/section/{{$aSection[0]['id']}}/students">Students</a>
+        </li>
+    </ul>
+    <ul class="list-unstyled back">
+        <a class="btn btn-sm" href="/teacher/sections">Go back</a>
     </ul>
 </nav>
 @endif

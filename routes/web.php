@@ -61,6 +61,10 @@ Route::post('/teacher/section/{section_id}/exams/save', 'Exams\controllerExams@i
 Route::get('/teacher/section/{section_id}/exams/detail/{exam_id}', 'Teacher\frontTeacher@viewExamPage')->middleware('check.session', 'check.teacher');
 Route::delete('/teacher/section/{section_id}/exams/delete/{exam_id}', 'Exams\controllerExams@deleteExam');
 
+
+/**STUDENT LIST PAGE**/
+Route::get('/teacher/section/{section_id}/students', 'Teacher\frontTeacher@studentListPage')->middleware('check.session', 'check.teacher');
+
 Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}', 'Student\frontStudent@courseHomePage')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}/quizzes', 'Student\frontStudent@quizPage')->middleware('check.session', 'check.student');
