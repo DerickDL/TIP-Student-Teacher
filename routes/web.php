@@ -80,3 +80,11 @@ Route::get('/logout', 'App\controllerUsers@logoutUser');
 // Post methods
 Route::post('/login', 'App\controllerUsers@loginUser');
 Route::post('/register', 'App\controllerUsers@registerUser');
+
+Route::prefix('/admin')->group(function () {
+    Route::middleware(['check.admin'])->group(function (){
+        Route::get('/instructors', 'Admin\frontAdmin@instructorsPage');
+        Route::get('/instructors/assign', 'Admin\frontAdmin@assignPage');
+    });
+    Route::get('/', 'Admin\frontAdmin@loginPage'); 
+});

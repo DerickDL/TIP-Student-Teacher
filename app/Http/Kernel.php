@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'check.session' => \App\Http\Middleware\checkSession::class,
         'check.teacher' => \App\Http\Middleware\checkTeacher::class,
         'check.student' => \App\Http\Middleware\checkStudent::class,
+        'check.admin'   => \App\Http\Middleware\checkAdminSession::class
     ];
 
     /**

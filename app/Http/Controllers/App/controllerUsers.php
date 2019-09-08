@@ -46,8 +46,12 @@ class controllerUsers extends Controller
      */
     public function logoutUser()
     {
+        $aSession = $this->logicUsers->getSession();
         $this->logicUsers->logoutUser();
-        return redirect('/');
+        if ($aSession['user_type'] !== 2) {
+            return redirect('/');
+        }
+        return redirect('/admin');
     }
 
     /**
