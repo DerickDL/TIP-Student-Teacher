@@ -14,6 +14,7 @@ class UpdateCoursesTableRemoveUserForeignAddSectionForeign extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
             $table->dropColumn('user_id');
             $table->unsignedBigInteger('section_id');
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');

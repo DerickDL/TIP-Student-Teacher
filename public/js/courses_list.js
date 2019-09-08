@@ -18,10 +18,10 @@ $(document).ready(function () {
             if (confirm('Are you sure you want to delete this course?')) {
                 $.ajax({
                     url: `/teacher/section/${iSectionId}/course/delete/${$(oSelf).data('value')}`,
-                    type: 'POST',
+                    type: 'DELETE',
                     success: function () {
                         alert('Deleted successfully');
-                        $(oSelf).parent().parent().parent().parent().remove();
+                        window.reload();
                     },
                     error: function (err) {
                         console.log(err);

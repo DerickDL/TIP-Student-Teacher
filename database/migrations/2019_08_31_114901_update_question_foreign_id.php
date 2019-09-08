@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateQuestionsTableForeignKey extends Migration
+class UpdateQuestionForeignId extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,8 @@ class UpdateQuestionsTableForeignKey extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->dropForeign(['lesson_id']);
-            $table->dropColumn('lesson_id');
-            // $table->unsignedBigInteger('course_id');
-            // $table->foreign('course_id')->references('id')->on('courses');
+            // $table->dropForeign(['course_id']);
+            // $table->dropColumn('course_id');
         });
     }
 
@@ -29,7 +27,7 @@ class UpdateQuestionsTableForeignKey extends Migration
     public function down()
     {
         Schema::table('questions', function (Blueprint $table) {
-            // $table->dropForeign(['course_id']);
+            //
         });
     }
 }

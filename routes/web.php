@@ -32,6 +32,7 @@ Route::get('/teacher/section/{section_id}/courses/{integ_course_id}/add', 'Teach
 Route::post('/teacher/section/{section_id}/course/add', 'Teacher\restTeacher@addCourse');
 Route::post('teacher/section/{section_id}/courses/file/add/{course_id}', 'Teacher\restTeacher@addFile');
 Route::delete('teacher/section/{section_id}/courses/file/delete/{file_id}', 'Teacher\restTeacher@removeFile');
+Route::delete('teacher/section/{section_id}/course/delete/{course_id}', 'Teacher\restTeacher@removeCourse');
 
 /**QUESTIONS PAGE**/
 Route::get('/teacher/section/{section_id}/courses/{integ_course_id}/sub/{course_id}/questions', 'Teacher\frontTeacher@questionsPage')->middleware('check.session', 'check.teacher');

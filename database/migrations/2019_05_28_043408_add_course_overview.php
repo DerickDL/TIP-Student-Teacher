@@ -31,7 +31,9 @@ class AddCourseOverview extends Migration
     {
         Schema::table('courses', function (Blueprint $table) {
             $table->dropColumn('course_overview');
-            $table->dropForeign(['user_id']);
+            $table->dropColumn('course_start');
+            $table->dropColumn('course_end');
+            // $table->dropForeign(['user_id']);
         });
     }
 }

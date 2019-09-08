@@ -26,7 +26,7 @@ class UpdateQuizzesTable extends Migration
     public function down()
     {
         Schema::table('quizzes', function (Blueprint $table) {
-            //
+            $table->dropColumn('quiz_timelimit');
         });
     }
 }
