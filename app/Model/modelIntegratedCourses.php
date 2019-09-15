@@ -18,6 +18,12 @@ class modelIntegratedCourses extends Model
         return $this->hasMany('App\Model\modelCourses', 'integrated_courses_id');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\Model\modelUsers', 'integration_users', 'integration_id', 'user_id')
+            ->withTimestamps();
+    }
+
     /**
      * Find a course
      * @param $id

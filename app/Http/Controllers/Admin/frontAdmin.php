@@ -19,4 +19,10 @@ class frontAdmin extends frontUsers
         $aSession = $this->getSession();
         return view('pages.admin.admin_instructor')->with('aSession', $aSession);
     }
+
+    public function assignPage()
+    {
+        $aSession = $this->getSession();
+        return view('pages.admin.admin_assign')->with('aSession', $aSession);
+    }
 }

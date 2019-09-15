@@ -62,4 +62,14 @@ class controllerUsers extends Controller
     {
         return response()->json($this->logicUsers->getSession());
     }
+
+    public function getUsers(Request $oRequest)
+    {
+        return response()->json($this->logicUsers->getUsers($oRequest->all()));
+    }
+
+    public function assignTeacherIntegration(Request $oRequest)
+    {
+        return response()->json($this->logicUsers->assignTeacherIntegration($oRequest->all()));
+    }
 }

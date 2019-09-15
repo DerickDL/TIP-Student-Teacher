@@ -77,14 +77,17 @@ Route::post('/quizzes/submit', 'Student\controllerStudent@submitQuiz');
 Route::get('/session', 'App\controllerUsers@getSession');
 Route::get('/logout', 'App\controllerUsers@logoutUser');
 
-// Post methods
 Route::post('/login', 'App\controllerUsers@loginUser');
 Route::post('/register', 'App\controllerUsers@registerUser');
 
+/**ADMIN**/
 Route::prefix('/admin')->group(function () {
     Route::middleware(['check.admin'])->group(function (){
         Route::get('/instructors', 'Admin\frontAdmin@instructorsPage');
-        Route::get('/instructors/assign', 'Admin\frontAdmin@assignPage');
+        Route::get('/instructor/assign', 'Admin\frontAdmin@assignPage');
     });
     Route::get('/', 'Admin\frontAdmin@loginPage'); 
 });
+
+Route::get('/instructors', 'App\controllerUsers@getUsers');
+Route::post('/assign', 'App\controllerUsers@assignTeacherIntegration');

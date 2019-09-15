@@ -161,5 +161,45 @@ class logicUsers
     public function getSession()
     {
         return Session::get('current_user');
-    }
+	}
+	
+	public function getUsers($aParams)
+	{
+		return $this->modelUsers->getUsers($aParams);
+	}
+
+	public function assignTeacherIntegration($aParams)
+	{
+		$aCheckUser = $this->checkExistingUser($aParams);
+		if (count($aCheckUser) < 1) {
+			return array(
+				'result' => false,
+				'message'	=> 'User doesn\'t exist!'
+			);
+		}
+		$aAssignUser = $this->checkAssignUser($aCheckUser);
+		if (count($aAssignUser) > 0) {
+			return array(
+				'result' => false,
+				'message'	=> 'This user is already assigned to this integration course!'
+			);
+		}
+		$oUser = $this->modelUsers->findUser($aCheckUser[0]['id']);
+		$oUser->integrated_courses()->attach($aParams['integration']);
+		return array(
+			'result' => true,
+			'message'	=> 'This user is successfully assigned to this integration course!'
+		);
+	}
+
+	private function checkExistingUser($aParams)
+	{
+		return $this->modelUsers->getUsers(['username' => $aParams['user']])->toArray();
+	}
+
+	private function checkAssignUser($aParams)
+	{
+		$oUser = $this->modelUsers->findUser($aParams[0]['id']);
+		return $oUser->integrated_courses()->get()->toArray();
+	}
 }

@@ -29,4 +29,9 @@ class frontUsers extends controllerUsers
             'session' => $aSession
         );
     }
+
+    public function getAllUsers($aRequest)
+    {
+        return $this->logicUsers->getUsers($aRequest);
+    }
 }

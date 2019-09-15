@@ -30,6 +30,12 @@ class modelUsers extends Model
         return $this->hasMany('App\Model\modelCourses', 'user_id');
     }
 
+    public function integrated_courses()
+    {
+        return $this->belongsToMany('App\Model\modelIntegratedCourses', 'integration_users', 'user_id', 'integration_id')
+            ->withTimestamps();
+    }
+
     /**
      * @param $aRequest
      * @return mixed
@@ -57,6 +63,16 @@ class modelUsers extends Model
 	public function getUser($aParams)
 	{
 		return $this->where($aParams)->get()->first();
-	}
+    }
+    
+    /**
+     * Get all user
+     * @param $aParams
+     * @return mixed
+     */
+	public function getUsers($aParams)
+	{
+		return $this->where($aParams)->get();
+    }
 
 }

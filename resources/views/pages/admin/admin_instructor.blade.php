@@ -7,7 +7,7 @@
 @section('admin_content')
     <div class="container">
         <div class="float-right mb-2">
-            <button class="btn btn-dark" data-toggle="modal" data-target="#exampleModalScrollable">Create Instructor</button>
+            <button class="btn btn-dark" data-toggle="modal" data-target="#modal-assign">Create Instructor</button>
             </div>
                 <table class="table">
                     <thead class="thead-light">
@@ -19,15 +19,7 @@
                             <th scope="col" class="text-center">Email</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td class="text-center">jd01</td>
-                                <td class="text-center">John</td>
-                                <td class="text-center">Dy</td>
-                                <td class="text-center">jd@gmail.com</td>
-                            </tr>
+                    <tbody id="instructors-list">
                         
                     </tbody>
                 </table>
@@ -41,21 +33,41 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal fade" id="modal-assign" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+            <form>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">First Name:</label>
+                    <input type="text" class="form-control" id="first-name">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Last Name:</label>
+                    <input type="text" class="form-control" id="last-name">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Email:</label>
+                    <input type="text" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Username:</label>
+                    <input type="text" class="form-control" id="username">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Password:</label>
+                    <input type="text" class="form-control" id="password">
+                </div>
+            </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-dark" id="add-instructor">Add</button>
             </div>
             </div>
         </div>
@@ -68,5 +80,5 @@
         $('#instructor-module').addClass('active');
     });
 </script>
-<script type="text/javascript" src="/js/add_lesson.js"></script>
+<script type="text/javascript" src="/js/instructor_module.js"></script>
 @endpush
