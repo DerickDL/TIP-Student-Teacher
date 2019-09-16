@@ -91,3 +91,4 @@ Route::prefix('/admin')->group(function () {
 
 Route::get('/instructors', 'App\controllerUsers@getUsers');
 Route::post('/assign', 'App\controllerUsers@assignTeacherIntegration');
+Route::get('/assigned/instructors', 'IntegratedCourses\controllerIntegratedCourses@getAssignedInstructors');

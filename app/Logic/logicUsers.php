@@ -177,7 +177,7 @@ class logicUsers
 				'message'	=> 'User doesn\'t exist!'
 			);
 		}
-		$aAssignUser = $this->checkAssignUser($aCheckUser);
+		$aAssignUser = $this->checkAssignUser($aCheckUser, $aParams);
 		if (count($aAssignUser) > 0) {
 			return array(
 				'result' => false,
@@ -197,9 +197,9 @@ class logicUsers
 		return $this->modelUsers->getUsers(['username' => $aParams['user']])->toArray();
 	}
 
-	private function checkAssignUser($aParams)
+	private function checkAssignUser($aCheckUser, $aParams)
 	{
-		$oUser = $this->modelUsers->findUser($aParams[0]['id']);
-		return $oUser->integrated_courses()->get()->toArray();
+		$oUser = $this->modelUsers->findUser($aCheckUser[0]['id']);
+		return $oUser->integrated_courses()->wherePivot('integration_id', $aParams['integration'])->get()->toArray();
 	}
 }

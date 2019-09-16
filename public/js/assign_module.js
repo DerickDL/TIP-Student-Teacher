@@ -1,9 +1,9 @@
 var oAssign = {
     init: function() {
+        oAssign.iCurrentInteg = 1;
         oAssign.cacheDom();
         oAssign.bindEvents();
         oAssign.showInstructorsList();
-        oAssign.iCurrentInteg = 1;
     },
 
     cacheDom: function () {
@@ -26,11 +26,12 @@ var oAssign = {
     showInstructorsList: function () {
         $.ajax({
             type: 'GET',
-            url: '/instructors',
+            url: '/assigned/instructors',
             data: {
-                'user_type': 1
+                'integration': oAssign.iCurrentInteg
             },
             success: function (aResponse) {
+                oAssign.oAssignsList.empty();
                 for (var i = 0; i < aResponse.length; i++) {
                     oAssign.renderInstructorsList(i, aResponse[i]);
                 }
@@ -49,35 +50,12 @@ var oAssign = {
         oAssign.oAssignsList.append(rowData);
     },
 
-    addInstructor: function () {
-        $.ajax({
-            type: 'POST',
-            url: '/register',
-            data: {
-                'sFirstName': oAssign.oFirstName.val(),
-                'sLastName': oAssign.oLastName.val(),
-                'sEmail': oAssign.oEmail.val(),
-                'sUsername': oAssign.oUsername.val(),
-                'sPassword': oAssign.oPassword.val(),
-                'iType': 1
-            },
-            success: function(aResponse) {
-                if (aResponse.result === false) {
-                    alert(aResponse.message);
-                } else {
-                    oAssign.oAssignsList.empty();
-                    oAssign.showInstructorsList();
-                    oAssign.oModal.modal('hide'); 
-                }
-            }
-        });
-    },
-
     changeIntegration: function () {
         var iSelectedInteg = $(this).data('value');
         if (iSelectedInteg !== oAssign.iCurrentInteg) {
             oAssign.oIntegration.removeClass('active');
             oAssign.iCurrentInteg = iSelectedInteg;
+            oAssign.showInstructorsList();
             if (iSelectedInteg === 1) {
                 oAssign.oIntegration1.addClass('active');
             } else if (iSelectedInteg === 2) {
@@ -99,8 +77,8 @@ var oAssign = {
             success: function (aResponse) {
                 alert(aResponse['message']);
                 if (aResponse['result'] === true) {
-                    // @TODO
-                    // Re-render the table
+                    oAssign.showInstructorsList();
+                    oAssign.oModal.modal('hide');
                 }
             }
         })

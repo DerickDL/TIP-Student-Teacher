@@ -25,4 +25,10 @@ class logicIntegratedCourses
     {
         return $this->modelIntegratedCourses->findIntegratedCourse($iIntegCourseId);
     }
+
+    public function getAssignedUsers($iIntegCourseId)
+    {
+        $oIntegration = $this->modelIntegratedCourses->findIntegratedCourse($iIntegCourseId);
+        return $oIntegration->users()->get()->toArray();
+    }
 }
