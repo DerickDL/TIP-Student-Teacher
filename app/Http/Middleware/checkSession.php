@@ -18,6 +18,9 @@ class checkSession
     {
         $aSession = Session::get('current_user');
         if (count((array)$aSession) === 0) {
+            if ($aSession['user_type'] === 1) {
+                return redirect('/teacher');
+            }
             return redirect('/');            
         }
         return $next($request);  

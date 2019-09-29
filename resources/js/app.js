@@ -18,6 +18,7 @@ import Buefy from 'buefy';
  */
 Vue.use(Buefy);
 Vue.component('login-component', require('./components/login.vue').default);
+Vue.component('teacher-login-component', require('./components/teacher-login.vue').default);
 Vue.component('admin-login-component', require('./components/admin-login.vue').default);
 const app = new Vue({
     el: '#app'

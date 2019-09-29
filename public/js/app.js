@@ -1932,29 +1932,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2047,6 +2024,85 @@ __webpack_require__.r(__webpack_exports__);
           _this.aRegister.iType = '';
           _this.aRegister.sStudent = '';
           alert('Successfully Registered');
+        }
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/teacher-login.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/teacher-login.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      aLogin: {
+        sUsername: '',
+        sPassword: '',
+        iType: 1
+      }
+    };
+  },
+  methods: {
+    doLogin: function doLogin() {
+      fetch('/login', {
+        method: 'post',
+        body: JSON.stringify(this.aLogin),
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        if (data.result === false) {
+          alert(data.message);
+        } else {
+          alert('Successfully Login');
+          window.location.href = '/teacher/home';
         }
       })["catch"](function (err) {
         return console.log(err);
@@ -51920,70 +51976,6 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "field" }, [
-                        _c("div", { staticClass: "control" }, [
-                          _c("label", { staticClass: "radio" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.user_type,
-                                  expression: "user_type"
-                                }
-                              ],
-                              attrs: {
-                                type: "radio",
-                                name: "user",
-                                value: "student"
-                              },
-                              domProps: {
-                                checked: _vm._q(_vm.user_type, "student")
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.user_type = "student"
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "has-text-white" }, [
-                              _vm._v("Student")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "radio" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.user_type,
-                                  expression: "user_type"
-                                }
-                              ],
-                              attrs: {
-                                type: "radio",
-                                name: "user",
-                                value: "teacher"
-                              },
-                              domProps: {
-                                checked: _vm._q(_vm.user_type, "teacher")
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.user_type = "teacher"
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "has-text-white" }, [
-                              _vm._v("Teacher")
-                            ])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
                       _c(
                         "a",
                         {
@@ -52268,76 +52260,6 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "field" }, [
-                        _c("div", { staticClass: "control" }, [
-                          _c("label", { staticClass: "radio" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.register_user_type,
-                                  expression: "register_user_type"
-                                }
-                              ],
-                              attrs: {
-                                type: "radio",
-                                name: "user",
-                                value: "student"
-                              },
-                              domProps: {
-                                checked: _vm._q(
-                                  _vm.register_user_type,
-                                  "student"
-                                )
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.register_user_type = "student"
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "has-text-white" }, [
-                              _vm._v("Student")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "radio" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.register_user_type,
-                                  expression: "register_user_type"
-                                }
-                              ],
-                              attrs: {
-                                type: "radio",
-                                name: "user",
-                                value: "teacher"
-                              },
-                              domProps: {
-                                checked: _vm._q(
-                                  _vm.register_user_type,
-                                  "teacher"
-                                )
-                              },
-                              on: {
-                                change: function($event) {
-                                  _vm.register_user_type = "teacher"
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "has-text-white" }, [
-                              _vm._v("Teacher")
-                            ])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
                       _c(
                         "a",
                         {
@@ -52387,6 +52309,186 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "icon is-left" }, [
       _c("i", { staticClass: "mdi mdi-contact-mail" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-left" }, [
+      _c("i", { staticClass: "mdi mdi-account" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon is-left" }, [
+      _c("i", { staticClass: "mdi mdi-lock" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/teacher-login.vue?vue&type=template&id=862aaafa&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/teacher-login.vue?vue&type=template&id=862aaafa& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "hero is-fullheight" }, [
+    _c("div", { staticClass: "hero-body" }, [
+      _c("div", { staticClass: "container has-text-centered" }, [
+        _c("div", { staticClass: "columns is-centered is-mobile" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "column is-two-fifths-desktop is-three-fifths-tablet is-full-mobile"
+            },
+            [
+              _c("div", { staticClass: "login-container" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "field" }, [
+                  _c(
+                    "div",
+                    { staticClass: "control has-icons-left has-icons-right" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.aLogin.sUsername,
+                            expression: "aLogin.sUsername"
+                          }
+                        ],
+                        staticClass: "input",
+                        attrs: { type: "text", placeholder: "Username" },
+                        domProps: { value: _vm.aLogin.sUsername },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            return _vm.doLogin($event)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.aLogin,
+                              "sUsername",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(1)
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "field" }, [
+                  _c(
+                    "div",
+                    { staticClass: "control has-icons-left has-icons-right" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.aLogin.sPassword,
+                            expression: "aLogin.sPassword"
+                          }
+                        ],
+                        staticClass: "input",
+                        attrs: { type: "password", placeholder: "Password" },
+                        domProps: { value: _vm.aLogin.sPassword },
+                        on: {
+                          keyup: function($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            return _vm.doLogin($event)
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.aLogin,
+                              "sPassword",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "button is-secondary is-fullwidth has-text-white",
+                    on: { click: _vm.doLogin }
+                  },
+                  [_vm._v("Login")]
+                )
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", { staticClass: "logo" }, [
+      _c("img", { attrs: { src: "/img/TIP-logo.png" } })
     ])
   },
   function() {
@@ -64579,6 +64681,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(buefy__WEBPACK_IMPORTED_MODULE_1___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('login-component', __webpack_require__(/*! ./components/login.vue */ "./resources/js/components/login.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('teacher-login-component', __webpack_require__(/*! ./components/teacher-login.vue */ "./resources/js/components/teacher-login.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('admin-login-component', __webpack_require__(/*! ./components/admin-login.vue */ "./resources/js/components/admin-login.vue")["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app'
@@ -64777,6 +64880,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_login_vue_vue_type_template_id_172b28a4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_login_vue_vue_type_template_id_172b28a4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/teacher-login.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/teacher-login.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _teacher_login_vue_vue_type_template_id_862aaafa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./teacher-login.vue?vue&type=template&id=862aaafa& */ "./resources/js/components/teacher-login.vue?vue&type=template&id=862aaafa&");
+/* harmony import */ var _teacher_login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./teacher-login.vue?vue&type=script&lang=js& */ "./resources/js/components/teacher-login.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _teacher_login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _teacher_login_vue_vue_type_template_id_862aaafa___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _teacher_login_vue_vue_type_template_id_862aaafa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/teacher-login.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/teacher-login.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/teacher-login.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_teacher_login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./teacher-login.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/teacher-login.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_teacher_login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/teacher-login.vue?vue&type=template&id=862aaafa&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/teacher-login.vue?vue&type=template&id=862aaafa& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_teacher_login_vue_vue_type_template_id_862aaafa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./teacher-login.vue?vue&type=template&id=862aaafa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/teacher-login.vue?vue&type=template&id=862aaafa&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_teacher_login_vue_vue_type_template_id_862aaafa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_teacher_login_vue_vue_type_template_id_862aaafa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

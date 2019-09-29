@@ -47,18 +47,6 @@
 										    </span>
 	                            		</div>
 		                            </div>
-									<div class="field">
-										<div class="control">
-											<label class="radio">
-												<input type="radio" name="user" value="student" v-model="user_type">
-												<span class="has-text-white">Student</span>
-											</label>
-											<label class="radio">
-												<input type="radio" name="user" value="teacher" v-model="user_type">
-												<span class="has-text-white">Teacher</span>
-											</label>
-										</div>
-									</div>
 		                            <a class="button is-secondary is-fullwidth has-text-white" v-on:click="doLogin">Login</a>
 	                            </div>
 	                            <div v-else>
@@ -90,18 +78,7 @@
 		                            <div class="field">
 		                                <input class="input" type="password" placeholder="Password" v-model="aRegister.sPassword" v-on:keyup.enter="doRegister">
 		                            </div>
-		                            <div class="field">
-		                            	<div class="control">
-											<label class="radio">
-											  <input type="radio" name="user" value="student" v-model="register_user_type">
-												<span class="has-text-white">Student</span>
-											</label>
-											<label class="radio">
-											  <input type="radio" name="user" value="teacher" v-model="register_user_type">
-												<span class="has-text-white">Teacher</span>
-											</label>
-										</div>
-		                            </div>
+		                            
 	                            	<a class="button is-secondary is-fullwidth has-text-white" v-on:click="doRegister">Register</a>
 	                            </div>
 	                        </div>

@@ -19,9 +19,13 @@ Route::get('/forbidden', function() {
     return view('forbidden');
 });
 
+/**TEACHER LOGIN**/
+Route::get('/teacher', function () {
+    return view('pages.teacher.login');
+});
+
 /**TEACHER HOME PAGE**/
-Route::get('/teacher', 'Teacher\frontTeacher@sectionPage')->middleware('check.session', 'check.teacher');
-Route::get('/teacher', 'Teacher\frontTeacher@homePage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/home', 'Teacher\frontTeacher@homePage')->middleware('check.session', 'check.teacher');
 
 /**MAIN COURSE PAGE**/
 Route::get('/teacher/courses/{integ_course_id}', 'Teacher\frontTeacher@integCoursePage')->middleware('check.session', 'check.teacher');
