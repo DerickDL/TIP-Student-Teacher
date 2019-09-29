@@ -202,4 +202,18 @@ class logicUsers
 		$oUser = $this->modelUsers->findUser($aCheckUser[0]['id']);
 		return $oUser->integrated_courses()->wherePivot('integration_id', $aParams['integration'])->get()->toArray();
 	}
+
+	public function getTeacherIntegration($aUser)
+	{
+		$oUser = $this->modelUsers->findUser($aUser['id']);
+		$aIntegrationsDetails = $oUser->integrated_courses()->get()->toArray();
+		$aIntegrations[] = array_map(array($this, 'getIntegrationId'), $aIntegrationsDetails);
+		sort($aIntegrations[0]);
+		return $aIntegrations[0];
+	}
+
+	private function getIntegrationId($aIntegrationDetails)
+	{
+		return $aIntegrationDetails['id'];
+	}
 }

@@ -41,7 +41,7 @@ $(document).ready(function () {
 
        loadQuestion: function () {
            $.ajax({
-           url: `/teacher/section/${iSectionId}/courses/sub/${ iSubCourse }/questions/load`,
+           url: `/teacher/courses/sub/${ iSubCourse }/questions/load`,
            type: 'GET',
            data: {
             'difficulty': oAddQuestion.iCurrentTab
@@ -204,7 +204,7 @@ $(document).ready(function () {
                     alert(aQuestionData.message);
                 } else {
                     $.ajax({
-                        url: `/teacher/section/${iSectionId}/courses/sub/${ iSubCourse }/questions/add`,
+                        url: `/teacher/courses/sub/${ iSubCourse }/questions/add`,
                         type: 'POST',
                         data: aQuestionData,
                         success: function (aResponse) {

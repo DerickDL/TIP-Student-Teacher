@@ -16,16 +16,16 @@ class modelCourses extends Model
     /**
      * @var array
      */
-    protected $fillable = ['course_code', 'course_title', 'course_overview', 'section_id', 'integrated_course_id'];
+    protected $fillable = ['course_code', 'course_title', 'course_overview', 'user_id', 'integrated_course_id'];
 
     public function questions()
     {
         return $this->hasMany('App\Model\modelQuestions', 'course_id');
     }
 
-    public function sections()
+    public function users()
     {
-        return $this->belongsTo('App\Model\modelSections', 'section_id');
+        return $this->belongsTo('App\Model\modelUsers', 'user_id');
     }
 
     public function integrated_courses()

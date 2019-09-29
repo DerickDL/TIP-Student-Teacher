@@ -8,7 +8,7 @@
     <div class="container">
         <h2>{{$aIntegCourse['integrated_course_name']}}</h2>
         <div class="text-right mb-3">
-            <a class="btn btn-secondary" href="/teacher/section/{{$aSection[0]['id']}}/courses/{{$aIntegCourse['id']}}/add">Add Course</a>
+            <a class="btn btn-secondary" href="/teacher/courses/{{$aIntegCourse['id']}}/add">Add Course</a>
         </div>
         @if(count($aCourses) > 0)
             <div class="row">
@@ -23,7 +23,7 @@
                                 <p class="card-text text-muted">{{$aCourseData['course_overview']}}</p>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="/teacher/section/{{$aSection[0]['id']}}/courses/{{$aIntegCourse['id']}}/sub/{{$aCourseData['id']}}" class="card-link stretched-link">Visit Course</a>
+                                <a href="/teacher/courses/{{$aIntegCourse['id']}}/sub/{{$aCourseData['id']}}" class="card-link stretched-link">Visit Course</a>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,6 @@
 
 @push('scripts')
 <script type="text/javascript">
-    var iSectionId = {!! json_encode($aSection[0]['id']) !!};
     var iIntegratedCourse = {!! json_encode($aIntegCourse['id']) !!};
     $(document).ready(function () {
         $('#integ-course-' + iIntegratedCourse).addClass('active');
