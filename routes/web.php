@@ -54,7 +54,7 @@ Route::get('/teacher/quizzes/list/{quiz_id}', 'Teacher\frontTeacher@viewQuizPage
 /**SECTION PAGE**/
 Route::get('/teacher/sections', 'Teacher\frontTeacher@sectionPage')->middleware('check.session', 'check.teacher');
 Route::get('/teacher/sections/{section_id}', 'Teacher\frontTeacher@sectionDetailPage')->middleware('check.session', 'check.teacher');
-Route::get('/teacher/section-create', 'Teacher\frontTeacher@createSectionPage')->middleware('check.session', 'check.teacher');
+Route::get('/teacher/section/create', 'Teacher\frontTeacher@createSectionPage')->middleware('check.session', 'check.teacher');
 Route::post('/teacher/section/save', 'Sections\restSections@saveSection');
 Route::delete('/teacher/section/delete/{section_id}', 'Sections\restSections@removeSection');
 

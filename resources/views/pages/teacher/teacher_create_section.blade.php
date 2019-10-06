@@ -44,6 +44,23 @@
                         <input type="text" class="form-control" id="act-room">
                     </div>
                 </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Integration Courses</label>
+                        <select class="form-control" id="integ-course">
+                            <option hidden>Select Integration Course</option>
+                        @foreach($aIntegrations as $iIntegration)
+                            <option value="{{$iIntegration}}">Integration Course {{$iIntegration}}</option>    
+                        @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Section Key</label>
+                        <input type="text" class="form-control" id="section-key" value="" disabled>
+                    </div>
+                </div>
             </div>
             <div class="text-right">
                 <button class="btn btn-outline-secondary" id="cancel-section" type="button">Cancel</button>
@@ -56,6 +73,8 @@
 @push('scripts')
 <script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript">
+    var iUserId = {!! json_encode($aSession->getData()->id) !!}
+    var aIntegrations = {!! json_encode($aIntegrations) !!}
     $(document).ready(function () {
         $('#section-tab').addClass('active');
         $('#start_date').datepicker();

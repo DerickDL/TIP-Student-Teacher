@@ -15,14 +15,14 @@ class frontTeacher extends frontUsers
         $aSession = $this->getSession();
         $aIntegrations = $this->getTeacherIntegration();
         $aSections = $this->getSections(['user_id' => $aSession->getData()->id]);
-        return view('pages.teacher.teacher_sections1')->with('aSession', $aSession)->with('aSections', $aSections)->with('aIntegrations', $aIntegrations);
+        return view('pages.teacher.teacher_sections')->with('aSession', $aSession)->with('aSections', $aSections)->with('aIntegrations', $aIntegrations);
     }
 
     public function createSectionPage()
     {
         $aSession = $this->getSession();
         $aIntegrations = $this->getTeacherIntegration();
-        return view('pages.teacher.teacher_create_section1')->with('aSession', $aSession)->with('aIntegrations', $aIntegrations);
+        return view('pages.teacher.teacher_create_section')->with('aSession', $aSession)->with('aIntegrations', $aIntegrations);
     }
 
     /**
@@ -44,7 +44,7 @@ class frontTeacher extends frontUsers
     {
         $aSession = $this->getSession();
         $aIntegCourse = $this->getIntegratedCourseDetail($iIntegCourseId);
-        $aCourses = $this->getCourses(['integrated_course_id' => $iIntegCourseId]);
+        $aCourses = $this->getCourses(['integrated_course_id' => $iIntegCourseId, 'user_id' => $aSession->getData()->id]);
         $aIntegrations = $this->getTeacherIntegration();
         return view('pages.teacher.teacher_all_course')->with('aSession', $aSession)->with('aCourses', $aCourses)->with('aIntegCourse', $aIntegCourse)->with('aIntegrations', $aIntegrations);
     }
@@ -146,7 +146,7 @@ class frontTeacher extends frontUsers
         $aSession = $this->getSession();
         $aIntegrations = $this->getTeacherIntegration();
         $aSection = $this->getSections(['id' => $iSectionId]);
-        return view('pages.teacher.teacher_section_detail')->with('aSession', $aSession)->with('aSection', $aSection)->with('aIntegrations', $aIntegrations);
+        return view('pages.teacher.teacher_section_detail_v2')->with('aSession', $aSession)->with('aSection', $aSection)->with('aIntegrations', $aIntegrations);
     }
 
     public function examPage()

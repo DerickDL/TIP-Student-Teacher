@@ -20,11 +20,8 @@
         <li id="exam-tab">
             <a href="/teacher/exams">Exams</a>
         </li>
-        <li id="student-tab">
-            <a href="/teacher/students">Students</a>
+        <li id="section-tab">
+            <a href="/teacher/sections">Sections</a>
         </li>
-    </ul>
-    <ul class="list-unstyled back">
-        <a class="btn btn-sm" href="/teacher/sections">Go back</a>
     </ul>
 </nav>

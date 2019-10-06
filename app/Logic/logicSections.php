@@ -28,6 +28,8 @@ class logicSections
                 'num_stud' => 'required|integer',
                 'start_date' => 'required',
                 'end_date' => 'required',
+                'integration_id' => 'required',
+                'key' => 'required|unique:sections,key'
             ),
             $aRequest
         );

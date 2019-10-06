@@ -14,6 +14,8 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col" class="text-center">Section Name</th>
+                        <th scope="col" class="text-center">Enrollment Key</th>
+                        <th scope="col" class="text-center">Integration Course</th>
                         <th scope="col" class="text-center">No. of Students</th>
                         <th scope="col" class="text-center">Class Room</th>
                         <th scope="col" class="text-center">Activity Room</th>
@@ -25,6 +27,8 @@
                     @foreach($aSections as $aSection)
                         <tr>
                             <td class="text-center"><a href="/teacher/sections/{{ $aSection['id'] }}" class="btn-link">{{ $aSection['name'] }}</a></td>
+                            <td class="text-center">{{ $aSection['key'] }}</td>
+                            <td class="text-center">Integration Course {{ $aSection['integration_id'] }}</td>
                             <td class="text-center">{{ $aSection['num_stud'] }}</td>
                             <td class="text-center">{{ ($aSection['class_room'] === null) ? 'N/A' : $aSection['class_room']}}</td>
                             <td class="text-center">{{ ($aSection['act_room'] === null) ? 'N/A' : $aSection['act_room']}}</td>

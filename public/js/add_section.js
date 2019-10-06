@@ -1,9 +1,9 @@
 $(document).ready(function () {
    var oAddSection = {
        init: function () {
-           this.cacheDOM();
-           this.addEvents();
-           
+            this.cacheDOM();
+            this.addEvents();
+            this.generateKey();
        },
        
        cacheDOM: function () {
@@ -14,6 +14,16 @@ $(document).ready(function () {
        addEvents: function () {
            oAddSection.eBtnCancelSection.click(oAddSection.redirectToSectionList);
            oAddSection.eBtnSaveSection.click(oAddSection.saveSection);
+       },
+
+       generateKey: function() {
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < 10; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            $('#section-key').val(result);
        },
 
        saveSection: function () {
@@ -27,6 +37,8 @@ $(document).ready(function () {
                     'end_date': $('#end_date').val(),
                     'class_room': $('#class-room').val(),
                     'act_room': $('#act-room').val(),
+                    'integration_id': $('#integ-course').val(),
+                    'key': $('#section-key').val(),
                     'user_id': iUserId
                 },
                 success: function (aResponse) {
