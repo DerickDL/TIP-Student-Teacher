@@ -25,4 +25,9 @@ class restSections extends Controller
     {
        return response()->json($this->deleteSection($iSectionId));
     }
+
+    public function enrollClass(Request $oRequest)
+    {
+      return response()->json($this->enrollSection($oRequest->all()));
+    }
 }

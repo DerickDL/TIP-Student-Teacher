@@ -18,6 +18,13 @@ class modelSections extends Model
      */
     protected $fillable = ['name', 'num_stud', 'class_room', 'act_room', 'start_date', 'end_date', 'user_id','key', 'integration_id'];
 
+    public function users()
+    {
+        return $this->belongsToMany('App\Model\modelUsers', 'students_sections', 'section_id', 'user_id')
+            ->withPivot('status')
+            ->withTimestamps();
+    }
+
     /**
      * Find a question
      * @param $id

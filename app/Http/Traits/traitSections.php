@@ -37,4 +37,10 @@ trait traitSections
         $this->instantiateSections();
         return $this->logicSections->deleteSection($iSectionId);
     }
+
+    public function enrollSection($aRequest) 
+    {
+        $this->instantiateSections();
+        return $this->logicSections->enrollSection($aRequest);
+    }
 }

@@ -32,4 +32,9 @@ class controllerStudent extends Controller
         $aQuestions = $this->getQuestions(['quiz_id' => $aRequest['quiz_id']]);
         return response()->json($this->logicStudent->submitQuiz($aRequest, $aQuestions));
     }
+
+    public function enrollClass(Request $oRequest)
+    {
+        return response()->json($this->logicStudent->enrollClass($oRequest->all()));
+    }
 }

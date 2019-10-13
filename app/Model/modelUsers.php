@@ -36,6 +36,13 @@ class modelUsers extends Model
             ->withTimestamps();
     }
 
+    public function sections()
+    {
+        return $this->belongsToMany('App\Model\modelSections', 'students_sections', 'user_id', 'section_id')
+            ->withPivot('status')
+            ->withTimestamps();
+    }
+
     /**
      * @param $aRequest
      * @return mixed

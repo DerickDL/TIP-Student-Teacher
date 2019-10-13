@@ -65,4 +65,10 @@ class frontStudent extends frontUsers
         ];
         return view('pages.student.student_quiz')->with('aData', $aData)->with('aQuizData', $aQuizData);
     }
+
+    public function classes()
+    {
+        $aSession = $this->getSession();
+        return view('pages.student.student_classes')->with('aSession', $aSession);
+    }
 }

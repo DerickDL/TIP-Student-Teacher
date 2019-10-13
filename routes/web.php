@@ -78,6 +78,8 @@ Route::get('/student/course/{course_id}/quiz/{quiz_id}', 'Student\frontStudent@v
 Route::post('/quizzes/insert', 'Quizzes\controllerQuizzes@insertQuiz');
 Route::post('/quizzes/submit', 'Student\controllerStudent@submitQuiz');
 
+Route::get('/classes', 'Student\frontStudent@classes')->middleware('check.session', 'check.student');
+Route::get('/enroll', 'Sections\restSections@enrollSection');
 Route::get('/session', 'App\controllerUsers@getSession');
 Route::get('/logout', 'App\controllerUsers@logoutUser');
 

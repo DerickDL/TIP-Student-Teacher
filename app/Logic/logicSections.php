@@ -71,4 +71,16 @@ class logicSections
 		}
 		return array('result' => true);
     }
+
+    public function enrollSection($aRequest)
+    {
+        $aSection = $this->modelSections->getSections(['key' => $aRequest['key']]);
+        if (count($aSection) < 1) {
+            return array(
+                'result' => false
+            );
+        }
+        //@TODO
+        //INSERT to sections_students table
+    }
 }
