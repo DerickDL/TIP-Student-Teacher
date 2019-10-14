@@ -82,5 +82,7 @@ class logicSections
         }
         //@TODO
         //INSERT to sections_students table
+        $oSection = $this->modelSections->findSection($aSection[0]['id']);
+        $oSection->users()->attach($aRequest['user_id'], 0);
     }
 }
