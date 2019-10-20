@@ -143,7 +143,7 @@
                 		alert('Successfully Login');
                 		if (data.data['user_type'] === 0) {
                 			//redirect to student home page
-                      		window.location.href = '/student';
+                      		window.location.href = '/classes';
                 		} else {
                 			//redirect to teacher home page
                       		window.location.href = '/teacher';

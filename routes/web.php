@@ -79,7 +79,11 @@ Route::post('/quizzes/insert', 'Quizzes\controllerQuizzes@insertQuiz');
 Route::post('/quizzes/submit', 'Student\controllerStudent@submitQuiz');
 
 Route::get('/classes', 'Student\frontStudent@classes')->middleware('check.session', 'check.student');
-Route::get('/enroll', 'Sections\restSections@enrollSection');
+
+Route::post('/enroll', 'Sections\restSections@enrollClass');
+Route::post('/remove/student', 'Sections\restSections@removeStudent');
+Route::post('/update/status', 'Sections\restSections@updateStatus');
+
 Route::get('/session', 'App\controllerUsers@getSession');
 Route::get('/logout', 'App\controllerUsers@logoutUser');
 

@@ -43,4 +43,22 @@ trait traitSections
         $this->instantiateSections();
         return $this->logicSections->enrollSection($aRequest);
     }
+
+    public function getStudents($iSectionId)
+    {
+        $this->instantiateSections();
+        return $this->logicSections->getStudents($iSectionId);
+    }
+
+    public function deleteStudent($aRequest)
+    {
+        $this->instantiateSections();
+        return $this->logicSections->deleteStudent($aRequest);
+    }
+
+    public function updateStudentStatus($aRequest)
+    {
+        $this->instantiateSections();
+        return $this->logicSections->updateStudentStatus($aRequest);
+    }
 }

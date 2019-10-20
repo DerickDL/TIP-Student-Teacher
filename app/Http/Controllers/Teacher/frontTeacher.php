@@ -146,7 +146,8 @@ class frontTeacher extends frontUsers
         $aSession = $this->getSession();
         $aIntegrations = $this->getTeacherIntegration();
         $aSection = $this->getSections(['id' => $iSectionId]);
-        return view('pages.teacher.teacher_section_detail_v2')->with('aSession', $aSession)->with('aSection', $aSection)->with('aIntegrations', $aIntegrations);
+        $aStudents = $this->getStudents($iSectionId);
+        return view('pages.teacher.teacher_section_detail_v2')->with('aSession', $aSession)->with('aSection', $aSection)->with('aIntegrations', $aIntegrations)->with('aStudents', $aStudents);
     }
 
     public function examPage()

@@ -69,6 +69,7 @@ class frontStudent extends frontUsers
     public function classes()
     {
         $aSession = $this->getSession();
-        return view('pages.student.student_classes')->with('aSession', $aSession);
+        $aClasses = $this->getClasses();
+        return view('pages.student.student_classes')->with('aSession', $aSession)->with('aClasses', $aClasses);
     }
 }

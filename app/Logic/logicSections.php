@@ -77,12 +77,39 @@ class logicSections
         $aSection = $this->modelSections->getSections(['key' => $aRequest['key']]);
         if (count($aSection) < 1) {
             return array(
-                'result' => false
+                'result' => false,
+                'message' => 'Invalid Code.'
             );
         }
-        //@TODO
-        //INSERT to sections_students table
         $oSection = $this->modelSections->findSection($aSection[0]['id']);
-        $oSection->users()->attach($aRequest['user_id'], 0);
+        $aStudent = $oSection->users()->where(['user_id' => $aRequest['user_id']])->get()->toArray();
+        if (count($aStudent) > 0) {
+            return array(
+                'result' => false,
+                'message' => 'You are already enrolled in this class.'
+            );
+        }
+        $oSection->users()->attach($aRequest['user_id'], ['status' => 0]);
+        return array(
+            'result' => true
+        );
+    }
+
+    public function getStudents($iSectionId)
+    {
+        $oSection = $this->modelSections->findSection($iSectionId);
+        return $oSection->users()->get()->toArray();
+    }
+
+    public function deleteStudent($aRequest)
+    {
+        $oSection = $this->modelSections->findSection($aRequest['section_id']);
+        $oSection->users()->detach($aRequest['student_id']);
+    }
+
+    public function updateStudentStatus($aRequest)
+    {
+        $oSection = $this->modelSections->findSection($aRequest['section_id']);
+        $oSection->users()->updateExistingPivot($aRequest['student_id'], ['status' => 1]);
     }
 }

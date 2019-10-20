@@ -52,7 +52,25 @@
                         <th scope="col" class="text-center">Username</th>
                         <th scope="col" class="text-center">First Name</th>
                         <th scope="col" class="text-center">Last Name</th>
+                        <th scope="col" class="text-center">Status</th>
                     </tr>
+                    @for ($i = 0; $i < count($aStudents); $i++)
+                        <tr>
+                            <td scope="col" class="text-center">{{ $i + 1 }}</td>
+                            <td scope="col" class="text-center">{{ $aStudents[$i]['student_id'] }}</td>
+                            <td scope="col" class="text-center">{{ $aStudents[$i]['username'] }}</td>
+                            <td scope="col" class="text-center">{{ $aStudents[$i]['first_name'] }}</td>
+                            <td scope="col" class="text-center">{{ $aStudents[$i]['last_name'] }}</td>
+                            <td scope="col" class="text-center" data-value="{{ $aStudents[$i]['id'] }}">
+                                @if($aStudents[$i]['pivot']['status'] === 0)
+                                    <button class="btn btn-primary btn-accept">Accept</button>
+                                    <button class="btn btn-danger btn-decline">Decline</button>
+                                @else
+                                    <button class="btn btn-danger btn-delete">Delete</button>
+                                @endif
+                            </td>
+                        </tr>
+                    @endfor
                 </thead>
             </table>
             </div>

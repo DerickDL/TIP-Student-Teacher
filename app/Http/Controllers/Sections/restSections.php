@@ -30,4 +30,14 @@ class restSections extends Controller
     {
       return response()->json($this->enrollSection($oRequest->all()));
     }
+
+    public function removeStudent(Request $oRequest)
+    {
+       return response()->json($this->deleteStudent($oRequest->all()));
+    }
+
+    public function updateStatus(Request $oRequest)
+    {
+       return response()->json($this->updateStudentStatus($oRequest->all()));
+    }
 }

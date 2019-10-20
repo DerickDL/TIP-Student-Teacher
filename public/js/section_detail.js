@@ -11,11 +11,17 @@ $(document).ready(function () {
            this.eBtnUpdateSection = $('#create-section');
            this.eBtnCancelSection = $('#cancel-section');
            this.eBtnDeleteSection = $('#delete-section');
+           this.eBtnAcceptStudent = $('.btn-accept');
+           this.eBtnDeclineStudent = $('.btn-decline');
+           this.eBtnDeleteStudent = $('.btn-delete');
        },
        
        addEvents: function () {
            oSection.eBtnCancelSection.click(oSection.redirectToSectionList);
            oSection.eBtnDeleteSection.click(oSection.deleteSection);
+           oSection.eBtnAcceptStudent.click(oSection.acceptStudent);
+           oSection.eBtnDeclineStudent.click(oSection.removeStudent);
+           oSection.eBtnDeleteStudent.click(oSection.removeStudent);
        },
 
        deleteSection: function () {
@@ -40,6 +46,39 @@ $(document).ready(function () {
                 window.location.replace('/teacher/sections');
            }
        },
+
+       removeStudent: function() {
+            if (confirm('Are you sure you want to remove this student?')) {
+                var iStudentId = $($(this).parent()).data('value');
+                $.ajax({
+                    url: '/remove/student',
+                    type: 'POST',
+                    data: {
+                        'section_id': iSectionId,
+                        'student_id': iStudentId
+                    },
+                    success: function(aResponse) {
+                        window.location.reload();
+                    }
+                });
+            }
+       },
+
+       acceptStudent: function()
+       {
+            var iStudentId = $($(this).parent()).data('value');
+            $.ajax({
+                url: '/update/status',
+                type: 'POST',
+                data: {
+                    'section_id': iSectionId,
+                    'student_id': iStudentId
+                },
+                success: function(aResponse) {
+                    window.location.reload();
+                }
+            });
+       }
     }
    oSection.init();
 });
