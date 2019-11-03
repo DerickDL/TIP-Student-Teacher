@@ -121,12 +121,25 @@ class frontTeacher extends frontUsers
     {
         $aSession = $this->getSession();
         $aIntegrations = $this->getTeacherIntegration();
-        $aQuizzes = $this->getQuizzes();
+        $aCourses = $this->getCourses(['user_id' => $aSession->getData()->id]);
+        $aQuizzes = $this->getCourseQuizzes($aCourses);
         foreach ($aQuizzes as $aQuizData) {
             $aQuizData['sub_course'] = $this->getCourses(['id' => $aQuizData['course_id']])[0];
             $aQuizData['parent_course'] = $this->getParentCourse($aQuizData['course_id']);
         }
         return view('pages.teacher.teacher_list_quiz')->with('aSession', $aSession)->with('aQuizzes', $aQuizzes)->with('aIntegrations', $aIntegrations);        
+    }
+
+    private function getCourseQuizzes($aCourses)
+    {
+        $aQuizzes = [];
+        foreach ($aCourses as $aCourse) {
+            $aQuiz = $this->getQuizzes(['course_id' => $aCourse['id']]);
+            if (count($aQuiz) > 0) {
+                $aQuizzes[] = $aQuiz[0];
+            }
+        }
+        return $aQuizzes;
     }
 
     public function viewQuizPage($iQuizId)
@@ -154,7 +167,7 @@ class frontTeacher extends frontUsers
     {
         $aSession = $this->getSession();
         $aIntegrations = $this->getTeacherIntegration();
-        $aExams = $this->getExams();
+        $aExams = $this->getExams(['creator_id' => $aSession->getData()->id]);
         foreach ($aExams as $aExamData) {
             $aExamData['parent_course'] = $this->getIntegratedCourseDetail($aExamData['course_id']);
         }

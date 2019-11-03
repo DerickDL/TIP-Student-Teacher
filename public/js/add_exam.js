@@ -75,6 +75,7 @@ $(document).ready(function () {
            });
        },
        saveExam: function () {
+           console.log(iCreatorId);
             if (confirm('Are you sure you want to save this exam?')) {
                 $.ajax({
                     url: '/teacher/exams/save',
@@ -84,11 +85,12 @@ $(document).ready(function () {
                         'items': oAddExam.eNumItems.val(),
                         'questions': oAddExam.aQuestions,
                         'course_id': oAddExam.eIntegCourses.val(),
-                        'type': oAddExam.eExamType.val()
+                        'type': oAddExam.eExamType.val(),
+                        'creator_id': iCreatorId
                     },
                     success: function (aResponse) {
                         if (aResponse['result'] === false) {
-                            alert(aResponse['msg']);
+                            alert(aResponse['message']);
                         } else {
                             alert('Successfully created exam');
                             window.location.replace('/teacher/exams');

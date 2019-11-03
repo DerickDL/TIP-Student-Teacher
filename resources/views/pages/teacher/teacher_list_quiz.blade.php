@@ -23,10 +23,10 @@
                 @foreach($aQuizzes as $aQuizData)
                     <tr>
                         <td class="text-center">{{ $aQuizData['parent_course']['integrated_course_name'] }}</td>
-                        <td class="text-center">{{ $aQuizData['sub_course']['course_title'] }}</td>
+                        <td class="text-center"><a href="/teacher/quizzes/list/{{ $aQuizData['id'] }}" class="btn-link">{{ $aQuizData['sub_course']['course_title'] }}</a></td>
                         <td class="text-center">{{ $aQuizData['quiz_items'] }}</td>
                         <td class="text-center">{{ $aQuizData['quiz_timelimit'] }}</td>
-                        <td class="text-center"><a href="/teacher/quizzes/list/{{ $aQuizData['id'] }}">View</a></td>
+                        <td class="text-center"><button class="btn btn-secondary btn-sm">Delete</button></td>
                     </tr>
                 @endforeach
             </tbody>

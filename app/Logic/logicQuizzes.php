@@ -172,4 +172,11 @@ class logicQuizzes
         }
         return array('result' => true);
     }
+
+    public function deleteQuiz($iQuizId)
+    {
+        $oExam = $this->modelQuizzes->findQuiz($iQuizId);
+        $oExam->questions()->detach();
+        $this->modelQuizzes->deleteQuiz($iQuizId);
+    }
 }

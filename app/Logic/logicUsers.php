@@ -217,10 +217,10 @@ class logicUsers
 		return $aIntegrationDetails['id'];
 	}
 
-	public function getClasses()
+	public function getClasses($aParams)
     {
         $aStudent = $this->getSession();
         $oStudent = $this->modelUsers->findUser($aStudent['id']);
-        return $oStudent->sections()->get()->toArray();
+        return $oStudent->sections()->where($aParams)->get()->toArray();
     }
 }

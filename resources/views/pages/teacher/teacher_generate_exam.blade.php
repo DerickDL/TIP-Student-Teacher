@@ -69,6 +69,7 @@
 @push('scripts')
 <script type="text/javascript">
     aSubCourses = {!! json_encode($aSubCourses) !!}
+    iCreatorId = {!! json_encode($aSession->getData()->id) !!}
     $(document).ready(function () {
         $('#exam-tab').addClass('active');
 	});

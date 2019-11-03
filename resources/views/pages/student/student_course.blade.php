@@ -1,29 +1,30 @@
-@extends('pages.student.student_course_home')
+@extends('pages.student.student_base')
 
 @push('styles')
-
+    <link rel="stylesheet" type="text/css" href="/css/courses.css">
 @endpush
 
-@section('course_home_content')
-    <div id="container-quizzes">
-        <h2>Recently added Quizzes</h2>
-        @if(count($aQuiz) < 1)
-            <p>No quizzes yet.</p>
-        @else
-            <div class="list-group">
-                @foreach($aQuiz as $aQuizData)
-                    <a href="/student/course/{{ $aData['courses'][0]['id'] }}/quiz/{{ $aQuizData['id'] }}" class="list-group-item list-group-item-action">{{$aQuizData['quiz_title']}}</a>
-                @endforeach
-            </div>
-        @endif
+@section('student_content')
+    <h2 class="mb-1">{{$aCourse[0]['course_title']}}</h2>
+    <p>{{$aCourse[0]['course_overview']}}</p>
+    <div class="container">
+        <h4 class="mb-3">Resources</h4>
+        <ul class="list-group list-group-flush" id="list-files">
+            @foreach($aFiles as $aFileData)
+                <li class="list-group-item list-file">
+                    <a href="/api/file/download/attachments/{{$aFileData['id']}}" target="_blank" class="btn-link">{{$aFileData['filename']}}</a>
+                </li>
+            @endforeach
+        </ul>
     </div>
-    <div class="line"></div>
 @endsection
 
 @push('scripts')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#home-tab').addClass('active');
-        });
-    </script>
+<script type="text/javascript">
+    var iSubCourse = {!! json_encode($aCourse[0]['id']) !!};
+    $(document).ready(function () {
+        $('#courses-tab').addClass('active');
+    });
+</script>
+<script type="text/javascript" src="/js/course.js"></script>
 @endpush

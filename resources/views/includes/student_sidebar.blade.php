@@ -1,17 +1,21 @@
 <nav id="sidebar">
     <div class="sidebar-header">
-        <h3>{{$aData['courses'][0]['course_title']}}</h3>
+        <h3>{{$aClass[0]['name']}}</h3>
     </div>
     <ul class="list-unstyled components">
-        <p>{{$aData['courses'][0]['course_code']}}</p>
-        <li id="home-tab">
-            <a href="/student/course/{{$aData['courses'][0]['id']}}">Home</a>
+        <li id="courses-tab">
+            <a href="/student/class/{{$aClass[0]['id']}}/courses">Courses</a>
         </li>
-        <li id="quiz-tab">
-            <a href="/student/course/{{$aData['courses'][0]['id']}}/quizzes">Quizzes</a>
+        <li id="quizzes-tab">
+            <a href="/student/class/{{$aClass[0]['id']}}/quizzes">Quizzes</a>
         </li>
-        <li id="students-tab">
-            <a href="#">Grades</a>
+        <li id="exams-tab">
+            <a href="/student/class/{{$aClass[0]['id']}}/exams">Exams</a>
+        </li>
+    </ul>
+    <ul class="list-unstyled line">
+        <li id="exams-tab">
+            <a href="/classes">Go to Classes</a>
         </li>
     </ul>
 </nav>

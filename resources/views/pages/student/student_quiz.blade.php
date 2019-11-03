@@ -1,10 +1,10 @@
-@extends('pages.student.student_course_home')
+@extends('pages.student.student_base')
 
 @push('styles')
 
 @endpush
 
-@section('course_home_content')
+@section('student_content')
 	<div class="row">
 		<div class="col-sm-8">
 			<h2  id="quiz-title">{{ $aQuizData['quiz'][0]['quiz_title'] }}</h2>
@@ -65,6 +65,7 @@
 	@endfor
 	@if($aQuizData['score'] === null)
 		<div class="text-right">
+			<a class="btn btn-secondary text-white" href="/student/class/{{ $aClass[0]['id'] }}/quizzes">Cancel</a>
 			<button class="btn btn-primary" id="submit-quiz" data-value="{{ $aQuizData['quiz'][0]['id'] }}">Submit</button>
 		</div>
 	@endif
@@ -73,7 +74,7 @@
 @push('scripts')
     <script type="text/javascript">
         $(document).ready(function () {
-           $('#quiz-tab').addClass('active');
+           $('#quizzes-tab').addClass('active');
         });
     </script>
 	<script type="text/javascript" src="/js/submit_quiz.js"></script>

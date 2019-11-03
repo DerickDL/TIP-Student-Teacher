@@ -82,8 +82,8 @@ class controllerUsers extends Controller
         return $this->logicUsers->getTeacherIntegration($aSession);
     }
 
-    public function getClasses()
+    public function getClasses($aParams = [])
     {
-        return $this->logicUsers->getClasses();
+        return $this->logicUsers->getClasses($aParams);
     }
 }

@@ -26,7 +26,7 @@
                         </div>
                         <div class="card-footer text-center">
                             <h6 class="card-subtitle mb-2 text-muted">{{$aClass['start_date']}} - {{$aClass['end_date']}}</h6>
-                            <a href="#" class="card-link">Visit Class</a>
+                            <a href="/student/class/{{ $aClass['id'] }}/courses" class="card-link">Visit Class</a>
                         </div>
                     </div>
                 </div>
