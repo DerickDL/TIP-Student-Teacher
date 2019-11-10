@@ -27,9 +27,9 @@
                         <label>Integration Course</label>
                         <select class="form-control" id="integ-courses">
                             <option selected hidden id="integ-default">Select Integration Course</option>
-                            <option value="1">Integration Course 1</option>
+                            <!-- <option value="1">Integration Course 1</option>
                             <option value="2">Integration Course 2</option>
-                            <option value="3">Integration Course 3</option>
+                            <option value="3">Integration Course 3</option> -->
                         </select>
                     </div>
                     <div>
@@ -68,6 +68,7 @@
 
 @push('scripts')
 <script type="text/javascript">
+    aIntegrations = {!! json_encode($aIntegrations) !!}
     aSubCourses = {!! json_encode($aSubCourses) !!}
     iCreatorId = {!! json_encode($aSession->getData()->id) !!}
     $(document).ready(function () {

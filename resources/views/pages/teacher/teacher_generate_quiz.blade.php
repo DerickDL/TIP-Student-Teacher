@@ -18,9 +18,9 @@
                         <label>Integration Course</label>
                         <select class="form-control" id="integ-courses">
                         <option selected hidden id="integ-default">Select Integration Course</option>
-                        <option value="1">Integration Course 1</option>
+                        <!-- <option value="1">Integration Course 1</option>
                         <option value="2">Integration Course 2</option>
-                        <option value="3">Integration Course 3</option>
+                        <option value="3">Integration Course 3</option> -->
                         </select>
                     </div>
                     <div class="form-group">
@@ -61,7 +61,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#quiz-tab').addClass('active');
-	});
+    });
+    var aIntegrations = {!! json_encode($aIntegrations) !!} 
 	var aSubCourses = {!! json_encode($aSubCourses) !!}
 </script>
 <script type="text/javascript" src="/js/add_quiz.js"></script>

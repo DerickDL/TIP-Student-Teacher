@@ -6,6 +6,17 @@ $(document).ready(function () {
            this.aQuestions = [];
            this.initializeMultiSelect();
            this.aSelectedCourses = [];
+           this.appendIntegrationCourses();
+       },
+
+       appendIntegrationCourses: function() {
+            var sIntegCourses = '';
+            console.log(aIntegrations);
+            aIntegrations.forEach(aIntegCourseDetail => {
+                sIntegCourses += `<option value="${aIntegCourseDetail}">Integrated Course ${aIntegCourseDetail}</option>`;
+            });
+            console.log(sIntegCourses);
+            $('#integ-courses').append(sIntegCourses);
        },
 
        initializeMultiSelect: function () {
@@ -90,7 +101,7 @@ $(document).ready(function () {
                     },
                     success: function (aResponse) {
                         if (aResponse['result'] === false) {
-                            alert(aResponse['message']);
+                            alert(aResponse['msg']);
                         } else {
                             alert('Successfully created exam');
                             window.location.replace('/teacher/exams');

@@ -4,6 +4,7 @@ $(document).ready(function () {
            this.cacheDOM();
            this.addEvents();
            this.aQuestions = [];
+           this.appendIntegrationCourses();
        },
        
        cacheDOM: function () {
@@ -24,6 +25,14 @@ $(document).ready(function () {
            oAddQuiz.eBtnGenerate.click(oAddQuiz.generateQuiz);
            oAddQuiz.eBtnClearQuiz.click(oAddQuiz.clearQuiz);
            oAddQuiz.eBtnSaveQuiz.click(oAddQuiz.saveQuiz);
+       },
+
+       appendIntegrationCourses: function() {
+            var sIntegCourses = '';
+            aIntegrations.forEach(aIntegCourseDetail => {
+                sIntegCourses += `<option value="${aIntegCourseDetail}">Integrated Course ${aIntegCourseDetail}</option>`;
+            });
+            $('#integ-courses').append(sIntegCourses);
        },
 
        setSubCourses: function () {

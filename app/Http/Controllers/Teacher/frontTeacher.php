@@ -113,7 +113,7 @@ class frontTeacher extends frontUsers
     {
         $aSession = $this->getSession();
         $aIntegrations = $this->getTeacherIntegration();
-        $aSubCourses = $this->getSubCourses();
+        $aSubCourses = $this->getSubCourses(['user_id' => $aSession->getData()->id]);
         return view('pages.teacher.teacher_generate_quiz')->with('aSession', $aSession)->with('aSubCourses', $aSubCourses)->with('aIntegrations', $aIntegrations);
     }
 
@@ -213,7 +213,7 @@ class frontTeacher extends frontUsers
     {
         $aSession = $this->getSession();
         $aIntegrations = $this->getTeacherIntegration();
-        $aSubCourses = $this->getSubCourses();
+        $aSubCourses = $this->getSubCourses(['user_id' => $aSession->getData()->id]);
         return view('pages.teacher.teacher_generate_exam')->with('aSession', $aSession)->with('aSubCourses', $aSubCourses)->with('aIntegrations', $aIntegrations);
     }
 }

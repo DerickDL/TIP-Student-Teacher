@@ -70,7 +70,7 @@ class frontStudent extends frontUsers
     public function classes()
     {
         $aSession = $this->getSession();
-        $aClasses = $this->getClasses();
+        $aClasses = $this->getClasses(['students_sections.status' => 1]);
         return view('pages.student.student_classes')->with('aSession', $aSession)->with('aClasses', $aClasses);
     }
 

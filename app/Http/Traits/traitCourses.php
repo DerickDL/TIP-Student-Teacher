@@ -49,9 +49,9 @@ trait traitCourses
         return $this->logicCourses->deleteCourse($iCourseId);
     }
 
-    public function getSubCourses()
+    public function getSubCourses($aParams)
     {
-        $aCourses = $this->getCourses();
+        $aCourses = $this->getCourses($aParams);
         $aSubCourses = [
             1 => [],
             2 => [],
