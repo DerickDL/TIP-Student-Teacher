@@ -25,6 +25,12 @@ class modelUsers extends Model
             ->withTimestamps();
     }
 
+    public function exams()
+    {
+        return $this->belongsToMany('App\Model\modelExams', 'user_exam', 'exam_id', 'user_id')                    ->withPivot('score', 'percentage')
+            ->withTimestamps();
+    }
+
     public function courses()
     {
         return $this->hasMany('App\Model\modelCourses', 'user_id');

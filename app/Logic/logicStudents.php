@@ -18,6 +18,15 @@ class logicStudents extends logicUsers
         return $aQuizResult;
     }
 
+    public function submitExam($aRequest, $aQuestions)
+    {
+        $aExamResult = $this->checkQuiz($aRequest, $aQuestions);
+        $aUser = $this->getSession();
+        $oUser = $this->modelUsers->findUser($aUser['id']);
+        $oUser->exams()->attach((int)$aRequest['exam_id'], $aExamResult);
+        return $aExamResult;
+    }
+
     private function checkQuiz($aRequest, $aQuestions)
     {
         $iScore = 0;

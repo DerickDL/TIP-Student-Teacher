@@ -67,6 +67,7 @@ Route::get('/teacher/exams/detail/{exam_id}', 'Teacher\frontTeacher@viewExamPage
 Route::delete('/teacher/exams/delete/{exam_id}', 'Exams\controllerExams@deleteExam');
 
 
+
 /**STUDENT LIST PAGE**/
 Route::get('/teacher/students', 'Teacher\frontTeacher@studentListPage')->middleware('check.session', 'check.teacher');
 
@@ -83,6 +84,7 @@ Route::get('/student/class/{id}/exam/{exam_id}', 'Student\frontStudent@examPage'
 
 Route::post('/quizzes/insert', 'Quizzes\controllerQuizzes@insertQuiz');
 Route::post('/quizzes/submit', 'Student\controllerStudent@submitQuiz');
+Route::post('/exams/submit', 'Student\controllerStudent@submitExam');
 
 Route::get('/classes', 'Student\frontStudent@classes')->middleware('check.session', 'check.student');
 

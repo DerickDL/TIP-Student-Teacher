@@ -31,7 +31,7 @@ class modelExams extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\Model\modelUsers', 'user_quiz', 'user_id', 'quiz_id')
+        return $this->belongsToMany('App\Model\modelUsers', 'user_exam', 'user_id', 'exam_id')
             ->withPivot('score', 'percentage')
             ->withTimestamps();
     }
