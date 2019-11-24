@@ -10,7 +10,7 @@
 			<h2  id="quiz-title">{{ $aQuizData['quiz'][0]['quiz_title'] }}</h2>
 		</div>
 		<div class="col-sm-4" id="score-div" style="display: {{$aQuizData['score'] === null ? 'none' : 'block'}}">
-			<h2 class="text-right font-weight-bold">Score: <span id="score-area">{{$aQuizData['score']['pivot']['score']}}</span><span>/</span><span id="item-area">{{count($aQuizData['questions'])}}</span></h2>
+			<h2 class="text-right font-weight-bold">Score: <span id="score-area">{{$aQuizData['score']}}</span><span>/</span><span id="item-area">{{count($aQuizData['questions'])}}</span></h2>
 		</div>
 	</div>
 	@for ($i = 0; $i < count($aQuizData['questions']); $i++)
@@ -26,7 +26,7 @@
 		                    <div class="input-group">
 		                        <div class="input-group-prepend">
 		                            <div class="input-group-text">
-		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=1>
+		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=1 {{ ($aQuizData['score'] !== null && $aQuizData['questions'][$i]['question_answer'] === 1) ? 'checked' : ''  }}>
 		                            </div>
 		                        </div>
 		                        <input type="text" class="form-control" aria-label="Text input with radio button" value="True" readonly>
@@ -36,7 +36,7 @@
 		                    <div class="input-group">
 		                        <div class="input-group-prepend">
 		                            <div class="input-group-text">
-		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=0>
+		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=0 {{ ($aQuizData['score'] !== null && $aQuizData['questions'][$i]['question_answer'] === 0) ? 'checked' : ''  }}>
 		                            </div>
 		                        </div>
 		                        <input type="text" class="form-control" aria-label="Text input with radio button" value="False" readonly>
@@ -50,7 +50,7 @@
 				                    <div class="input-group">
 				                        <div class="input-group-prepend">
 				                            <div class="input-group-text">
-				                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value={{ $aChoicesData['id'] }}>
+				                                <input type="radio" class="radio-choice" name="question{{$i}}" data-value={{ $aChoicesData['id'] }} {{ ($aQuizData['score'] !== null && $aChoicesData['is_correct']) ? 'checked' : ''  }} }}>
 				                            </div>
 				                        </div>
 				                        <input type="text" class="form-control" aria-label="Text input with radio button" value="{{ $aChoicesData['choice'] }}" readonly>
@@ -63,12 +63,13 @@
 	        </div>
 	    </div>
 	@endfor
-	@if($aQuizData['score'] === null)
-		<div class="text-right">
-			<a class="btn btn-secondary text-white" href="/student/class/{{ $aClass[0]['id'] }}/quizzes">Cancel</a>
-			<button class="btn btn-primary" id="submit-quiz" data-value="{{ $aQuizData['quiz'][0]['id'] }}">Submit</button>
+	<div class="text-right">
+			<a class="btn btn-secondary text-white" id="cancel-quiz" href="/student/class/{{ $aClass[0]['id'] }}/quizzes">{{ $aQuizData['score'] === null ? 'Cancel' : 'Exit' }}</a>
+			@if($aQuizData['score'] === null)
+				<button class="btn btn-primary" id="submit-quiz" data-value="{{ $aQuizData['quiz'][0]['id'] }}">Submit</button>
+			@endif
 		</div>
-	@endif
+	
 @endsection
 
 @push('scripts')

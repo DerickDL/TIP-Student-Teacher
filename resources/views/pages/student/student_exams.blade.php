@@ -24,6 +24,7 @@
                     <th scope="col" class="text-center">Integration Course</th>
                     <th scope="col" class="text-center">Items</th>
                     <th scope="col" class="text-center">Time Limit (minutes)</th>
+                    <th scope="col" class="text-center">Score</th>
                     <th scope="col" class="text-center">Status</th>
                 </tr>
             </thead>
@@ -34,6 +35,7 @@
                         <td class="text-center"><a href="/student/class/{{ $aClass[0]['id'] }}/exam/{{ $aExamData['id'] }}">{{ $aExamData['parent_course']['integrated_course_name'] }}</a></td>
                         <td class="text-center">{{ $aExamData['items'] }}</td>
                         <td class="text-center">{{ $aExamData['time_limit'] }}</td>
+                        <td scope="col" class="text-center">{{ $aExamData['score'] !== null ? $aExamData['score'] . '/' . $aExamData['items'] : '-' }}</td>
                         <td class="text-center">Close</td>
                     </tr>
                 @endforeach

@@ -6,7 +6,7 @@
 
 @section('student_content')
 	<div class="row">
-	<div class="col-sm-8">
+		<div class="col-sm-8">
 			<h2  id="quiz-title">
 			@if ($aExam[0]['type'] === 1)
 				Preliminary Exam
@@ -16,6 +16,9 @@
 				Final term Exam
 			@endif
 			</h2>
+		</div>
+		<div class="col-sm-4" id="score-div" style="display: {{$aExam['score'] === null ? 'none' : 'block'}}">
+			<h2 class="text-right font-weight-bold">Score: <span id="score-area">{{$aExam['score']}}</span><span>/</span><span id="item-area">{{count($aExam['questions'])}}</span></h2>
 		</div>
 	</div>
 	@for ($i = 0; $i < count($aExam['questions']); $i++)
@@ -31,7 +34,7 @@
 		                    <div class="input-group">
 		                        <div class="input-group-prepend">
 		                            <div class="input-group-text">
-		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=1>
+		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=1 {{ ($aExam['score'] !== null && $aExam['questions'][$i]['question_answer'] === 1) ? 'checked' : ''  }}>
 		                            </div>
 		                        </div>
 		                        <input type="text" class="form-control" aria-label="Text input with radio button" value="True" readonly>
@@ -41,7 +44,7 @@
 		                    <div class="input-group">
 		                        <div class="input-group-prepend">
 		                            <div class="input-group-text">
-		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=0>
+		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=0 {{ ($aExam['score'] !== null && $aExam['questions'][$i]['question_answer'] === 0) ? 'checked' : ''  }}>
 		                            </div>
 		                        </div>
 		                        <input type="text" class="form-control" aria-label="Text input with radio button" value="False" readonly>
@@ -55,7 +58,7 @@
 				                    <div class="input-group">
 				                        <div class="input-group-prepend">
 				                            <div class="input-group-text">
-				                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value={{ $aChoicesData['id'] }}>
+				                                <input type="radio" class="radio-choice" name="question{{$i}}" data-value={{ $aChoicesData['id'] }} {{ ($aExam['score'] !== null && $aChoicesData['is_correct']) ? 'checked' : ''  }}>
 				                            </div>
 				                        </div>
 				                        <input type="text" class="form-control" aria-label="Text input with radio button" value="{{ $aChoicesData['choice'] }}" readonly>
@@ -69,8 +72,10 @@
 	    </div>
 	@endfor
 		<div class="text-right">
-			<a class="btn btn-secondary text-white" href="/student/class/{{ $aClass[0]['id'] }}/exams">Cancel</a>
-			<button class="btn btn-primary" id="submit-exam" data-value="{{ $aExam[0]['id'] }}">Submit</button>
+			<a class="btn btn-secondary text-white" href="/student/class/{{ $aClass[0]['id'] }}/exams" id="cancel-exam">{{ $aExam['score'] === null ? 'Cancel' : 'Exit' }}</a>
+			@if($aExam['score'] === null)
+				<button class="btn btn-primary" id="submit-exam" data-value="{{ $aExam[0]['id'] }}">Submit</button>
+			@endif
 		</div>
 @endsection
 

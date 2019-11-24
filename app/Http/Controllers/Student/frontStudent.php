@@ -57,12 +57,13 @@ class frontStudent extends frontUsers
         $aQuiz = $this->getQuizzes(['id' => $iQuizId]);
         $aQuestions = $this->getQuestions($iQuizId);
         $aChoices = $this->getChoices($aQuestions);
-        $aScore = $this->getQuizScore($iQuizId, $aSession->getData()->id);
+        $oScore = $this->getQuizScore($iQuizId, $aSession->getData()->id);
+        $iScore = $oScore === null ? $oScore : $oScore->pivot->score;
         $aQuizData = [
         	'quiz' => $aQuiz,
         	'questions' => $aQuestions,
         	'choices' => $aChoices,
-            'score' => $aScore
+            'score' => $iScore
         ];
         return view('pages.student.student_quiz')->with('aSession', $aSession)->with('aClass', $aClass)->with('aQuizData', $aQuizData);
     }
@@ -100,6 +101,8 @@ class frontStudent extends frontUsers
         foreach ($aQuizzes as $aQuizData) {
             $aQuizData['sub_course'] = $this->getCourses(['id' => $aQuizData['course_id']])[0];
             $aQuizData['parent_course'] = $this->getParentCourse($aQuizData['course_id']);
+            $oScore = $this->getQuizScore($aQuizData['id'], $aSession->getData()->id);
+            $aQuizData['score'] = $oScore === null ? $oScore : $oScore->pivot->score;
         }
         return view('pages.student.student_quizzes')->with('aSession', $aSession)->with('aClass', $aClass)->with('aQuizzes', $aQuizzes);
     }
@@ -123,6 +126,8 @@ class frontStudent extends frontUsers
         $aExams = $this->getExams(['creator_id' => $aClass[0]['user_id']]);
         foreach ($aExams as $aExamData) {
             $aExamData['parent_course'] = $this->getIntegratedCourseDetail($aExamData['course_id']);
+            $oScore = $this->getExamScore($aExamData['id'], $aSession->getData()->id);
+            $aExamData['score'] = $oScore === null ? $oScore : $oScore->pivot->score;
         }
         $aExams = $this->segregateExams($aExams);
         return view('pages.student.student_exams')->with('aSession', $aSession)->with('aClass', $aClass)->with('aExams', $aExams);
@@ -144,6 +149,8 @@ class frontStudent extends frontUsers
         $aExam = $this->getExams(['id' => $iExamId]);
         $aExam['questions'] = $this->getExamQuestions($iExamId);
         $aExam['choices'] = $this->getExamChoices($aExam['questions']);
+        $oScore = $this->getExamScore($iExamId, $aSession->getData()->id);
+        $aExam['score'] = $oScore === null ? $oScore : $oScore->pivot->score;
         return view('pages.student.student_exam')->with('aSession', $aSession)->with('aClass', $aClass)->with('aExam', $aExam);
     }
 }

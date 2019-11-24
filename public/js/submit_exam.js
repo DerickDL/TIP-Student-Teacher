@@ -10,6 +10,7 @@ $(document).ready(function () {
             this.eScoreArea = $('#score-area');
             this.ePercentArea = $('#percent-area');
             this.eScoreDiv = $('#score-div');
+            this.eBtnCancelExam = $('#cancel-exam');
         },
         
         bindEvents: function () {
@@ -24,16 +25,18 @@ $(document).ready(function () {
                     'exam_id': $(this).data('value'),
                     'question_answer': aQuestionAnswer
                 };
-                console.log(aData);
                 $.ajax({
                     url: '/exams/submit',
                     type: 'POST',
                     data: aData,
                     success: function (aResponse) {
-                        oSubmitExam.eScoreArea.text(aResponse.score);
-                        oSubmitExam.ePercentArea.text(aQuestionAnswer.length);
-                        oSubmitExam.eBtnSubmitExam.remove();
-                        oSubmitExam.eScoreDiv.show();
+                        alert('Submitted successfully. Check your score.');
+                        window.location.reload();
+                        // oSubmitExam.eScoreArea.text(aResponse.score);
+                        // oSubmitExam.ePercentArea.text(aQuestionAnswer.length);
+                        // oSubmitExam.eBtnSubmitExam.remove();
+                        // oSubmitExam.eScoreDiv.show();
+                        // oSubmitExam.eBtnCancelExam.text('Exit');
                     }
                 })
             }

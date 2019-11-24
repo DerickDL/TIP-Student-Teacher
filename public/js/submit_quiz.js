@@ -10,6 +10,7 @@ $(document).ready(function () {
             this.eScoreArea = $('#score-area');
             this.ePercentArea = $('#percent-area');
             this.eScoreDiv = $('#score-div');
+            this.eBtnCancelQuiz = $('#cancel-quiz');
         },
         
         bindEvents: function () {
@@ -18,7 +19,7 @@ $(document).ready(function () {
 
         submitQuiz: function () {
             var aQuestionAnswer = [];
-            if (confirm('Are you sure you want to save this quiz?')) {
+            if (confirm('Are you sure you want to submit?')) {
                 aQuestionAnswer = oSubmitQuiz.getQuestions();
                 var aData = {
                     'quiz_id': $(this).data('value'),
@@ -29,10 +30,13 @@ $(document).ready(function () {
                     type: 'POST',
                     data: aData,
                     success: function (aResponse) {
-                        oSubmitQuiz.eScoreArea.text(aResponse.score);
-                        oSubmitQuiz.ePercentArea.text(aQuestionAnswer.length);
-                        oSubmitQuiz.eBtnSubmitQuiz.remove();
-                        oSubmitQuiz.eScoreDiv.show();
+                        alert('Submitted successfully. Check your score.');
+                        window.location.reload();
+                        // oSubmitQuiz.eScoreArea.text(aResponse.score);
+                        // oSubmitQuiz.ePercentArea.text(aQuestionAnswer.length);
+                        // oSubmitQuiz.eBtnSubmitQuiz.remove();
+                        // oSubmitQuiz.eScoreDiv.show();
+                        // oSubmitQuiz.eBtnCancelQuiz.text('Exit');
                     }
                 })
             }
