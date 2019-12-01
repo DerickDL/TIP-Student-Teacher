@@ -97,6 +97,8 @@ $(document).ready(function () {
                         'questions': oAddExam.aQuestions,
                         'course_id': oAddExam.eIntegCourses.val(),
                         'type': oAddExam.eExamType.val(),
+                        'start_datetime': $('#start_date').val(),
+                        'end_datetime': $('#end_date').val(),
                         'creator_id': iCreatorId
                     },
                     success: function (aResponse) {

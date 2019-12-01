@@ -74,7 +74,9 @@ $(document).ready(function () {
                         'quiz_timelimit': oAddQuiz.eTimeLimit.val(),
                         'quiz_items': oAddQuiz.eNumItems.val(),
                         'questions': oAddQuiz.aQuestions,
-                        'course_id': oAddQuiz.eSubCourses.val()
+                        'course_id': oAddQuiz.eSubCourses.val(),
+                        'start_datetime': $('#start_date').val(),
+                        'end_datetime': $('#end_date').val(),
                     },
                     success: function () {
                         alert('Successfully created quiz');

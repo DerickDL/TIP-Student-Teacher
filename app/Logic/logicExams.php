@@ -51,7 +51,9 @@ class logicExams
                 'items' => 'required|integer',
                 'time_limit' => 'required|integer',
                 'type'  => 'required',
-                'creator_id' => 'required'
+                'creator_id' => 'required',
+                'start_datetime' => 'required',
+                'end_datetime' => 'required',
             ),
             $aRequest
         );
@@ -62,7 +64,9 @@ class logicExams
             'course_id' => $aRequest['course_id'],
             'items' => $aRequest['items'],
             'time_limit' => $aRequest['time_limit'],
-            'creator_id' => $aRequest['creator_id']
+            'creator_id' => $aRequest['creator_id'],
+            'start_datetime' => $aRequest['start_datetime'],
+            'end_datetime' => $aRequest['end_datetime'],
         ];
         $aExam = $this->modelExams->getExams(['course_id' => $aRequest['course_id'], 'type' => $aRequest['type']]);
         if (count($aExam) > 0) {

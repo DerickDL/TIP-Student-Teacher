@@ -49,7 +49,9 @@ class logicQuizzes
             array(
                 'course_id' => 'required',
                 'quiz_items' => 'required|integer',
-                'quiz_timelimit' => 'required|integer'
+                'quiz_timelimit' => 'required|integer',
+                'start_datetime' => 'required',
+                'end_datetime' => 'required',
             ),
             $aRequest
         );
@@ -59,7 +61,9 @@ class logicQuizzes
         $aData = [
             'course_id' => $aRequest['course_id'],
             'quiz_items' => $aRequest['quiz_items'],
-            'quiz_timelimit' => $aRequest['quiz_timelimit']
+            'quiz_timelimit' => $aRequest['quiz_timelimit'],
+            'start_datetime' => $aRequest['start_datetime'],
+            'end_datetime' => $aRequest['end_datetime'],
         ];
         $aQuiz = $this->modelQuizzes->createQuiz($aRequest);
         $oQuiz = $this->modelQuizzes->findQuiz($aQuiz['id']);

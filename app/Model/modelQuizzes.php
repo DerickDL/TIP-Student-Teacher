@@ -16,7 +16,7 @@ class modelQuizzes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['quiz_title', 'quiz_items', 'course_id', 'quiz_timelimit'];
+    protected $fillable = ['quiz_title', 'quiz_items', 'course_id', 'quiz_timelimit', 'start_datetime', 'end_datetime'];
 
     public function questions()
     {

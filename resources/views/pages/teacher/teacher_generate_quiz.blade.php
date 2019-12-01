@@ -1,7 +1,8 @@
 @extends('pages.teacher.teacher_base')
 
 @push('styles')
-
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-datetimepicker.css">
+<link rel="stylesheet" type="text/css" href="/css/datepicker.css">
 @endpush
 
 @section('teacher_content')
@@ -38,6 +39,24 @@
                             <label>Time Limit (minutes)</label>
                             <input type="text" class="form-control" id="time-limit">
                         </div>
+                        <div class="form-group col-6">
+                            <label>Start Date</label>
+                            <div class='input-group date' id='datetimepicker_start'>
+                                <input type='text' class="form-control" id="start_date"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>End Date</label>
+                            <div class='input-group date' id='datetimepicker_end'>
+                                <input type='text' class="form-control" id="end_date"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -58,12 +77,15 @@
 @endsection
 
 @push('scripts')
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#quiz-tab').addClass('active');
-    });
-    var aIntegrations = {!! json_encode($aIntegrations) !!} 
-	var aSubCourses = {!! json_encode($aSubCourses) !!}
-</script>
-<script type="text/javascript" src="/js/add_quiz.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#quiz-tab').addClass('active');
+            $('#datetimepicker_start').datetimepicker();
+            $('#datetimepicker_end').datetimepicker();
+        });
+        var aIntegrations = {!! json_encode($aIntegrations) !!} 
+	    var aSubCourses = {!! json_encode($aSubCourses) !!}
+    </script>
+    <script type="text/javascript" src="/js/add_quiz.js"></script>
 @endpush
