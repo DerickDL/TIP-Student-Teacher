@@ -4,6 +4,10 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Console\Commands\UpdateExamStart;
+use App\Console\Commands\UpdateQuizStart;
+use App\Console\Commands\UpdateExamEnd;
+use App\Console\Commands\UpdateQuizEnd;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +17,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'exam:start', 
+        'quiz:start', 
+        'exam:end', 
+        'quiz:end'
     ];
 
     /**
@@ -24,8 +31,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('exam:start')->everyMinute();
+        $schedule->command('exam:end')->everyMinute();
+        $schedule->command('quiz:start')->everyMinute();
+        $schedule->command('quiz:end')->everyMinute();
     }
 
     /**

@@ -19,11 +19,11 @@
             <tbody>
                 @foreach($aQuizzes as $aQuizData)
                     <tr>
-                        <td class="text-center"><a class="btn-link" href="/student/class/{{ $aClass[0]['id'] }}/quiz/{{ $aQuizData['id'] }}">{{ $aQuizData['sub_course']['course_title'] }}</a></td>
+                        <td class="text-center"><a class="btn-link {{ $aQuizData['status'] == 0 ? 'd-none' : '' }}" href="/student/class/{{ $aClass[0]['id'] }}/quiz/{{ $aQuizData['id'] }}">{{ $aQuizData['sub_course']['course_title'] }}</a>{{ $aQuizData['status'] == 1 ? '' : $aQuizData['sub_course']['course_title'] }}</td>
                         <td class="text-center">{{ $aQuizData['quiz_items'] }}</td>
                         <td class="text-center">{{ $aQuizData['quiz_timelimit'] }}</td>
                         <td class="text-center">{{ $aQuizData['score'] !== null ? $aQuizData['score'] . '/' . $aQuizData['quiz_items'] : '-' }}</td>
-                        <td class="text-center">Close</td>
+                        <td class="text-center">{{ $aQuizData['status'] === 0 ? 'Close' : 'Open' }}</td>
                     </tr>
                 @endforeach
             </tbody>

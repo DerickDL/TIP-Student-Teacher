@@ -67,6 +67,7 @@ class logicExams
             'creator_id' => $aRequest['creator_id'],
             'start_datetime' => $aRequest['start_datetime'],
             'end_datetime' => $aRequest['end_datetime'],
+            'status' => $aRequest['status'],
         ];
         $aExam = $this->modelExams->getExams(['course_id' => $aRequest['course_id'], 'type' => $aRequest['type']]);
         if (count($aExam) > 0) {

@@ -64,6 +64,7 @@ class logicQuizzes
             'quiz_timelimit' => $aRequest['quiz_timelimit'],
             'start_datetime' => $aRequest['start_datetime'],
             'end_datetime' => $aRequest['end_datetime'],
+            'status' => $aRequest['status'],
         ];
         $aQuiz = $this->modelQuizzes->createQuiz($aRequest);
         $oQuiz = $this->modelQuizzes->findQuiz($aQuiz['id']);

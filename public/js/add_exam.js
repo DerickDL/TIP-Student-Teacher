@@ -99,7 +99,8 @@ $(document).ready(function () {
                         'type': oAddExam.eExamType.val(),
                         'start_datetime': $('#start_date').val(),
                         'end_datetime': $('#end_date').val(),
-                        'creator_id': iCreatorId
+                        'creator_id': iCreatorId,
+                        'status': 0
                     },
                     success: function (aResponse) {
                         if (aResponse['result'] === false) {

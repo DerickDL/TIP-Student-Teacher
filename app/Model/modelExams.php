@@ -16,7 +16,7 @@ class modelExams extends Model
     /**
      * @var array
      */
-    protected $fillable = ['exam_title', 'items', 'course_id', 'time_limit', 'type', 'creator_id', 'start_datetime', 'end_datetime'];
+    protected $fillable = ['exam_title', 'items', 'course_id', 'time_limit', 'type', 'creator_id', 'start_datetime', 'end_datetime', 'status'];
 
     public function questions()
     {

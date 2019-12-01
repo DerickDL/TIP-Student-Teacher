@@ -32,11 +32,11 @@
             <tbody>
                 @foreach($aExams[1] as $aExamData)
                     <tr>
-                        <td class="text-center"><a href="/student/class/{{ $aClass[0]['id'] }}/exam/{{ $aExamData['id'] }}">{{ $aExamData['parent_course']['integrated_course_name'] }}</a></td>
+                        <td class="text-center"><a class="btn btn-link {{ $aExamData['status'] == 0 ? 'd-none' : '' }}" href="/student/class/{{ $aClass[0]['id'] }}/exam/{{ $aExamData['id'] }}">{{ $aExamData['parent_course']['integrated_course_name'] }}</a>{{ $aExamData['status'] == 0 ? $aExamData['parent_course']['integrated_course_name'] : '' }}</td>
                         <td class="text-center">{{ $aExamData['items'] }}</td>
                         <td class="text-center">{{ $aExamData['time_limit'] }}</td>
                         <td scope="col" class="text-center">{{ $aExamData['score'] !== null ? $aExamData['score'] . '/' . $aExamData['items'] : '-' }}</td>
-                        <td class="text-center">Close</td>
+                        <td class="text-center">{{ $aExamData['status'] === 0 ? 'Close' : 'Open' }}</td>
                     </tr>
                 @endforeach
             </tbody>

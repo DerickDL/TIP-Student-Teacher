@@ -77,6 +77,7 @@ $(document).ready(function () {
                         'course_id': oAddQuiz.eSubCourses.val(),
                         'start_datetime': $('#start_date').val(),
                         'end_datetime': $('#end_date').val(),
+                        'status': 0
                     },
                     success: function () {
                         alert('Successfully created quiz');
