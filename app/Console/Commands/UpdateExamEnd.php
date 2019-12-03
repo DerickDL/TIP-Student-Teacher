@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class UpdateExamEnd extends Command
 {
@@ -40,6 +41,7 @@ class UpdateExamEnd extends Command
     public function handle()
     {
         $sCurrentDateTime = Carbon::now();
-        DB:table('exams')->where('end_date', '>=', $sCurrentDateTime)->update('status', 0);
+        Log::debug(['exam_end' => $sCurrentDateTime]);
+        DB::table('exams')->where('end_datetime', '<=', $sCurrentDateTime)->where('start_datetime', '<', $sCurrentDateTime)->update(['status'=> 0]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class UpdateQuizStart extends Command
 {
@@ -40,6 +41,7 @@ class UpdateQuizStart extends Command
     public function handle()
     {
         $sCurrentDateTime = Carbon::now();
-        DB:table('quizzes')->where('start_date', '<=', $sCurrentDateTime)->update('status', 1);
+        Log::debug(['quiz_start' => $sCurrentDateTime]);
+        DB::table('quizzes')->where('start_datetime', '<=', $sCurrentDateTime)->where('end_datetime', '>', $sCurrentDateTime)->update(['status' => 1]);
     }
 }

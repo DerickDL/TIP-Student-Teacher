@@ -17,10 +17,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'exam:start', 
-        'quiz:start', 
-        'exam:end', 
-        'quiz:end'
+        Commands\UpdateExamStart::class, 
+        Commands\UpdateQuizStart::class, 
+        Commands\UpdateExamEnd::class, 
+        Commands\UpdateQuizEnd::class
     ];
 
     /**
@@ -31,10 +31,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('exam:start')->everyMinute();
-        $schedule->command('exam:end')->everyMinute();
-        $schedule->command('quiz:start')->everyMinute();
-        $schedule->command('quiz:end')->everyMinute();
+        $schedule->command('exam:open')->everyMinute();
+        $schedule->command('exam:close')->everyMinute();
+        $schedule->command('quiz:open')->everyMinute();
+        $schedule->command('quiz:close')->everyMinute();
     }
 
     /**
