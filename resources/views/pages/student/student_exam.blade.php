@@ -20,6 +20,9 @@
 		<div class="col-sm-4" id="score-div" style="display: {{$aExam['score'] === null ? 'none' : 'block'}}">
 			<h2 class="text-right font-weight-bold">Score: <span id="score-area">{{$aExam['score']}}</span><span>/</span><span id="item-area">{{count($aExam['questions'])}}</span></h2>
 		</div>
+		<div class="col-sm-4" id="timer-div">
+			<h2 class="text-right font-weight-bold" id="timer"></h2>
+		</div>
 	</div>
 	@for ($i = 0; $i < count($aExam['questions']); $i++)
 		<div class="questions mb-2" data-type="{{ $aExam['questions'][$i]['question_type'] }}" data-id="{{ $aExam['questions'][$i]['id'] }}">
@@ -80,7 +83,8 @@
 @endsection
 
 @push('scripts')
-    <script type="text/javascript">
+	<script type="text/javascript">
+		var iTimeLimit = {!! json_encode($aExam['score'] === null ? $aExam[0]['time_limit'] : null) !!};
         $(document).ready(function () {
            $('#exams-tab').addClass('active');
         });

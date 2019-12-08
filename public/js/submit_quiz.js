@@ -3,6 +3,7 @@ $(document).ready(function () {
         init: function () {
             this.cacheDOM();
             this.bindEvents();
+            if (iTimeLimit !== null) {this.startTimer()};
         },
        
         cacheDOM: function () {
@@ -12,17 +13,59 @@ $(document).ready(function () {
             this.eScoreDiv = $('#score-div');
             this.eBtnCancelQuiz = $('#cancel-quiz');
         },
+
+        startTimer() {
+            var sEndTime = oSubmitQuiz.getStartTime();
+            var x = setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+                // Find the distance between now and the count down date
+                var distance = sEndTime - now;
+              
+                // Time calculations for days, hours, minutes and seconds
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              
+                // Display the result in the element with id="demo"
+                $("#timer").html(minutes + ":" + seconds);
+              
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                  clearInterval(x);
+                  $("#timer").remove();
+                  localStorage.removeItem("quiz_end_datetime");
+                  oSubmitQuiz.postQuiz();
+                }
+              }, 1000);
+        },
+
+        getStartTime: function () {
+            var sCurrentDateTime = localStorage.getItem('quiz_end_datetime');
+            if (sCurrentDateTime !== null) {
+                return sCurrentDateTime;
+            }
+            sCurrentDateTime = new Date();
+            sCurrentDateTime.setMinutes(sCurrentDateTime.getMinutes() + iTimeLimit);
+            localStorage.setItem('quiz_end_datetime', sCurrentDateTime.getTime());
+            return sCurrentDateTime.getTime();
+        },
         
         bindEvents: function () {
             oSubmitQuiz.eBtnSubmitQuiz.on('click', oSubmitQuiz.submitQuiz)
         },
 
         submitQuiz: function () {
-            var aQuestionAnswer = [];
             if (confirm('Are you sure you want to submit?')) {
+                oSubmitQuiz.postQuiz();
+            }
+        },
+
+        postQuiz: function () {
+            var aQuestionAnswer = [];
                 aQuestionAnswer = oSubmitQuiz.getQuestions();
                 var aData = {
-                    'quiz_id': $(this).data('value'),
+                    'quiz_id': $(oSubmitQuiz.eBtnSubmitQuiz).data('value'),
                     'question_answer': aQuestionAnswer
                 };
                 $.ajax({
@@ -39,7 +82,6 @@ $(document).ready(function () {
                         // oSubmitQuiz.eBtnCancelQuiz.text('Exit');
                     }
                 })
-            }
         },
 
         getQuestions: function () {

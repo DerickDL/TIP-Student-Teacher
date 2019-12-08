@@ -3,6 +3,44 @@ $(document).ready(function () {
         init: function () {
             this.cacheDOM();
             this.bindEvents();
+            if (iTimeLimit !== null) {this.startTimer()};
+        },
+
+        startTimer() {
+            var sEndTime = oSubmitExam.getStartTime();
+            var x = setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+                // Find the distance between now and the count down date
+                var distance = sEndTime - now;
+              
+                // Time calculations for days, hours, minutes and seconds
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              
+                // Display the result in the element with id="demo"
+                $("#timer").html(minutes + ":" + seconds);
+              
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                  clearInterval(x);
+                  $("#timer").remove();
+                  localStorage.removeItem("exam_end_datetime");
+                  oSubmitExam.postExam();
+                }
+              }, 1000);
+        },
+
+        getStartTime: function () {
+            var sCurrentDateTime = localStorage.getItem('exam_end_datetime');
+            if (sCurrentDateTime !== null) {
+                return sCurrentDateTime;
+            }
+            sCurrentDateTime = new Date();
+            sCurrentDateTime.setMinutes(sCurrentDateTime.getMinutes() + iTimeLimit);
+            localStorage.setItem('exam_end_datetime', sCurrentDateTime.getTime());
+            return sCurrentDateTime.getTime();
         },
        
         cacheDOM: function () {
@@ -18,11 +56,16 @@ $(document).ready(function () {
         },
 
         submitExam: function () {
-            var aQuestionAnswer = [];
             if (confirm('Are you sure you want to submit?')) {
+                oSubmitExam.postExam();
+            }
+        },
+
+        postExam: function() {
+            var aQuestionAnswer = [];
                 aQuestionAnswer = oSubmitExam.getQuestions();
                 var aData = {
-                    'exam_id': $(this).data('value'),
+                    'exam_id': $(oSubmitExam.eBtnSubmitExam).data('value'),
                     'question_answer': aQuestionAnswer
                 };
                 $.ajax({
@@ -39,7 +82,6 @@ $(document).ready(function () {
                         // oSubmitExam.eBtnCancelExam.text('Exit');
                     }
                 })
-            }
         },
 
         getQuestions: function () {

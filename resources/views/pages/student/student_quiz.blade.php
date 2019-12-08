@@ -12,6 +12,9 @@
 		<div class="col-sm-4" id="score-div" style="display: {{$aQuizData['score'] === null ? 'none' : 'block'}}">
 			<h2 class="text-right font-weight-bold">Score: <span id="score-area">{{$aQuizData['score']}}</span><span>/</span><span id="item-area">{{count($aQuizData['questions'])}}</span></h2>
 		</div>
+		<div class="col-sm-4" id="timer-div">
+			<h2 class="text-right font-weight-bold" id="timer"></h2>
+		</div>
 	</div>
 	@for ($i = 0; $i < count($aQuizData['questions']); $i++)
 		<div class="questions mb-2" data-type="{{ $aQuizData['questions'][$i]['question_type'] }}" data-id="{{ $aQuizData['questions'][$i]['id'] }}">
@@ -73,7 +76,8 @@
 @endsection
 
 @push('scripts')
-    <script type="text/javascript">
+	<script type="text/javascript">
+		var iTimeLimit = {!! json_encode($aQuizData['score'] === null ? $aQuizData['quiz'][0]['quiz_timelimit'] : null) !!}
         $(document).ready(function () {
            $('#quizzes-tab').addClass('active');
         });
