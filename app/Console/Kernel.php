@@ -31,10 +31,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('exam:open')->everyMinute();
-        $schedule->command('exam:close')->everyMinute();
-        $schedule->command('quiz:open')->everyMinute();
-        $schedule->command('quiz:close')->everyMinute();
+        $schedule->command('exam:open')->everyMinute()->withoutOverlapping();
+        $schedule->command('exam:close')->everyMinute()->withoutOverlapping();
+        $schedule->command('quiz:open')->everyMinute()->withoutOverlapping();
+        $schedule->command('quiz:close')->everyMinute()->withoutOverlapping();
     }
 
     /**
