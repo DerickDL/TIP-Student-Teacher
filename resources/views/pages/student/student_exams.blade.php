@@ -48,9 +48,10 @@
 @push('scripts')
 <script type="text/javascript">
     var aExams = {!! json_encode($aExams) !!}
+    var aClass = {!! json_encode($aClass) !!}
     $(document).ready(function () {
         $('#exams-tab').addClass('active');
 	});
 </script>
-<script type="text/javascript" src="/js/exam.js"></script>
+<script type="text/javascript" src="/js/student_exams.js"></script>
 @endpush
