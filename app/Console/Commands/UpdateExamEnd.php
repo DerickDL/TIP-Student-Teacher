@@ -40,7 +40,7 @@ class UpdateExamEnd extends Command
      */
     public function handle()
     {
-        $sCurrentDateTime = Carbon::now();
+        $sCurrentDateTime = Carbon::now(); 
         Log::debug(['exam_end' => $sCurrentDateTime]);
         DB::table('exams')->where('end_datetime', '<=', $sCurrentDateTime)->where('start_datetime', '<', $sCurrentDateTime)->update(['status'=> 0]);
     }

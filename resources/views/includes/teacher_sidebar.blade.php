@@ -2,7 +2,7 @@
 <nav id="sidebar">
     <ul class="list-unstyled components">
         <li id="home-tab">
-            <a href="/teacher">Home</a>
+            <a href="/teacher/home">Home</a>
         </li>
         <li id="course-tab">
             <a href="#coursesSub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dropdown-toggle-sidebar" id="dropdown-sidebar-integ">Courses</a>
