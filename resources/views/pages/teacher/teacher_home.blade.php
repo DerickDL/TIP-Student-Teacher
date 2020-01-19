@@ -13,6 +13,14 @@
     <canvas id="midterms" width="400" height="100"></canvas>
     <br/>
     <canvas id="finals" width="400" height="100"></canvas>
+    <div class="row">
+        <div class="col-6">
+            <canvas id="quiz1" width="300" height="300"></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="quiz2" width="300" height="300"></canvas>
+        </div>
+    </div>
     </div>
 @endsection
 

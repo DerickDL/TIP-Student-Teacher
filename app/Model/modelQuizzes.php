@@ -69,4 +69,9 @@ class modelQuizzes extends Model
     {
         return static::create($aData);
     }
+
+    public function deleteQuiz($iQuizId)
+    {
+        return self::destroy($iQuizId);
+    }
 }

@@ -83,6 +83,7 @@ Route::get('/student/class/{id}/quiz/{quiz_id}', 'Student\frontStudent@visitQuiz
 Route::get('/student/class/{id}/exam/{exam_id}', 'Student\frontStudent@examPage')->middleware('check.session', 'check.student');
 
 Route::post('/quizzes/insert', 'Quizzes\controllerQuizzes@insertQuiz');
+Route::delete('/quizzes/delete/{quiz_id}', 'Quizzes\controllerQuizzes@deleteQuiz');
 Route::post('/quizzes/submit', 'Student\controllerStudent@submitQuiz');
 Route::post('/exams/submit', 'Student\controllerStudent@submitExam');
 

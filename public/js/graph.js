@@ -5,6 +5,8 @@ $(document).ready(function () {
             this.prelimGraph();
             this.midtermGraph();
             this.finalGraph();
+            this.quiz1Graph();
+            this.quiz2Graph();
         },
        
         quizGraph: function () {
@@ -195,6 +197,60 @@ $(document).ready(function () {
                               }
                         }]
                     }
+                }
+            });
+        },
+
+        quiz1Graph: function () {
+            var quiz1 = document.getElementById('quiz1').getContext('2d');
+            var quiz1Chart = new Chart(quiz1, {
+                type: 'pie',
+                data: {
+                    labels: ['Fail', 'Passed'],
+                    datasets: [{
+                        data: [70, 30],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: true
+                    },
+                    
+                    title: {
+                        display: true,
+                        text: 'Algebra'
+                    },
+                }
+            });
+        },
+
+        quiz2Graph: function () {
+            var quiz2 = document.getElementById('quiz2').getContext('2d');
+            var quiz2Chart = new Chart(quiz2, {
+                type: 'pie',
+                data: {
+                    labels: ['Fail', 'Passed'],
+                    datasets: [{
+                        data: [45, 65],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: true
+                    },
+                    
+                    title: {
+                        display: true,
+                        text: 'Trigonometry'
+                    },
                 }
             });
         },

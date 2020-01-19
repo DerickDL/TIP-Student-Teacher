@@ -26,7 +26,7 @@
                         <td class="text-center"><a href="/teacher/quizzes/list/{{ $aQuizData['id'] }}" class="btn-link">{{ $aQuizData['sub_course']['course_title'] }}</a></td>
                         <td class="text-center">{{ $aQuizData['quiz_items'] }}</td>
                         <td class="text-center">{{ $aQuizData['quiz_timelimit'] }}</td>
-                        <td class="text-center"><button class="btn btn-secondary btn-sm">Delete</button></td>
+                        <td class="text-center"><button class="btn btn-secondary btn-sm delete-quiz" data-value="{{ $aQuizData['id'] }}">Delete</button></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -40,5 +40,6 @@
         $('#quiz-tab').addClass('active');
 	});
 </script>
-<script type="text/javascript" src="/js/add_quiz.js"></script>
+<!-- <script type="text/javascript" src="/js/add_quiz.js"></script> -->
+<script type="text/javascript" src="/js/quiz.js"></script>
 @endpush

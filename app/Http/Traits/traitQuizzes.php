@@ -74,4 +74,10 @@ trait traitQuizzes
         $this->instantiateQuizzes();
         return $this->logicQuizzes->getQuizScore($iQuizId, $iUserId);
     }
+
+    public function removeQuiz($iQuizId)
+    {
+        $this->instantiateQuizzes();
+        $this->logicQuizzes->deleteQuiz($iQuizId);
+    }
 }
