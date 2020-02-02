@@ -21,7 +21,7 @@ $(document).ready(function () {
                     type: 'DELETE',
                     success: function () {
                         alert('Deleted successfully');
-                        window.reload();
+                        window.location.reload();
                     },
                     error: function (err) {
                         console.log(err);

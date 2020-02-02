@@ -92,7 +92,7 @@ class logicCourses
     }
 
     public function getParentCourse($iCourseId) {
-        $oQuiz = $this->modelCourses->findCourse($iCourseId);
-        return $oQuiz->integrated_courses;
+        $oCourse = $this->modelCourses->findCourse($iCourseId);
+        return $oCourse->integrated_courses;
     }
 }

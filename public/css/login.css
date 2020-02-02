@@ -3,6 +3,7 @@ body { overflow: hidden }
 .wrapper {
     background-color: #1c1e26 !important;
     padding-bottom: 20rem;
+    height: 100%;
 }
 
 .transparent {

@@ -30,4 +30,9 @@ class controllerCourses extends Controller
     {
         return $this->logicCourses->getCourses($oRequest);
     }
+
+    public function deleteCourse($iCourseId)
+    {
+        $this->logicCourses->deleteCourse($iCourseId);
+    }
 }

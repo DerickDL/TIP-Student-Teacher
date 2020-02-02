@@ -11,8 +11,13 @@
 |
 */
 
-// Get Methods
-Route::get('/', function () {
+/**LOGIN SELECTOR**/
+Route::get('/', function() {
+    return view('pages.login_select');
+});
+
+/**STUDENT LOGIN **/
+Route::get('/student', function () {
     return view('pages.login');
 });
 Route::get('/forbidden', function() {
@@ -71,7 +76,7 @@ Route::delete('/teacher/exams/delete/{exam_id}', 'Exams\controllerExams@deleteEx
 /**STUDENT LIST PAGE**/
 Route::get('/teacher/students', 'Teacher\frontTeacher@studentListPage')->middleware('check.session', 'check.teacher');
 
-Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
+// Route::get('/student', 'Student\frontStudent@index')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}', 'Student\frontStudent@courseHomePage')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}/quizzes', 'Student\frontStudent@quizPage')->middleware('check.session', 'check.student');
 Route::get('/student/course/{course_id}/quiz/{quiz_id}', 'Student\frontStudent@visitQuiz')->middleware('check.session', 'check.student');

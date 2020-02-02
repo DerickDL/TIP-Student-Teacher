@@ -16,7 +16,7 @@
                     <div class="col-sm mb-3 card-courses">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">{{$aCourseData['course_code']}}<span class="float-right delete-course" data-value="{{$aIntegCourse['id']}}">&#10005;</span></h5>
+                                <h5 class="card-title">{{$aCourseData['course_code']}}<span class="float-right delete-course" data-value="{{$aCourseData['id']}}">&#10005;</span></h5>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-subtitle mb-2 strong">{{$aCourseData['course_title']}}</h5>
