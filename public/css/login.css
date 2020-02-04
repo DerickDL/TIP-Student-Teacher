@@ -26,3 +26,17 @@ body { overflow: hidden }
     max-width: 10em;
     max-height: 10em;
 }
+
+.center-container {
+    position: relative;
+}
+
+.absolute-center {
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
