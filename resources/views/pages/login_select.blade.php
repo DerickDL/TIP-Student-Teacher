@@ -13,24 +13,39 @@
                     <img src="/img/TIP-logo.png">
                 </figure>
                 <div class="row">
-                    <div class="col-sm-4 text-white text-center mt-5">
+                    <div class="col-sm-4 text-center mt-5">
                         <div class="card mx-auto" style="width:80%">
-                            <div class="card-body">
-                                <a href="/admin" class="stretched-link">Admin</a>
+                            <div class="card-body text-center">
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <i class="fas fa-user-shield fa-5x"></i>
+                                    </div>
+                                </div>
+                                <a href="/admin" class="stretched-link text-dark"><p class="h1">Admin</p></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 text-white text-center mt-5">
+                    <div class="col-sm-4 text-center mt-5">
                         <div class="card mx-auto" style="width:80%;">
                             <div class="card-body">
-                                <a href="/teacher" class="stretched-link">Teacher</a>
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <i class="fas fa-user-cog fa-5x"></i>
+                                    </div>
+                                </div>
+                                <a href="/teacher" class="stretched-link text-dark"><p class="h1">Teacher</p></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 text-white text-center mt-5">
+                    <div class="col-sm-4 text-center mt-5">
                         <div class="card mx-auto" style="width:80%;">
                             <div class="card-body">
-                                <a href="/student" class="stretched-link">Student</a>
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <i class="fas fa-user fa-5x"></i>
+                                    </div>
+                                </div>
+                                <a href="/student" class="stretched-link text-dark"><p class="h1">Student</p></a>
                             </div>
                         </div>
                     </div>
