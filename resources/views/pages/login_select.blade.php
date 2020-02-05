@@ -7,14 +7,14 @@
 
 @section('content')
     <div id="app" class="h-100">
-        <div class="wrapper center-container">
+        <div class="wrapper center-container bg">
             <div class="container text-center absolute-center">
                 <figure class="logo">
                     <img src="/img/TIP-logo.png">
                 </figure>
                 <div class="row">
-                    <div class="col-sm-4 text-center mt-5">
-                        <div class="card mx-auto" style="width:80%">
+                    <div class="col-lg-4 text-center mt-5">
+                        <div class="card mx-auto" style="width:18rem;">
                             <div class="card-body text-center">
                                 <div class="row">
                                     <div class="col-12 mb-3">
@@ -25,8 +25,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 text-center mt-5">
-                        <div class="card mx-auto" style="width:80%;">
+                    <div class="col-lg-4 text-center mt-5">
+                        <div class="card mx-auto" style="width:18rem;">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 mb-3">
@@ -37,8 +37,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 text-center mt-5">
-                        <div class="card mx-auto" style="width:80%;">
+                    <div class="col-lg-4 text-center mt-5">
+                        <div class="card mx-auto" style="width:18rem;">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 mb-3">
