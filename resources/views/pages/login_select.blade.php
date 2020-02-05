@@ -7,8 +7,8 @@
 
 @section('content')
     <div id="app" class="h-100">
-        <div class="wrapper center-container bg">
-            <div class="container text-center absolute-center">
+        <div class="wrapper jumbotron center-container bg">
+            <div class="container text-center">
                 <figure class="logo">
                     <img src="/img/TIP-logo.png">
                 </figure>
