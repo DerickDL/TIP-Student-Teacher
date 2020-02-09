@@ -1,259 +1,77 @@
 $(document).ready(function () {
     var oGraph = {
         init: function () {
-            this.quizGraph();
-            this.prelimGraph();
-            this.midtermGraph();
-            this.finalGraph();
-            this.quiz1Graph();
-            this.quiz2Graph();
+            this.overallGraph();
+            console.log(aStudents);
+            console.log(aIntegrations);
+            console.log(aSection);
+            console.log(iSectionId);
+            console.log(iCreatorId);
+            oGraph.startCompute();
+            
         },
-       
-        quizGraph: function () {
-            var quizzes = document.getElementById('quizzes').getContext('2d');
-            var quizzesChart = new Chart(quizzes, {
-                type: 'bar',
-                data: {
-                    labels: ['Algebra', 'Basic Programming', 'Cisco 1'],
-                    datasets: [{
-                        data: [86, 78, 90],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    
-                    title: {
-                        display: true,
-                        text: 'Quizzes'
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                stepSize: 5,
-                                min: 50,
-                                max: 100
-                            },
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Percentage'
-                              }
-                        }]
-                    }
+
+        filterStudents: function() {
+            var aFilteredStudents = [];
+            for (var i = 0; i < aStudents.length; i++) {
+                if (aStudents[i]['pivot']['status'] === 1) {
+                    aFilteredStudents.push(aStudents[i]);
+                }
+            }
+            return aFilteredStudents;
+        },
+
+        startCompute: function() {
+            var aFilteredStudents = oGraph.filterStudents();
+            $.ajax({
+                'url': '/compute',
+                'type': 'GET',
+                'data': {
+                    'students': aFilteredStudents,
+                    'integrations': aIntegrations,
+                    'section': aSection[0],
+                    'creator_id': iCreatorId
                 }
             });
         },
 
-        prelimGraph: function () {
-            var prelims = document.getElementById('prelims').getContext('2d');
-            var prelimsChart = new Chart(prelims, {
-                type: 'bar',
-                data: {
-                    labels: ['Integration Course 1', 'Integration Course 2', 'Integration Course 3'],
-                    datasets: [{
-                        data: [86, 78, 90],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    
-                    title: {
-                        display: true,
-                        text: 'Preliminary Exams'
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                stepSize: 5,
-                                min: 50,
-                                max: 100
-                            },
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Percentage'
-                              }
-                        }]
-                    }
-                }
-            });
-        },
-
-        midtermGraph: function () {
-            var midterms = document.getElementById('midterms').getContext('2d');
-            var midtermsChart = new Chart(midterms, {
-                type: 'bar',
-                data: {
-                    labels: ['Integration Course 1', 'Integration Course 2', 'Integration Course 3'],
-                    datasets: [{
-                        data: [86, 78, 90],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    
-                    title: {
-                        display: true,
-                        text: 'Mid Term Exams'
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                stepSize: 5,
-                                min: 50,
-                                max: 100
-                            },
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Percentage'
-                              }
-                        }]
-                    }
-                }
-            });
-        },
-
-        finalGraph: function () {
-            var finals = document.getElementById('finals').getContext('2d');
-            var finalsChart = new Chart(finals, {
-                type: 'bar',
-                data: {
-                    labels: ['Integration Course 1', 'Integration Course 2', 'Integration Course 3'],
-                    datasets: [{
-                        data: [86, 78, 90],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    
-                    title: {
-                        display: true,
-                        text: 'Final Term Exams'
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                stepSize: 5,
-                                min: 50,
-                                max: 100
-                            },
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Percentage'
-                              }
-                        }]
-                    }
-                }
-            });
-        },
-
-        quiz1Graph: function () {
-            var quiz1 = document.getElementById('quiz1').getContext('2d');
-            var quiz1Chart = new Chart(quiz1, {
+        overallGraph: function () {
+            var overall = document.getElementById('overall').getContext('2d');
+            var overallPie = new Chart(overall, {
                 type: 'pie',
                 data: {
-                    labels: ['Fail', 'Passed'],
+                    labels: ['1', '1.25', '1.5', '1.75', '2', '2.25', '2.5', '2.75', '3', '4', '5'],
                     datasets: [{
-                        data: [70, 30],
+                        data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)'
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(239, 245, 66, 0.5)',
+                            'rgba(173, 245, 66, 0.7)',
+                            'rgba(120, 245, 66, 0.7)',
+                            'rgba(66, 245, 123, 0.7)',
+                            'rgba(245, 150, 66, 0.8)',
+                            'rgba(239, 245, 66, 0.8)',
+                            'rgba(66, 108, 245, 0.8)',
+                            'rgba(245, 66, 120, 0.9)',
+                            'rgba(224, 66, 245, 0.9)'
                         ],
                     }]
                 },
                 options: {
                     legend: {
-                        display: true
+                        display: true,
+                        position: 'right',
+                        align: 'middle'
                     },
                     
                     title: {
                         display: true,
-                        text: 'Algebra'
+                        text: 'Overall Percentage'
                     },
                 }
             });
-        },
-
-        quiz2Graph: function () {
-            var quiz2 = document.getElementById('quiz2').getContext('2d');
-            var quiz2Chart = new Chart(quiz2, {
-                type: 'pie',
-                data: {
-                    labels: ['Fail', 'Passed'],
-                    datasets: [{
-                        data: [45, 65],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)'
-                        ],
-                    }]
-                },
-                options: {
-                    legend: {
-                        display: true
-                    },
-                    
-                    title: {
-                        display: true,
-                        text: 'Trigonometry'
-                    },
-                }
-            });
-        },
+        }
     }
    oGraph.init();
 });

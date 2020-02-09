@@ -66,10 +66,16 @@ class logicQuizzes
             'end_datetime' => $aRequest['end_datetime'],
             'status' => $aRequest['status'],
         ];
-        $aQuiz = $this->modelQuizzes->createQuiz($aRequest);
-        $oQuiz = $this->modelQuizzes->findQuiz($aQuiz['id']);
-        foreach ($aRequest['questions'] as $aQuestion) {
-            $oQuiz->questions()->attach($aQuestion['id']);
+        $aQuizExist = $this->getQuizzes(['course_id' => $aRequest['course_id']]);
+        if (count($aQuizExist) > 0) {
+            return ['result' => false];
+        } else {
+            $aQuiz = $this->modelQuizzes->createQuiz($aRequest);
+            $oQuiz = $this->modelQuizzes->findQuiz($aQuiz['id']);
+            foreach ($aRequest['questions'] as $aQuestion) {
+                $oQuiz->questions()->attach($aQuestion['id']);
+            }
+            return ['result' => true];
         }
     }
 

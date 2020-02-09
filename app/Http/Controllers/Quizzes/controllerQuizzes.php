@@ -21,7 +21,7 @@ class controllerQuizzes extends Controller
      */
     public function insertQuiz(Request $oRequest)
     {
-        $this->addQuiz($oRequest->all());
+        return response()->json($this->addQuiz($oRequest->all()));
     }
 
     public function deleteQuiz($iQuizId)

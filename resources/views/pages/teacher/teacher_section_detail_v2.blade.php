@@ -75,7 +75,7 @@
             </table>
             </div>
             <div class="tab-pane fade" id="activities" role="tabpanel" aria-labelledby="activities-tab">
-                @ Dashboard here
+                <canvas id="overall" width="150" height="50" class="p-2"></canvas>
             </div>
         </div>
     </div>
@@ -84,7 +84,11 @@
 @push('scripts')
 <script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript">
-    var iSectionId = {!! json_encode($aSection[0]['id']) !!}
+    var iSectionId = {!! json_encode($aSection[0]['id']) !!};
+    var aIntegrations = {!! json_encode($aIntegrations) !!};
+    var aStudents = {!! json_encode($aStudents) !!};
+    var aSection = {!! json_encode($aSection) !!};
+    var iCreatorId = {!! json_encode($aSession->getData()->id) !!};
     $(document).ready(function () {
         $('#section-tab').addClass('active');
     });
@@ -92,4 +96,5 @@
     $('#end_date').datepicker();
 </script>
 <script type="text/javascript" src="/js/section_detail.js"></script>
+<script type="text/javascript" src="/js/graph.js"></script>
 @endpush

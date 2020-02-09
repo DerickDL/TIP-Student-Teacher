@@ -26,12 +26,12 @@ class modelQuizzes extends Model
 
     public function courses()
     {
-        return $this->belongsTo('App\Model\modelCourses');
+        return $this->belongsTo('App\Model\modelCourses', 'course_id');
     }
 
     public function users()
     {
-        return $this->belongsToMany('App\Model\modelUsers', 'user_quiz', 'user_id', 'quiz_id')
+        return $this->belongsToMany('App\Model\modelUsers', 'user_quiz', 'quiz_id', 'user_id')
             ->withPivot('score', 'percentage')
             ->withTimestamps();
     }
