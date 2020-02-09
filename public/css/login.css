@@ -27,6 +27,13 @@ body { overflow: hidden }
     max-height: 10em;
 }
 
+.logo-big img {
+    height: auto;
+    width: auto;
+    max-width: 16em;
+    max-height: 16em;
+}
+
 .center-container {
     min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
     min-height: 100vh; /* These two lines are counted as one :-)       */
@@ -36,10 +43,37 @@ body { overflow: hidden }
 }
 
 .bg {
-    background-image: url(/img/TIP-desktop-HOMEPAGE-LIGHT-GRAY.jpg);
+    background-image: url(/img/TIP-vintage.jpg);
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.login-select {
+    width: 100%;
+}
+
+.login-select .btn {
+    font-size: 100%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+    width: 100%;
+    background: #1c1e26;
+    border-color: #1c1e26;
+  }
+
+  .card-select {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .card-select .card-body {
+    padding: 2rem;
+  }
 

@@ -7,45 +7,18 @@
 
 @section('content')
     <div id="app" class="h-100">
-        <div class="wrapper jumbotron center-container bg">
-            <div class="container text-center">
-                <figure class="logo">
-                    <img src="/img/TIP-logo.png">
-                </figure>
-                <div class="row">
-                    <div class="col-lg-4 text-center mt-5">
-                        <div class="card mx-auto" style="width:18rem;">
-                            <div class="card-body text-center">
-                                <div class="row">
-                                    <div class="col-12 mb-3">
-                                        <i class="fas fa-user-shield fa-5x"></i>
-                                    </div>
-                                </div>
-                                <a href="/admin" class="stretched-link text-dark"><p class="h1">Admin</p></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 text-center mt-5">
-                        <div class="card mx-auto" style="width:18rem;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12 mb-3">
-                                        <i class="fas fa-user-cog fa-5x"></i>
-                                    </div>
-                                </div>
-                                <a href="/teacher" class="stretched-link text-dark"><p class="h1">Teacher</p></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 text-center mt-5">
-                        <div class="card mx-auto" style="width:18rem;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12 mb-3">
-                                        <i class="fas fa-user fa-5x"></i>
-                                    </div>
-                                </div>
-                                <a href="/student" class="stretched-link text-dark"><p class="h1">Student</p></a>
+        <div class="wrapper jumbotron center-container bg text-center">
+            <div class="row text-center mx-auto">
+                <div class="col-sm-9 col-md-7 col-lg-8 mx-auto">
+                    <figure class="logo-big">
+                        <img src="/img/TIP-logo-big.jpg">
+                    </figure>
+                    <div class="card card-select my-4">
+                        <div class="card-body">
+                            <div class="login-select mt-2">
+                                <a href="/admin" class="btn btn-primary btn-lg text-white text-uppercase my-2"><i class="fas fa-user-shield mr-4"></i>Login as Admin</a>                      
+                                <a href="/teacher" class="btn btn-primary btn-lg text-white text-uppercase my-2"><i class="fas fa-user-cog mr-4"></i>Login as Teacher</a>
+                                <a href="/student" class="btn btn-primary btn-lg text-white text-uppercase my-2"><i class="fas fa-user mr-4"></i>Login as Student</a>
                             </div>
                         </div>
                     </div>
