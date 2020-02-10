@@ -26,12 +26,12 @@ class modelExams extends Model
 
     public function courses()
     {
-        return $this->belongsTo('App\Model\modelCourses');
+        return $this->belongsTo('App\Model\modelIntegratedCourses', 'course_id');
     }
 
     public function users()
     {
-        return $this->belongsToMany('App\Model\modelUsers', 'user_exam', 'user_id', 'exam_id')
+        return $this->belongsToMany('App\Model\modelUsers', 'user_exam', 'exam_id', 'user_id')
             ->withPivot('score', 'percentage')
             ->withTimestamps();
     }

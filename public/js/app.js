@@ -2102,7 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
           alert(data.message);
         } else {
           alert('Successfully Login');
-          window.location.href = '/teacher/home';
+          window.location.href = '/teacher/sections';
         }
       })["catch"](function (err) {
         return console.log(err);
