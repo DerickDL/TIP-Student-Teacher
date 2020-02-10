@@ -1,12 +1,6 @@
 $(document).ready(function () {
     var oGraph = {
         init: function () {
-            this.overallGraph();
-            console.log(aStudents);
-            console.log(aIntegrations);
-            console.log(aSection);
-            console.log(iSectionId);
-            console.log(iCreatorId);
             oGraph.startCompute();
             
         },
@@ -31,18 +25,30 @@ $(document).ready(function () {
                     'integrations': aIntegrations,
                     'section': aSection[0],
                     'creator_id': iCreatorId
+                },
+                success: function(aResponse) {
+                    aData = oGraph.buildPieData(aResponse);
+                    oGraph.overallGraph(aData);
                 }
             });
         },
 
-        overallGraph: function () {
+        buildPieData: function(aData) {
+            aFrequencies = [];
+            for (var item in aData) {
+                aFrequencies.push(aData[item]);
+            }
+            return aFrequencies;
+        },
+
+        overallGraph: function (aData) {
             var overall = document.getElementById('overall').getContext('2d');
             var overallPie = new Chart(overall, {
                 type: 'pie',
                 data: {
                     labels: ['1', '1.25', '1.5', '1.75', '2', '2.25', '2.5', '2.75', '3', '4', '5'],
                     datasets: [{
-                        data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+                        data: aData,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.5)',
                             'rgba(54, 162, 235, 0.5)',

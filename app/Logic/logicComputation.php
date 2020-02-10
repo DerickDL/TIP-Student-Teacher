@@ -27,7 +27,9 @@ class logicComputation
     public function startCompute($aData)
     {
         $this->initData($aData);
-        $this->computeOverall();
+        $aGrades = $this->computeOverall();
+        $aGroupedGrades = $this->countGradeFrequency($aGrades);
+        return $aGroupedGrades;
     }
 
     private function initData($aData)
@@ -40,7 +42,7 @@ class logicComputation
 
     private function computeOverall()
     {
-        $aPrelims = [];
+        $aGrades = [];
         $aCourses = $this->getCourses();
         $aQuizzes = $this->getQuizzes($aCourses);
         $aPrelimExam = $this->getExam(1);
@@ -54,7 +56,41 @@ class logicComputation
             $iFinaltermExamPercent = (count($aFinaltermExam) > 0) ? $this->getUserExam($aFinaltermExam[0]['id'], $aStudentDetails['id']) : 0;
             $iPrelimGrade = $this->computePrelimGrade($iQuizPercent, $iPrelimExamPercent);
             $iMidtermGrade = $this->computeMidtermGrade($iQuizPercent, $iMidtermExamPercent, $iPrelimGrade);
+            $iFinaltermGrade = $this->computeFinaltermGrade($iQuizPercent, $iFinaltermExamPercent, $iMidtermGrade);
+            $aGrades[] = $iFinaltermGrade;
         }
+        return $aGrades;
+    }
+
+    private function countGradeFrequency($aGrades)
+    {
+        $aFrequency = ['1' => 0, '1.25' => 0, '1.5' => 0, '1.75' => 0, '2' => 0, '2.25' => 0, '2.5' => 0, '2.75' => 0, '3' => 0, '4' => 0, '5' => 0];
+        for ($i = 0; $i < count($aGrades); $i++) {
+            if ($aGrades[$i] <= 100 && $aGrades[$i] >= 96) {
+                $aFrequency['1'] += 1;
+            } else if ($aGrades[$i] <= 95 && $aGrades[$i] >= 91) {
+                $aFrequency['1.25'] += 1;
+            } else if ($aGrades[$i] <= 90 && $aGrades[$i] >= 86) {
+                $aFrequency['1.5'] += 1;
+            } else if ($aGrades[$i] <= 85 && $aGrades[$i] >= 81) {
+                $aFrequency['1.75'] += 1;
+            } else if ($aGrades[$i] <= 80 && $aGrades[$i] >= 76) {
+                $aFrequency['2'] += 1;
+            } else if ($aGrades[$i] <= 75 && $aGrades[$i] >= 71) {
+                $aFrequency['2.25'] += 1;
+            } else if ($aGrades[$i] <= 70 && $aGrades[$i] >= 66) {
+                $aFrequency['2.5'] += 1;
+            } else if ($aGrades[$i] <= 65 && $aGrades[$i] >= 61) {
+                $aFrequency['2.75'] += 1;
+            } else if ($aGrades[$i] <= 60 && $aGrades[$i] >= 56) {
+                $aFrequency['3'] += 1;
+            } else if ($aGrades[$i] <= 55 && $aGrades[$i] >= 51) {
+                $aFrequency['4'] += 1;
+            } else {
+                $aFrequency['5'] += 1;
+            } 
+        }
+        return $aFrequency;
     }
 
     private function computePrelimGrade($iQuizPercent, $iPrelimExamPercent)
