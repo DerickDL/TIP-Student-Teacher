@@ -64,28 +64,26 @@ class logicComputation
 
     private function countGradeFrequency($aGrades)
     {
-        $aFrequency = ['1' => 0, '1.25' => 0, '1.5' => 0, '1.75' => 0, '2' => 0, '2.25' => 0, '2.5' => 0, '2.75' => 0, '3' => 0, '4' => 0, '5' => 0];
+        $aFrequency = ['1' => 0, '1.25' => 0, '1.5' => 0, '1.75' => 0, '2' => 0, '2.25' => 0, '2.5' => 0, '2.75' => 0, '3' => 0, '5' => 0];
         for ($i = 0; $i < count($aGrades); $i++) {
-            if ($aGrades[$i] <= 100 && $aGrades[$i] >= 96) {
+            if ($aGrades[$i] <= 100 && $aGrades[$i] >= 99) {
                 $aFrequency['1'] += 1;
-            } else if ($aGrades[$i] <= 95 && $aGrades[$i] >= 91) {
+            } else if ($aGrades[$i] <= 98 && $aGrades[$i] >= 96) {
                 $aFrequency['1.25'] += 1;
-            } else if ($aGrades[$i] <= 90 && $aGrades[$i] >= 86) {
+            } else if ($aGrades[$i] <= 95 && $aGrades[$i] >= 93) {
                 $aFrequency['1.5'] += 1;
-            } else if ($aGrades[$i] <= 85 && $aGrades[$i] >= 81) {
+            } else if ($aGrades[$i] <= 92 && $aGrades[$i] >= 90) {
                 $aFrequency['1.75'] += 1;
-            } else if ($aGrades[$i] <= 80 && $aGrades[$i] >= 76) {
+            } else if ($aGrades[$i] <= 89 && $aGrades[$i] >= 87) {
                 $aFrequency['2'] += 1;
-            } else if ($aGrades[$i] <= 75 && $aGrades[$i] >= 71) {
+            } else if ($aGrades[$i] <= 86 && $aGrades[$i] >= 84) {
                 $aFrequency['2.25'] += 1;
-            } else if ($aGrades[$i] <= 70 && $aGrades[$i] >= 66) {
+            } else if ($aGrades[$i] <= 83 && $aGrades[$i] >= 81) {
                 $aFrequency['2.5'] += 1;
-            } else if ($aGrades[$i] <= 65 && $aGrades[$i] >= 61) {
+            } else if ($aGrades[$i] <= 80 && $aGrades[$i] >= 78) {
                 $aFrequency['2.75'] += 1;
-            } else if ($aGrades[$i] <= 60 && $aGrades[$i] >= 56) {
+            } else if ($aGrades[$i] <= 77 && $aGrades[$i] >= 75) {
                 $aFrequency['3'] += 1;
-            } else if ($aGrades[$i] <= 55 && $aGrades[$i] >= 51) {
-                $aFrequency['4'] += 1;
             } else {
                 $aFrequency['5'] += 1;
             } 

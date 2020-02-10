@@ -46,7 +46,7 @@ $(document).ready(function () {
             var overallPie = new Chart(overall, {
                 type: 'pie',
                 data: {
-                    labels: ['1', '1.25', '1.5', '1.75', '2', '2.25', '2.5', '2.75', '3', '4', '5'],
+                    labels: ['1', '1.25', '1.5', '1.75', '2', '2.25', '2.5', '2.75', '3', '5'],
                     datasets: [{
                         data: aData,
                         backgroundColor: [
@@ -59,7 +59,6 @@ $(document).ready(function () {
                             'rgba(245, 150, 66, 0.8)',
                             'rgba(239, 245, 66, 0.8)',
                             'rgba(66, 108, 245, 0.8)',
-                            'rgba(245, 66, 120, 0.9)',
                             'rgba(224, 66, 245, 0.9)'
                         ],
                     }]
