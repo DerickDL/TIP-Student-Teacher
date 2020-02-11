@@ -21,13 +21,13 @@ class modelUsers extends Model
 
     public function quizzes()
     {
-        return $this->belongsToMany('App\Model\modelQuizzes', 'user_quiz', 'quiz_id', 'user_id')                    ->withPivot('score', 'percentage')
+        return $this->belongsToMany('App\Model\modelQuizzes', 'user_quiz', 'user_id', 'quiz_id')                    ->withPivot('score', 'percentage')
             ->withTimestamps();
     }
 
     public function exams()
     {
-        return $this->belongsToMany('App\Model\modelExams', 'user_exam', 'exam_id', 'user_id')                    ->withPivot('score', 'percentage')
+        return $this->belongsToMany('App\Model\modelExams', 'user_exam', 'user_id', 'exam_id')                    ->withPivot('score', 'percentage')
             ->withTimestamps();
     }
 

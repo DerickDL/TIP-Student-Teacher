@@ -79,9 +79,13 @@ $(document).ready(function () {
                         'end_datetime': $('#end_date').val(),
                         'status': 0
                     },
-                    success: function () {
-                        alert('Successfully created quiz');
-                        window.location.replace('/teacher/quizzes/list');
+                    success: function (aResponse) {
+                        if (aResponse['result'] === true) {
+                            alert('Successfully created quiz');
+                            window.location.replace('/teacher/quizzes/list');
+                        } else {
+                            alert('This course has already quiz.');
+                        }                      
                     }
                 })
             }

@@ -20,12 +20,17 @@ class modelCourses extends Model
 
     public function questions()
     {
-        return $this->hasMany('App\Model\modelQuestions', 'course_id');
+        return $this->hasMany('App\Model\modelQuestions', 'question_id');
+    }
+
+    public function quizzes()
+    {
+        return $this->hasMany('App\Model\modelQuizzes', 'course_id');
     }
 
     public function users()
     {
-        return $this->belongsTo('App\Model\modelUsers', 'user_id');
+        return $this->belongsTo('App\Model\modelUsers', 'course_id');
     }
 
     public function integrated_courses()
