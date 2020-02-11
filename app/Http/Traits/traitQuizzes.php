@@ -62,7 +62,7 @@ trait traitQuizzes
     public function addQuiz($aRequest)
     {
         $this->instantiateQuizzes();
-        return $this->logicQuizzes->insertQuiz($aRequest);
+        $this->logicQuizzes->insertQuiz($aRequest);
     }
 
     /**
