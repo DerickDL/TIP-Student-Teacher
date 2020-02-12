@@ -20,7 +20,7 @@ class modelCourses extends Model
 
     public function questions()
     {
-        return $this->hasMany('App\Model\modelQuestions', 'question_id');
+        return $this->hasMany('App\Model\modelQuestions', 'course_id');
     }
 
     public function quizzes()
