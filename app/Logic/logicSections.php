@@ -82,11 +82,18 @@ class logicSections
             );
         }
         $oSection = $this->modelSections->findSection($aSection[0]['id']);
+        $aStudents = $oSection->users()->where(['status' => 1])->get()->toArray();
+        if (count($aStudents) === $aSection[0]['num_stud']) {
+            return array(
+                'result' => false,
+                'message' => 'No more slot for this section.'
+            );
+        }
         $aStudent = $oSection->users()->where(['user_id' => $aRequest['user_id']])->get()->toArray();
         if (count($aStudent) > 0) {
             return array(
                 'result' => false,
-                'message' => 'You are already enrolled in this class.'
+                'message' => 'You are already enrolled in this class. If not yet enrolled, please wait for your teacher\'s confirmation'
             );
         }
         $oSection->users()->attach($aRequest['user_id'], ['status' => 0]);
