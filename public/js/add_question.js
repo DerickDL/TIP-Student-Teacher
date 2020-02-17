@@ -74,6 +74,7 @@ $(document).ready(function () {
            var iQuestionType = $(this).data('value');
            var questionTemplate = `
                     <div class="question mb-2" data-value="${iQuestionType}">
+                        <form enctype="multipart/form-data" id="question_form">
                             <div class="input-group">
                                 <textarea class="form-control" id="question-content" rows="3" placeholder="Question here..."></textarea>
                                 ${(iQuestionType === 0) ?
@@ -86,6 +87,21 @@ $(document).ready(function () {
                                         <button class="btn btn-secondary btn-add-quiz" id="question-add-blank${iQuestionNumber}">Add blank</button>
                                    </div>` : ''
                }
+                            </div>
+                            <div class="row" id="preview-container" style="display: none;">
+                                <div class="col-12 text-center">
+                                    <img src="" id="question-image" width="350" height="150" class="rounded">
+                                </div>
+                                <div class="col-12 text-center mt-2">
+                                    <button type="button" class="btn btn-danger" id="remove-image">Remove</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input type="file" class="form-control-file" id="input-image" name="attached-image">
+                                    </div>
+                                </div>
                             </div>
                             ${(iQuestionType !== 2) ? 
                                 `<ul class="list-group list-group-flush mb-1" id="question-choices${iQuestionNumber}">
@@ -121,9 +137,12 @@ $(document).ready(function () {
                                     Cancel
                                 </button>
                             </div>
+                        </form>
                     </div>
            `;
            oAddQuestion.eQuestionArea.append(questionTemplate);
+           $('#input-image').change(oAddQuestion.previewImage);
+           $('#remove-image').click(oAddQuestion.removeImage);
            $('.btn-delete-question').on('click', oAddQuestion.cancelAddQuestion);
            $('.btn-save-question').on('click', oAddQuestion.saveAddQuestion);
             if (iQuestionType === 0) {
@@ -132,6 +151,23 @@ $(document).ready(function () {
             if (iQuestionType === 3) {
                oAddQuestion.addBlankEvent(iQuestionNumber);
             }
+       },
+
+       previewImage: function() {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#question-image').attr('src', e.target.result);
+             }
+            reader.readAsDataURL(this.files[0]);
+            $('#preview-container').show();
+            $(this).hide();
+       },
+
+       removeImage: function() {
+            $('#input-image').val('');
+            $('#question-image').attr('src', '');
+            $('#preview-container').hide();
+            $('#input-image').show();
        },
        
        addMultiple: function (iQuestionNumber) {
