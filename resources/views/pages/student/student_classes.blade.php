@@ -18,11 +18,12 @@
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">{{$aClass['name']}}</h5>
+                            <p>Integration Course {{$aClass['integration_id']}}</p>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{{$aClass['num_stud']}}</p>
-                            <p class="card-text">{{$aClass['class_room']}}</p>
-                            <p class="card-text">{{$aClass['act_room']}}</p>
+                            <p class="card-text"><strong>Students</strong> {{$aClass['num_stud']}}</p>
+                            <p class="card-text"><strong>Class Room</strong> {{$aClass['class_room']}}</p>
+                            <p class="card-text"><strong>Activity Room</strong> {{$aClass['act_room']}}</p>
                         </div>
                         <div class="card-footer text-center">
                             <h6 class="card-subtitle mb-2 text-muted">{{$aClass['start_date']}} - {{$aClass['end_date']}}</h6>

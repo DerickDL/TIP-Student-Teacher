@@ -61,6 +61,11 @@ $(document).ready(function () {
                  var sQuestionTemplate = `
                         <li class="list-group-item">${index + 1}.) ${value['question']}</li>
                  `;
+                 if (value['image_attachment'] !== null) {
+                    sQuestionTemplate += `<div class="col-12 text-center">
+					                    <img src="/storage/uploads/${value['image_attachment']}" width="550" height="350" class="rounded">
+				                    </div>`
+                }
                oAddQuestion.eAreaListQuestions.append(sQuestionTemplate);  
             });
        },
@@ -90,7 +95,7 @@ $(document).ready(function () {
                             </div>
                             <div class="row" id="preview-container" style="display: none;">
                                 <div class="col-12 text-center">
-                                    <img src="" id="question-image" width="350" height="150" class="rounded">
+                                    <img src="" id="question-image" width="550" height="350" class="rounded">
                                 </div>
                                 <div class="col-12 text-center mt-2">
                                     <button type="button" class="btn btn-danger" id="remove-image">Remove</button>

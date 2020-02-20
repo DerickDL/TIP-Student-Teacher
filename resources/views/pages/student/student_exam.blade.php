@@ -30,6 +30,11 @@
 	            <div class="input-group">
 	                <textarea class="form-control" rows="3" readonly style="resize: none">{{ $i + 1 }}. {{ $aExam['questions'][$i]['question'] }}</textarea>
 	            </div>
+				@if($aExam['questions'][$i]['image_attachment'] !== null)
+					<div class="col-12 text-center">
+						<img src="/storage/uploads/{{ $aExam['questions'][$i]['image_attachment'] }}" id="question-image" width="350" height="150" class="rounded">
+					</div>
+				@endif
 	            @if($aExam['questions'][$i]['question_type'] !== 2)
 	            	@if($aExam['questions'][$i]['question_type'] === 1)
 	                <ul class="list-group list-group-flush" id="question-choices{{ $aExam['questions'][$i]['id'] }}">

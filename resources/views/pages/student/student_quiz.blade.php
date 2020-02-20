@@ -22,6 +22,11 @@
 	            <div class="input-group">
 	                <textarea class="form-control" rows="3" readonly style="resize: none">{{ $i + 1 }}. {{ $aQuizData['questions'][$i]['question'] }}</textarea>
 	            </div>
+				@if($aQuizData['questions'][$i]['image_attachment'] !== null)
+					<div class="col-12 text-center">
+						<img src="/storage/uploads/{{ $aQuizData['questions'][$i]['image_attachment'] }}" id="question-image" width="350" height="150" class="rounded">
+					</div>
+				@endif
 	            @if($aQuizData['questions'][$i]['question_type'] !== 2)
 	            	@if($aQuizData['questions'][$i]['question_type'] === 1)
 	                <ul class="list-group list-group-flush" id="question-choices{{ $aQuizData['questions'][$i]['id'] }}">

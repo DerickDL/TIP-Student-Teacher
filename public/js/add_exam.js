@@ -130,6 +130,11 @@ $(document).ready(function () {
            for (var i = 0; i < oAddExam.aQuestions.length; i++) {
                 var sQuestions = '';
                 sQuestions += `<div class="mb-3"><p>${i + 1}). ${oAddExam.aQuestions[i]['question']}</p>`;
+                if (oAddExam.aQuestions[i]['image_attachment'] !== null) {
+                    sQuestions += `<div class="col-12 text-center">
+					                    <img src="/storage/uploads/${oAddExam.aQuestions[i]['image_attachment']}" id="question-image" width="550" height="350" class="rounded">
+				                    </div>`
+                }
                 var aChoices = aData['choices'][i];
                 if (oAddExam.aQuestions[i]['question_type'] === 0) {
                     aChoices.forEach(function (aChoicesData) {
