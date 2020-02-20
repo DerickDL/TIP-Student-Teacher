@@ -7,6 +7,10 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
+    'App\\Console\\Commands\\UpdateExamEnd' => $baseDir . '/app/Console/Commands/UpdateExamEnd.php',
+    'App\\Console\\Commands\\UpdateExamStart' => $baseDir . '/app/Console/Commands/UpdateExamStart.php',
+    'App\\Console\\Commands\\UpdateQuizEnd' => $baseDir . '/app/Console/Commands/UpdateQuizEnd.php',
+    'App\\Console\\Commands\\UpdateQuizStart' => $baseDir . '/app/Console/Commands/UpdateQuizStart.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Admin\\frontAdmin' => $baseDir . '/app/Http/Controllers/Admin/frontAdmin.php',
@@ -17,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
+    'App\\Http\\Controllers\\Computation\\controllerComputation' => $baseDir . '/app/Http/Controllers/Computation/controllerComputation.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\Courses\\controllerCourses' => $baseDir . '/app/Http/Controllers/Courses/controllerCourses.php',
     'App\\Http\\Controllers\\Exams\\controllerExams' => $baseDir . '/app/Http/Controllers/Exams/controllerExams.php',
@@ -48,6 +53,7 @@ return array(
     'App\\Http\\Traits\\traitQuestions' => $baseDir . '/app/Http/Traits/traitQuestions.php',
     'App\\Http\\Traits\\traitQuizzes' => $baseDir . '/app/Http/Traits/traitQuizzes.php',
     'App\\Http\\Traits\\traitSections' => $baseDir . '/app/Http/Traits/traitSections.php',
+    'App\\Logic\\logicComputation' => $baseDir . '/app/Logic/logicComputation.php',
     'App\\Logic\\logicCourses' => $baseDir . '/app/Logic/logicCourses.php',
     'App\\Logic\\logicExams' => $baseDir . '/app/Logic/logicExams.php',
     'App\\Logic\\logicFiles' => $baseDir . '/app/Logic/logicFiles.php',

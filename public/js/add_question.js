@@ -79,12 +79,12 @@ $(document).ready(function () {
                                 <textarea class="form-control" id="question-content" rows="3" placeholder="Question here..."></textarea>
                                 ${(iQuestionType === 0) ?
                                    `<div class="input-group-append">
-                                        <button class="btn btn-secondary btn-add-quiz" id="question-add-choice${iQuestionNumber}">Add choice</button>
+                                        <button type="button" class="btn btn-secondary btn-add-quiz" id="question-add-choice${iQuestionNumber}">Add choice</button>
                                    </div>` : ''
                                 }
                                 ${(iQuestionType === 3) ?
                `<div class="input-group-append">
-                                        <button class="btn btn-secondary btn-add-quiz" id="question-add-blank${iQuestionNumber}">Add blank</button>
+                                        <button type="button" class="btn btn-secondary btn-add-quiz" id="question-add-blank${iQuestionNumber}">Add blank</button>
                                    </div>` : ''
                }
                             </div>
@@ -130,10 +130,10 @@ $(document).ready(function () {
                             </ul>` : ''
                             }
                             <div class="text-right">
-                                <button class="btn btn-info btn-sm btn-save-question">
+                                <button type="button" class="btn btn-info btn-sm btn-save-question">
                                     Save
                                 </button>
-                                <button class="btn btn-danger btn-sm btn-delete-question">
+                                <button type="button" class="btn btn-danger btn-sm btn-delete-question">
                                     Cancel
                                 </button>
                             </div>
@@ -188,7 +188,7 @@ $(document).ready(function () {
                     <div class="input-group">
                         <input type="text" class="form-control input-choice" aria-label="Text input with radio button">
                         <div class="input-group-append">
-                            <button class="btn btn-secondary btn-delete-answer">&mdash;</button>
+                            <button type="button" class="btn btn-secondary btn-delete-answer">&mdash;</button>
                         </div>
                     </div>
                 </li>
@@ -239,17 +239,22 @@ $(document).ready(function () {
                 if (aQuestionData.result === false) {
                     alert(aQuestionData.message);
                 } else {
+                    var oFormData = new FormData($('#question_form')[0]);
+                    var aQuestions = JSON.stringify(aQuestionData['data']);
+                    oFormData.append('data', aQuestions);
                     $.ajax({
                         url: `/teacher/courses/sub/${ iSubCourse }/questions/add`,
                         type: 'POST',
-                        data: aQuestionData,
+                        data: oFormData,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
                         success: function (aResponse) {
                             alert('Successfully added question');
                             $('.question').remove();
                             oAddQuestion.loadQuestion();
                         }
                     });
-                    console.log(aQuestionData['data']);
                 }
            }
        },

@@ -376,6 +376,10 @@ class ComposerStaticInit5dd39a0051fbf34b365eba0c1d28f9ad
 
     public static $classMap = array (
         'AdminSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminSeeder.php',
+        'App\\Console\\Commands\\UpdateExamEnd' => __DIR__ . '/../..' . '/app/Console/Commands/UpdateExamEnd.php',
+        'App\\Console\\Commands\\UpdateExamStart' => __DIR__ . '/../..' . '/app/Console/Commands/UpdateExamStart.php',
+        'App\\Console\\Commands\\UpdateQuizEnd' => __DIR__ . '/../..' . '/app/Console/Commands/UpdateQuizEnd.php',
+        'App\\Console\\Commands\\UpdateQuizStart' => __DIR__ . '/../..' . '/app/Console/Commands/UpdateQuizStart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\frontAdmin' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/frontAdmin.php',
@@ -386,6 +390,7 @@ class ComposerStaticInit5dd39a0051fbf34b365eba0c1d28f9ad
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\Computation\\controllerComputation' => __DIR__ . '/../..' . '/app/Http/Controllers/Computation/controllerComputation.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Courses\\controllerCourses' => __DIR__ . '/../..' . '/app/Http/Controllers/Courses/controllerCourses.php',
         'App\\Http\\Controllers\\Exams\\controllerExams' => __DIR__ . '/../..' . '/app/Http/Controllers/Exams/controllerExams.php',
@@ -417,6 +422,7 @@ class ComposerStaticInit5dd39a0051fbf34b365eba0c1d28f9ad
         'App\\Http\\Traits\\traitQuestions' => __DIR__ . '/../..' . '/app/Http/Traits/traitQuestions.php',
         'App\\Http\\Traits\\traitQuizzes' => __DIR__ . '/../..' . '/app/Http/Traits/traitQuizzes.php',
         'App\\Http\\Traits\\traitSections' => __DIR__ . '/../..' . '/app/Http/Traits/traitSections.php',
+        'App\\Logic\\logicComputation' => __DIR__ . '/../..' . '/app/Logic/logicComputation.php',
         'App\\Logic\\logicCourses' => __DIR__ . '/../..' . '/app/Logic/logicCourses.php',
         'App\\Logic\\logicExams' => __DIR__ . '/../..' . '/app/Logic/logicExams.php',
         'App\\Logic\\logicFiles' => __DIR__ . '/../..' . '/app/Logic/logicFiles.php',

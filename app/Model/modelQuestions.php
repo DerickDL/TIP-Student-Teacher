@@ -16,7 +16,7 @@ class modelQuestions extends Model
     /**
      * @var array
      */
-    protected $fillable = ['question', 'question_type', 'question_answer', 'question_difficulty'];
+    protected $fillable = ['question', 'question_type', 'question_answer', 'question_difficulty', 'image_attachment'];
 
     public function courses()
     {

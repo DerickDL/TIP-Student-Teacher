@@ -45,8 +45,8 @@ class logicQuestions
 	public function insertQuestion($aRequest, $iCourseId)
     {
         $oCourse = $this->modelCourses->findCourse($iCourseId);
-        $aQuestion = $aRequest['data'];
-        $aQuestionReturn = $this->addQuestion($oCourse, $aQuestion);
+        $aQuestion = (array)json_decode($aRequest['data']);
+        $aQuestionReturn = $this->addQuestion($oCourse, $aQuestion, $aRequest);
         if ((int)$aQuestion['type'] === 0 || (int)$aQuestion['type'] === 3) {
             foreach ($aQuestion['choices'] as $sChoice) {
                 $this->addChoice($aQuestion, $sChoice, $aQuestionReturn);
@@ -57,9 +57,10 @@ class logicQuestions
     /**
      * @param $oCourses
      * @param $aQuestion
+     * @param $aRequest
      * @return mixed
      */
-    private function addQuestion($oCourses, $aQuestion)
+    private function addQuestion($oCourses, $aQuestion, $aRequest)
     {
         $aQuestionData = [
             'question' => $aQuestion['question'],
@@ -69,7 +70,19 @@ class logicQuestions
         if ((int)$aQuestion['type'] === 1) {
             $aQuestionData['question_answer'] = (int)$aQuestion['answer'];
         }
+        if (array_key_exists('attached-image', $aRequest)) {
+            $sAttachment = $this->moveImage($aRequest);
+            $aQuestionData['image_attachment'] = $sAttachment;
+        }
         return $oCourses->questions()->create($aQuestionData);
+    }
+
+    private function moveImage($aData)
+    {
+        $oFile = $aData['attached-image'];
+        $sNewName = rand() . '.' . $oFile->getClientOriginalExtension();
+        $oFile->storeAs('uploads', $sNewName);
+        return $sNewName;
     }
 
     /**
