@@ -156,7 +156,10 @@ a.article:hover {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #ffffff;
+    background-image: url(/img/TIP-desktop-HOMEPAGE-LIGHT-GRAY.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #content.active {

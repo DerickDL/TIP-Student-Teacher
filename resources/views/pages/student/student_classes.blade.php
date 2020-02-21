@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-<div id="content">
+<div id="content" class="bg">
     
     <!-- Nav Bar -->
     @include('includes.navbar-narrow')
@@ -16,7 +16,7 @@
             @foreach($aClasses as $aClass)
                 <div class="col-sm mb-3 card-courses">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" style="line-height: 1.5px">
                             <h5 class="card-title">{{$aClass['name']}}</h5>
                             <p>Integration Course {{$aClass['integration_id']}}</p>
                         </div>
