@@ -24,7 +24,7 @@
 	            </div>
 				@if($aQuizData['questions'][$i]['image_attachment'] !== null)
 					<div class="col-12 text-center">
-						<img src="/storage/uploads/{{ $aQuizData['questions'][$i]['image_attachment'] }}" id="question-image" width="350" height="150" class="rounded">
+						<img src="/storage/uploads/{{ $aQuizData['questions'][$i]['image_attachment'] }}" id="question-image" width="550" height="350" class="rounded">
 					</div>
 				@endif
 	            @if($aQuizData['questions'][$i]['question_type'] !== 3)
@@ -98,7 +98,8 @@
 @push('scripts')
 	<script type="text/javascript">
 		var iTimeLimit = {!! json_encode($aQuizData['score'] === null ? $aQuizData['quiz'][0]['quiz_timelimit'] : null) !!}
-        $(document).ready(function () {
+		var iClass = {!! json_encode($aClass[0]['id']) !!};
+		$(document).ready(function () {
            $('#quizzes-tab').addClass('active');
         });
     </script>

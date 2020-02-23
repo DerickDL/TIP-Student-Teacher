@@ -77,7 +77,7 @@ $(document).ready(function () {
                     data: aData,
                     success: function (aResponse) {
                         alert('Submitted successfully. Check your score.');
-                        window.location.reload();
+                        window.location.replace(`/students/class/${iClass}/exams`);
                         // oSubmitExam.eScoreArea.text(aResponse.score);
                         // oSubmitExam.ePercentArea.text(aQuestionAnswer.length);
                         // oSubmitExam.eBtnSubmitExam.remove();
