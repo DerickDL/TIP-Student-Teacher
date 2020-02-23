@@ -151,7 +151,14 @@ class logicExams
     public function getQuestions($iExamId)
     {
         $oExam = $this->modelExams->findExam($iExamId);
-        return $oExam->questions;
+        $aQuestions = $oExam->questions;
+        for ($i = 0; $i < count($aQuestions); $i++) {
+            if ($aQuestions[$i]['question_type'] === 3) {
+                $aChoice = $this->modelChoices->findChoices($aQuestions[$i]['question_answer']);
+                $aQuestions[$i]['question_answer'] = $aChoice['choice'];
+            }
+        }
+        return $aQuestions;
     }
 
     /**

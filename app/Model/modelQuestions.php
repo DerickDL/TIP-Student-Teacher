@@ -45,6 +45,14 @@ class modelQuestions extends Model
             ->withTimestamps();
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\Model\modelQuestions', 'user_question')                    
+            ->withPivot('score', 'percentage')
+            ->withPivot('answer')
+            ->withTimestamps();
+    }
+
 
     /**
      * Find a question

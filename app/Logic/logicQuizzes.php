@@ -139,7 +139,14 @@ class logicQuizzes
     public function getQuestions($iQuizId)
     {
         $oQuiz = $this->modelQuizzes->findQuiz($iQuizId);
-        return $oQuiz->questions;
+        $aQuestions = $oQuiz->questions;
+        for ($i = 0; $i < count($aQuestions); $i++) {
+            if ($aQuestions[$i]['question_type'] === 3) {
+                $aChoice = $this->modelChoices->findChoices($aQuestions[$i]['question_answer']);
+                $aQuestions[$i]['question_answer'] = $aChoice['choice'];
+            }
+        }
+        return $aQuestions;
     }
 
     /**

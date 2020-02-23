@@ -15,6 +15,14 @@ class logicStudents extends logicUsers
         $aUser = $this->getSession();
         $oUser = $this->modelUsers->findUser($aUser['id']);
         $oUser->quizzes()->attach((int)$aRequest['quiz_id'], $aQuizResult);
+        foreach ($aRequest['question_answer'] as $aQuestionAnswer) {
+            $aPivotData = [
+                'answer' => $aQuestionAnswer['question_answer'],
+                'type' => 'quiz',
+                'mixed_id' => (int)$aRequest['quiz_id'],
+            ];
+            $oUser->questions()->attach($aQuestionAnswer['question'], $aPivotData);
+        }
         return $aQuizResult;
     }
 
@@ -24,6 +32,14 @@ class logicStudents extends logicUsers
         $aUser = $this->getSession();
         $oUser = $this->modelUsers->findUser($aUser['id']);
         $oUser->exams()->attach((int)$aRequest['exam_id'], $aExamResult);
+        foreach ($aRequest['question_answer'] as $aQuestionAnswer) {
+            $aPivotData = [
+                'answer' => $aQuestionAnswer['question_answer'],
+                'type' => 'exam',
+                'mixed_id' => (int)$aRequest['exam_id'],
+            ];
+            $oUser->questions()->attach($aQuestionAnswer['question'], $aPivotData);
+        }
         return $aExamResult;
     }
 
@@ -34,7 +50,7 @@ class logicStudents extends logicUsers
         foreach ($aRequest['question_answer'] as $aQuestionAnswer) {
             $iItems++;
             foreach ($aQuestions as $aQuestionData) {
-                if ((int)$aQuestionAnswer['question'] === (int)$aQuestionData['id'] && (int)$aQuestionAnswer['question_answer'] === (int)$aQuestionData['question_answer']) {
+                if ((int)$aQuestionAnswer['question'] === (int)$aQuestionData['id'] && $aQuestionAnswer['question_answer'] == $aQuestionData['question_answer']) {
                     $iScore++;
                 }
             }
@@ -44,5 +60,11 @@ class logicStudents extends logicUsers
             'score' => $iScore,
             'percentage' => $iPercentage
         );
+    }
+
+    public function getQuestionAnswer($iUserId, $aParams)
+    {
+        $oUser = $this->modelUsers->findUser($iUserId);
+        return $oUser->questions()->where($aParams)->get()->toArray();
     }
 }

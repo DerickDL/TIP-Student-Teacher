@@ -8,7 +8,7 @@ $(document).ready(function () {
 
         startTimer() {
             var sEndTime = oSubmitExam.getStartTime();
-            var x = setInterval(function() {
+            oSubmitExam.x = setInterval(function() {
 
                 // Get today's date and time
                 var now = new Date().getTime();
@@ -24,7 +24,7 @@ $(document).ready(function () {
               
                 // If the count down is finished, write some text
                 if (distance < 0) {
-                  clearInterval(x);
+                  clearInterval(oSubmitExam.x);
                   $("#timer").remove();
                   localStorage.removeItem("exam_end_datetime");
                   oSubmitExam.postExam();
@@ -57,6 +57,9 @@ $(document).ready(function () {
 
         submitExam: function () {
             if (confirm('Are you sure you want to submit?')) {
+                clearInterval(oSubmitExam.x);
+                $("#timer").remove();
+                localStorage.removeItem("exam_end_datetime");
                 oSubmitExam.postExam();
             }
         },
@@ -87,10 +90,16 @@ $(document).ready(function () {
         getQuestions: function () {
             var aQuestionAnswer = [];
             $('.questions').each(function (itr, self) {
+                if ($(self).data('type') !== 3) {
+                    mQuestion_answer = (($(self).find('.radio-choice:radio:checked').data('value') === undefined) ? -1 : $(self).find('.radio-choice:radio:checked').data('value'))
+                } else {
+                    var iQuestionId = $(self).data('id');
+                    mQuestion_answer = $("#blank_answer" + iQuestionId).val();
+                }
                 var oQuestionData = {
                     'question': $(self).data('id'),
                     'question_type': $(self).data('type'),
-                    'question_answer': (($(self).find('.radio-choice:radio:checked').data('value') === undefined) ? -1 : $(self).find('.radio-choice:radio:checked').data('value'))
+                    'question_answer': mQuestion_answer
                 };
                 aQuestionAnswer.push(oQuestionData);
             });

@@ -37,5 +37,4 @@
         $('#quizzes-tab').addClass('active');
 	});
 </script>
-<script type="text/javascript" src="/js/add_quiz.js"></script>
 @endpush

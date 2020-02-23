@@ -1,0 +1,8 @@
+.correct {
+  background-color: rgba(0, 138, 41, 0.4) !important;
+}
+
+.selected {
+  background-color: rgba(255, 0 , 0 , 0.4);
+}
+

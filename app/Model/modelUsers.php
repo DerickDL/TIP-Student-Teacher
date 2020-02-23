@@ -49,6 +49,13 @@ class modelUsers extends Model
             ->withTimestamps();
     }
 
+    public function questions()
+    {
+        return $this->belongsToMany('App\Model\modelQuestions', 'user_question', 'user_id', 'question_id')
+            ->withPivot('answer', 'type', 'mixed_id')
+            ->withTimestamps();
+    }
+
     /**
      * @param $aRequest
      * @return mixed

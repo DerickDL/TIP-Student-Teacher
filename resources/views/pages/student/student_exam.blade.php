@@ -1,7 +1,7 @@
 @extends('pages.student.student_base')
 
 @push('styles')
-
+	<link rel="stylesheet" type="text/css" href="/css/answers.css">
 @endpush
 
 @section('student_content')
@@ -35,24 +35,24 @@
 						<img src="/storage/uploads/{{ $aExam['questions'][$i]['image_attachment'] }}" id="question-image" width="350" height="150" class="rounded">
 					</div>
 				@endif
-	            @if($aExam['questions'][$i]['question_type'] !== 2)
+	            @if($aExam['questions'][$i]['question_type'] !== 3)
 	            	@if($aExam['questions'][$i]['question_type'] === 1)
 	                <ul class="list-group list-group-flush" id="question-choices{{ $aExam['questions'][$i]['id'] }}">
-		                <li class="list-group-item">
+		                <li class="list-group-item {{ ($aExam['score'] !== null && $aExam['questions'][$i]['question_answer'] === 1) ? 'correct' : '' }} {{ ($aExam['score'] !== null && $aExam['questions'][$i]['user_answer'] == 1) ? 'selected' : '' }}">
 		                    <div class="input-group">
 		                        <div class="input-group-prepend">
 		                            <div class="input-group-text">
-		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=1 {{ ($aExam['score'] !== null && $aExam['questions'][$i]['question_answer'] === 1) ? 'checked' : ''  }}>
+		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=1>
 		                            </div>
 		                        </div>
 		                        <input type="text" class="form-control" aria-label="Text input with radio button" value="True" readonly>
 		                    </div>
 		                </li>
-		                <li class="list-group-item">
+		                <li class="list-group-item {{ ($aExam['score'] !== null && $aExam['questions'][$i]['question_answer'] === 0) ? 'correct' : '' }} {{ ($aExam['score'] !== null && $aExam['questions'][$i]['user_answer'] == 0) ? 'selected' : '' }}">
 		                    <div class="input-group">
 		                        <div class="input-group-prepend">
 		                            <div class="input-group-text">
-		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=0 {{ ($aExam['score'] !== null && $aExam['questions'][$i]['question_answer'] === 0) ? 'checked' : ''  }}>
+		                                <input type="radio" class="radio-choice" aria-label="Radio button for following text input" name="question{{$i}}" data-value=0>
 		                            </div>
 		                        </div>
 		                        <input type="text" class="form-control" aria-label="Text input with radio button" value="False" readonly>
@@ -62,7 +62,7 @@
 		            @elseif($aExam['questions'][$i]['question_type'] === 0)
 		            	@foreach($aExam['choices'][$i] as $aChoicesData)
 		            		<ul class="list-group list-group-flush" id="question-choices{{ $aExam['questions'][$i]['id'] }}">
-				                <li class="list-group-item">
+				                <li class="list-group-item {{ ($aExam['score'] !== null && $aChoicesData['is_correct']) ? 'correct' : ''  }} {{ ($aExam['score'] !== null && $aExam['questions'][$i]['user_answer'] == $aChoicesData['id']) ? 'selected' : '' }}">
 				                    <div class="input-group">
 				                        <div class="input-group-prepend">
 				                            <div class="input-group-text">
@@ -74,7 +74,22 @@
 				                </li>
 				            </ul>
 		            	@endforeach
-		            @endif
+					@endif
+				@else
+					<ul class="list-group list-group-flush" id="question-choices{{ $aExam['questions'][$i]['id'] }}">
+						<li class="list-group-item {{ $aExam['score'] === null ? '' : ($aExam['questions'][$i]['question_answer'] == $aExam['questions'][$i]['user_answer'] ? 'correct' : 'selected') }}">
+							<div class="input-group">
+								<input type="text" id="blank_answer{{ $aExam['questions'][$i]['id'] }}" class="form-control input-choice" aria-label="Text input with radio button" value="{{ $aExam['score'] !== null ? $aExam['questions'][$i]['user_answer'] : '' }}">
+							</div>
+						</li>
+						@if($aExam['score'] !== null && $aExam['questions'][$i]['user_answer'] != $aExam['questions'][$i]['question_answer'])
+							<li class="list-group-item correct">
+								<div class="input-group">
+									<input type="text" id="blank_answer{{ $aExam['questions'][$i]['id'] }}" class="form-control input-choice" aria-label="Text input with radio button" value="{{ $aExam['score'] !== null ? $aExam['questions'][$i]['question_answer'] : '' }}">
+								</div>
+							</li>
+						@endif
+					</ul>
 	            @endif
 	        </div>
 	    </div>

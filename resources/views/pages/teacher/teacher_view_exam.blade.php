@@ -15,9 +15,11 @@
             @for ($i = 0; $i < count($aQuestions); $i++)
                 <div class="mb-3">
                     <p><strong>{{ $i + 1 }}). {{ $aQuestions[$i]['question'] }}</strong></p>
-                    <div class="col-12 text-center">
-                        <img src="/storage/uploads/{{ $aQuestions[$i]['image_attachment'] }}" id="question-image" width="550" height="350" class="rounded">
-                    </div>
+                    @if ($aQuestions[$i]['image_attachment'] !== null)
+                        <div class="col-12 text-center">
+                            <img src="/storage/uploads/{{ $aQuestions[$i]['image_attachment'] }}" id="question-image" width="550" height="350" class="rounded">
+                        </div>
+                    @endif
                     @if($aQuestions[$i]['question_type'] === 0)
                         @foreach($aChoices[$i] as $aChoice)
                             <div class="input-group">
@@ -61,5 +63,4 @@
         $('#exam-tab').addClass('active');
 	});
 </script>
-<script type="text/javascript" src="/js/add_quiz.js"></script>
 @endpush

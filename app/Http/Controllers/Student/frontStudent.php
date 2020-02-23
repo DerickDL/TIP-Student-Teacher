@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\App\frontUsers;
 use Illuminate\Support\Facades\Session;
+use App\Http\Traits\traitStudents;
 
 class frontStudent extends frontUsers
 {
+    use traitStudents;
 	 /**
      * Student homepage
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -59,6 +61,16 @@ class frontStudent extends frontUsers
         $aChoices = $this->getChoices($aQuestions);
         $oScore = $this->getQuizScore($iQuizId, $aSession->getData()->id);
         $iScore = $oScore === null ? $oScore : $oScore->pivot->score;
+        $aAnswers = [];
+        foreach ($aQuestions as $aQuestionData) {
+            $aParams = [
+                'question_id' => $aQuestionData['id'],
+                'mixed_id' => $iQuizId,
+                'type' => 'quiz'
+            ];
+            $mAnswer = $this->getQuestionAnswer($aSession->getData()->id, $aParams);
+            $aQuestionData['user_answer'] = count($mAnswer) > 0 ? $mAnswer[0]['pivot']['answer'] : '';
+        }
         $aQuizData = [
         	'quiz' => $aQuiz,
         	'questions' => $aQuestions,
@@ -151,6 +163,16 @@ class frontStudent extends frontUsers
         $aExam['choices'] = $this->getExamChoices($aExam['questions']);
         $oScore = $this->getExamScore($iExamId, $aSession->getData()->id);
         $aExam['score'] = $oScore === null ? $oScore : $oScore->pivot->score;
+        $aAnswers = [];
+        foreach ($aExam['questions'] as $aQuestionData) {
+            $aParams = [
+                'question_id' => $aQuestionData['id'],
+                'mixed_id' => $iExamId,
+                'type' => 'exam'
+            ];
+            $mAnswer = $this->getQuestionAnswer($aSession->getData()->id, $aParams);
+            $aQuestionData['user_answer'] = count($mAnswer) > 0 ? $mAnswer[0]['pivot']['answer'] : '';
+        }
         return view('pages.student.student_exam')->with('aSession', $aSession)->with('aClass', $aClass)->with('aExam', $aExam);
     }
 }

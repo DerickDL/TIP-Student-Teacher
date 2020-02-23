@@ -111,7 +111,7 @@ $(document).ready(function () {
                 sQuestions += `<div class="mb-3"><p>${i + 1}). ${oAddQuiz.aQuestions[i]['question']}</p>`;
                 if (oAddQuiz.aQuestions[i]['image_attachment'] !== null) {
                     sQuestions += `<div class="col-12 text-center">
-					                    <img src="/storage/uploads/${oAddQuiz.aQuestions[i]['image_attachment']}" id="question-image" width="350" height="150" class="rounded">
+					                    <img src="/storage/uploads/${oAddQuiz.aQuestions[i]['image_attachment']}" id="question-image" width="550" height="350" class="rounded">
 				                    </div>`
                 }
                 var aChoices = aData['choices'][i];
