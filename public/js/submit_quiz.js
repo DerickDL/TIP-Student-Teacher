@@ -77,7 +77,7 @@ $(document).ready(function () {
                     data: aData,
                     success: function (aResponse) {
                         alert('Submitted successfully. Check your score.');
-                        window.location.replace(`/students/class/${iClass}/quizzes`);
+                        window.location.replace(`/student/class/${iClass}/quizzes`);
                         // oSubmitQuiz.eScoreArea.text(aResponse.score);
                         // oSubmitQuiz.ePercentArea.text(aQuestionAnswer.length);
                         // oSubmitQuiz.eBtnSubmitQuiz.remove();
