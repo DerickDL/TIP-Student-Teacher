@@ -27,14 +27,14 @@ $(document).ready(function () {
                     'creator_id': iCreatorId
                 },
                 success: function(aResponse) {
-                    aData = oGraph.buildPieData(aResponse);
+                    var aData = oGraph.buildPieData(aResponse);
                     oGraph.overallGraph(aData);
                 }
             });
         },
 
         buildPieData: function(aData) {
-            aFrequencies = [];
+            var aFrequencies = [];
             for (var item in aData) {
                 aFrequencies.push(aData[item]);
             }
@@ -46,7 +46,7 @@ $(document).ready(function () {
             var overallPie = new Chart(overall, {
                 type: 'pie',
                 data: {
-                    labels: ['1', '1.25', '1.5', '1.75', '2', '2.25', '2.5', '2.75', '3', '5'],
+                    labels: ['1', '2', '3', '5', '1.25', '1.5', '1.75', '2.25', '2.5', '2.75'],
                     datasets: [{
                         data: aData,
                         backgroundColor: [
