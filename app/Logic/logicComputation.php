@@ -114,6 +114,9 @@ class logicComputation
             $aScore = $oQuiz->users()->where(['user_id' => $iUserId])->get();
             $iTotalPercentage += count($aScore) > 0 ? $aScore[0]['pivot']['percentage'] : 0;
         }
+        if (count($aQuizzes) < 1) {
+            return 0;
+        }
         return $iTotalPercentage / count($aQuizzes);
     }
 
