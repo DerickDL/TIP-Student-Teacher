@@ -117,4 +117,4 @@ Route::get('/instructors', 'App\controllerUsers@getUsers');
 Route::post('/assign', 'App\controllerUsers@assignTeacherIntegration');
 Route::get('/assigned/instructors', 'IntegratedCourses\controllerIntegratedCourses@getAssignedInstructors');
 
-Route::get('/compute', 'Computation\controllerComputation@startCompute');
+Route::post('/compute', 'Computation\controllerComputation@startCompute');

@@ -19,7 +19,7 @@ $(document).ready(function () {
             var aFilteredStudents = oGraph.filterStudents();
             $.ajax({
                 'url': '/compute',
-                'type': 'GET',
+                'type': 'POST',
                 'data': {
                     'students': aFilteredStudents,
                     'integrations': aIntegrations,
