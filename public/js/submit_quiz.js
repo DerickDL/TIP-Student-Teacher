@@ -35,7 +35,8 @@ $(document).ready(function () {
                   clearInterval(oSubmitQuiz.x);
                   $("#timer").remove();
                   localStorage.removeItem("quiz_end_datetime");
-                  oSubmitQuiz.postQuiz();
+                  var aQuestionAnswer = oSubmitQuiz.getQuestions();
+                  oSubmitQuiz.postQuiz(aQuestionAnswer['data']);
                 }
               }, 1000);
         },
@@ -60,37 +61,48 @@ $(document).ready(function () {
                 clearInterval(oSubmitQuiz.x);
                 $("#timer").remove();
                 localStorage.removeItem("quiz_end_datetime");
-                oSubmitQuiz.postQuiz();
+                var aQuestionAnswer = oSubmitQuiz.getQuestions();
+                if (aQuestionAnswer['result'] === false) {
+                    alert(aQuestionAnswer['message']);
+                } else {
+                    oSubmitQuiz.postQuiz(aQuestionAnswer['data']);
+                }
             }
         },
 
-        postQuiz: function () {
-            var aQuestionAnswer = [];
-                aQuestionAnswer = oSubmitQuiz.getQuestions();
-                var aData = {
-                    'quiz_id': $(oSubmitQuiz.eBtnSubmitQuiz).data('value'),
-                    'question_answer': aQuestionAnswer
-                };
-                $.ajax({
-                    url: '/quizzes/submit',
-                    type: 'POST',
-                    data: aData,
-                    success: function (aResponse) {
-                        alert('Submitted successfully. Check your score.');
-                        window.location.replace(`/student/class/${iClass}/quizzes`);
-                        // oSubmitQuiz.eScoreArea.text(aResponse.score);
-                        // oSubmitQuiz.ePercentArea.text(aQuestionAnswer.length);
-                        // oSubmitQuiz.eBtnSubmitQuiz.remove();
-                        // oSubmitQuiz.eScoreDiv.show();
-                        // oSubmitQuiz.eBtnCancelQuiz.text('Exit');
-                    }
-                })
+        postQuiz: function (aQuestionAnswer) {
+            var aData = {
+                'quiz_id': $(oSubmitQuiz.eBtnSubmitQuiz).data('value'),
+                'question_answer': aQuestionAnswer
+            };
+            $.ajax({
+                url: '/quizzes/submit',
+                type: 'POST',
+                data: aData,
+                success: function (aResponse) {
+                    alert('Submitted successfully. Check your score.');
+                    window.location.replace(`/student/class/${iClass}/quizzes`);
+                    // oSubmitQuiz.eScoreArea.text(aResponse.score);
+                    // oSubmitQuiz.ePercentArea.text(aQuestionAnswer.length);
+                    // oSubmitQuiz.eBtnSubmitQuiz.remove();
+                    // oSubmitQuiz.eScoreDiv.show();
+                    // oSubmitQuiz.eBtnCancelQuiz.text('Exit');
+                }
+            })
         },
 
         getQuestions: function () {
             var aQuestionAnswer = [];
+            var aData = [];
+            var sMessage = '';
+            var bResult = true;
             $('.questions').each(function (itr, self) {
                 if ($(self).data('type') !== 3) {
+                    if ($(self).find('.radio-choice:radio:checked').data('value') === undefined) {
+                        bResult = false;
+                        sMessage = `Question ${itr + 1} has no answer yet.`;
+                        return false;
+                    }
                     mQuestion_answer = (($(self).find('.radio-choice:radio:checked').data('value') === undefined) ? -1 : $(self).find('.radio-choice:radio:checked').data('value'))
                 } else {
                     var iQuestionId = $(self).data('id');
@@ -101,8 +113,13 @@ $(document).ready(function () {
                     'question_type': $(self).data('type'),
                     'question_answer': mQuestion_answer
                 };
-                aQuestionAnswer.push(oQuestionData);
+                aData.push(oQuestionData);
             });
+            aQuestionAnswer = {
+                'result': bResult,
+                'data': aData,
+                'message': sMessage
+            };
             return aQuestionAnswer;
         }
    };
