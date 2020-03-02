@@ -58,13 +58,13 @@ $(document).ready(function () {
 
         submitQuiz: function () {
             if (confirm('Are you sure you want to submit?')) {
-                clearInterval(oSubmitQuiz.x);
-                $("#timer").remove();
-                localStorage.removeItem("quiz_end_datetime");
                 var aQuestionAnswer = oSubmitQuiz.getQuestions();
                 if (aQuestionAnswer['result'] === false) {
                     alert(aQuestionAnswer['message']);
                 } else {
+                    clearInterval(oSubmitQuiz.x);
+                    $("#timer").remove();
+                    localStorage.removeItem("quiz_end_datetime");
                     oSubmitQuiz.postQuiz(aQuestionAnswer['data']);
                 }
             }
