@@ -92,7 +92,7 @@ $(document).ready(function () {
         },
 
         getQuestions: function () {
-            var aQuestionAnswer = [];
+            var aQuestionAnswer = {};
             var aData = [];
             var sMessage = '';
             var bResult = true;

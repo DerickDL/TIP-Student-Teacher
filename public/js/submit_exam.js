@@ -27,7 +27,8 @@ $(document).ready(function () {
                   clearInterval(oSubmitExam.x);
                   $("#timer").remove();
                   localStorage.removeItem("exam_end_datetime");
-                  oSubmitExam.postExam();
+                  var aQuestionAnswer = oSubmitExam.getQuestions();
+                  oSubmitExam.postExam(aQuestionAnswer['data']);
                 }
               }, 1000);
         },
@@ -57,40 +58,51 @@ $(document).ready(function () {
 
         submitExam: function () {
             if (confirm('Are you sure you want to submit?')) {
-                clearInterval(oSubmitExam.x);
-                $("#timer").remove();
-                localStorage.removeItem("exam_end_datetime");
-                oSubmitExam.postExam();
+                var aQuestionAnswer = oSubmitExam.getQuestions();
+                if (aQuestionAnswer['result'] === false) {
+                    alert(aQuestionAnswer['message']);
+                } else {
+                    clearInterval(oSubmitExam.x);
+                    $("#timer").remove();
+                    localStorage.removeItem("exam_end_datetime");
+                    oSubmitExam.postExam(aQuestionAnswer['data']);
+                }
             }
         },
 
-        postExam: function() {
-            var aQuestionAnswer = [];
-                aQuestionAnswer = oSubmitExam.getQuestions();
-                var aData = {
-                    'exam_id': $(oSubmitExam.eBtnSubmitExam).data('value'),
-                    'question_answer': aQuestionAnswer
-                };
-                $.ajax({
-                    url: '/exams/submit',
-                    type: 'POST',
-                    data: aData,
-                    success: function (aResponse) {
-                        alert('Submitted successfully. Check your score.');
-                        window.location.replace(`/student/class/${iClass}/exams`);
-                        // oSubmitExam.eScoreArea.text(aResponse.score);
-                        // oSubmitExam.ePercentArea.text(aQuestionAnswer.length);
-                        // oSubmitExam.eBtnSubmitExam.remove();
-                        // oSubmitExam.eScoreDiv.show();
-                        // oSubmitExam.eBtnCancelExam.text('Exit');
-                    }
-                })
+        postExam: function(aQuestionAnswer) {
+            var aData = {
+                'exam_id': $(oSubmitExam.eBtnSubmitExam).data('value'),
+                'question_answer': aQuestionAnswer
+            };
+            $.ajax({
+                url: '/exams/submit',
+                type: 'POST',
+                data: aData,
+                success: function (aResponse) {
+                    alert('Submitted successfully. Check your score.');
+                    window.location.replace(`/student/class/${iClass}/exams`);
+                    // oSubmitExam.eScoreArea.text(aResponse.score);
+                    // oSubmitExam.ePercentArea.text(aQuestionAnswer.length);
+                    // oSubmitExam.eBtnSubmitExam.remove();
+                    // oSubmitExam.eScoreDiv.show();
+                    // oSubmitExam.eBtnCancelExam.text('Exit');
+                }
+            })
         },
 
         getQuestions: function () {
-            var aQuestionAnswer = [];
+            var aQuestionAnswer = {};
+            var aData = [];
+            var sMessage = '';
+            var bResult = true;
             $('.questions').each(function (itr, self) {
                 if ($(self).data('type') !== 3) {
+                    if ($(self).find('.radio-choice:radio:checked').data('value') === undefined) {
+                        bResult = false;
+                        sMessage = `Question ${itr + 1} has no answer yet.`;
+                        return false;
+                    }
                     mQuestion_answer = (($(self).find('.radio-choice:radio:checked').data('value') === undefined) ? -1 : $(self).find('.radio-choice:radio:checked').data('value'))
                 } else {
                     var iQuestionId = $(self).data('id');
@@ -101,8 +113,13 @@ $(document).ready(function () {
                     'question_type': $(self).data('type'),
                     'question_answer': mQuestion_answer
                 };
-                aQuestionAnswer.push(oQuestionData);
+                aData.push(oQuestionData);
             });
+            aQuestionAnswer = {
+                'result': bResult,
+                'data': aData,
+                'message': sMessage
+            };
             return aQuestionAnswer;
         }
    };
