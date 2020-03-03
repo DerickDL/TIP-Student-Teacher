@@ -1,0 +1,1 @@
+<h1>This is your default password: {{ $sPassword }}</h1>

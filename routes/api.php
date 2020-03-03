@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 
+use App\Mail\SendDefaultPassword;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,3 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/file/download/attachments/{file_id}', 'Teacher\restTeacher@downloadFile');
+Route::get('/send/default-password/{password}', function ($sPassword){
+    Mail::to('johnderickdeleon@gmail.com')->send(new SendDefaultPassword($sPassword));
+});
