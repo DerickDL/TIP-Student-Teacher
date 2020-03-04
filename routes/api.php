@@ -21,6 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/file/download/attachments/{file_id}', 'Teacher\restTeacher@downloadFile');
-Route::get('/send/default-password/{password}', function ($sPassword){
-    Mail::to('johnderickdeleon@gmail.com')->send(new SendDefaultPassword($sPassword));
+Route::get('/send/new-account', function (Request $oRequest){
+    Mail::to('johnderickdeleon@gmail.com')->send(new SendDefaultPassword($oRequest->all()));
 });

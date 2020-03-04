@@ -11,16 +11,16 @@ class SendDefaultPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $sPassword;
+    public $aRequest;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($sPassword)
+    public function __construct($aRequest)
     {
-        $this->sPassword = $sPassword;
+        $this->aRequest = $aRequest;
     }
 
     /**
@@ -31,7 +31,7 @@ class SendDefaultPassword extends Mailable
     public function build()
     {
         return $this
-            ->subject('New Password')
+            ->subject('New Account')
             ->view('emails.default_pass');
     }
 }
