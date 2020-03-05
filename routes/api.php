@@ -22,5 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/file/download/attachments/{file_id}', 'Teacher\restTeacher@downloadFile');
 Route::get('/send/new-account', function (Request $oRequest){
-    Mail::to('johnderickdeleon@gmail.com')->send(new SendDefaultPassword($oRequest->all()));
+    event(new \App\Events\RegisteredInstructor($oRequest->all()));
 });

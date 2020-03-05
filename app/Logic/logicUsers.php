@@ -43,6 +43,15 @@ class logicUsers
     	}
     	$aParams = $this->createUser($aRequest);
     	$aReturn = $this->modelUsers->registerUser($aParams);
+    	if ($aRequest['iType'] === 1) {
+    	    $aData = [
+    	        'receiver_email' => $aRequest['sEmail'],
+    	        'fullname' => $aRequest['sFirstName'] . ' ' . $aRequest['sLastName'],
+    	        'username' => $aRequest['sUsername'],
+    	        'password' => $aRequest['sPassword'],
+            ];
+            event(new \App\Events\RegisteredInstructor($aData));
+        }
     	return array('return' => $aReturn);
     }
 

@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendDefaultPassword extends Mailable
+class SendDefaultCredentials extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,7 +16,7 @@ class SendDefaultPassword extends Mailable
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param array
      */
     public function __construct($aRequest)
     {
