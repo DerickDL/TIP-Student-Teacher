@@ -62,9 +62,15 @@ var oInstructor = {
                 if (aResponse.result === false) {
                     alert(aResponse.message);
                 } else {
+                    oInstructor.oFirstName.val('');
+                    oInstructor.oLastName.val('');
+                    oInstructor.oEmail.val('');
+                    oInstructor.oUsername.val('');
+                    oInstructor.oPassword.val('');
                     oInstructor.oInstructorsList.empty();
                     oInstructor.showInstructorsList();
-                    oInstructor.oModal.modal('hide'); 
+                    oInstructor.oModal.modal('hide');
+                    alert('Successfully sent credentials to Instructor\'s email');
                 }
             }
         });
