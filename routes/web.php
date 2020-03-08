@@ -30,7 +30,7 @@ Route::get('/teacher', function () {
 });
 
 /**CHANGE PASSWORD**/
-Route::get('/change-password', 'App\frontUsers@changePasswordView');
+Route::get('/change-password', 'App\frontUsers@changePasswordView')->middleware('check.session');
 Route::put('/change-password', 'App\controllerUsers@changePassword');
 
 /**TEACHER HOME PAGE**/
