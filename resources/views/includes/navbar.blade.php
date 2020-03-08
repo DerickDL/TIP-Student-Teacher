@@ -11,12 +11,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/teacher/sections">{{$aSession->getData()->first_name}} {{$aSession->getData()->last_name}}</a>
+                    <a class="nav-link" href="#">{{$aSession->getData()->first_name}} {{$aSession->getData()->last_name}}</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/logout">Logout</a>
+                <li class="nav-item dropdown mr-5">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Settings
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="nav-link" href="/change-password">Change Password</a>
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </div>
                 </li>
             </ul>
         </div>

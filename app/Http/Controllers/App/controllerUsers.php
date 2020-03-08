@@ -41,6 +41,15 @@ class controllerUsers extends Controller
     }
 
     /**
+     * change password
+     * @param Request $oRequest
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function changePassword(Request $oRequest) {
+        return response()->json($this->logicUsers->changePassword($oRequest->all()));
+    }
+
+    /**
      * logout, flush session
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */

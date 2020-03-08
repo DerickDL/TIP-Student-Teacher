@@ -101,6 +101,19 @@ class logicUsers
     	return $this->validateLogin($this->modelUsers->getUser($aQueryCondition), $aRequest);
     }
 
+	public function changePassword($aRequest) {
+		$aRules = ['new_password' => 'min:8'];
+		$aValidation = $this->validateUser($aRules, $aRequest);
+    	if ($aValidation['result'] === false) {
+    		return $aValidation;
+		}
+		$oUser = $this->modelUsers->findUser($aRequest['user_data']['id']);
+		$oUser->password = $aRequest['new_password'];
+		$oUser->save();
+		$this->logoutUser();
+		return ['result' => true, 'message' => 'Password changed successfully. Please relogin.'];
+	}
+
 	/**
 	 * validate login input
 	 * @param $aUser

@@ -34,4 +34,9 @@ class frontUsers extends controllerUsers
     {
         return $this->logicUsers->getUsers($aRequest);
     }
+
+    public function changePasswordView() {
+        $aSession = $this->getSession();
+        return view('pages.change_pass')->with('aSession', $aSession->getData());
+    }
 }

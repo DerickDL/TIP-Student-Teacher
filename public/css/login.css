@@ -50,6 +50,11 @@ body { overflow: hidden }
     background-size: cover;
 }
 
+.bg-black {
+    height: 100%;
+    background-color: #1c1e26;
+}
+
 .login-select {
     width: 100%;
 }
@@ -75,5 +80,10 @@ body { overflow: hidden }
 
   .card-select .card-body {
     padding: 2rem;
+  }
+
+  .btn-change-pass, .btn-change-pass:hover, .btn-change-pass:active {
+      background-color: #d1a701 !important;
+      border: none !important;
   }
 
