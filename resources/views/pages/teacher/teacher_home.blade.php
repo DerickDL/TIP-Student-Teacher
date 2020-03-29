@@ -6,29 +6,16 @@
 
 @section('teacher_content')
     <div class="container">
-    <canvas id="quizzes" width="400" height="100"></canvas>
-    <br/>
-    <canvas id="prelims" width="400" height="100"></canvas>
-    <br/>
-    <canvas id="midterms" width="400" height="100"></canvas>
-    <br/>
-    <canvas id="finals" width="400" height="100"></canvas>
-    <div class="row">
-        <div class="col-6">
-            <canvas id="quiz1" width="300" height="300"></canvas>
-        </div>
-        <div class="col-6">
-            <canvas id="quiz2" width="300" height="300"></canvas>
-        </div>
-    </div>
-    </div>
+        <canvas id="quizzes_graph" width="400" height="200"></canvas>
+    </div> 
 @endsection
-
+v  
 @push('scripts')
 <script type="text/javascript">
+    var iTeacherId = {!! json_encode($aSession->getData()->id) !!}
     $(document).ready(function () {
         $('#home-tab').addClass('active');
     });
 </script>
-<script type="text/javascript" src="/js/graph.js"></script>
+<script type="text/javascript" src="/js/quizzes_graph.js"></script>
 @endpush

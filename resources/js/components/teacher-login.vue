@@ -58,7 +58,7 @@
                 		alert(data.message);
                 	} else {
                 		alert('Successfully Login');
-						window.location.href = '/teacher/sections';
+						window.location.href = '/teacher/home';
                 	}
            		})
            		.catch(err => console.log(err));

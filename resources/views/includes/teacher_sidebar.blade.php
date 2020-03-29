@@ -1,9 +1,9 @@
 
 <nav id="sidebar">
     <ul class="list-unstyled components">
-        <!-- <li id="home-tab">
+        <li id="home-tab">
             <a href="/teacher/home">Home</a>
-        </li> -->
+        </li>
         <li id="section-tab">
             <a href="/teacher/sections">Sections</a>
         </li>
