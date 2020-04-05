@@ -27,21 +27,12 @@ class logicQuizzesGraph
         $aQuizzesId = [];
         $aCourses = $this->oModelCourses->getCourses(['user_id' => $iTeacherId]);
         foreach ($aCourses as $aCourse) {
-            $aQuizzes = $this->oModelQuizzes->getQuizzes(['course_id' => $aCourse['id']]);
-            if (count($aQuizzes) > 0) {
+            $aQuiz = $this->oModelQuizzes->getQuizzes(['course_id' => $aCourse['id']]);
+            if (count($aQuiz) > 0) {
                 $aCoursesTitles[] = $aCourse['course_title'];
-                $aQuizzesId = $this->getQuizzesId($aQuizzes);
+                $aQuizzesId[] = $aQuiz['id'];
             }
         }
         dd($aCoursesTitles, $aQuizzesId);
-    }
-
-    public function getQuizzesId($aQuizzes)
-    {
-        $aQuizzesId = [];
-        foreach($aQuizzes as $aQuiz) {
-            $aQuizzesId[] = $aQuiz['id'];
-        }
-        return $aQuizzesId;
     }
 }
