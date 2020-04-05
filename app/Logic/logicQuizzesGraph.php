@@ -34,16 +34,27 @@ class logicQuizzesGraph
             }
         }
         $aStudents = $this->getStudents($iTeacherId);
+        $aStudents = $this->filterStudentsData($aStudents);
         dd($aCoursesTitles, $aQuizzesId, $aStudents);
     }
 
-    public function getStudents($iTeacherId)
+    private function getStudents($iTeacherId)
     {
         $aStudents = [];
         $aSections = $this->oModelSections->getSections(['user_id' => $iTeacherId]);
         foreach($aSections as $aSection) {
-            $aStudents[] = $this->oModelSections->findSection(($aSection['id']))->users()->get();
+            $aSectionStudents = $this->oModelSections->findSection(($aSection['id']))->users()->get();
+            $aStudents = count($aStudents) > 0 ? array_merge($aStudents, $aSectionStudents) ? $aSectionStudents;
         }
         return $aStudents;
+    }
+
+    private function filterStudentsData($aStudents)
+    {
+        $aFilteredStudentsData = [];
+        foreach($aStudents as $aStudent) {
+            $aFilteredStudentsData[] = ['id' => $aStudent['id'], 'name' => $aStudent['first_name'] + $aStudent['last_name']];
+        }
+        return $aFilteredStudentsData;
     }
 }
