@@ -122,3 +122,4 @@ Route::post('/assign', 'App\controllerUsers@assignTeacherIntegration');
 Route::get('/assigned/instructors', 'IntegratedCourses\controllerIntegratedCourses@getAssignedInstructors');
 
 Route::post('/compute', 'Computation\controllerComputation@startCompute');
+Route::post('/quizzes/graph/{teacher_id}', 'Quizzes\controllerQuizzesGraph@getQuizzesGraph');

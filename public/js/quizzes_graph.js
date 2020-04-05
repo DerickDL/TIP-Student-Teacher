@@ -1,17 +1,17 @@
 $(document).ready(function () {
     var oQuizzesGraph = {
         init: function () {
-            // oQuizzesGraph.startCompute();
+            oQuizzesGraph.getQuizzesData();
             oQuizzesGraph.overallGraph();
             
         },
 
-        startCompute: function () {
+        getQuizzesData: function () {
             $.ajax({
-               url: '',
+               url: '/quizzes/graph/' + iTeacherId,
                type: 'GET',
                success: function (aResponse) {
-
+                    console.log(aResponse);
                }
             });
         },
