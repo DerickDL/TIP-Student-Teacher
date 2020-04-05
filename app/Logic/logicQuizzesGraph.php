@@ -4,7 +4,6 @@ namespace App\Logic;
 
 use App\Model\modelCourses;
 use App\Model\modelQuizzes;
-use App\Model\modelExams;
 use App\Model\modelSections;
 
 class logicQuizzesGraph
@@ -34,27 +33,17 @@ class logicQuizzesGraph
             }
         }
         $aStudents = $this->getStudents($iTeacherId);
-        $aStudents = $this->filterStudentsData($aStudents);
         dd($aCoursesTitles, $aQuizzesId, $aStudents);
     }
 
-    private function getStudents($iTeacherId)
+    public function getStudents($iTeacherId)
     {
         $aStudents = [];
         $aSections = $this->oModelSections->getSections(['user_id' => $iTeacherId]);
         foreach($aSections as $aSection) {
             $aSectionStudents = $this->oModelSections->findSection(($aSection['id']))->users()->get();
-            $aStudents = count($aStudents) > 0 ? array_merge($aStudents, $aSectionStudents) ? $aSectionStudents;
+            $aStudents = count($aStudents) > 0 ? array_merge($aStudents, $aSectionStudents) : $aSectionStudents;
         }
         return $aStudents;
-    }
-
-    private function filterStudentsData($aStudents)
-    {
-        $aFilteredStudentsData = [];
-        foreach($aStudents as $aStudent) {
-            $aFilteredStudentsData[] = ['id' => $aStudent['id'], 'name' => $aStudent['first_name'] + $aStudent['last_name']];
-        }
-        return $aFilteredStudentsData;
     }
 }
