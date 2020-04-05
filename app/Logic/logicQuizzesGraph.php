@@ -41,7 +41,7 @@ class logicQuizzesGraph
         $aStudents = [];
         $aSections = $this->oModelSections->getSections(['user_id' => $iTeacherId]);
         foreach($aSections as $aSection) {
-            $aSectionStudents = $this->oModelSections->findSection(($aSection['id']))->users()->get();
+            $aSectionStudents = $this->oModelSections->findSection(($aSection['id']))->users()->get()->toArray();
             $aStudents = count($aStudents) > 0 ? array_merge($aStudents, $aSectionStudents) : $aSectionStudents;
         }
         return $aStudents;
