@@ -30,7 +30,7 @@ class logicQuizzesGraph
             $aQuiz = $this->oModelQuizzes->getQuizzes(['course_id' => $aCourse['id']]);
             if (count($aQuiz) > 0) {
                 $aCoursesTitles[] = $aCourse['course_title'];
-                $aQuizzesId[] = $aQuiz['id'];
+                $aQuizzesId[] = $aQuiz[0]['id'];
             }
         }
         dd($aCoursesTitles, $aQuizzesId);
