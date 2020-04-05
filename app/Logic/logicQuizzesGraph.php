@@ -54,7 +54,7 @@ class logicQuizzesGraph
         foreach ($aStudents as $aStudent) {
             $aFilteredStudentsData[] = [
                 'id' => $aStudent['id'],
-                'name' => $aStudent['first_name'] + $aStudent['last_name']
+                'name' => $aStudent['first_name'] . ' ' . $aStudent['last_name']
             ];
         }
         return $aFilteredStudentsData;
