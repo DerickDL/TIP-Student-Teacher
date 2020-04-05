@@ -24,19 +24,24 @@ class logicQuizzesGraph
     public function getGraphQuizzes($iTeacherId)
     {
         $aCoursesTitles = [];
+        $aQuizzesId = [];
         $aCourses = $this->oModelCourses->getCourses(['user_id' => $iTeacherId]);
         foreach ($aCourses as $aCourse) {
-            $aQuiz = $this->oModelQuizzes->getQuizzes(['course_id' => $aCourse['id']]);
-            if (count($aQuiz) > 0) {
+            $aQuizzes = $this->oModelQuizzes->getQuizzes(['course_id' => $aCourse['id']]);
+            if (count($aQuizzes) > 0) {
                 $aCoursesTitles[] = $aCourse['course_title'];
-                $aQuizzesId = array_map(array($this, 'getQuizIds'), $aQuiz);
+                $aQuizzesId = $this->getQuizzesId($aQuizzes);
             }
         }
         dd($aCoursesTitles, $aQuizzesId);
     }
 
-    public function getQuizIds($aQuizData)
+    public function getQuizzesId($aQuizzes)
     {
-        return $aQuizData['id'];
+        $aQuizzesId = [];
+        foreach($aQuizzes as $aQuiz) {
+            $aQuizzesId[] = $aQuiz['id'];
+        }
+        return $aQuizzesId;
     }
 }
