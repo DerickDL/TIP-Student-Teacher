@@ -33,6 +33,17 @@ class logicQuizzesGraph
                 $aQuizzesId[] = $aQuiz[0]['id'];
             }
         }
-        dd($aCoursesTitles, $aQuizzesId);
+        $aStudents = $this->getStudents($iTeacherId);
+        dd($aCoursesTitles, $aQuizzesId, $aStudents);
+    }
+
+    public function getStudents($iTeacherId)
+    {
+        $aStudents = [];
+        $aSections = $this->oModelSections->getSections(['user_id' => $iTeacherId]);
+        foreach($aSections as $aSection) {
+            $aStudents[] = $this->oModelSections->findSection(($aSection['id']))->users()->get();
+        }
+        return $aStudents;
     }
 }
