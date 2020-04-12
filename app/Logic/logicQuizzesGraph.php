@@ -34,7 +34,12 @@ class logicQuizzesGraph
         }
         $aStudents = $this->getStudents($iTeacherId);
         $aStudents = $this->filterStudentsData($aStudents);
-        dd($aCoursesTitles, $aQuizzesId, $aStudents);
+        $aStudentQuizzesData = $this->getStudentQuizGraphData($aStudents, $aQuizzesId);
+        return [
+            'courses' => $aCoursesTitles,
+            'students_data' => $aStudentQuizzesData
+        ];
+        // dd($aCoursesTitles, $aQuizzesId, $aStudents, $aStudentQuizzesData);
     }
 
     private function getStudents($iTeacherId)
@@ -58,5 +63,29 @@ class logicQuizzesGraph
             ];
         }
         return $aFilteredStudentsData;
+    }
+
+    private function getStudentQuizGraphData($aStudents, $aQuizzesId)
+    {
+        foreach ($aStudents as $aStudent) {
+            $aStudentQuizzesPercentage = [];
+            foreach ($aQuizzesId as $iQuizId) {
+                $aStudentQuizzesPercentage[] = $this->getStudentQuizPercentage($aStudent, $iQuizId);
+            }
+            $rand_color = '#' . substr(md5(mt_rand()), 0, 6);
+            $aStudentQuizzesData[] = [
+                'label' => $aStudent['name'],
+                'data' => $aStudentQuizzesPercentage,
+                'backgroundColor' => $rand_color
+            ];
+        }
+        return $aStudentQuizzesData;
+    }
+
+    private function getStudentQuizPercentage($aStudent, $iQuizId)
+    {
+        $oQuiz = $this->oModelQuizzes->findQuiz($iQuizId);
+        $aStudentQuizPercentage = $oQuiz->users()->where(['user_id' => $aStudent])->get();
+        return count($aStudentQuizPercentage) > 0 ? $aStudentQuizPercentage[0]['pivot']['percentage'] : 0;
     }
 }

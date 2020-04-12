@@ -2,7 +2,7 @@ $(document).ready(function () {
     var oQuizzesGraph = {
         init: function () {
             oQuizzesGraph.getQuizzesData();
-            oQuizzesGraph.overallGraph();
+            // oQuizzesGraph.overallGraph();
             
         },
 
@@ -12,6 +12,7 @@ $(document).ready(function () {
                type: 'GET',
                success: function (aResponse) {
                     console.log(aResponse);
+                    oQuizzesGraph.overallGraph(aResponse);
                }
             });
         },
@@ -21,24 +22,8 @@ $(document).ready(function () {
             var quizzes_graph = new Chart(quizzes_graph, {
                 type: 'bar',
                 data: {
-                    labels: ['Trigonometry', 'Physics', 'Data Commmunication'],
-                    datasets: [
-                        {
-                            label: "John Derick De Leon",
-                            backgroundColor: "blue",
-                            data: [80,95,70]
-                        },
-                        {
-                            label: "Jimwell Dela Pena ",
-                            backgroundColor: "red",
-                            data: [87,90,97]
-                        },
-                        {
-                            label: "John Dee Bobo De Leon",
-                            backgroundColor: "green",
-                            data: [85,90,85]
-                        }
-                    ]
+                    labels: aData['courses'],
+                    datasets: aData['students_data']
                 },
                 options: {
                     legend: {
@@ -49,14 +34,14 @@ $(document).ready(function () {
                     
                     title: {
                         display: true,
-                        text: 'Overall Percentage'
+                        text: 'Quizzes Percentage'
                     },
                     scales: {
                         yAxes: [{
                             display: true,
                             ticks: {
                                 suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
-                                // OR //
+                                suggestedMax: 100
                             }
                         }]
                     }
