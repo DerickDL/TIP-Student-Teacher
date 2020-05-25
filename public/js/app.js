@@ -1932,6 +1932,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1948,6 +1950,7 @@ __webpack_require__.r(__webpack_exports__);
         sStudent: '',
         sUsername: '',
         sPassword: '',
+        sConfirmPassword: '',
         iType: ''
       },
       aLogin: {
@@ -2002,32 +2005,39 @@ __webpack_require__.r(__webpack_exports__);
 
       this.aRegister.iType = this.register_user_type === 'teacher' ? 1 : 0;
       this.aRegister.sStudent = this.register_user_type === 'teacher' ? '' : this.aRegister.sStudent;
-      fetch('/register', {
-        method: 'post',
-        body: JSON.stringify(this.aRegister),
-        headers: {
-          'content-type': 'application/json'
-        }
-      }).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        if (data.result === false) {
-          alert(data.message);
-        } else {
-          _this.isLogin = true;
-          _this.isRegister = false;
-          _this.aRegister.sFirstName = '';
-          _this.aRegister.sLastName = '';
-          _this.aRegister.sEmail = '';
-          _this.aRegister.sUsername = '';
-          _this.aRegister.sPassword = '';
-          _this.aRegister.iType = '';
-          _this.aRegister.sStudent = '';
-          alert('Successfully Registered');
-        }
-      })["catch"](function (err) {
-        return console.log(err);
-      });
+
+      if (this.aRegister.sPassword === this.aRegister.sConfirmPassword) {
+        fetch('/register', {
+          method: 'post',
+          body: JSON.stringify(this.aRegister),
+          headers: {
+            'content-type': 'application/json'
+          }
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          if (data.result === false) {
+            alert(data.message);
+          } else {
+            _this.isLogin = true;
+            _this.isRegister = false;
+            _this.aRegister.sFirstName = '';
+            _this.aRegister.sLastName = '';
+            _this.aRegister.sEmail = '';
+            _this.aRegister.sUsername = '';
+            _this.aRegister.sPassword = '';
+            _this.aRegister.sConfirmPassword = '';
+            _this.aRegister.iType = '';
+            _this.aRegister.sStudent = '';
+            alert('Successfully Registered');
+          }
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      } else {
+        alert('Password doesn\'t match.');
+        this.aRegister.sConfirmPassword = '';
+      }
     }
   }
 });
@@ -52253,6 +52263,52 @@ var render = function() {
                               _vm.$set(
                                 _vm.aRegister,
                                 "sPassword",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.aRegister.sConfirmPassword,
+                              expression: "aRegister.sConfirmPassword"
+                            }
+                          ],
+                          staticClass: "input",
+                          attrs: {
+                            type: "password",
+                            placeholder: "Confirm Password"
+                          },
+                          domProps: { value: _vm.aRegister.sConfirmPassword },
+                          on: {
+                            keyup: function($event) {
+                              if (
+                                !$event.type.indexOf("key") &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              return _vm.doRegister($event)
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.aRegister,
+                                "sConfirmPassword",
                                 $event.target.value
                               )
                             }

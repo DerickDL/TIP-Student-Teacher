@@ -78,7 +78,9 @@
 		                            <div class="field">
 		                                <input class="input" type="password" placeholder="Password" v-model="aRegister.sPassword" v-on:keyup.enter="doRegister">
 		                            </div>
-		                            
+		                             <div class="field">
+		                                <input class="input" type="password" placeholder="Confirm Password" v-model="aRegister.sConfirmPassword" v-on:keyup.enter="doRegister">
+		                            </div>
 	                            	<a class="button is-secondary is-fullwidth has-text-white" v-on:click="doRegister">Register</a>
 	                            </div>
 	                        </div>
@@ -105,6 +107,7 @@
                 	sStudent: '',
                 	sUsername: '',
                 	sPassword: '',
+					sConfirmPassword: '',
                 	iType: ''
                 },
                 aLogin: {
@@ -155,31 +158,37 @@
            doRegister() {
            		this.aRegister.iType = (this.register_user_type === 'teacher') ? 1 : 0;
                	this.aRegister.sStudent = (this.register_user_type === 'teacher') ? '' : this.aRegister.sStudent;
-           		fetch('/register', {
-                    method: 'post',
-                    body: JSON.stringify(this.aRegister),
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                })
-                .then(res => res.json())
-                .then(data => {
-                	if (data.result === false) {
-                		alert(data.message);
-                	} else {
-						this.isLogin = true;
-						this.isRegister = false;
-						this.aRegister.sFirstName = '';
-						this.aRegister.sLastName = '';
-						this.aRegister.sEmail = '';
-						this.aRegister.sUsername = '';
-						this.aRegister.sPassword = '';
-						this.aRegister.iType = '';
-						this.aRegister.sStudent = '';
-                		alert('Successfully Registered');
-                	}
-                })
-                .catch(err => console.log(err));
+				if (this.aRegister.sPassword === this.aRegister.sConfirmPassword) {
+					fetch('/register', {
+						method: 'post',
+						body: JSON.stringify(this.aRegister),
+						headers: {
+							'content-type': 'application/json'
+						}
+					})
+					.then(res => res.json())
+					.then(data => {
+						if (data.result === false) {
+							alert(data.message);
+						} else {
+							this.isLogin = true;
+							this.isRegister = false;
+							this.aRegister.sFirstName = '';
+							this.aRegister.sLastName = '';
+							this.aRegister.sEmail = '';
+							this.aRegister.sUsername = '';
+							this.aRegister.sPassword = '';
+							this.aRegister.sConfirmPassword = '';
+							this.aRegister.iType = '';
+							this.aRegister.sStudent = '';
+							alert('Successfully Registered');
+						}
+					})
+					.catch(err => console.log(err));
+				} else {
+					alert('Password doesn\'t match.');
+					this.aRegister.sConfirmPassword = '';
+				}
            },
 
         }
